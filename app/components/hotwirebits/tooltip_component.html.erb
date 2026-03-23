@@ -1,0 +1,16 @@
+<div class="relative inline-block"
+     data-controller="hw-tooltip"
+     data-hw-tooltip-delay-value="<%= @delay %>"
+     data-action="mouseenter->hw-tooltip#show mouseleave->hw-tooltip#hide focus->hw-tooltip#show blur->hw-tooltip#hide">
+  <div data-hw-tooltip-target="trigger">
+    <%= content %>
+  </div>
+  <div class="<%= tooltip_classes %>"
+       data-hw-tooltip-target="content"
+       role="tooltip"
+       data-side="<%= @side %>"
+       hidden
+       <%= tag.attributes(@extra_attrs) %>>
+    <%= @content %>
+  </div>
+</div>

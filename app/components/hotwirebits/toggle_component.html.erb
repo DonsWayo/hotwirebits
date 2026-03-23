@@ -1,0 +1,3 @@
+<button type="button" aria-pressed="<%= @pressed %>" <%= 'disabled' if @disabled %> class="inline-flex items-center justify-center rounded-md font-medium ring-offset-hw-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-hw-accent hover:text-hw-accent-foreground <%= @pressed ? 'bg-hw-accent text-hw-accent-foreground' : 'bg-transparent' %> cursor-pointer h-9 px-3 text-sm" <%= tag.attributes(@extra_attrs) %>>
+  <%= content || @label %>
+</button>

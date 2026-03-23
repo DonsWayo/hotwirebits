@@ -1,0 +1,9 @@
+<div class="relative" <%= tag.attributes(@extra_attrs) %>>
+  <% if @position == :left %>
+    <div class="absolute top-1/2 -translate-y-1/2 left-3 text-hw-muted-foreground pointer-events-none"><%= @icon.html_safe %></div>
+  <% end %>
+  <%= content %>
+  <% if @position == :right %>
+    <div class="absolute top-1/2 -translate-y-1/2 right-3 text-hw-muted-foreground pointer-events-none"><%= @icon.html_safe %></div>
+  <% end %>
+</div>

@@ -1,0 +1,23 @@
+<div class="relative overflow-hidden rounded-lg" style="<%= gallery_style %>" <%= tag.attributes(@extra_attrs) %>>
+  <% @images.each_with_index do |image, idx| %>
+    <div class="absolute inset-0 transition-opacity duration-500 opacity-0 hover:opacity-100"
+         data-controller="hover-gallery"
+         data-hover-gallery-index-value="<%= idx %>">
+      <img src="<%= image[:src] %>" alt="<%= image[:alt] || '' %>" class="h-full w-full object-cover">
+    </div>
+  <% end %>
+  <% if @images.any? %>
+    <div class="absolute inset-0">
+      <img src="<%= @images.first[:src] %>" alt="<%= @images.first[:alt] || '' %>" class="h-full w-full object-cover">
+    </div>
+    <div class="absolute inset-0 flex">
+      <% @images.each_with_index do |image, idx| %>
+        <div class="flex-1 relative group"
+             onmouseenter="this.closest('[data-controller]').querySelectorAll('[data-hover-gallery-index-value]').forEach(el => { el.style.opacity = el.dataset.hoverGalleryIndexValue == #{idx} ? '1' : '0' })">
+          <img src="<%= image[:src] %>" alt="<%= image[:alt] || '' %>"
+               class="absolute inset-0 h-full w-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

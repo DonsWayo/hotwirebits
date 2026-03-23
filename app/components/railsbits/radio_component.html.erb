@@ -1,6 +1,0 @@
-<label class="flex items-center gap-2 cursor-pointer" <%= tag.attributes(@extra_attrs) %>>
-  <input type="radio" name="<%= @name %>" value="<%= @value %>" <%= 'checked' if @checked %> <%= 'disabled' if @disabled %> class="peer aspect-square shrink-0 rounded-full border border-rb-input bg-rb-background text-rb-primary ring-offset-rb-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rb-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 <%= SIZES[@size] || 'h-4 w-4' %>">
-  <% if @label %>
-    <span class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"><%= @label %></span>
-  <% end %>
-</label>

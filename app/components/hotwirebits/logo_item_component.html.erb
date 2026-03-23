@@ -1,0 +1,7 @@
+<a href="<%= @url || '#' %>" class="<%= item_classes %>" <%= @url ? 'target="_blank" rel="noopener noreferrer"'.html_safe : '' %> <%= tag.attributes(@extra_attrs) %>>
+  <% if @image_url %>
+    <img src="<%= @image_url %>" alt="<%= @name %>" class="h-8 md:h-10 object-contain">
+<% else %>
+  <span class="text-lg font-semibold text-hw-muted-foreground"><%= @name %></span>
+<% end %>
+</a>

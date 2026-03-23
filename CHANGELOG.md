@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to RailsBits will be documented in this file.
+All notable changes to HotwireBits will be documented in this file.
 
 ## [0.1.0] - 2026-03-23
 
@@ -8,7 +8,7 @@ All notable changes to RailsBits will be documented in this file.
 - Initial release with 130+ components
 - Theme system with CSS custom properties (light/dark mode)
 - 40 Stimulus controllers for interactive components
-- CLI tool (`railsbits`) for copy-paste installation
+- CLI tool (`hotwirebits`) for copy-paste installation
 - ERB partial + ViewComponent dual format for all components
 - Tailwind CSS v4 support
 

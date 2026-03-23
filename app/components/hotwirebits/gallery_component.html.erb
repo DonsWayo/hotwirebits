@@ -1,0 +1,25 @@
+<div class="<%= container_classes %>"
+     <% if @with_lightbox %>data-controller="hw-lightbox"<% end %>
+     <%= tag.attributes(@extra_attrs) %>>
+  <% @images.each_with_index do |image, index| %>
+    <figure class="group relative overflow-hidden rounded-lg">
+      <img src="<%= image[:src] %>" alt="<%= image[:alt] %>"
+           class="aspect-square w-full object-cover transition-transform duration-300 group-hover:scale-105"
+           <% if @with_lightbox %>
+             data-action="click->hw-lightbox#open"
+      data-hw-lightbox-index-param="<%= index %>"
+      role="button" tabindex="0"
+    <% end %>>
+    <% if image[:caption] %>
+      <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-3 text-sm text-white opacity-0 transition-opacity group-hover:opacity-100">
+        <%= image[:caption] %>
+      </figcaption>
+    <% end %>
+  </figure>
+<% end %>
+<% if @with_lightbox && @images.any? %>
+  <template data-hw-lightbox-target="template">
+    <%= render HotwireBits::LightboxComponent.new(images: @images, current_index: 0) %>
+  </template>
+<% end %>
+</div>

@@ -1,0 +1,11 @@
+<div class="<%= container_classes %>" <%= tag.attributes(@extra_attrs) %>>
+  <video class="absolute inset-0 h-full w-full object-cover"
+         src="<%= @src %>"
+         <% if @poster %>poster="<%= @poster %>"<% end %>
+         <% if @autoplay %>autoplay<% end %>
+         <% if @controls %>controls<% end %>
+         preload="metadata"
+         playsinline>
+    Your browser does not support the video tag.
+  </video>
+</div>

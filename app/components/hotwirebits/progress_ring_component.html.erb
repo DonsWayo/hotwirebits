@@ -1,0 +1,26 @@
+<div class="relative inline-flex items-center justify-center" <%= tag.attributes(@extra_attrs) %>>
+  <svg width="<%= @size %>" height="<%= @size %>" class="-rotate-90">
+    <circle
+      cx="<%= center %>"
+      cy="<%= center %>"
+      r="<%= radius %>"
+      fill="none"
+      stroke-width="4"
+      class="stroke-hw-muted"
+    />
+    <circle
+      cx="<%= center %>"
+      cy="<%= center %>"
+      r="<%= radius %>"
+      fill="none"
+      stroke-width="4"
+      stroke-linecap="round"
+      stroke-dasharray="<%= circumference %>"
+      stroke-dashoffset="<%= stroke_dashoffset %>"
+      class="<%= color_class %> transition-all duration-300"
+    />
+  </svg>
+  <% if @show_label %>
+    <span class="absolute text-sm font-medium"><%= percentage %>%</span>
+  <% end %>
+</div>

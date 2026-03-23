@@ -1,0 +1,8 @@
+<div class="<%= group_classes %>" role="group" aria-label="Toggle options" <%= tag.attributes(@extra_attrs) %>>
+  <% @options.each_with_index do |opt, i| %>
+    <% pressed = @selected.include?(opt[:value]) %>
+    <button type="button" aria-pressed="<%= pressed %>" <%= 'disabled' if @disabled || opt[:disabled] %> class="<%= option_classes(pressed, i == @options.size - 1, i == 0) %>" data-action="click->hw-toggle-group#select" data-value="<%= opt[:value] %>">
+      <span><%= opt[:label] %></span>
+    </button>
+  <% end %>
+</div>

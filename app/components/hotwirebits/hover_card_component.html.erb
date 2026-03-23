@@ -1,0 +1,19 @@
+<div class="relative inline-block"
+     data-controller="hw-hover-card"
+     data-action="mouseenter->hw-hover-card#show mouseleave->hw-hover-card#hide">
+  <div data-hw-hover-card-target="trigger">
+    <% if trigger? %>
+      <%= trigger %>
+    <% else %>
+      <a href="#" class="text-sm font-medium underline-offset-4 hover:underline">Hover</a>
+    <% end %>
+  </div>
+  <div class="<%= card_classes %>"
+       data-hw-hover-card-target="content"
+       data-state="closed"
+       data-side="bottom"
+       hidden
+       <%= tag.attributes(@extra_attrs) %>>
+    <%= content %>
+  </div>
+</div>

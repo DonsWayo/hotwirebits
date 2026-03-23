@@ -1,0 +1,6 @@
+<div class="flex items-center gap-2" data-controller="hw-otp">
+  <input type="hidden" name="<%= @name %>" value="<%= @value %>" data-hw-otp-target="hidden">
+  <% @length.times do |i| %>
+    <input type="text" maxlength="1" inputmode="<%= @numeric_only ? 'numeric' : 'text' %>" <%= 'disabled' if @disabled %> value="<%= @value[i] %>" class="h-10 w-10 text-center text-lg font-semibold rounded-md border border-hw-input bg-hw-background text-hw-foreground ring-offset-hw-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" data-action="input->hw-otp#input keydown->hw-otp#keydown" data-index="<%= i %>" <%= tag.attributes(@extra_attrs) %>>
+  <% end %>
+</div>

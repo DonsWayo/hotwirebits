@@ -1,0 +1,22 @@
+<div class="<%= container_classes %>" <%= tag.attributes(@extra_attrs) %>>
+  <div class="rounded-lg border border-hw-border overflow-hidden">
+    <div class="px-4 py-2 bg-hw-muted border-b border-hw-border">
+      <span class="text-xs font-medium text-hw-destructive"><%= @before_label %></span>
+    </div>
+    <div class="p-4 text-sm font-mono">
+      <% if before_slot? %>
+        <%= before_slot %>
+      <% end %>
+    </div>
+  </div>
+  <div class="rounded-lg border border-hw-border overflow-hidden">
+    <div class="px-4 py-2 bg-hw-muted border-b border-hw-border">
+      <span class="text-xs font-medium text-hw-success"><%= @after_label %></span>
+    </div>
+    <div class="p-4 text-sm font-mono">
+      <% if after_slot? %>
+        <%= after_slot %>
+      <% end %>
+    </div>
+  </div>
+</div>

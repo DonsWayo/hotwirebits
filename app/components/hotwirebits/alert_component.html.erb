@@ -1,0 +1,32 @@
+<div class="<%= alert_classes %>"
+     data-controller="hw-alert"
+     role="alert"
+     <%= tag.attributes(@extra_attrs) %>>
+  <div class="flex items-start gap-3">
+    <% if @icon %>
+      <svg class="mt-0.5 h-5 w-5 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="<%= type_config[:icon] %>"/>
+      </svg>
+    <% end %>
+
+    <div class="flex-1">
+          <% if @title %>
+            <h5 class="mb-1 font-medium leading-none tracking-tight"><%= @title %></h5>
+          <% end %>
+          <% if @message %>
+            <div class="text-sm opacity-90"><%= @message %></div>
+          <% end %>
+          <%= content if content.present? %>
+        </div>
+        <% if @dismissible %>
+          <button type="button"
+              class="shrink-0 rounded-sm opacity-70 ring-offset-hw-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-hw-ring focus:ring-offset-2"
+              data-action="click->hw-alert#dismiss">
+            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+            <span class="sr-only">Dismiss</span>
+          </button>
+        <% end %>
+      </div>
+    </div>

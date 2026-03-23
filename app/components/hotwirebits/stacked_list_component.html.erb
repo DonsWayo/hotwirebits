@@ -1,0 +1,20 @@
+<ul class="<%= container_classes %>" role="list" <%= tag.attributes(@extra_attrs) %>>
+  <% @items.each do |item| %>
+    <li class="flex items-center gap-4 px-4 py-3">
+      <% if item[:avatar] %>
+        <img src="<%= item[:avatar] %>" alt="" class="h-10 w-10 shrink-0 rounded-full object-cover">
+      <% end %>
+      <div class="min-w-0 flex-1">
+        <p class="truncate text-sm font-medium text-hw-foreground"><%= item[:title] %></p>
+        <% if item[:subtitle] %>
+          <p class="truncate text-sm text-hw-muted-foreground"><%= item[:subtitle] %></p>
+        <% end %>
+      </div>
+      <% if item[:action] %>
+        <div class="shrink-0">
+          <%= item[:action] %>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

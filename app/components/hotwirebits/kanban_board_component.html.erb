@@ -1,0 +1,39 @@
+<div class="<%= container_classes %>"
+     data-controller="hw-kanban"
+     <%= tag.attributes(@extra_attrs) %>>
+  <% @columns.each do |col| %>
+    <div class="w-72 shrink-0 rounded-lg border border-hw-border bg-hw-muted/30 p-3"
+         data-hw-kanban-target="column"
+         data-column="<%= col[:title] %>">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-sm font-semibold text-hw-foreground"><%= col[:title] %></h3>
+        <span class="text-xs text-hw-muted-foreground bg-hw-muted rounded-full px-2 py-0.5">
+          <%= col[:items]&.size || 0 %>
+        </span>
+      </div>
+      <div class="space-y-2 min-h-[100px]"
+           data-hw-kanban-target="list"
+           data-action="dragover->hw-kanban#dragover drop->hw-kanban#drop">
+        <% (col[:items] || []).each do |item| %>
+          <div class="rounded-md border border-hw-border bg-hw-card p-3 shadow-sm cursor-grab active:cursor-grabbing"
+               draggable="true"
+               data-hw-kanban-target="card"
+               data-action="dragstart->hw-kanban#dragstart dragend->hw-kanban#dragend"
+            data-id="<%= item[:id] %>">
+            <p class="text-sm font-medium text-hw-foreground"><%= item[:title] %></p>
+            <% if item[:description] %>
+              <p class="mt-1 text-xs text-hw-muted-foreground line-clamp-2"><%= item[:description] %></p>
+            <% end %>
+            <% if item[:tags]&.any? %>
+              <div class="mt-2 flex flex-wrap gap-1">
+                <% item[:tags].each do |tag| %>
+                  <span class="inline-block rounded-full bg-hw-accent px-2 py-0.5 text-xs text-hw-accent-foreground"><%= tag %></span>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

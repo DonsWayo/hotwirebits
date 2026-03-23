@@ -1,0 +1,4 @@
+<!-- HotwireBits::<%= class_name %>Component -->
+<div class="hw-<%= file_name %>" data-controller="hw-<%= file_name %>">
+  <!-- Content here -->
+</div>

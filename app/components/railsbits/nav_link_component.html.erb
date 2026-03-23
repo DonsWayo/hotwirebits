@@ -1,9 +1,0 @@
-<a href="<%= @href %>" class="<%= link_classes %>" <%= tag.attributes(@extra_attrs) %>>
-  <% if @icon %>
-    <span class="h-4 w-4 shrink-0"><%= @icon.html_safe %></span>
-<% end %>
-<span class="flex-1"><%= content || @label %></span>
-<% if @badge %>
-  <span class="ml-auto rounded-full bg-rb-primary/10 px-2 py-0.5 text-xs font-medium text-rb-primary"><%= @badge %></span>
-<% end %>
-</a>

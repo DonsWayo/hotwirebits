@@ -1,0 +1,43 @@
+<div class="<%= container_classes %>" data-controller="hw-tabs" data-hw-tabs-active-value="<%= @active_tab %>" <%= tag.attributes(@extra_attrs) %>>
+  <div role="tablist" class="<%= list_classes %>">
+    <% @tabs.each do |tab| %>
+      <button type="button"
+              role="tab"
+              id="tab-<%= tab[:id] %>"
+              data-hw-tabs-target="tab"
+              data-action="click->hw-tabs#select"
+        data-tab-id="<%= tab[:id] %>"
+        aria-controls="panel-<%= tab[:id] %>"
+        aria-selected="<%= tab[:id] == @active_tab %>"
+        class="<%= tab_classes(tab[:id] == @active_tab) %>">
+        <% if tab[:icon] %>
+          <span class="h-4 w-4"><%= tab[:icon].html_safe %></span>
+        <% end %>
+        <%= tab[:label] %>
+      </button>
+    <% end %>
+  </div>
+  <% @tabs.each do |tab| %>
+    <div role="tabpanel"
+         id="panel-<%= tab[:id] %>"
+         data-hw-tabs-target="panel"
+         data-tab-id="<%= tab[:id] %>"
+         aria-labelledby="tab-<%= tab[:id] %>"
+         class="<%= tab[:id] == @active_tab ? '' : 'hidden' %> pt-4">
+      <% if tab[:content] %>
+        <%= tab[:content] %>
+      <% end %>
+    </div>
+  <% end %>
+  <% if tab_contents? %>
+    <% tab_contents.each do |tc| %>
+      <div role="tabpanel"
+           id="panel-<%= tc.instance_variable_get(:@id) %>"
+           data-hw-tabs-target="panel"
+           data-tab-id="<%= tc.instance_variable_get(:@id) %>"
+           class="<%= tc.instance_variable_get(:@id) == @active_tab ? '' : 'hidden' %> pt-4">
+        <%= tc %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

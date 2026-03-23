@@ -1,0 +1,11 @@
+<% if @with_label && (@label || label_slot?) %>
+  <div class="relative flex items-center <%= @orientation == :vertical ? 'flex-col h-full' : '' %>" role="separator" <%= tag.attributes(@extra_attrs) %>>
+    <div class="<%= @orientation == :horizontal ? 'flex-1 border-t' : 'flex-1 border-l' %> <%= @dashed ? 'border-dashed' : 'border-solid' %> border-hw-border"></div>
+    <span class="<%= @orientation == :horizontal ? 'px-3' : 'py-3' %> text-xs text-hw-muted-foreground font-medium">
+      <%= label_slot? ? label_slot : @label %>
+    </span>
+    <div class="<%= @orientation == :horizontal ? 'flex-1 border-t' : 'flex-1 border-l' %> <%= @dashed ? 'border-dashed' : 'border-solid' %> border-hw-border"></div>
+  </div>
+<% else %>
+  <div class="<%= divider_classes %>" role="separator" <%= tag.attributes(@extra_attrs) %>></div>
+<% end %>

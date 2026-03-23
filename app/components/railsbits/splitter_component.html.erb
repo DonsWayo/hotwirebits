@@ -1,9 +1,0 @@
-<div data-controller="rb-splitter" class="<%= container_classes %>" <%= tag.attributes(@extra_attrs) %>>
-  <div class="overflow-hidden" style="<%= panel_1_style %>" data-rb-splitter-target="panel1">
-    <%= slot_1 %>
-  </div>
-  <div class="<%= handle_classes %>" data-rb-splitter-target="handle" data-action="pointerdown->rb-splitter#startResize"></div>
-  <div class="overflow-hidden" style="<%= panel_2_style %>" data-rb-splitter-target="panel2">
-    <%= slot_2 %>
-  </div>
-</div>

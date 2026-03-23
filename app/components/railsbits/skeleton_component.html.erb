@@ -1,5 +1,0 @@
-<% style = [] %>
-<% style << "width: #{@circle_size || '40px'}; height: #{@circle_size || '40px'};" if @shape == :circle %>
-<% style << "width: #{@width};" if @width && @shape != :circle %>
-<% style << "height: #{@height};" if @height && @shape != :circle %>
-<div class="animate-pulse bg-rb-muted <%= @shape == :circle ? 'rounded-full' : @shape == :text ? 'rounded h-4 w-full' : 'rounded-md' %>" style="<%= style.join %>" <%= tag.attributes(@extra_attrs) %>></div>

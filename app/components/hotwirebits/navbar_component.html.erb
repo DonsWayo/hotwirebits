@@ -1,0 +1,25 @@
+<nav class="<%= nav_classes %>" <%= tag.attributes(@extra_attrs) %>>
+  <div class="mx-auto flex h-14 max-w-screen-xl items-center px-4">
+    <% if @brand %>
+      <a href="/" class="mr-6 flex items-center space-x-2 font-semibold text-hw-foreground">
+  <%= @brand %>
+</a>
+<% end %>
+<% if @items.any? %>
+  <nav class="flex items-center gap-6 text-sm">
+    <% @items.each do |item| %>
+      <a href="<%= item[:href] %>"
+             class="<%= merge_classes(
+               'transition-colors hover:text-hw-foreground',
+               item[:active] ? 'text-hw-foreground font-medium' : 'text-hw-muted-foreground'
+             ) %>">
+        <%= item[:label] %>
+      </a>
+    <% end %>
+  </nav>
+<% end %>
+<div class="flex flex-1 items-center justify-end gap-2">
+  <%= actions if actions? %>
+</div>
+</div>
+</nav>

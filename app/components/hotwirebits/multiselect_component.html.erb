@@ -1,0 +1,18 @@
+<div class="relative" data-controller="hw-multiselect">
+  <button type="button" <%= 'disabled' if @disabled %> class="flex h-9 w-full items-center justify-between rounded-md border border-hw-input bg-hw-background px-3 text-sm text-hw-foreground ring-offset-hw-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" data-action="click->hw-multiselect#toggle">
+    <span class="<%= @selected.any? ? '' : 'text-hw-muted-foreground' %>"><%= @selected.any? ? "#{@selected.size} selected" : @placeholder %></span>
+    <svg class="h-4 w-4 opacity-50" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+  </button>
+  <div class="absolute z-50 mt-1 w-full rounded-md border border-hw-border bg-hw-popover shadow-md hidden" data-hw-multiselect-target="dropdown">
+    <ul class="max-h-60 overflow-auto p-1">
+      <% @options.each do |opt| %>
+        <% value = opt.is_a?(Array) ? opt.last : opt %>
+        <% label = opt.is_a?(Array) ? opt.first : opt %>
+        <li class="relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-hw-accent hover:text-hw-accent-foreground">
+          <input type="checkbox" name="<%= @name %>[]" value="<%= value %>" <%= 'checked' if @selected.include?(value) %> class="mr-2 h-4 w-4 rounded border-hw-input">
+          <span><%= label %></span>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

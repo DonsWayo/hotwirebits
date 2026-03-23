@@ -1,0 +1,14 @@
+<div class="rounded-lg border border-hw-border bg-hw-card" data-controller="hw-panel" data-hw-panel-collapsed-value="<%= @collapsed %>" <%= tag.attributes(@extra_attrs) %>>
+  <div class="flex items-center justify-between px-4 py-3">
+    <button type="button" class="flex items-center gap-2 text-sm font-medium text-hw-foreground hover:text-hw-foreground/80" data-action="click->hw-panel#toggle">
+      <svg class="<%= merge_classes('h-4 w-4 shrink-0 transition-transform duration-200', @collapsed ? '' : 'rotate-90') %>" data-hw-panel-target="chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      <span><%= @title %></span>
+    </button>
+    <% if actions? %>
+      <div class="flex items-center gap-1"><%= actions %></div>
+    <% end %>
+  </div>
+  <div class="<%= merge_classes('px-4 pb-4', @collapsed ? 'hidden' : '') %>" data-hw-panel-target="content">
+    <%= content %>
+  </div>
+</div>

@@ -1,5 +1,0 @@
-<label class="<%= label_classes %>" <%= @for_field ? "for='#{@for_field}'" : '' %> <%= tag.attributes(@extra_attrs) %>>
-  <%= content %>
-  <% if @required %><span class="text-rb-destructive"> *</span><% end %>
-<% if @optional %><span class="text-rb-muted-foreground font-normal text-xs ml-1">(optional)</span><% end %>
-</label>

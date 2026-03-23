@@ -1,0 +1,9 @@
+<div data-controller="hw-splitter" class="<%= container_classes %>" <%= tag.attributes(@extra_attrs) %>>
+  <div class="overflow-hidden" style="<%= panel_1_style %>" data-hw-splitter-target="panel1">
+    <%= slot_1 %>
+  </div>
+  <div class="<%= handle_classes %>" data-hw-splitter-target="handle" data-action="pointerdown->hw-splitter#startResize"></div>
+  <div class="overflow-hidden" style="<%= panel_2_style %>" data-hw-splitter-target="panel2">
+    <%= slot_2 %>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="<%= container_classes %>" <%= tag.attributes(@extra_attrs) %>>
+  <p class="text-8xl font-bold text-hw-muted-foreground/30"><%= @code %></p>
+  <h1 class="mt-4 text-2xl font-bold text-hw-foreground"><%= @title %></h1>
+  <p class="mt-2 text-hw-muted-foreground max-w-md"><%= @description %></p>
+  <% if @action_label %>
+    <a href="<%= @action_href %>"
+       class="mt-6 inline-flex items-center justify-center rounded-lg bg-hw-primary text-hw-primary-foreground h-10 px-5 text-sm font-medium shadow-sm hover:bg-hw-primary/90 transition-colors">
+      <svg class="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+      </svg>
+      <%= @action_label %>
+    </a>
+  <% end %>
+</div>

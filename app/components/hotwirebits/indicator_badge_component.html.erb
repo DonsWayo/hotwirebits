@@ -1,0 +1,8 @@
+<div class="<%= wrapper_classes %>" <%= tag.attributes(@extra_attrs) %>>
+  <%= content %>
+  <span class="<%= badge_classes %>">
+    <% unless @dot %>
+      <%= @content %>
+    <% end %>
+  </span>
+</div>

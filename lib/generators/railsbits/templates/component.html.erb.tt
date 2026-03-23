@@ -1,4 +1,0 @@
-<!-- RailsBits::<%= class_name %>Component -->
-<div class="rb-<%= file_name %>" data-controller="rb-<%= file_name %>">
-  <!-- Content here -->
-</div>

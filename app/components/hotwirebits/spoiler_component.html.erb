@@ -1,0 +1,17 @@
+<div data-controller="hw-spoiler"
+     data-hw-spoiler-max-height-value="<%= @max_height %>"
+     <%= tag.attributes(@extra_attrs) %>>
+  <div class="overflow-hidden relative" data-hw-spoiler-target="container" style="max-height: <%= @max_height %>px;">
+    <%= content %>
+    <div class="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-hw-background to-transparent"
+         data-hw-spoiler-target="gradient"></div>
+  </div>
+  <button
+    type="button"
+    class="mt-1 text-sm font-medium text-hw-primary hover:underline"
+    data-action="click->hw-spoiler#toggle"
+    data-hw-spoiler-target="button"
+    >
+    <%= @show_more_label %>
+  </button>
+</div>

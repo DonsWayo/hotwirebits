@@ -1,9 +1,0 @@
-<label class="flex items-center gap-2 cursor-pointer" <%= tag.attributes(@extra_attrs) %>>
-  <input type="hidden" name="<%= @name %>" value="0">
-  <button type="button" role="switch" aria-checked="<%= @checked %>" <%= 'disabled' if @disabled %> class="peer inline-flex shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rb-ring focus-visible:ring-offset-2 focus-visible:ring-offset-rb-background disabled:cursor-not-allowed disabled:opacity-50 bg-rb-input <%= @checked ? 'bg-rb-primary' : '' %> h-6 w-11" data-action="click->rb-switch#toggle">
-    <span class="pointer-events-none block h-5 w-5 rounded-full bg-rb-background shadow-lg ring-0 transition-transform <%= @checked ? 'translate-x-5' : 'translate-x-0' %>"></span>
-  </button>
-  <% if @label %>
-    <span class="text-sm font-medium"><%= @label %></span>
-  <% end %>
-</label>

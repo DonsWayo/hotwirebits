@@ -1,0 +1,35 @@
+<section class="<%= container_classes %>" <%= tag.attributes(@extra_attrs) %>>
+  <div class="mx-auto max-w-5xl">
+    <% if @title %>
+      <h2 class="text-2xl md:text-3xl font-bold text-hw-foreground text-center mb-12"><%= @title %></h2>
+    <% end %>
+    <div class="<%= grid_classes %>">
+      <% @posts.each do |post| %>
+        <a href="<%= post[:href] || '#' %>" class="group flex flex-col rounded-lg border border-hw-border bg-hw-card overflow-hidden hover:shadow-md transition-shadow">
+          <% if post[:image] %>
+            <div class="aspect-video overflow-hidden">
+              <img src="<%= post[:image] %>" alt="<%= post[:title] %>" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
+            </div>
+          <% end %>
+          <div class="flex flex-col flex-1 p-5">
+            <h3 class="text-base font-semibold text-hw-foreground group-hover:text-hw-primary transition-colors"><%= post[:title] %></h3>
+            <% if post[:excerpt] %>
+              <p class="mt-2 text-sm text-hw-muted-foreground leading-relaxed line-clamp-3"><%= post[:excerpt] %></p>
+            <% end %>
+            <div class="mt-auto pt-4 flex items-center gap-2 text-xs text-hw-muted-foreground">
+              <% if post[:author] %>
+                <span><%= post[:author] %></span>
+              <% end %>
+              <% if post[:author] && post[:date] %>
+                <span>&middot;</span>
+              <% end %>
+              <% if post[:date] %>
+                <time><%= post[:date] %></time>
+              <% end %>
+            </div>
+          </div>
+        </a>
+      <% end %>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,13 @@
+<div class="<%= badge_classes %>" <%= tag.attributes(@extra_attrs) %>>
+  <% if @dot %>
+    <span class="h-1.5 w-1.5 rounded-full bg-current mr-1"></span>
+  <% end %>
+  <%= content || @label %>
+  <% if @removable %>
+    <button type="button" class="ml-1 -mr-0.5 h-3.5 w-3.5 rounded-full p-0.5 hover:bg-white/20 focus:outline-none" data-action="click->hw-badge#dismiss">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-2.5 w-2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  <% end %>
+</div>

@@ -5,11 +5,11 @@ require 'view_component'
 require 'turbo-rails'
 require 'stimulus-rails'
 
-require_relative 'railsbits/version'
-require_relative 'railsbits/engine'
+require_relative 'hotwirebits/version'
+require_relative 'hotwirebits/engine'
 
-module RailsBits
-  # RailsBits - The most comprehensive free UI component library for Ruby on Rails
+module HotwireBits
+  # HotwireBits - The most comprehensive free UI component library for Ruby on Rails
   #
   # Each component ships in two formats:
   #   - ERB partials (copy-paste friendly)

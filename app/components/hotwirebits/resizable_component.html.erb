@@ -1,0 +1,19 @@
+<div data-controller="hw-resizable" class="<%= container_classes %>" <%= tag.attributes(@extra_attrs) %>>
+  <% if @direction == :horizontal %>
+    <div class="<%= panel_classes %>" data-hw-resizable-target="panel1">
+      <%= left %>
+    </div>
+    <div class="<%= handle_classes %>" data-hw-resizable-target="handle" data-action="pointerdown->hw-resizable#startResize"></div>
+    <div class="<%= panel_classes %>" data-hw-resizable-target="panel2">
+      <%= right %>
+    </div>
+  <% else %>
+    <div class="<%= panel_classes %>" data-hw-resizable-target="panel1">
+      <%= top %>
+    </div>
+    <div class="<%= handle_classes %>" data-hw-resizable-target="handle" data-action="pointerdown->hw-resizable#startResize"></div>
+    <div class="<%= panel_classes %>" data-hw-resizable-target="panel2">
+      <%= bottom %>
+    </div>
+  <% end %>
+</div>

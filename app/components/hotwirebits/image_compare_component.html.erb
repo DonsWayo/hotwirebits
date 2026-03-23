@@ -1,0 +1,24 @@
+<div class="relative w-full overflow-hidden rounded-lg select-none" data-controller="image-compare" <%= tag.attributes(@extra_attrs) %>>
+  <div class="relative aspect-video">
+    <img src="<%= @after %>" alt="<%= @labels&.dig(1) || 'After' %>" class="absolute inset-0 h-full w-full object-cover">
+    <div class="absolute inset-0 overflow-hidden" data-image-compare-target="clip" style="width: 50%">
+      <img src="<%= @before %>" alt="<%= @labels&.dig(0) || 'Before' %>" class="absolute inset-0 h-full w-full object-cover" style="width: 100vw; max-width: none;">
+    </div>
+    <div class="absolute top-0 bottom-0 w-1 bg-white shadow-lg cursor-ew-resize"
+         style="left: 50%"
+         data-image-compare-target="handle"
+         data-action="mousedown->image-compare#startDrag touchstart->image-compare#startDrag">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-white shadow-md flex items-center justify-center">
+        <svg class="h-4 w-4 text-hw-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4M16 15l-4 4-4-4"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <% if @labels %>
+    <div class="absolute top-3 left-3 right-3 flex justify-between pointer-events-none">
+      <span class="rounded bg-black/60 px-2 py-0.5 text-xs font-medium text-white"><%= @labels[0] %></span>
+      <span class="rounded bg-black/60 px-2 py-0.5 text-xs font-medium text-white"><%= @labels[1] %></span>
+    </div>
+  <% end %>
+</div>

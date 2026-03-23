@@ -1,9 +1,0 @@
-<% if @label %>
-  <div class="relative flex items-center" role="none">
-    <div class="shrink-0 bg-rb-border h-[1px] w-full"></div>
-    <span class="px-2 text-xs text-rb-muted-foreground font-medium"><%= @label %></span>
-    <div class="shrink-0 bg-rb-border h-[1px] w-full"></div>
-  </div>
-<% else %>
-  <div class="<%= @orientation == :vertical ? 'shrink-0 bg-rb-border h-full w-[1px]' : 'shrink-0 bg-rb-border h-[1px] w-full' %>" role="<%= @decorative ? 'none' : 'separator' %>" <%= tag.attributes(@extra_attrs) %>></div>
-<% end %>

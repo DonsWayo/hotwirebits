@@ -1,0 +1,42 @@
+<div data-controller="hw-dialog"
+     data-hw-dialog-open-value="<%= @open %>">
+  <div class="fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
+       data-state="<%= @open ? 'open' : 'closed' %>"
+       data-hw-dialog-target="overlay"
+       data-action="click->hw-dialog#close"
+    aria-hidden="true"></div>
+  <div class="fixed z-50 gap-4 bg-hw-background p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500 <%= side_config[:panel] %>"
+       data-state="<%= @open ? 'open' : 'closed' %>"
+       data-hw-dialog-target="panel"
+       role="dialog"
+       aria-modal="true"
+       <%= tag.attributes(@extra_attrs) %>>
+    <div class="flex flex-col space-y-2">
+      <% if header? %>
+        <%= header %>
+      <% elsif @title %>
+        <div class="flex items-center justify-between">
+          <h2 class="text-lg font-semibold tracking-tight"><%= @title %></h2>
+          <% if @closable %>
+            <button type="button"
+                    class="rounded-sm opacity-70 ring-offset-hw-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-hw-ring focus:ring-offset-2"
+                    data-action="click->hw-dialog#close">
+              <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+              <span class="sr-only">Close</span>
+            </button>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="py-4 text-sm">
+      <%= content %>
+    </div>
+    <% if footer? %>
+      <div class="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2">
+        <%= footer %>
+      </div>
+    <% end %>
+  </div>
+</div>

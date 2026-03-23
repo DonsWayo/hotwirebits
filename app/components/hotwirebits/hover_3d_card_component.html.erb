@@ -1,0 +1,10 @@
+<div class="<%= container_classes %>" data-controller="hover-3d" data-hover-3d-intensity-value="<%= @intensity %>" <%= tag.attributes(@extra_attrs) %>>
+  <div class="rounded-xl border border-hw-border bg-hw-card p-6 shadow-sm transition-transform duration-300 [transform-style:preserve-3d] group-hover:[transform:rotateX(var(--rx))_rotateY(var(--ry))]"
+       data-hover-3d-target="card">
+    <% if content? %>
+      <%= content %>
+    <% else %>
+      <%= yield %>
+    <% end %>
+  </div>
+</div>

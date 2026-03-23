@@ -1,0 +1,43 @@
+<div class="relative" data-controller="hw-dropdown" <%= tag.attributes(@extra_attrs) %>>
+  <button type="button"
+          class="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-hw-foreground hover:bg-hw-muted"
+          data-action="click->hw-dropdown#toggle mouseenter->hw-dropdown#open"
+    data-hw-dropdown-target="trigger">
+    <%= @trigger_label %>
+    <svg class="h-4 w-4 transition-transform" data-hw-dropdown-target="chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+    </svg>
+  </button>
+  <div class="absolute left-1/2 z-50 mt-1 hidden w-screen max-w-4xl -translate-x-1/2 rounded-xl border border-hw-border bg-white p-6 shadow-xl"
+       data-hw-dropdown-target="menu"
+       data-action="mouseleave->hw-dropdown#close">
+    <div class="grid grid-cols-<%= [@columns.size, 4].min %> gap-6">
+      <% @columns.each do |col| %>
+        <div>
+          <p class="mb-3 text-xs font-semibold uppercase tracking-wider text-hw-muted-foreground"><%= col[:title] %></p>
+          <ul class="space-y-3">
+            <% col[:links].each do |link| %>
+              <li>
+                <a href="<%= link[:href] %>" class="group flex items-start gap-3 rounded-lg p-2 -m-2 hover:bg-hw-muted">
+                  <% if link[:icon] %>
+                    <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-hw-primary/10 text-hw-primary">
+                      <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="<%= link[:icon] %>"/>
+                      </svg>
+                    </div>
+                  <% end %>
+                  <div>
+                          <p class="text-sm font-medium text-hw-foreground"><%= link[:label] %></p>
+                          <% if link[:desc] %>
+                            <p class="mt-0.5 text-xs text-hw-muted-foreground"><%= link[:desc] %></p>
+                          <% end %>
+                        </div>
+                      </a>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>

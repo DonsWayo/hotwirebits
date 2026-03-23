@@ -1,0 +1,23 @@
+<div class="<%= container_classes %>" <%= tag.attributes(@extra_attrs) %>>
+  <div data-controller="hw-accordion" data-hw-accordion-multiple-value="<%= @multiple %>">
+    <% @items.each_with_index do |item, index| %>
+      <div class="<%= panel_classes(index) %>">
+        <button
+          type="button"
+          class="flex w-full items-center justify-between px-4 py-3 text-left text-sm font-medium hover:bg-hw-muted/50 transition-colors"
+          data-action="click->hw-accordion#toggle"
+          data-hw-accordion-target="trigger"
+          >
+          <span><%= item[:title] %></span>
+          <svg class="h-4 w-4 shrink-0 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/>
+          </svg>
+        </button>
+        <div class="hidden px-4 pb-4 text-sm text-hw-muted-foreground" data-hw-accordion-target="content">
+          <%= item[:content] %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

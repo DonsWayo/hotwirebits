@@ -1,16 +1,16 @@
-# 🧱 RailsBits
+# 🧱 HotwireBits
 
 **The most comprehensive free UI component library for Ruby on Rails.**
 
-[![CI](https://github.com/railsbits/railsbits/actions/workflows/ci.yml/badge.svg)](https://github.com/railsbits/railsbits/actions)
-[![Gem Version](https://badge.fury.io/rb/railsbits.svg)](https://rubygems.org/gems/railsbits)
+[![CI](https://github.com/hotwirebits/hotwirebits/actions/workflows/ci.yml/badge.svg)](https://github.com/hotwirebits/hotwirebits/actions)
+[![Gem Version](https://badge.fury.io/rb/hotwirebits.svg)](https://rubygems.org/gems/hotwirebits)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---
 
-## What is RailsBits?
+## What is HotwireBits?
 
-RailsBits is a **free, open-source** UI component library for Ruby on Rails with **130+ components** and **40+ Stimulus controllers**. Each component ships in two formats:
+HotwireBits is a **free, open-source** UI component library for Ruby on Rails with **130+ components** and **40+ Stimulus controllers**. Each component ships in two formats:
 
 - **ERB partials** — Copy-paste friendly, no magic
 - **ViewComponent classes** — Ruby-first, testable, composable
@@ -23,20 +23,20 @@ All styled with **Tailwind CSS v4**, interactive via **Stimulus.js**, and fully 
 
 ```ruby
 # Gemfile
-gem "railsbits"
+gem "hotwirebits"
 ```
 
 ```bash
 bundle install
-rails generate railsbits:install
+rails generate hotwirebits:install
 ```
 
 ### Copy-Paste (shadcn-style)
 
 ```bash
-gem install railsbits_cli
-railsbits init
-railsbits add button card alert
+gem install hotwirebits_cli
+hotwirebits init
+hotwirebits add button card alert
 ```
 
 ## Components
@@ -73,39 +73,39 @@ Hero, FeatureSection, CTASection, PricingSection, FAQSection, TestimonialsSectio
 ### ERB Partials
 
 ```erb
-<%= render RailsBits::ButtonComponent.new(label: "Click me", variant: :primary) %>
+<%= render HotwireBits::ButtonComponent.new(label: "Click me", variant: :primary) %>
 
-<%= render RailsBits::CardComponent.new(title: "Welcome", description: "Get started") do %>
+<%= render HotwireBits::CardComponent.new(title: "Welcome", description: "Get started") do %>
   <p>Your content here</p>
 <% end %>
 
-<%= render RailsBits::AlertComponent.new(type: :success, title: "Success!", message: "Changes saved.") %>
+<%= render HotwireBits::AlertComponent.new(type: :success, title: "Success!", message: "Changes saved.") %>
 ```
 
 ### With Stimulus
 
 ```erb
-<%= render RailsBits::DialogComponent.new(title: "Confirm", size: :md) do %>
+<%= render HotwireBits::DialogComponent.new(title: "Confirm", size: :md) do %>
   <p>Are you sure?</p>
   <div class="flex gap-2 justify-end">
-    <%= render RailsBits::ButtonComponent.new(label: "Cancel", variant: :outline) %>
-    <%= render RailsBits::ButtonComponent.new(label: "Confirm", variant: :primary) %>
+    <%= render HotwireBits::ButtonComponent.new(label: "Cancel", variant: :outline) %>
+    <%= render HotwireBits::ButtonComponent.new(label: "Confirm", variant: :primary) %>
   </div>
 <% end %>
 ```
 
 ## Theme System
 
-RailsBits uses CSS custom properties (shadcn-style) for theming:
+HotwireBits uses CSS custom properties (shadcn-style) for theming:
 
 ```css
 /* Import the theme */
-@import "railsbits/theme";
+@import "hotwirebits/theme";
 
 /* Or customize variables */
 :root {
-  --color-rb-primary: hsl(263 70% 58%);
-  --color-rb-primary-foreground: hsl(0 0% 100%);
+  --color-hw-primary: hsl(263 70% 58%);
+  --color-hw-primary-foreground: hsl(0 0% 100%);
 }
 ```
 
@@ -114,16 +114,16 @@ RailsBits uses CSS custom properties (shadcn-style) for theming:
 40 Stimulus controllers for interactive components:
 
 ```
-rb-accordion  rb-alert      rb-banner     rb-burger
-rb-calendar   rb-carousel   rb-clipboard  rb-collapsible
-rb-combobox   rb-cookie     rb-countdown  rb-datepicker
-rb-dialog     rb-drawer     rb-dropdown   rb-feedback
-rb-highlight  rb-kanban     rb-marquee    rb-menubar
-rb-multiselect rb-otp       rb-password   rb-popover
-rb-rating     rb-resizable  rb-search     rb-sheet
-rb-sidebar    rb-speed-dial rb-spoiler    rb-steps
-rb-swap       rb-switch     rb-tabs       rb-tags
-rb-theme      rb-toast      rb-toggle     rb-tree
+hw-accordion  hw-alert      hw-banner     hw-burger
+hw-calendar   hw-carousel   hw-clipboard  hw-collapsible
+hw-combobox   hw-cookie     hw-countdown  hw-datepicker
+hw-dialog     hw-drawer     hw-dropdown   hw-feedback
+hw-highlight  hw-kanban     hw-marquee    hw-menubar
+hw-multiselect hw-otp       hw-password   hw-popover
+hw-rating     hw-resizable  hw-search     hw-sheet
+hw-sidebar    hw-speed-dial hw-spoiler    hw-steps
+hw-swap       hw-switch     hw-tabs       hw-tags
+hw-theme      hw-toast      hw-toggle     hw-tree
 ```
 
 ## License

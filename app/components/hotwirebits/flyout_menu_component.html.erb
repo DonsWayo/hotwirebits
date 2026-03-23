@@ -1,0 +1,35 @@
+<div class="relative inline-block" data-controller="hw-dropdown" <%= tag.attributes(@extra_attrs) %>>
+  <button type="button"
+          class="inline-flex items-center gap-1 text-sm font-medium text-hw-foreground hover:text-hw-primary"
+          data-action="click->hw-dropdown#toggle mouseenter->hw-dropdown#open">
+    <%= @trigger_label %>
+    <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+    </svg>
+  </button>
+  <div class="absolute z-50 hidden w-72 rounded-lg border border-hw-border bg-white p-2 shadow-xl"
+       data-hw-dropdown-target="menu"
+       data-action="mouseleave->hw-dropdown#close"
+    style="position: absolute;" class="<%= menu_position %>">
+    <div class="space-y-1">
+      <% @items.each do |item| %>
+        <a href="<%= item[:href] %>"
+           class="flex items-start gap-3 rounded-lg p-3 text-sm transition-colors hover:bg-hw-muted">
+          <% if item[:icon] %>
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-hw-primary/10 text-hw-primary">
+              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="<%= item[:icon] %>"/>
+              </svg>
+            </div>
+          <% end %>
+          <div>
+                  <p class="font-medium text-hw-foreground"><%= item[:label] %></p>
+                  <% if item[:description] %>
+                    <p class="mt-0.5 text-xs text-hw-muted-foreground"><%= item[:description] %></p>
+                  <% end %>
+                </div>
+              </a>
+            <% end %>
+          </div>
+        </div>
+      </div>

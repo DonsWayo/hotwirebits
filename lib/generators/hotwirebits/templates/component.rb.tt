@@ -1,0 +1,9 @@
+class HotwireBits::<%= class_name %>Component < ViewComponent::Base
+  def initialize(**attrs)
+    @attrs = attrs
+  end
+
+  private
+
+  attr_reader :attrs
+end

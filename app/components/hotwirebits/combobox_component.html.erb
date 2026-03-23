@@ -1,0 +1,15 @@
+<div class="relative" data-controller="hw-combobox">
+  <input type="hidden" name="<%= @name %>" value="<%= @selected %>" data-hw-combobox-target="hidden">
+  <input type="text" placeholder="<%= @placeholder %>" <%= 'disabled' if @disabled %> class="flex h-9 w-full rounded-md border border-hw-input bg-hw-background px-3 text-sm text-hw-foreground ring-offset-hw-background placeholder:text-hw-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2" data-action="input->hw-combobox#search focus->hw-combobox#open click@window->hw-combobox#close" data-hw-combobox-target="input" role="combobox" aria-expanded="false" autocomplete="list" <%= tag.attributes(@extra_attrs) %>>
+  <div class="absolute z-50 mt-1 w-full rounded-md border border-hw-border bg-hw-popover shadow-md hidden" data-hw-combobox-target="dropdown">
+    <ul class="max-h-60 overflow-auto p-1" role="listbox">
+      <% @options.each do |opt| %>
+        <% value = opt.is_a?(Array) ? opt.last : opt %>
+        <% label = opt.is_a?(Array) ? opt.first : opt %>
+        <li class="relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-hw-accent hover:text-hw-accent-foreground" role="option" data-action="click->hw-combobox#select" data-value="<%= value %>">
+          <%= label %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="<%= container_classes %>" <%= tag.attributes(@extra_attrs) %>>
+  <div class="relative w-full overflow-auto">
+    <table class="w-full text-sm">
+      <thead>
+        <tr class="border-b border-hw-border bg-hw-muted/50">
+          <% @columns.each do |col| %>
+            <th class="h-10 px-4 text-left align-middle font-medium text-hw-muted-foreground">
+              <% if col[:sortable] %>
+                <a href="?sort_by=<%= col[:key] %>&sort_direction=<%= next_sort_direction(col[:key]) %>"
+                   class="inline-flex items-center gap-1 hover:text-hw-foreground transition-colors">
+                  <%= col[:label] %>
+                  <span class="text-xs"><%= sort_icon(col[:key]) %></span>
+                </a>
+              <% else %>
+                <%= col[:label] %>
+              <% end %>
+            </th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @rows.each do |row| %>
+          <tr class="border-b border-hw-border transition-colors hover:bg-hw-muted/50">
+            <% @columns.each do |col| %>
+              <td class="p-4 align-middle"><%= row[col[:key]] %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <% if @current_page && @total_pages %>
+    <div class="flex items-center justify-between px-4 py-3 border-t border-hw-border">
+      <span class="text-sm text-hw-muted-foreground">
+        Page <%= @current_page %> of <%= @total_pages %>
+      </span>
+      <div class="flex gap-1">
+        <% if @current_page > 1 %>
+          <a href="?page=<%= @current_page - 1 %>"
+             class="px-3 py-1 text-sm rounded-md border border-hw-border hover:bg-hw-muted transition-colors">
+            Prev
+          </a>
+        <% end %>
+        <% if @current_page < @total_pages %>
+          <a href="?page=<%= @current_page + 1 %>"
+             class="px-3 py-1 text-sm rounded-md border border-hw-border hover:bg-hw-muted transition-colors">
+            Next
+          </a>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
