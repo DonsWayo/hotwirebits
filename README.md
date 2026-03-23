@@ -10,7 +10,7 @@
 
 ## What is HotwireBits?
 
-HotwireBits is a **free, open-source** UI component library for Ruby on Rails with **130+ components** and **40+ Stimulus controllers**. Each component ships in two formats:
+HotwireBits is a **free, open-source** UI component library for Ruby on Rails with **190+ components** and **40+ Stimulus controllers**. Each component ships in two formats:
 
 - **ERB partials** — Copy-paste friendly, no magic
 - **ViewComponent classes** — Ruby-first, testable, composable
