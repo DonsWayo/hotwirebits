@@ -1,0 +1,13 @@
+<% if @icon %>
+  <div class="relative">
+    <% if @icon_position == :left %>
+      <div class="absolute left-3 top-1/2 -translate-y-1/2 text-rb-muted-foreground"><%= @icon.html_safe %></div>
+    <% end %>
+    <input type="<%= @type %>" name="<%= @name %>" value="<%= @value %>" placeholder="<%= @placeholder %>" <%= 'disabled' if @disabled %> <%= 'readonly' if @readonly %> <%= 'required' if @required %> autocomplete="<%= @autocomplete %>" class="<%= input_classes %>" <%= tag.attributes(@extra_attrs) %>>
+    <% if @icon_position == :right %>
+      <div class="absolute right-3 top-1/2 -translate-y-1/2 text-rb-muted-foreground"><%= @icon.html_safe %></div>
+    <% end %>
+  </div>
+<% else %>
+  <input type="<%= @type %>" name="<%= @name %>" value="<%= @value %>" placeholder="<%= @placeholder %>" <%= 'disabled' if @disabled %> <%= 'readonly' if @readonly %> <%= 'required' if @required %> autocomplete="<%= @autocomplete %>" class="<%= input_classes %>" <%= tag.attributes(@extra_attrs) %>>
+<% end %>

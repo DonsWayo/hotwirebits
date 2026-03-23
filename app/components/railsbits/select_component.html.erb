@@ -1,0 +1,16 @@
+<select name="<%= @name %>" <%= 'disabled' if @disabled %> <%= 'multiple' if @multiple %> class="<%= select_classes %>" <%= tag.attributes(@extra_attrs) %>>
+  <option value="" disabled <%= 'selected' unless @selected %>><%= @placeholder %></option>
+  <% @options.each do |opt| %>
+    <% if opt.is_a?(Array) %>
+      <option value="<%= opt.last %>" <%= 'selected' if Array(@selected).include?(opt.last) %>><%= opt.first %></option>
+      <% elsif opt.is_a?(Hash) %>
+        <optgroup label="<%= opt[:label] %>">
+          <% opt[:options].each do |o| %>
+            <option value="<%= o.last %>" <%= 'selected' if Array(@selected).include?(o.last) %>><%= o.first %></option>
+            <% end %>
+          </optgroup>
+        <% else %>
+          <option value="<%= opt %>" <%= 'selected' if Array(@selected).include?(opt) %>><%= opt %></option>
+          <% end %>
+        <% end %>
+      </select>

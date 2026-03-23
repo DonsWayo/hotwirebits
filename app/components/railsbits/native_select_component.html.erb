@@ -1,0 +1,10 @@
+<select name="<%= @name %>" <%= 'disabled' if @disabled %> class="<%= select_classes %>" <%= tag.attributes(@extra_attrs) %>>
+  <option value="" disabled <%= 'selected' unless @selected %>><%= @placeholder %></option>
+  <% @options.each do |opt| %>
+    <% if opt.is_a?(Array) %>
+      <option value="<%= opt.last %>" <%= 'selected' if @selected == opt.last %>><%= opt.first %></option>
+      <% else %>
+        <option value="<%= opt %>" <%= 'selected' if @selected == opt %>><%= opt %></option>
+        <% end %>
+      <% end %>
+    </select>

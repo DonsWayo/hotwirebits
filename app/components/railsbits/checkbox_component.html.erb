@@ -1,0 +1,9 @@
+<label class="flex items-center gap-2 cursor-pointer" <%= tag.attributes(@extra_attrs) %>>
+  <input type="checkbox" name="<%= @name %>" value="<%= @value %>" <%= 'checked' if @checked || @indeterminate %> <%= 'disabled' if @disabled %> class="peer shrink-0 rounded-sm border border-rb-input bg-rb-background ring-offset-rb-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rb-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 checked:bg-rb-primary checked:border-rb-primary <%= SIZES[@size] || 'h-4 w-4' %>">
+  <span class="pointer-events-none absolute inset-0 flex items-center justify-center">
+    <svg class="text-rb-primary-foreground <%= SIZES[@size] || 'h-4 w-4' %>" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+  </span>
+  <% if @label %>
+    <span class="font-medium leading-none text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70"><%= @label %></span>
+  <% end %>
+</label>

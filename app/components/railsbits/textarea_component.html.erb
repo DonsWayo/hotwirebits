@@ -1,0 +1,1 @@
+<textarea name="<%= @name %>" placeholder="<%= @placeholder %>" rows="<%= @rows %>" <%= 'disabled' if @disabled %> <%= 'readonly' if @readonly %> <%= 'required' if @required %> maxlength="<%= @max_length %>" class="<%= textarea_classes %>" <%= tag.attributes(@extra_attrs) %>><%= @value %></textarea>
