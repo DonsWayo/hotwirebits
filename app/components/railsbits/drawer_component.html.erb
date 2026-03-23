@@ -1,0 +1,38 @@
+<div data-controller="rb-drawer"
+     data-rb-drawer-open-value="<%= @open %>"
+     data-rb-drawer-snap-points-value="<%= snap_points_data %>"
+     <%= tag.attributes(@extra_attrs) %>>
+  <div class="fixed inset-0 z-50 bg-black/80"
+       data-rb-drawer-target="overlay"
+       data-action="click->rb-drawer#close"
+    data-state="<%= @open ? 'open' : 'closed' %>"
+    aria-hidden="true"></div>
+  <div class="fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border border-rb-border bg-rb-background"
+       data-rb-drawer-target="panel"
+       data-state="<%= @open ? 'open' : 'closed' %>"
+       role="dialog"
+       aria-modal="true">
+    <div class="mx-auto mt-4 h-2 w-[100px] rounded-full bg-rb-muted cursor-grab"
+         data-rb-drawer-target="handle"
+         data-action="pointerdown->rb-drawer#startDrag"></div>
+    <div class="mx-auto w-full max-w-md">
+      <% if header? %>
+        <div class="p-4 pb-0">
+          <%= header %>
+        </div>
+      <% elsif @title %>
+        <div class="p-4 pb-0 text-center">
+          <h2 class="text-lg font-semibold tracking-tight"><%= @title %></h2>
+        </div>
+      <% end %>
+      <div class="p-4 overflow-y-auto">
+        <%= content %>
+      </div>
+      <% if footer? %>
+        <div class="p-4 pt-0">
+          <%= footer %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

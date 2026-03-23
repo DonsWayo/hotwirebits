@@ -1,0 +1,30 @@
+<div class="flex h-10 items-center gap-1 rounded-md border border-rb-border bg-rb-background px-1" data-controller="rb-menubar" <%= tag.attributes(@extra_attrs) %>>
+  <% @items.each do |item| %>
+    <div class="relative"
+         data-action="mouseenter->rb-menubar#open mouseleave->rb-menubar#close click->rb-menubar#toggle">
+      <button type="button"
+              class="flex items-center rounded-sm px-3 py-1.5 text-sm font-medium text-rb-foreground hover:bg-rb-accent transition-colors cursor-pointer">
+        <%= item[:label] %>
+      </button>
+      <% if item[:children]&.any? %>
+        <div data-rb-menubar-target="menu" class="absolute left-0 top-full hidden z-50 min-w-[12rem] pt-1">
+          <div class="rounded-md border border-rb-border bg-rb-popover p-1 shadow-md">
+            <% item[:children].each do |child| %>
+              <% if child[:separator] %>
+                <div class="-mx-1 my-1 h-px bg-rb-border"></div>
+              <% else %>
+                <a href="<%= child[:href] %>"
+                   class="relative flex cursor-pointer select-none items-center justify-between rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-rb-accent hover:text-rb-accent-foreground transition-colors">
+                  <span><%= child[:label] %></span>
+                  <% if child[:shortcut] %>
+                    <span class="ml-4 text-xs tracking-widest text-rb-muted-foreground"><%= child[:shortcut] %></span>
+                  <% end %>
+                </a>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,45 @@
+<div class="<%= container_classes %>" <%= tag.attributes(@extra_attrs) %>>
+  <% @steps.each_with_index do |step, idx| %>
+    <% state = step_state(idx) %>
+    <div class="flex flex-col items-center">
+      <div class="flex items-center">
+        <% if @clickable && step[:href] %>
+          <a href="<%= step[:href] %>" class="<%= step_circle_classes(state) %>">
+            <% if state == :completed %>
+              <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <% else %>
+              <%= idx + 1 %>
+            <% end %>
+          </a>
+        <% else %>
+          <div class="<%= step_circle_classes(state) %>">
+            <% if state == :completed %>
+              <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <% else %>
+              <%= idx + 1 %>
+            <% end %>
+          </div>
+        <% end %>
+        <% if @orientation == :vertical %>
+          <div class="ml-3">
+            <p class="<%= merge_classes('text-sm font-medium', state == :pending ? 'text-rb-muted-foreground' : 'text-rb-foreground') %>"><%= step[:label] %></p>
+            <% if step[:description] %>
+              <p class="mt-0.5 text-xs text-rb-muted-foreground"><%= step[:description] %></p>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <% if @orientation == :horizontal %>
+        <div class="mt-2 text-center">
+          <p class="<%= merge_classes('text-sm font-medium', state == :pending ? 'text-rb-muted-foreground' : 'text-rb-foreground') %>"><%= step[:label] %></p>
+          <% if step[:description] %>
+            <p class="mt-0.5 text-xs text-rb-muted-foreground"><%= step[:description] %></p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <% unless idx == @steps.size - 1 %>
+      <div class="<%= connector_classes(idx) %>"></div>
+    <% end %>
+  <% end %>
+</div>

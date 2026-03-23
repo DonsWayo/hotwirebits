@@ -1,0 +1,17 @@
+<label class="swap inline-flex items-center cursor-pointer <%= effect_class %>"
+       data-controller="rb-swap"
+       data-rb-swap-active-value="<%= on? %>">
+  <input type="checkbox" data-action="change->rb-swap#toggle" class="sr-only" <%= 'checked' if on? %> />
+  <div class="swap-on" data-rb-swap-target="onContent">
+    <% if @on_content %>
+      <%= @on_content.html_safe %>
+    <% else %>
+      <%= content %>
+    <% end %>
+  </div>
+  <div class="swap-off" data-rb-swap-target="offContent">
+    <% if @off_content %>
+      <%= @off_content.html_safe %>
+    <% end %>
+  </div>
+</label>

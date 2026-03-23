@@ -1,0 +1,18 @@
+<nav aria-label="Breadcrumb" class="<%= merge_classes('flex items-center text-sm text-rb-muted-foreground', @extra_attrs.delete(:class)) %>" <%= tag.attributes(@extra_attrs) %>>
+  <ol class="flex items-center space-x-2">
+    <% @items.each_with_index do |item, idx| %>
+      <% if idx > 0 %>
+        <li class="text-rb-muted-foreground/50"><%= @separator %></li>
+<% end %>
+<li>
+  <% if item[:active] %>
+    <span class="font-medium text-rb-foreground" aria-current="page"><%= item[:label] %></span>
+  <% elsif item[:href] %>
+    <a href="<%= item[:href] %>" class="hover:text-rb-foreground transition-colors"><%= item[:label] %></a>
+  <% else %>
+    <span><%= item[:label] %></span>
+  <% end %>
+</li>
+<% end %>
+</ol>
+</nav>

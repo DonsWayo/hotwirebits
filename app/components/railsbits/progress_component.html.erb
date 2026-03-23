@@ -1,0 +1,10 @@
+<div <%= tag.attributes(@extra_attrs) %>>
+  <div class="flex items-center justify-between mb-1">
+    <% if @show_label %>
+      <span class="text-sm font-medium"><%= percentage %>%</span>
+    <% end %>
+  </div>
+  <div class="<%= track_classes %>">
+    <div class="<%= bar_classes %>" style="width: <%= percentage %>%;"></div>
+  </div>
+</div>

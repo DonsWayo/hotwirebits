@@ -1,0 +1,16 @@
+<div class="<%= container_classes %>" <%= tag.attributes(@extra_attrs) %>>
+  <% @items.each do |item| %>
+    <div>
+      <div class="flex items-center justify-between mb-1">
+        <span class="text-sm font-medium text-rb-foreground"><%= item[:label] %></span>
+        <span class="text-sm text-rb-muted-foreground"><%= bar_percentage(item) %>%</span>
+      </div>
+      <div class="w-full h-2.5 rounded-full bg-rb-muted overflow-hidden">
+        <div
+          class="h-full rounded-full transition-all duration-300 <%= bar_color(item) %>"
+          style="width: <%= bar_percentage(item) %>%;"
+        ></div>
+      </div>
+    </div>
+  <% end %>
+</div>

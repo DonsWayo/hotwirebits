@@ -1,0 +1,36 @@
+<aside class="<%= sidebar_classes %>"
+       style="<%= "width: #{@width}px" unless @collapsed %>"
+       data-controller="rb-sidebar"
+       data-rb-sidebar-collapsed-value="<%= @collapsed %>"
+       <%= tag.attributes(@extra_attrs) %>>
+  <% if header? %>
+    <div class="flex h-14 items-center border-b border-rb-border px-4">
+      <%= header %>
+    </div>
+  <% end %>
+  <div class="flex-1 overflow-y-auto py-2">
+    <% if content? %>
+      <%= content %>
+    <% elsif @items.any? %>
+      <nav class="space-y-1 px-2">
+        <% @items.each do |item| %>
+          <a href="<%= item[:href] %>"
+             class="<%= merge_classes(
+               'flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors',
+               item[:active] ? 'bg-rb-accent text-rb-accent-foreground' : 'text-rb-muted-foreground hover:bg-rb-accent/50 hover:text-rb-accent-foreground'
+             ) %>">
+            <% if item[:icon] %>
+              <span class="h-4 w-4 shrink-0"><%= item[:icon].html_safe %></span>
+            <% end %>
+            <span class="<%= @collapsed ? 'hidden' : '' %>"><%= item[:label] %></span>
+          </a>
+        <% end %>
+      </nav>
+    <% end %>
+  </div>
+  <% if footer? %>
+    <div class="border-t border-rb-border p-4">
+      <%= footer %>
+    </div>
+  <% end %>
+</aside>
