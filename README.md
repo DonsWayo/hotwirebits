@@ -126,18 +126,6 @@ rb-swap       rb-switch     rb-tabs       rb-tags
 rb-theme      rb-toast      rb-toggle     rb-tree
 ```
 
-## Comparison
-
-| Feature | RailsBits | shadcn-rails | RailsBlocks | Maquina |
-|---------|-----------|-------------|-------------|---------|
-| **Price** | FREE | FREE | Freemium | FREE |
-| **Components** | 130+ | 47 | ~60 | ~20 |
-| **Stimulus** | 40 | 0 | ~10 | ~5 |
-| **ERB Partial** | ✅ | ❌ | ✅ | ✅ |
-| **ViewComponent** | ✅ | ✅ | ✅ | ❌ |
-| **Tailwind v4** | ✅ | ❌ | ✅ | ✅ |
-| **CLI** | ✅ | ✅ | ❌ | ❌ |
-
 ## License
 
 MIT License — free for personal and commercial use.
