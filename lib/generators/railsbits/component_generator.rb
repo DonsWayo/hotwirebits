@@ -1,0 +1,45 @@
+# frozen_string_literal: true
+
+require 'rails/generators'
+
+module RailsBits
+  module Generators
+    class ComponentGenerator < Rails::Generators::NamedBase
+      source_root File.expand_path('templates', __dir__)
+      desc 'Generate a RailsBits component (ERB partial + ViewComponent)'
+
+      class_option :format, type: :string, default: 'both', desc: 'Format: erb, view_component, or both'
+
+      def create_erb_partial
+        return unless erb? || both?
+
+        template 'component.html.erb.tt', "app/views/railsbits/_#{file_name}.html.erb"
+      end
+
+      def create_view_component
+        return unless view_component? || both?
+
+        template 'component.rb.tt', "app/components/railsbits/#{file_name}_component.rb"
+        template 'component.html.erb.tt', "app/components/railsbits/#{file_name}_component.html.erb"
+      end
+
+      def create_stimulus_controller
+        template 'controller.js.tt', "app/javascript/controllers/railsbits/#{file_name}_controller.js"
+      end
+
+      private
+
+      def erb?
+        options[:format] == 'erb'
+      end
+
+      def view_component?
+        options[:format] == 'view_component'
+      end
+
+      def both?
+        options[:format] == 'both'
+      end
+    end
+  end
+end
