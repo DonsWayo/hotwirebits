@@ -1,0 +1,29 @@
+<div class="<%= container_classes %>" <%= tag.attributes(@extra_attrs) %>>
+  <div class="<%= track_classes %>"
+       style="animation: <%= animation_name %> <%= @speed %>s linear infinite;">
+    <div class="flex <%= vertical? ? 'flex-col' : 'flex-row' %> items-center gap-8 shrink-0 px-4">
+      <%= content %>
+    </div>
+    <div class="flex <%= vertical? ? 'flex-col' : 'flex-row' %> items-center gap-8 shrink-0 px-4" aria-hidden="true">
+      <%= content %>
+    </div>
+  </div>
+  <style>
+    @keyframes rb-marquee-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes rb-marquee-right {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+    @keyframes rb-marquee-up {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+    @keyframes rb-marquee-down {
+      0% { transform: translateY(-50%); }
+      100% { transform: translateY(0); }
+    }
+  </style>
+</div>

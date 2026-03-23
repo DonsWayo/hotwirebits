@@ -1,0 +1,27 @@
+<div class="<%= wrapper_classes %>" <%= tag.attributes(@extra_attrs) %>>
+  <% if @avatar %>
+    <div class="shrink-0 mt-1">
+      <img src="<%= @avatar %>" alt="<%= @sender || '' %>" class="h-8 w-8 rounded-full object-cover">
+    </div>
+  <% end %>
+  <div class="flex flex-col gap-1">
+    <% if @sender %>
+      <span class="text-xs font-medium text-rb-muted-foreground px-1 <%= 'text-right' if sent? %>"><%= @sender %></span>
+    <% end %>
+    <div class="<%= bubble_classes %>">
+      <%= @message %>
+    </div>
+    <div class="flex items-center gap-2 px-1 <%= 'justify-end' if sent? %>">
+      <% if @time %>
+        <span class="text-xs text-rb-muted-foreground"><%= @time %></span>
+      <% end %>
+      <% if actions? %>
+        <div class="flex items-center gap-1">
+          <% actions.each do |action| %>
+            <%= action %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

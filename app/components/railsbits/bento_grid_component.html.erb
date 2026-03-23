@@ -1,0 +1,7 @@
+<div class="<%= grid_classes %>" <%= tag.attributes(@extra_attrs) %>>
+  <% items.each do |item| %>
+    <div class="<%= item.item_classes %>">
+      <%= item %>
+    </div>
+  <% end %>
+</div>

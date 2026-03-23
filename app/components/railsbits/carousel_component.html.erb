@@ -1,0 +1,50 @@
+<div class="<%= container_classes %>"
+     data-controller="rb-carousel"
+     data-rb-carousel-autoplay-value="<%= @autoplay %>"
+     data-rb-carousel-interval-value="<%= @interval %>"
+     <%= tag.attributes(@extra_attrs) %>>
+  <div class="flex transition-transform duration-300 ease-in-out"
+       data-rb-carousel-target="track">
+    <% all_slides.each do |slide| %>
+      <div class="w-full shrink-0" data-rb-carousel-target="slide">
+        <% if slides? %>
+          <%= slide %>
+        <% else %>
+          <% if slide.is_a?(Hash) && slide[:image] %>
+            <img src="<%= slide[:image] %>" alt="<%= slide[:alt] || '' %>" class="w-full h-full object-cover">
+          <% else %>
+            <%= slide.is_a?(Hash) ? slide[:content] : slide %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <% if @show_arrows %>
+    <button type="button"
+            class="absolute left-2 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-rb-background/80 border border-rb-border flex items-center justify-center shadow-sm hover:bg-rb-background transition-colors"
+            data-action="click->rb-carousel#prev">
+      <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+      <span class="sr-only">Previous</span>
+    </button>
+    <button type="button"
+            class="absolute right-2 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-rb-background/80 border border-rb-border flex items-center justify-center shadow-sm hover:bg-rb-background transition-colors"
+            data-action="click->rb-carousel#next">
+      <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      <span class="sr-only">Next</span>
+    </button>
+  <% end %>
+  <% if @show_dots %>
+    <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5" data-rb-carousel-target="dots">
+      <% all_slides.each_with_index do |_, i| %>
+        <button type="button"
+                class="h-2 w-2 rounded-full bg-rb-background/60 data-[active]:bg-rb-primary transition-colors"
+                data-action="click->rb-carousel#goTo"
+          data-index="<%= i %>"
+          data-rb-carousel-target="dot"
+          <%= 'data-active' if i == 0 %>>
+          <span class="sr-only">Slide <%= i + 1 %></span>
+        </button>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,26 @@
+<div class="<%= wrapper_classes %>"
+     data-controller="rb-clipboard"
+     data-rb-clipboard-text-value="<%= @text %>"
+     data-rb-clipboard-success-value="<%= @success_message %>"
+     <%= tag.attributes(@extra_attrs) %>>
+  <% if @label %>
+    <span class="text-sm text-rb-muted-foreground"><%= @label %></span>
+  <% end %>
+  <div class="inline-flex items-center gap-1 rounded-md border border-rb-border bg-rb-muted px-2.5 py-1.5">
+    <code class="text-sm text-rb-foreground max-w-[200px] truncate"><%= @text %></code>
+    <button type="button"
+            class="h-6 w-6 rounded flex items-center justify-center hover:bg-rb-accent transition-colors text-rb-muted-foreground hover:text-rb-foreground"
+            data-action="click->rb-clipboard#copy"
+      data-rb-clipboard-target="button">
+      <svg class="h-3.5 w-3.5" data-rb-clipboard-target="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+      </svg>
+      <svg class="hidden h-3.5 w-3.5 text-rb-success" data-rb-clipboard-target="check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+      <span class="sr-only">Copy</span>
+    </button>
+  </div>
+  <span class="hidden text-xs text-rb-success font-medium" data-rb-clipboard-target="feedback"><%= @success_message %></span>
+</div>

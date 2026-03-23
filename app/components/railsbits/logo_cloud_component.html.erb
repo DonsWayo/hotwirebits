@@ -1,0 +1,20 @@
+<section class="<%= container_classes %>" <%= tag.attributes(@extra_attrs) %>>
+  <div class="mx-auto max-w-5xl text-center">
+    <% if @title %>
+      <p class="text-sm font-medium text-rb-muted-foreground mb-8"><%= @title %></p>
+    <% end %>
+    <div class="<%= grid_classes %>">
+      <% @logos.each do |logo| %>
+        <a href="<%= logo[:url] || '#' %>"
+           class="flex items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all"
+           target="_blank" rel="noopener noreferrer">
+          <% if logo[:image_url] %>
+            <img src="<%= logo[:image_url] %>" alt="<%= logo[:name] %>" class="h-8 md:h-10 object-contain">
+          <% else %>
+            <span class="text-lg font-semibold text-rb-muted-foreground"><%= logo[:name] %></span>
+          <% end %>
+        </a>
+      <% end %>
+    </div>
+  </div>
+</section>

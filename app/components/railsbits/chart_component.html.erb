@@ -1,0 +1,68 @@
+<div class="<%= container_classes %>" style="height: <%= @height %>px" <%= tag.attributes(@extra_attrs) %>>
+  <svg viewBox="0 0 100 60" preserveAspectRatio="none" class="w-full h-full">
+    <% case @type %>
+    <% when :line %>
+      <% @data.each_with_index do |d, i| %>
+        <% x = (i * (100.0 / ([@data.size - 1, 1].max))).round(2) %>
+        <% y = max_value.zero? ? 50 : (50 - (d[:value].to_f / max_value * 48)).round(2) %>
+        <circle cx="<%= x %>" cy="<%= y %>" r="1" fill="var(--rb-primary, #3b82f6)"/>
+      <% end %>
+      <polyline fill="none" stroke="var(--rb-primary, #3b82f6)" stroke-width="0.5" points="<%= line_points %>"/>
+
+    <% when :area %>
+      <polygon fill="var(--rb-primary, #3b82f6)" opacity="0.15" points="<%= area_points %>"/>
+      <polyline fill="none" stroke="var(--rb-primary, #3b82f6)" stroke-width="0.5" points="<%= line_points %>"/>
+      <% @data.each_with_index do |d, i| %>
+        <% x = (i * (100.0 / ([@data.size - 1, 1].max))).round(2) %>
+        <% y = max_value.zero? ? 50 : (50 - (d[:value].to_f / max_value * 48)).round(2) %>
+        <circle cx="<%= x %>" cy="<%= y %>" r="1" fill="var(--rb-primary, #3b82f6)"/>
+      <% end %>
+
+    <% when :bar %>
+      <% @data.each_with_index do |d, i| %>
+        <% bw = bar_width %>
+        <% x = (i * (100.0 / @data.size) + bar_gap).round(2) %>
+        <% h = max_value.zero? ? 0 : (d[:value].to_f / max_value * 48).round(2) %>
+        <% y = (50 - h).round(2) %>
+        <rect x="<%= x %>" y="<%= y %>" width="<%= bw %>" height="<%= h %>" rx="1"
+              fill="<%= d[:color] || 'var(--rb-primary, #3b82f6)' %>" opacity="0.85"/>
+        <% if @show_values %>
+          <text x="<%= (x + bw / 2).round(2) %>" y="<%= (y - 1.5).round(2) %>"
+                text-anchor="middle" font-size="2.5" fill="var(--rb-foreground, #111)">
+          <%= d[:value] %>
+        </text>
+      <% end %>
+    <% end %>
+  <% when :pie, :donut %>
+    <% cx, cy, r = 50, 30, @type == :donut ? 18 : 24 %>
+    <% inner = @type == :donut ? 10 : 0 %>
+    <% total = sum_values %>
+    <% angle = -90 %>
+    <% colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#f97316'] %>
+    <% @data.each_with_index do |d, i| %>
+      <% pct = total.zero? ? 0 : (d[:value].to_f / total * 360) %>
+      <% start_angle = angle %>
+      <% end_angle = angle + pct %>
+      <% angle = end_angle %>
+      <% start_rad = start_angle * Math::PI / 180 %>
+      <% end_rad = end_angle * Math::PI / 180 %>
+      <% x1 = (cx + r * Math.cos(start_rad)).round(2) %>
+      <% y1 = (cy + r * Math.sin(start_rad)).round(2) %>
+      <% x2 = (cx + r * Math.cos(end_rad)).round(2) %>
+      <% y2 = (cy + r * Math.sin(end_rad)).round(2) %>
+      <% large = pct > 180 ? 1 : 0 %>
+      <% if @type == :donut %>
+        <% ix1 = (cx + inner * Math.cos(start_rad)).round(2) %>
+        <% iy1 = (cy + inner * Math.sin(start_rad)).round(2) %>
+        <% ix2 = (cx + inner * Math.cos(end_rad)).round(2) %>
+        <% iy2 = (cy + inner * Math.sin(end_rad)).round(2) %>
+        <path d="M<%= x1 %>,<%= y1 %> A<%= r %>,<%= r %> 0 <%= large %> 1 <%= x2 %>,<%= y2 %> L<%= ix2 %>,<%= iy2 %> A<%= inner %>,<%= inner %> 0 <%= large %> 0 <%= ix1 %>,<%= iy1 %> Z"
+                fill="<%= d[:color] || colors[i % colors.size] %>"/>
+        <% else %>
+          <path d="M<%= cx %>,<%= cy %> L<%= x1 %>,<%= y1 %> A<%= r %>,<%= r %> 0 <%= large %> 1 <%= x2 %>,<%= y2 %> Z"
+                fill="<%= d[:color] || colors[i % colors.size] %>"/>
+        <% end %>
+      <% end %>
+    <% end %>
+  </svg>
+        </div>

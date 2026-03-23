@@ -1,0 +1,35 @@
+<section class="<%= container_classes %>" <%= tag.attributes(@extra_attrs) %>>
+  <div class="<%= inner_classes %>">
+    <div class="flex flex-col gap-4 <%= 'md:max-w-xl' if @variant == :split %>">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-rb-foreground">
+        <%= @title %>
+      </h1>
+      <% if @subtitle %>
+        <p class="text-lg md:text-xl text-rb-muted-foreground max-w-2xl">
+          <%= @subtitle %>
+        </p>
+      <% end %>
+      <% if @primary_cta || @secondary_cta %>
+        <div class="flex flex-wrap gap-3 mt-2 <%= 'justify-center' unless @variant == :split %>">
+          <% if @primary_cta %>
+            <a href="<%= @primary_cta[:href] %>"
+               class="inline-flex items-center justify-center rounded-lg bg-rb-primary text-rb-primary-foreground h-11 px-6 text-sm font-medium shadow-sm hover:bg-rb-primary/90 transition-colors">
+              <%= @primary_cta[:label] %>
+            </a>
+          <% end %>
+          <% if @secondary_cta %>
+            <a href="<%= @secondary_cta[:href] %>"
+               class="inline-flex items-center justify-center rounded-lg border border-rb-border bg-rb-background h-11 px-6 text-sm font-medium text-rb-foreground hover:bg-rb-muted transition-colors">
+              <%= @secondary_cta[:label] %>
+            </a>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <% if @image_url %>
+      <div class="mt-8 md:mt-0 w-full <%= @variant == :split ? 'md:w-1/2' : 'max-w-3xl' %>">
+        <img src="<%= @image_url %>" alt="" class="rounded-xl shadow-lg w-full object-cover">
+      </div>
+    <% end %>
+  </div>
+</section>
