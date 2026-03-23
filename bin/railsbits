@@ -1,0 +1,164 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "fileutils"
+require "net/http"
+require "json"
+
+module RailsBits
+  class CLI
+    VERSION = "0.1.0"
+    REPO_URL = "https://raw.githubusercontent.com/railsbits/railsbits/main"
+
+    COMPONENTS = %w[
+      accordion alert alert_dialog animated_number animated_number avatar
+      badge banner bento_grid box breadcrumb burger button
+      calendar card carousel center chart chat_bubble chip
+      clipboard code_block collapsible color_picker color_swatch combobox
+      container cookie_consent countdown cta_section data_table date_picker
+      device_mockup dialog diff divider dock_menu drawer dropdown
+      empty_state feedback file_input flex fluid footer form_group
+      grid group hero highlight hover_card icon image
+      indicator input input_otp input_tags join kbd kanban_board
+      label lightbox list list_component list loading loading_overlay
+      logo_cloud marquee mark mask menubar menu meter_group
+      multiselect navbar native_select navigation_menu nav_link notification
+      number_formatter number_input otp pagination panel paper
+      password_input phone_input popover pricing_section progress progress_ring
+      qr_code radio rating resizable scroll_area search search_input
+      select separator sheet sidebar simple_grid skeleton skeleton_card
+      slider space speed_dial spinner spoiler splitter stack
+      stat stats status status_dot steps switch table
+      tabs tag testimonial testimonials_section textarea theme_controller
+      theme_icon timeline toast toggle tooltip tree_view
+      typography
+    ].freeze
+
+    def self.start(args)
+      new.run(args)
+    end
+
+    def run(args)
+      command = args.shift
+
+      case command
+      when "add"
+        add(args)
+      when "list"
+        list
+      when "init"
+        init
+      when "version", "--version", "-v"
+        puts "RailsBits CLI v#{VERSION}"
+      when "help", "--help", "-h", nil
+        help
+      else
+        puts "Unknown command: #{command}"
+        help
+        exit 1
+      end
+    end
+
+    private
+
+    def add(components)
+      if components.empty?
+        puts "Usage: railsbits add <component> [component...]"
+        puts "       railsbits add --all"
+        exit 1
+      end
+
+      if components == ["--all"]
+        components = COMPONENTS
+        puts "Adding all #{components.size} components..."
+      end
+
+      components.each do |name|
+        if COMPONENTS.include?(name)
+          copy_component(name)
+        else
+          puts "  Unknown component: #{name}"
+          puts "  Run 'railsbits list' to see available components."
+        end
+      end
+    end
+
+    def list
+      puts "Available RailsBits components (#{COMPONENTS.size}):"
+      puts ""
+      COMPONENTS.sort.each_slice(5) do |row|
+        puts "  " + row.map { |c| c.ljust(20) }.join
+      end
+      puts ""
+      puts "Usage: railsbits add <component>"
+    end
+
+    def init
+      puts "Setting up RailsBits in your project..."
+
+      # Create directories
+      FileUtils.mkdir_p("app/components/railsbits")
+      FileUtils.mkdir_p("app/views/railsbits")
+      FileUtils.mkdir_p("app/javascript/controllers/railsbits")
+      FileUtils.mkdir_p("app/assets/stylesheets/railsbits")
+
+      # Copy theme
+      if File.exist?("#{gem_path}/app/assets/stylesheets/railsbits/theme.css")
+        FileUtils.cp(
+          "#{gem_path}/app/assets/stylesheets/railsbits/theme.css",
+          "app/assets/stylesheets/railsbits/theme.css"
+        )
+      end
+
+      puts "RailsBits initialized!"
+      puts ""
+      puts "Add to your layout's <head>:"
+      puts '  <%= stylesheet_link_tag "railsbits/theme" %>'
+      puts ""
+      puts "Add components with:"
+      puts "  railsbits add button card alert"
+    end
+
+    def copy_component(name)
+      src_rb = "#{gem_path}/app/components/railsbits/#{name}_component.rb"
+      src_erb = "#{gem_path}/app/components/railsbits/#{name}_component.html.erb"
+
+      if File.exist?(src_rb)
+        FileUtils.cp(src_rb, "app/components/railsbits/#{name}_component.rb")
+        FileUtils.cp(src_erb, "app/components/railsbits/#{name}_component.html.erb") if File.exist?(src_erb)
+        puts "  Added: #{name}"
+      else
+        puts "  Not found: #{name}"
+      end
+    end
+
+    def gem_path
+      @gem_path ||= File.expand_path("../..", __dir__)
+    end
+
+    def help
+      puts <<~HELP
+        RailsBits CLI v#{VERSION}
+
+        Usage:
+          railsbits <command> [options]
+
+        Commands:
+          init                  Initialize RailsBits in your project
+          add <component...>    Add components to your project
+          add --all             Add all available components
+          list                  List all available components
+          version               Show version
+          help                  Show this help
+
+        Examples:
+          railsbits init
+          railsbits add button card alert
+          railsbits add --all
+          railsbits list
+      HELP
+    end
+  end
+end
+
+RailsBits::CLI.start(ARGV) if __FILE__ == $PROGRAM_NAME
