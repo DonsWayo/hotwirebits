@@ -1,0 +1,33 @@
+<h1>HotwireBits</h1>
+<p>The most comprehensive free UI component library for Ruby on Rails. 190+ components styled with Tailwind CSS v4, interactive with Stimulus, and Turbo-compatible.</p>
+<div style="margin: 1.5rem 0;">
+  <code style="background: var(--hw-muted); padding: 0.75rem 1rem; border-radius: 0.5rem; display: block; font-size: 0.875rem;">
+    gem "hotwirebits"
+  </code>
+</div>
+<h2>Component Categories</h2>
+<div class="hero-grid">
+  <% @categories.each do |key, name| %>
+    <a href="/<%= key %>" class="hero-card">
+      <h3><%= name %></h3>
+      <p class="hero-card-count"><%= @components.count { |_, v| v["category"] == key } %> components</p>
+    </a>
+  <% end %>
+</div>
+<h2>Quick Start</h2>
+<div class="code-block">
+  <button class="copy-btn" onclick="navigator.clipboard.writeText('# Gemfile\ngem \'hotwirebits\'')">Copy</button>
+  <span class="comment"># Gemfile</span>
+  gem <span class="string">"hotwirebits"</span>
+</div>
+<div class="code-block">
+  <button class="copy-btn" onclick="navigator.clipboard.writeText('bundle install\nrails generate hotwirebits:install')">Copy</button>
+  bundle install
+  rails generate hotwirebits:install
+</div>
+<h2>Usage</h2>
+<div class="code-block">
+  <button class="copy-btn" onclick="navigator.clipboard.writeText('<%= render HotwireBits::ButtonComponent.new(label: \'Click me\', variant: :primary) %>')">Copy</button>
+  <span class="comment">&lt;%# ERB View %&gt;</span>
+  &lt;%= render <span class="keyword">HotwireBits::ButtonComponent</span>.new(label: <span class="string">"Click me"</span>, variant: <span class="string">:primary</span>) %&gt;
+</div>

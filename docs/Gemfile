@@ -1,0 +1,21 @@
+# HotwireBits Documentation Site
+# A minimal Rails app for viewing component documentation
+#
+# Run with: cd docs && bin/rails server
+
+source "https://rubygems.org"
+
+gem "rails", "~> 8.0"
+gem "puma"
+gem "tailwindcss-rails"
+gem "importmap-rails"
+gem "turbo-rails"
+gem "stimulus-rails"
+gem "view_component", "~> 3.0"
+gem "redcarpet", "~> 3.6" # Markdown rendering
+gem "rouge", "~> 4.0"    # Syntax highlighting
+gem "hotwirebits", path: "../"
+
+group :development do
+  gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
+end

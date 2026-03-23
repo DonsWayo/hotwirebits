@@ -1,0 +1,387 @@
+# Component registry for HotwireBits documentation
+# Each key is a URL slug, values contain metadata
+
+button:
+  name: Button
+  category: primitives
+  description: Displays a button or a component that looks like a button.
+
+badge:
+  name: Badge
+  category: primitives
+  description: Displays a badge or a component that looks like a badge.
+
+chip:
+  name: Chip
+  category: primitives
+  description: Compact element representing an input, attribute, or action.
+
+tag:
+  name: Tag
+  category: primitives
+  description: A tag for categorizing or labeling content.
+
+avatar:
+  name: Avatar
+  category: primitives
+  description: An image element with a fallback for representing the user.
+
+status:
+  name: Status
+  category: primitives
+  description: A small status indicator dot.
+
+indicator:
+  name: Indicator
+  category: primitives
+  description: Positioned element on the corner of another element.
+
+label:
+  name: Label
+  category: primitives
+  description: Renders an accessible label associated with controls.
+
+separator:
+  name: Separator
+  category: primitives
+  description: Visually or semantically separates content.
+
+skeleton:
+  name: Skeleton
+  category: primitives
+  description: Use to show a placeholder while content is loading.
+
+spinner:
+  name: Spinner
+  category: primitives
+  description: Visual loading indicator.
+
+typography:
+  name: Typography
+  category: primitives
+  description: Styles for headings, paragraphs, lists and more.
+
+kbd:
+  name: Kbd
+  category: primitives
+  description: Used to describe keyboard shortcuts.
+
+close-button:
+  name: CloseButton
+  category: primitives
+  description: An accessible button to dismiss elements.
+
+toggle:
+  name: Toggle
+  category: primitives
+  description: A two-state button that can be either on or off.
+
+input:
+  name: Input
+  category: forms
+  description: Displays a form input field or a component that looks like an input field.
+
+password:
+  name: Password
+  category: forms
+  description: Password input with visibility toggle and strength meter.
+
+number:
+  name: NumberInput
+  category: forms
+  description: Numeric input with spin buttons.
+
+search:
+  name: SearchInput
+  category: forms
+  description: Search input with icon and clear button.
+
+phone:
+  name: PhoneInput
+  category: forms
+  description: Phone number input field.
+
+textarea:
+  name: Textarea
+  category: forms
+  description: Displays a form textarea or a component that looks like a textarea.
+
+checkbox:
+  name: Checkbox
+  category: forms
+  description: A control that allows the user to toggle between checked and not checked.
+
+radio:
+  name: Radio
+  category: forms
+  description: A set of checkable buttons known as radio buttons.
+
+switch:
+  name: Switch
+  category: forms
+  description: A control that allows the user to toggle between on and off.
+
+select:
+  name: Select
+  category: forms
+  description: Displays a list of options for the user to pick from.
+
+combobox:
+  name: Combobox
+  category: forms
+  description: Autocomplete input and command palette with a list of suggestions.
+
+slider:
+  name: Slider
+  category: forms
+  description: An input where the user selects a value from within a given range.
+
+rating:
+  name: Rating
+  category: forms
+  description: Star-based rating input.
+
+datepicker:
+  name: DatePicker
+  category: forms
+  description: A date picker component with calendar.
+
+input-otp:
+  name: InputOTP
+  category: forms
+  description: Accessible one-time password component with copy paste functionality.
+
+color-picker:
+  name: ColorPicker
+  category: forms
+  description: A color picker component.
+
+form-group:
+  name: FormGroup
+  category: forms
+  description: A wrapper for form fields with label, hint, and error.
+
+card:
+  name: Card
+  category: data-display
+  description: Displays a card with header, content, and footer.
+
+table:
+  name: Table
+  category: data-display
+  description: A responsive table component.
+
+data-table:
+  name: DataTable
+  category: data-display
+  description: Powerful table with sorting, filtering, and pagination.
+
+stats:
+  name: Stats
+  category: data-display
+  description: Display statistics with trend indicators.
+
+timeline:
+  name: Timeline
+  category: data-display
+  description: Display events in chronological order.
+
+accordion:
+  name: Accordion
+  category: data-display
+  description: A vertically stacked set of interactive headings that each reveal a section of content.
+
+collapsible:
+  name: Collapsible
+  category: data-display
+  description: An interactive component which expands or collapses a panel.
+
+progress:
+  name: Progress
+  category: data-display
+  description: Displays an indicator showing the completion progress of a task.
+
+code-block:
+  name: CodeBlock
+  category: data-display
+  description: Display code with syntax highlighting and copy button.
+
+navbar:
+  name: Navbar
+  category: navigation
+  description: A responsive navigation header.
+
+sidebar:
+  name: Sidebar
+  category: navigation
+  description: A vertical navigation panel.
+
+breadcrumb:
+  name: Breadcrumb
+  category: navigation
+  description: Displays the path to the current resource using a hierarchy of links.
+
+pagination:
+  name: Pagination
+  category: navigation
+  description: Displays a pagination component.
+
+tabs:
+  name: Tabs
+  category: navigation
+  description: A set of layered sections of content known as tab panels.
+
+menu:
+  name: Menu
+  category: navigation
+  description: A list of links or actions.
+
+dropdown:
+  name: Dropdown
+  category: navigation
+  description: Displays a menu to the user such as a set of actions or functions.
+
+steps:
+  name: Steps
+  category: navigation
+  description: A step-by-step indicator for multi-step processes.
+
+footer:
+  name: Footer
+  category: navigation
+  description: A page footer with links and copyright.
+
+dialog:
+  name: Dialog
+  category: overlays
+  description: A window overlaid on either the primary window or another dialog window.
+
+alert-dialog:
+  name: AlertDialog
+  category: overlays
+  description: A modal dialog that interrupts the user with important content and expects a response.
+
+sheet:
+  name: Sheet
+  category: overlays
+  description: A panel that slides out from the edge of the screen.
+
+popover:
+  name: Popover
+  category: overlays
+  description: Displays rich content in a portal triggered by a button.
+
+tooltip:
+  name: Tooltip
+  category: overlays
+  description: A popup that displays information related to an element when it receives focus or hover.
+
+toast:
+  name: Toast
+  category: overlays
+  description: A succinct message that is displayed temporarily.
+
+alert:
+  name: Alert
+  category: feedback
+  description: Displays a callout for user attention.
+
+empty-state:
+  name: EmptyState
+  category: feedback
+  description: An empty state placeholder for when there is no content to show.
+
+banner:
+  name: Banner
+  category: feedback
+  description: A banner for announcements and promotions.
+
+swap:
+  name: Swap
+  category: feedback
+  description: Allows you to toggle the visibility of two elements.
+
+container:
+  name: Container
+  category: layout
+  description: A responsive container for constraining content width.
+
+grid:
+  name: Grid
+  category: layout
+  description: A CSS grid layout component.
+
+flex:
+  name: Flex
+  category: layout
+  description: A flexbox layout component.
+
+stack:
+  name: Stack
+  category: layout
+  description: A vertical stack layout with consistent spacing.
+
+divider:
+  name: Divider
+  category: layout
+  description: A visual divider between content.
+
+aspect-ratio:
+  name: AspectRatio
+  category: layout
+  description: Displays content within a desired ratio.
+
+carousel:
+  name: Carousel
+  category: advanced
+  description: A carousel with motion for cycling through elements.
+
+calendar:
+  name: Calendar
+  category: advanced
+  description: A calendar date picker component.
+
+chart:
+  name: Chart
+  category: advanced
+  description: SVG-based chart components.
+
+kanban:
+  name: Kanban
+  category: advanced
+  description: A kanban board with draggable columns and cards.
+
+clipboard:
+  name: Clipboard
+  category: advanced
+  description: Copy text to clipboard with feedback.
+
+hero:
+  name: Hero
+  category: marketing
+  description: A hero section for landing pages.
+
+pricing:
+  name: Pricing
+  category: marketing
+  description: A pricing table section.
+
+faq:
+  name: FAQ
+  category: marketing
+  description: A frequently asked questions section.
+
+testimonials:
+  name: Testimonials
+  category: marketing
+  description: A testimonials section with quotes.
+
+auth:
+  name: Auth
+  category: marketing
+  description: Authentication forms for sign in and sign up.
+
+error-page:
+  name: ErrorPage
+  category: marketing
+  description: Error pages for 404, 500, and more.

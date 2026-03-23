@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HotwireBits — UI Components for Rails</title>
+    <meta name="description" content="The most comprehensive free UI component library for Ruby on Rails. 190+ components with Tailwind CSS v4, Stimulus, and Turbo.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --hw-bg: #ffffff; --hw-fg: #0a0a0a; --hw-card: #ffffff; --hw-card-fg: #0a0a0a;
+      --hw-primary: #18181b; --hw-primary-fg: #fafafa; --hw-secondary: #f4f4f5; --hw-secondary-fg: #18181b;
+      --hw-muted: #f4f4f5; --hw-muted-fg: #71717a; --hw-border: #e4e4e7; --hw-input: #e4e4e7;
+      --hw-ring: #18181b; --hw-accent: #f4f4f5; --hw-accent-fg: #18181b;
+      --hw-sidebar-w: 260px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --hw-bg: #09090b; --hw-fg: #fafafa; --hw-card: #18181b; --hw-card-fg: #fafafa;
+        --hw-primary: #fafafa; --hw-primary-fg: #18181b; --hw-secondary: #27272a; --hw-secondary-fg: #fafafa;
+        --hw-muted: #27272a; --hw-muted-fg: #a1a1aa; --hw-border: #27272a; --hw-input: #27272a;
+        --hw-ring: #fafafa; --hw-accent: #27272a; --hw-accent-fg: #fafafa;
+      }
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--hw-bg); color: var(--hw-fg); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    .layout { display: flex; min-height: 100vh; }
+    .sidebar {
+      width: var(--hw-sidebar-w); border-right: 1px solid var(--hw-border); padding: 1.5rem 1rem;
+      position: fixed; top: 0; left: 0; bottom: 0; overflow-y: auto; background: var(--hw-bg);
+    }
+    .sidebar-logo { font-size: 1.125rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .sidebar-section { margin-bottom: 1.5rem; }
+    .sidebar-section-title { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--hw-muted-fg); margin-bottom: 0.5rem; }
+    .sidebar-link {
+      display: block; padding: 0.375rem 0.75rem; border-radius: 0.375rem; font-size: 0.875rem;
+      color: var(--hw-fg); transition: background 0.15s;
+    }
+    .sidebar-link:hover { background: var(--hw-accent); }
+    .sidebar-link.active { background: var(--hw-accent); font-weight: 500; }
+    .main { margin-left: var(--hw-sidebar-w); flex: 1; padding: 2rem 3rem; max-width: 900px; }
+    .main-full { margin-left: var(--hw-sidebar-w); flex: 1; padding: 2rem 3rem; }
+    h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; margin-top: 2rem; }
+    h3 { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.75rem; }
+    p { color: var(--hw-muted-fg); margin-bottom: 1rem; }
+    .hero-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+    .hero-card {
+      border: 1px solid var(--hw-border); border-radius: 0.75rem; padding: 1.25rem;
+      transition: border-color 0.15s, box-shadow 0.15s; cursor: pointer;
+    }
+    .hero-card:hover { border-color: var(--hw-ring); box-shadow: 0 0 0 1px var(--hw-ring); }
+    .hero-card h3 { margin-bottom: 0.25rem; }
+    .hero-card p { font-size: 0.875rem; margin-bottom: 0; }
+    .hero-card-count { font-size: 0.75rem; color: var(--hw-muted-fg); }
+    .tabs { display: flex; gap: 0; border-bottom: 1px solid var(--hw-border); margin-bottom: 1.5rem; }
+    .tab {
+      padding: 0.75rem 1rem; font-size: 0.875rem; font-weight: 500; cursor: pointer;
+      border-bottom: 2px solid transparent; color: var(--hw-muted-fg); transition: all 0.15s;
+    }
+    .tab:hover { color: var(--hw-fg); }
+    .tab.active { color: var(--hw-fg); border-bottom-color: var(--hw-ring); }
+    .preview-box {
+      border: 1px solid var(--hw-border); border-radius: 0.75rem; padding: 2rem;
+      margin-bottom: 1.5rem; background: var(--hw-card); min-height: 200px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .code-block {
+      background: #1e1e1e; color: #d4d4d4; border-radius: 0.75rem; padding: 1.25rem;
+      font-family: "SF Mono", "Fira Code", monospace; font-size: 0.8125rem; line-height: 1.7;
+      overflow-x: auto; margin-bottom: 1.5rem;
+    }
+    .code-block .keyword { color: #569cd6; }
+    .code-block .string { color: #ce9178; }
+    .code-block .comment { color: #6a9955; }
+    .copy-btn {
+      float: right; background: var(--hw-secondary); border: 1px solid var(--hw-border);
+      padding: 0.25rem 0.75rem; border-radius: 0.375rem; font-size: 0.75rem; cursor: pointer;
+      color: var(--hw-fg);
+    }
+    .copy-btn:hover { background: var(--hw-accent); }
+    .component-list { display: flex; flex-direction: column; gap: 0.5rem; }
+    .component-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.75rem 1rem; border: 1px solid var(--hw-border); border-radius: 0.5rem;
+      transition: border-color 0.15s; cursor: pointer;
+    }
+    .component-item:hover { border-color: var(--hw-ring); }
+    .component-item-name { font-weight: 500; font-size: 0.9375rem; }
+    .component-item-desc { font-size: 0.8125rem; color: var(--hw-muted-fg); }
+    .badge {
+      display: inline-flex; padding: 0.125rem 0.5rem; font-size: 0.6875rem; font-weight: 600;
+      border-radius: 9999px; background: var(--hw-muted); color: var(--hw-muted-fg);
+    }
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .main, .main-full { margin-left: 0; padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <div class="sidebar-logo">🧱 HotwireBits</div>
+      <div class="sidebar-section">
+        <a href="/" class="sidebar-link">Getting Started</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Components</div>
+        <a href="/primitives" class="sidebar-link">Primitives</a>
+        <a href="/forms" class="sidebar-link">Form Controls</a>
+        <a href="/data-display" class="sidebar-link">Data Display</a>
+        <a href="/navigation" class="sidebar-link">Navigation</a>
+        <a href="/overlays" class="sidebar-link">Overlays</a>
+        <a href="/feedback" class="sidebar-link">Feedback</a>
+        <a href="/layout" class="sidebar-link">Layout</a>
+        <a href="/advanced" class="sidebar-link">Advanced</a>
+        <a href="/marketing" class="sidebar-link">Marketing</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Resources</div>
+        <a href="https://github.com/hotwirebits/hotwirebits" class="sidebar-link" target="_blank">GitHub</a>
+        <a href="https://rubygems.org/gems/hotwirebits" class="sidebar-link" target="_blank">RubyGems</a>
+      </div>
+    </nav>
+    <div class="<%= content_for?(:full_width) ? 'main-full' : 'main' %>">
+      <%= yield %>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<h1><%= @category_name %></h1>
+<p>Browse all <%= @components.count %> components in the <%= @category_name %> category.</p>
+<div class="component-list">
+  <% @components.each do |id, comp| %>
+    <a href="/components/<%= id %>" class="component-item">
+      <div>
+        <div class="component-item-name"><%= comp["name"] %></div>
+        <div class="component-item-desc"><%= comp["description"] %></div>
+      </div>
+      <span class="badge">View &rarr;</span>
+    </a>
+  <% end %>
+</div>
