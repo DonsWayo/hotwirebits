@@ -1,0 +1,7 @@
+/* RailsBits — Corporate theme */
+@theme {
+  --color-rb-primary: hsl(220 60% 50%);
+  --color-rb-primary-foreground: hsl(0 0% 100%);
+  --color-rb-secondary: hsl(220 20% 94%);
+  --color-rb-accent: hsl(180 60% 45%);
+}
