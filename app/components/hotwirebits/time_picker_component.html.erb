@@ -1,0 +1,29 @@
+<div data-controller="hw-time-picker" data-hw-time-picker-format-value="<%= @time_format %>" <%= tag.attributes(@extra_attrs) %>>
+  <% if twelve_hour? %>
+    <div class="flex items-center gap-2">
+      <input type="text"
+             name="<%= @name %>"
+             value="<%= @value %>"
+             placeholder="12:00"
+             pattern="(0?[1-9]|1[0-2]):[0-5][0-9]"
+             <%= 'disabled' if @disabled %>
+             class="<%= input_classes %>"
+             data-hw-time-picker-target="input">
+      <select class="h-9 rounded-md border border-hw-input bg-hw-background px-2 text-sm text-hw-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2"
+              data-action="change->hw-time-picker#updateMeridiem"
+        data-hw-time-picker-target="meridiem"
+        <%= 'disabled' if @disabled %>>
+        <option value="AM">AM</option>
+        <option value="PM">PM</option>
+      </select>
+    </div>
+  <% else %>
+    <input type="time"
+           name="<%= @name %>"
+           value="<%= @value %>"
+           step="<%= @step * 60 %>"
+           <%= 'disabled' if @disabled %>
+           class="<%= input_classes %>"
+           data-hw-time-picker-target="input">
+  <% end %>
+</div>

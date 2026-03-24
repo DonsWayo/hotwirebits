@@ -1,0 +1,17 @@
+<div data-controller="hw-confirm-dialog" data-hw-confirm-dialog-open-value="<%= @open %>" <%= tag.attributes(@extra_attrs) %>>
+  <div class="fixed inset-0 z-50 bg-black/80 hidden" data-hw-confirm-dialog-target="overlay" data-action="click->hw-confirm-dialog#cancel"></div>
+  <div class="fixed left-1/2 top-1/2 z-50 grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 border border-hw-border bg-hw-background p-6 shadow-lg rounded-lg hidden" data-hw-confirm-dialog-target="panel" role="alertdialog">
+    <div class="flex flex-col space-y-1.5">
+      <h2 class="text-lg font-semibold leading-none tracking-tight"><%= @title %></h2>
+    </div>
+    <div class="text-sm text-hw-muted-foreground"><%= @message %></div>
+    <div class="flex justify-end gap-2">
+      <button type="button" class="inline-flex h-9 items-center justify-center rounded-md border border-hw-input bg-hw-background px-4 text-sm font-medium ring-offset-hw-background transition-colors hover:bg-hw-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2" data-action="click->hw-confirm-dialog#cancel">
+        <%= @cancel_label %>
+      </button>
+      <button type="button" class="<%= confirm_button_classes %>" data-action="click->hw-confirm-dialog#confirm">
+        <%= @confirm_label %>
+      </button>
+    </div>
+  </div>
+</div>

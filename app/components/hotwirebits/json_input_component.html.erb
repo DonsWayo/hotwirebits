@@ -1,0 +1,14 @@
+<div data-controller="hw-json-input" data-hw-json-input-validate-value="<%= @validate %>" class="space-y-2">
+  <textarea
+    name="<%= @name %>"
+    rows="<%= @rows %>"
+    placeholder="<%= @placeholder %>"
+    spellcheck="false"
+    class="w-full rounded-md border border-hw-input bg-hw-background px-3 py-2 text-sm font-mono text-hw-foreground ring-offset-hw-background placeholder:text-hw-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+    data-hw-json-input-target="textarea"
+    data-action="input->hw-json-input#validate"
+    <%= tag.attributes(@extra_attrs) %>><%= formatted_value %></textarea>
+  <div class="flex items-center gap-2 text-xs text-hw-muted-foreground" data-hw-json-input-target="status">
+    <span></span>
+  </div>
+</div>

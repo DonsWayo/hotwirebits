@@ -1,0 +1,27 @@
+<div class="<%= container_classes %>" data-controller="hw-context-menu" <%= tag.attributes(@extra_attrs) %>>
+  <%= content %>
+  <div class="fixed z-50 hidden min-w-[10rem] rounded-md border border-hw-border bg-hw-popover p-1 text-hw-popover-foreground shadow-md"
+       data-hw-context-menu-target="menu"
+       data-action="click->hw-context-menu#close contextmenu@window->hw-context-menu#close">
+    <% @items.each do |item| %>
+      <% if item[:separator] %>
+        <div class="-mx-1 my-1 h-px bg-hw-border"></div>
+      <% else %>
+        <a href="<%= item[:href] || '#' %>"
+           class="<%= merge_classes(
+             'relative flex cursor-pointer select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none transition-colors',
+             item[:destructive] ? 'text-hw-destructive hover:bg-hw-destructive/10' : 'hover:bg-hw-accent hover:text-hw-accent-foreground'
+           ) %>"
+           data-action="click->hw-context-menu#close">
+          <% if item[:icon] %>
+            <span class="h-4 w-4 shrink-0"><%= item[:icon].html_safe %></span>
+          <% end %>
+          <span class="flex-1"><%= item[:label] %></span>
+          <% if item[:shortcut] %>
+            <span class="ml-auto text-xs tracking-widest text-hw-muted-foreground"><%= item[:shortcut] %></span>
+          <% end %>
+        </a>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -2,11 +2,18 @@
 
 module HotwireBits
   class ImageCompareComponent < Base
-    def initialize(before:, after:, labels: nil, **attrs)
-      @before = before
-      @after = after
-      @labels = labels
+    def initialize(before_src:, after_src:, before_label: 'Before', after_label: 'After', orientation: :horizontal,
+                   **attrs)
+      @before_src = before_src
+      @after_src = after_src
+      @before_label = before_label
+      @after_label = after_label
+      @orientation = orientation
       @extra_attrs = attrs
+    end
+
+    def container_classes
+      merge_classes('relative overflow-hidden rounded-lg select-none', @extra_attrs.delete(:class))
     end
   end
 end

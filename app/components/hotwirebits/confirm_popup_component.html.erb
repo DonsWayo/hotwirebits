@@ -1,0 +1,16 @@
+<div class="relative inline-block" data-controller="hw-confirm-popup" <%= tag.attributes(@extra_attrs) %>>
+  <div data-action="click->hw-confirm-popup#toggle" data-hw-confirm-popup-target="trigger" class="inline-block">
+    <%= content %>
+  </div>
+  <div class="<%= popup_classes %>" data-hw-confirm-popup-target="panel">
+    <p class="mb-3 text-sm"><%= @message %></p>
+    <div class="flex justify-end gap-2">
+      <button type="button" class="inline-flex h-7 items-center justify-center rounded-md border border-hw-input bg-hw-background px-3 text-xs font-medium ring-offset-hw-background transition-colors hover:bg-hw-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2" data-action="click->hw-confirm-popup#cancel">
+        <%= @cancel_label %>
+      </button>
+      <button type="button" class="inline-flex h-7 items-center justify-center rounded-md bg-hw-primary px-3 text-xs font-medium text-hw-primary-foreground ring-offset-hw-background transition-colors hover:bg-hw-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2" data-action="click->hw-confirm-popup#confirm">
+        <%= @confirm_label %>
+      </button>
+    </div>
+  </div>
+</div>

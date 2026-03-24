@@ -993,3 +993,85 @@ review:
   name: Review
   category: marketing
   description: Product review.
+
+# === NEWLY ADDED ===
+
+angle-slider:
+  name: AngleSlider
+  category: forms
+  description: Circular angle picker from 0 to 360 degrees.
+
+affix:
+  name: Affix
+  category: layout
+  description: Fixed position container.
+
+background-image:
+  name: BackgroundImage
+  category: layout
+  description: Responsive background image with optional overlay.
+
+code-highlight:
+  name: CodeHighlight
+  category: data-display
+  description: Syntax highlighted code block.
+
+context-menu:
+  name: ContextMenu
+  category: overlays
+  description: Right-click context menu.
+
+confirm-dialog:
+  name: ConfirmDialog
+  category: overlays
+  description: Programmatic confirmation dialog.
+
+confirm-popup:
+  name: ConfirmPopup
+  category: overlays
+  description: Popover-style confirmation popup.
+
+image-compare:
+  name: ImageCompare
+  category: advanced
+  description: Before and after image comparison slider.
+
+json-input:
+  name: JsonInput
+  category: forms
+  description: JSON editor with validation.
+
+month-picker:
+  name: MonthPicker
+  category: forms
+  description: Month and year picker component.
+
+portal:
+  name: Portal
+  category: layout
+  description: Render content in a different DOM location.
+
+semi-circle-progress:
+  name: SemiCircleProgress
+  category: data-display
+  description: Half-circle progress bar.
+
+time-picker:
+  name: TimePicker
+  category: forms
+  description: Time input picker.
+
+two-factor:
+  name: TwoFactor
+  category: forms
+  description: Two-factor authentication code input.
+
+validator:
+  name: Validator
+  category: forms
+  description: Form validation display with live feedback.
+
+month-picker-input:
+  name: MonthPickerInput
+  category: forms
+  description: Month picker input field.
