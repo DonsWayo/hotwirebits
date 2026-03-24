@@ -43,7 +43,7 @@
     :root{
       --hw-bg:#fff;--hw-fg:#09090b;--hw-card:#fff;--hw-card-fg:#09090b;
       --hw-primary:#18181b;--hw-primary-fg:#fafafa;--hw-secondary:#f4f4f5;--hw-secondary-fg:#18181b;
-      --hw-muted:#f4f4f5;--hw-muted-fg:#52525b;--hw-border:#e4e4e7;--hw-input:#e4e4e7;
+      --hw-muted:#f4f4f5;--hw-muted-fg:#3f3f46;--hw-border:#e4e4e7;--hw-input:#e4e4e7;
       --hw-ring:#18181b;--hw-accent:#f4f4f5;--hw-accent-fg:#18181b;
       --hw-sidebar-w:260px;--hw-header-h:56px;
       --hw-success:#16a34a;--hw-warning:#ca8a04;--hw-info:#2563eb;--hw-destructive:#dc2626;
@@ -52,7 +52,7 @@
       :root{
         --hw-bg:#09090b;--hw-fg:#fafafa;--hw-card:#0c0c0e;--hw-card-fg:#fafafa;
         --hw-primary:#fafafa;--hw-primary-fg:#18181b;--hw-secondary:#1c1c1f;--hw-secondary-fg:#fafafa;
-        --hw-muted:#1c1c1f;--hw-muted-fg:#a1a1aa;--hw-border:#27272a;--hw-input:#27272a;
+        --hw-muted:#1c1c1f;--hw-muted-fg:#d4d4d8;--hw-border:#27272a;--hw-input:#27272a;
         --hw-ring:#fafafa;--hw-accent:#1c1c1f;--hw-accent-fg:#fafafa;
         --hw-success:#22c55e;--hw-warning:#eab308;--hw-info:#3b82f6;--hw-destructive:#ef4444;
       }
@@ -75,7 +75,7 @@
     .hw-search-bar span{flex:1;text-align:left}
     .hw-search-bar kbd{font-size:0.625rem;padding:0.125rem 0.375rem;border:1px solid var(--hw-border);border-radius:0.25rem;background:var(--hw-bg);margin-left:auto;font-family:inherit}
     .hw-header-right{display:flex;align-items:center;gap:0.375rem}
-    .hw-icon-btn{width:32px;height:32px;border:1px solid var(--hw-border);border-radius:0.5rem;background:transparent;color:var(--hw-fg);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.15s}
+    .hw-icon-btn{width:36px;height:36px;min-width:36px;min-height:36px;border:1px solid var(--hw-border);border-radius:0.5rem;background:transparent;color:var(--hw-fg);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.15s}
     .hw-icon-btn:hover{background:var(--hw-accent)}
     .hw-icon-btn svg{width:16px;height:16px}
 
@@ -172,7 +172,7 @@
 
     /* Install tabs */
     .hw-install-tabs{display:flex;gap:0;background:var(--hw-muted);border-radius:0.5rem 0.5rem 0 0;padding:0.1875rem;width:fit-content}
-    .hw-install-tab{padding:0.3125rem 0.75rem;font-size:0.75rem;border-radius:0.375rem;cursor:pointer;color:var(--hw-muted-fg);background:transparent;border:none;font-family:inherit}
+    .hw-install-tab{padding:0.5rem 0.875rem;font-size:0.75rem;border-radius:0.375rem;cursor:pointer;color:var(--hw-muted-fg);background:transparent;border:none;font-family:inherit;min-height:36px}
     .hw-install-tab.active{background:var(--hw-bg);color:var(--hw-fg);box-shadow:0 1px 2px rgba(0,0,0,0.08)}
 
     /* Prev/Next */
