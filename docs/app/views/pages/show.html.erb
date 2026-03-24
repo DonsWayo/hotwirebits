@@ -1,40 +1,104 @@
+<nav class="hw-breadcrumbs">
+  <a href="/">Components</a>
+  <span>/</span>
+  <a href="/<%= @component["category"] %>"><%= PagesController::CATEGORIES[@component["category"]] %></a>
+  <span>/</span>
+  <span><%= @component["name"] %></span>
+</nav>
 <h1><%= @component["name"] %></h1>
 <p><%= @component["description"] %></p>
-<div class="tabs">
-  <div class="tab active" data-tab="preview">Preview</div>
-  <div class="tab" data-tab="ruby">Ruby</div>
-  <div class="tab" data-tab="erb">ERB</div>
+<div class="hw-tab-group">
+  <button class="hw-tab active" data-tab="preview">Preview</button>
+  <button class="hw-tab" data-tab="ruby">Ruby</button>
+  <button class="hw-tab" data-tab="erb">ERB</button>
 </div>
-<div id="tab-preview" class="tab-content">
-  <div class="preview-box">
-    <% component_class = "HotwireBits::#{@component["name"]}Component".safe_constantize %>
-    <% if component_class %>
-      <%= render component_class.new %>
+<div class="hw-tab-content active" id="tab-preview">
+  <div class="hw-preview">
+    <% if @component["examples"].present? %>
+      <% @component["examples"].each do |example| %>
+        <div class="hw-preview-label"><%= example["label"] %></div>
+        <div class="hw-preview-row">
+          <%= rb_preview(@id, example["props"] || {}) %>
+        </div>
+      <% end %>
     <% else %>
-      <p style="color: var(--hw-muted-fg);">Preview not available — component may require specific props.</p>
+      <div class="hw-preview-row">
+        <%= rb_preview(@id, @component["default_props"] || {}) %>
+      </div>
     <% end %>
   </div>
 </div>
-<div id="tab-ruby" class="tab-content" style="display: none;">
-  <div class="code-block">
-    <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('ruby-source').textContent)">Copy</button>
-    <pre id="ruby-source"><%= @source_rb %></pre>
+<div class="hw-tab-content" id="tab-ruby">
+  <div class="hw-code-block">
+    <div class="hw-code-header">
+      <span>Ruby</span>
+      <button class="hw-code-copy" onclick="navigator.clipboard.writeText(this.closest('.hw-code-block').querySelector('.hw-code-body').textContent)">Copy</button>
+    </div>
+    <pre class="hw-code-body"><%= @source_rb %></pre>
   </div>
 </div>
-<div id="tab-erb" class="tab-content" style="display: none;">
-  <div class="code-block">
-    <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('erb-source').textContent)">Copy</button>
-    <pre id="erb-source"><%= @source_erb %></pre>
+<div class="hw-tab-content" id="tab-erb">
+  <div class="hw-code-block">
+    <div class="hw-code-header">
+      <span>ERB</span>
+      <button class="hw-code-copy" onclick="navigator.clipboard.writeText(this.closest('.hw-code-block').querySelector('.hw-code-body').textContent)">Copy</button>
+    </div>
+    <pre class="hw-code-body"><%= @source_erb %></pre>
   </div>
 </div>
-<a href="/<%= @component["category"] %>" style="font-size: 0.875rem; color: var(--hw-muted-fg);">&larr; Back to <%= PagesController::CATEGORIES[@component["category"]] %></a>
+<% if @component["props"].present? %>
+  <h2>Props</h2>
+  <div class="hw-props-table">
+    <%= rb_props_table(@component["props"]) %>
+  </div>
+<% end %>
+<% if @component["examples"].present? %>
+  <h2>Examples</h2>
+  <% @component["examples"].each do |example| %>
+    <div class="hw-preview">
+      <div class="hw-preview-label"><%= example["label"] %></div>
+      <div class="hw-preview-row">
+        <%= rb_preview(@id, example["props"] || {}) %>
+      </div>
+      <div class="hw-code-block">
+        <div class="hw-code-header">
+          <span>Ruby</span>
+          <button class="hw-code-copy" onclick="navigator.clipboard.writeText(this.closest('.hw-code-block').querySelector('.hw-code-body').textContent)">Copy</button>
+        </div>
+        <pre class="hw-code-body"><%= example["props"]&.inspect || '{}' %></pre>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+<%
+  all_ids = PagesController::COMPONENTS.keys
+  current_index = all_ids.index(@id)
+  prev_id = current_index&.positive? ? all_ids[current_index - 1] : nil
+  next_id = current_index && current_index < all_ids.length - 1 ? all_ids[current_index + 1] : nil
+%>
+<% if prev_id || next_id %>
+  <div class="hw-prev-next">
+    <% if prev_id %>
+      <a href="/<%= prev_id %>">
+        <span>&larr;</span>
+        <span><%= PagesController::COMPONENTS[prev_id]["name"] %></span>
+      </a>
+    <% end %>
+    <% if next_id %>
+      <a href="/<%= next_id %>">
+        <span><%= PagesController::COMPONENTS[next_id]["name"] %></span>
+        <span>&rarr;</span>
+      </a>
+    <% end %>
+  </div>
+<% end %>
 <script>
-  document.querySelectorAll('.tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+  document.querySelectorAll('.hw-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.hw-tab').forEach(function(t) { t.classList.remove('active'); });
+      document.querySelectorAll('.hw-tab-content').forEach(function(c) { c.classList.remove('active'); });
       tab.classList.add('active');
-      document.getElementById('tab-' + tab.dataset.tab).style.display = 'block';
+      document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
     });
   });
 </script>

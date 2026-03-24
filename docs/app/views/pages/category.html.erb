@@ -1,13 +1,18 @@
+<div class="hw-breadcrumbs">
+  <a href="/">Home</a>
+  <span class="sep">/</span>
+  <span><%= @category_name %></span>
+</div>
 <h1><%= @category_name %></h1>
-<p>Browse all <%= @components.count %> components in the <%= @category_name %> category.</p>
-<div class="component-list">
+<p class="hw-description">Browse all <%= @components.count %> components in the <%= @category_name %> category.</p>
+<div class="hw-component-list">
   <% @components.each do |id, comp| %>
-    <a href="/components/<%= id %>" class="component-item">
+    <a href="/components/<%= id %>" class="hw-component-item">
       <div>
-        <div class="component-item-name"><%= comp["name"] %></div>
-        <div class="component-item-desc"><%= comp["description"] %></div>
+        <div class="hw-component-name"><%= comp["name"] %></div>
+        <div class="hw-component-desc"><%= comp["description"] %></div>
       </div>
-      <span class="badge">View &rarr;</span>
+      <span class="hw-component-arrow">→</span>
     </a>
   <% end %>
 </div>

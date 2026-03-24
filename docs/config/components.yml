@@ -1,1254 +1,5534 @@
-# Component registry for HotwireBits documentation
-# Each key is a URL slug, values contain metadata
-
-# === PRIMITIVES ===
-
+---
 button:
   name: Button
   category: primitives
   description: Displays a button or a component that looks like a button.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      label: Button
+  - label: Secondary
+    props:
+      label: Button
+      variant: secondary
 badge:
   name: Badge
   category: primitives
   description: Displays a badge or a component that looks like a badge.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      label: Badge
+  - label: Secondary
+    props:
+      label: Badge
+      variant: secondary
 chip:
   name: Chip
   category: primitives
   description: Compact element representing an input, attribute, or action.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      label: Chip
+  - label: Secondary
+    props:
+      label: Chip
+      variant: secondary
 tag:
   name: Tag
   category: primitives
   description: A tag for categorizing or labeling content.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      label: Tag
+  - label: Secondary
+    props:
+      label: Tag
+      variant: secondary
 avatar:
   name: Avatar
   category: primitives
   description: An image element with a fallback for representing the user.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      label: Avatar
+  - label: Secondary
+    props:
+      label: Avatar
+      variant: secondary
 status:
   name: Status
   category: primitives
   description: A small status indicator dot.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      label: Status
+  - label: Secondary
+    props:
+      label: Status
+      variant: secondary
 indicator:
   name: Indicator
   category: primitives
   description: Positioned element on the corner of another element.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      label: Indicator
+  - label: Secondary
+    props:
+      label: Indicator
+      variant: secondary
 label:
   name: Label
   category: primitives
   description: Renders an accessible label associated with controls.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      label: Label
+  - label: Secondary
+    props:
+      label: Label
+      variant: secondary
 separator:
   name: Separator
   category: primitives
   description: Visually or semantically separates content.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      label: Separator
+  - label: Secondary
+    props:
+      label: Separator
+      variant: secondary
 skeleton:
   name: Skeleton
   category: primitives
   description: Use to show a placeholder while content is loading.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      label: Skeleton
+  - label: Secondary
+    props:
+      label: Skeleton
+      variant: secondary
 spinner:
   name: Spinner
   category: primitives
   description: Visual loading indicator.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      label: Spinner
+  - label: Secondary
+    props:
+      label: Spinner
+      variant: secondary
 typography:
   name: Typography
   category: primitives
   description: Styles for headings, paragraphs, lists and more.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      label: Typography
+  - label: Secondary
+    props:
+      label: Typography
+      variant: secondary
 kbd:
   name: Kbd
   category: primitives
   description: Used to describe keyboard shortcuts.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      label: Kbd
+  - label: Secondary
+    props:
+      label: Kbd
+      variant: secondary
 close-button:
   name: CloseButton
   category: primitives
   description: An accessible button to dismiss elements.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      label: CloseButton
+  - label: Secondary
+    props:
+      label: CloseButton
+      variant: secondary
 toggle:
   name: Toggle
   category: primitives
   description: A two-state button that can be either on or off.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      label: Toggle
+  - label: Secondary
+    props:
+      label: Toggle
+      variant: secondary
 animated-number:
   name: AnimatedNumber
   category: primitives
   description: An animated number counter with transitions.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      label: AnimatedNumber
+  - label: Secondary
+    props:
+      label: AnimatedNumber
+      variant: secondary
 theme-icon:
   name: ThemeIcon
   category: primitives
   description: An icon wrapped in a themed container.
-
-# === FORMS ===
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      label: ThemeIcon
+  - label: Secondary
+    props:
+      label: ThemeIcon
+      variant: secondary
 input:
   name: Input
   category: forms
-  description: Displays a form input field or a component that looks like an input field.
-
+  description: Displays a form input field or a component that looks like an input
+    field.
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 password:
   name: Password
   category: forms
   description: Password input with visibility toggle and strength meter.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 number:
   name: NumberInput
   category: forms
   description: Numeric input with spin buttons.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 search:
   name: SearchInput
   category: forms
   description: Search input with icon and clear button.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 phone:
   name: PhoneInput
   category: forms
   description: Phone number input field.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 textarea:
   name: Textarea
   category: forms
   description: Displays a form textarea or a component that looks like a textarea.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 checkbox:
   name: Checkbox
   category: forms
   description: A control that allows the user to toggle between checked and not checked.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 radio:
   name: Radio
   category: forms
   description: A set of checkable buttons known as radio buttons.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 switch:
   name: Switch
   category: forms
   description: A control that allows the user to toggle between on and off.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 select:
   name: Select
   category: forms
   description: Displays a list of options for the user to pick from.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 combobox:
   name: Combobox
   category: forms
   description: Autocomplete input and command palette with a list of suggestions.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 slider:
   name: Slider
   category: forms
   description: An input where the user selects a value from within a given range.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 rating:
   name: Rating
   category: forms
   description: Star-based rating input.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 datepicker:
   name: DatePicker
   category: forms
   description: A date picker component with calendar.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 input-otp:
   name: InputOTP
   category: forms
   description: Accessible one-time password component with copy paste functionality.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 color-picker:
   name: ColorPicker
   category: forms
   description: A color picker component.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 form-group:
   name: FormGroup
   category: forms
   description: A wrapper for form fields with label, hint, and error.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 autocomplete:
   name: Autocomplete
   category: forms
   description: Autocomplete input with async suggestions.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 native-select:
   name: NativeSelect
   category: forms
   description: A native select dropdown.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 multiselect:
   name: MultiSelect
   category: forms
   description: Multi-select dropdown with checkboxes.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 range-slider:
   name: RangeSlider
   category: forms
   description: A dual-handle range slider.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 input-number:
   name: InputNumber
   category: forms
   description: Numeric input with spin buttons.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 input-tags:
   name: InputTags
   category: forms
   description: An input for adding and removing tags.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 password-input:
   name: PasswordInput
   category: forms
   description: Password input with visibility toggle.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 phone-input:
   name: PhoneInputField
   category: forms
   description: Phone number input field.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 search-input:
   name: SearchInputField
   category: forms
   description: Search input with icon and clear button.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 color-swatch:
   name: ColorSwatch
   category: forms
   description: A color swatch display.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 file-input:
   name: FileInput
   category: forms
   description: File upload input field.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 dropzone:
   name: Dropzone
   category: forms
   description: Drag and drop file upload zone.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 password-strength:
   name: PasswordStrength
   category: forms
   description: Password strength indicator.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 float-label:
   name: FloatLabel
   category: forms
   description: Floating label form input pattern.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 ifta-label:
   name: IftaLabel
   category: forms
   description: Inline floating label animation.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 icon-field:
   name: IconField
   category: forms
   description: Input with leading or trailing icon.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 input-group:
   name: InputGroup
   category: forms
   description: Input with addon buttons or text.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 fieldset:
   name: Fieldset
   category: forms
   description: Form grouping with legend.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 knob:
   name: Knob
   category: forms
   description: Circular dial input.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 listbox:
   name: Listbox
   category: forms
   description: Select from a list with optional virtualization.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 date-picker:
   name: DatePickerCalendar
   category: forms
   description: A date picker component with calendar.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 tag-input:
   name: TagInput
   category: forms
   description: Tag input with validation.
-
-# === DATA DISPLAY ===
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 card:
   name: Card
   category: data-display
   description: Displays a card with header, content, and footer.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Card
+      description: Displays a card with header, content, and footer.
 table:
   name: Table
   category: data-display
   description: A responsive table component.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Table
+      description: A responsive table component.
 data-table:
   name: DataTable
   category: data-display
   description: Powerful table with sorting, filtering, and pagination.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: DataTable
+      description: Powerful table with sorting, filtering, and pagina
 stats:
   name: Stats
   category: data-display
   description: Display statistics with trend indicators.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Stats
+      description: Display statistics with trend indicators.
 timeline:
   name: Timeline
   category: data-display
   description: Display events in chronological order.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Timeline
+      description: Display events in chronological order.
 accordion:
   name: Accordion
   category: data-display
-  description: A vertically stacked set of interactive headings that each reveal a section of content.
-
+  description: A vertically stacked set of interactive headings that each reveal a
+    section of content.
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Accordion
+      description: A vertically stacked set of interactive headings t
 collapsible:
   name: Collapsible
   category: data-display
   description: An interactive component which expands or collapses a panel.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Collapsible
+      description: An interactive component which expands or collapse
 progress:
   name: Progress
   category: data-display
   description: Displays an indicator showing the completion progress of a task.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Progress
+      description: Displays an indicator showing the completion progr
 code-block:
   name: CodeBlock
   category: data-display
   description: Display code with syntax highlighting and copy button.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: CodeBlock
+      description: Display code with syntax highlighting and copy but
 stat:
   name: Stat
   category: data-display
   description: A single stat block with trend indicator.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Stat
+      description: A single stat block with trend indicator.
 animated-number-transition:
   name: AnimatedNumber
   category: data-display
   description: Animated number transition.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: AnimatedNumber
+      description: Animated number transition.
 image:
   name: Image
   category: data-display
   description: Responsive image with fallback and caption.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Image
+      description: Responsive image with fallback and caption.
 mark:
   name: Mark
   category: data-display
   description: Inline text highlight.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Mark
+      description: Inline text highlight.
 highlight:
   name: Highlight
   category: data-display
   description: Highlight search terms in text.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Highlight
+      description: Highlight search terms in text.
 number-formatter:
   name: NumberFormatter
   category: data-display
   description: Format numbers with locale and currency.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: NumberFormatter
+      description: Format numbers with locale and currency.
 diff:
   name: Diff
   category: data-display
   description: Side-by-side comparison slider.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Diff
+      description: Side-by-side comparison slider.
 progress-ring:
   name: ProgressRing
   category: data-display
   description: Circular progress indicator.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: ProgressRing
+      description: Circular progress indicator.
 meter-group:
   name: MeterGroup
   category: data-display
   description: Multiple progress bars in one group.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: MeterGroup
+      description: Multiple progress bars in one group.
 spoiler:
   name: Spoiler
   category: data-display
   description: Truncate long text with show more.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Spoiler
+      description: Truncate long text with show more.
 compare:
   name: Compare
   category: data-display
   description: Before and after image comparison.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Compare
+      description: Before and after image comparison.
 data-view:
   name: DataView
   category: data-display
   description: Grid and list view with pagination.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: DataView
+      description: Grid and list view with pagination.
 paginator:
   name: Paginator
   category: data-display
   description: Enhanced paginator with rows per page.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Paginator
+      description: Enhanced paginator with rows per page.
 panel:
   name: Panel
   category: data-display
   description: Collapsible panel with header and actions.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Panel
+      description: Collapsible panel with header and actions.
 scroll-area:
   name: ScrollArea
   category: data-display
   description: Custom scrollbar area.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: ScrollArea
+      description: Custom scrollbar area.
 table-of-contents:
   name: TableOfContents
   category: data-display
   description: Auto-generated page navigation.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: TableOfContents
+      description: Auto-generated page navigation.
 tree-view:
   name: TreeView
   category: data-display
   description: Hierarchical tree display.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: TreeView
+      description: Hierarchical tree display.
 list:
   name: List
   category: data-display
   description: Simple list with dividers.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: List
+      description: Simple list with dividers.
 loading-overlay:
   name: LoadingOverlay
   category: data-display
   description: Full-container loading state.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: LoadingOverlay
+      description: Full-container loading state.
 inplace:
   name: Inplace
   category: data-display
   description: Click-to-edit inline display.
-
-# === NAVIGATION ===
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Inplace
+      description: Click-to-edit inline display.
 navbar:
   name: Navbar
   category: navigation
   description: A responsive navigation header.
-
+  props:
+  - name: items
+    type: Array
+    default: "[]"
+    required: false
+  - name: label
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Navbar
 sidebar:
   name: Sidebar
   category: navigation
   description: A vertical navigation panel.
-
+  props:
+  - name: items
+    type: Array
+    default: "[]"
+    required: false
+  - name: label
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Sidebar
 breadcrumb:
   name: Breadcrumb
   category: navigation
   description: Displays the path to the current resource using a hierarchy of links.
-
+  props:
+  - name: items
+    type: Array
+    default: "[]"
+    required: false
+  - name: label
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Breadcrumb
 pagination:
   name: Pagination
   category: navigation
   description: Displays a pagination component.
-
+  props:
+  - name: items
+    type: Array
+    default: "[]"
+    required: false
+  - name: label
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Pagination
 tabs:
   name: Tabs
   category: navigation
   description: A set of layered sections of content known as tab panels.
-
+  props:
+  - name: items
+    type: Array
+    default: "[]"
+    required: false
+  - name: label
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Tabs
 menu:
   name: Menu
   category: navigation
   description: A list of links or actions.
-
+  props:
+  - name: items
+    type: Array
+    default: "[]"
+    required: false
+  - name: label
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Menu
 dropdown:
   name: Dropdown
   category: navigation
   description: Displays a menu to the user such as a set of actions or functions.
-
+  props:
+  - name: items
+    type: Array
+    default: "[]"
+    required: false
+  - name: label
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Dropdown
 steps:
   name: Steps
   category: navigation
   description: A step-by-step indicator for multi-step processes.
-
+  props:
+  - name: items
+    type: Array
+    default: "[]"
+    required: false
+  - name: label
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Steps
 footer:
   name: Footer
   category: navigation
   description: A page footer with links and copyright.
-
+  props:
+  - name: items
+    type: Array
+    default: "[]"
+    required: false
+  - name: label
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Footer
 nav-link:
   name: NavLink
   category: navigation
   description: A single navigation link with nested children.
-
+  props:
+  - name: items
+    type: Array
+    default: "[]"
+    required: false
+  - name: label
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: NavLink
 navigation-menu:
   name: NavigationMenu
   category: navigation
   description: Mega menu style navigation.
-
+  props:
+  - name: items
+    type: Array
+    default: "[]"
+    required: false
+  - name: label
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: NavigationMenu
 menubar:
   name: Menubar
   category: navigation
   description: Desktop-style menu bar.
-
+  props:
+  - name: items
+    type: Array
+    default: "[]"
+    required: false
+  - name: label
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Menubar
 dock-menu:
   name: DockMenu
   category: navigation
   description: Mobile bottom navigation bar.
-
+  props:
+  - name: items
+    type: Array
+    default: "[]"
+    required: false
+  - name: label
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: DockMenu
 bottom-navigation:
   name: BottomNavigation
   category: navigation
   description: Mobile bottom tab bar.
-
+  props:
+  - name: items
+    type: Array
+    default: "[]"
+    required: false
+  - name: label
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: BottomNavigation
 burger:
   name: Burger
   category: navigation
   description: Hamburger menu button.
-
+  props:
+  - name: items
+    type: Array
+    default: "[]"
+    required: false
+  - name: label
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Burger
 speed-dial:
   name: SpeedDial
   category: navigation
   description: Floating action button with expandable actions.
-
-# === OVERLAYS ===
-
+  props:
+  - name: items
+    type: Array
+    default: "[]"
+    required: false
+  - name: label
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: SpeedDial
 dialog:
   name: Dialog
   category: overlays
   description: A window overlaid on either the primary window or another dialog window.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: open
+    type: Boolean
+    default: 'false'
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Dialog
+      open: true
 alert-dialog:
   name: AlertDialog
   category: overlays
-  description: A modal dialog that interrupts the user with important content and expects a response.
-
+  description: A modal dialog that interrupts the user with important content and
+    expects a response.
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: open
+    type: Boolean
+    default: 'false'
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: AlertDialog
+      open: true
 sheet:
   name: Sheet
   category: overlays
   description: A panel that slides out from the edge of the screen.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: open
+    type: Boolean
+    default: 'false'
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Sheet
+      open: true
 popover:
   name: Popover
   category: overlays
   description: Displays rich content in a portal triggered by a button.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: open
+    type: Boolean
+    default: 'false'
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Popover
+      open: true
 tooltip:
   name: Tooltip
   category: overlays
-  description: A popup that displays information related to an element when it receives focus or hover.
-
+  description: A popup that displays information related to an element when it receives
+    focus or hover.
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: open
+    type: Boolean
+    default: 'false'
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Tooltip
+      open: true
 toast:
   name: Toast
   category: overlays
   description: A succinct message that is displayed temporarily.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: open
+    type: Boolean
+    default: 'false'
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Toast
+      open: true
 drawer:
   name: Drawer
   category: overlays
   description: Bottom-up drawer panel.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: open
+    type: Boolean
+    default: 'false'
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Drawer
+      open: true
 hover-card:
   name: HoverCard
   category: overlays
   description: Rich hover preview card.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: open
+    type: Boolean
+    default: 'false'
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: HoverCard
+      open: true
 notification:
   name: Notification
   category: overlays
   description: Inline notification card.
-
-# === FEEDBACK ===
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: open
+    type: Boolean
+    default: 'false'
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Notification
+      open: true
 alert:
   name: Alert
   category: feedback
   description: Displays a callout for user attention.
-
+  props:
+  - name: type
+    type: Symbol
+    default: ":info"
+    required: false
+  - name: title
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Alert
+      message: Displays a callout for user attention.
 empty-state:
   name: EmptyState
   category: feedback
   description: An empty state placeholder for when there is no content to show.
-
+  props:
+  - name: type
+    type: Symbol
+    default: ":info"
+    required: false
+  - name: title
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: EmptyState
+      message: An empty state placeholder for when there is no co
 banner:
   name: Banner
   category: feedback
   description: A banner for announcements and promotions.
-
+  props:
+  - name: type
+    type: Symbol
+    default: ":info"
+    required: false
+  - name: title
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Banner
+      message: A banner for announcements and promotions.
 swap:
   name: Swap
   category: feedback
   description: Allows you to toggle the visibility of two elements.
-
+  props:
+  - name: type
+    type: Symbol
+    default: ":info"
+    required: false
+  - name: title
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Swap
+      message: Allows you to toggle the visibility of two element
 skeleton-card:
   name: SkeletonCard
   category: feedback
   description: Pre-built card skeleton loader.
-
+  props:
+  - name: type
+    type: Symbol
+    default: ":info"
+    required: false
+  - name: title
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: SkeletonCard
+      message: Pre-built card skeleton loader.
 feedback:
   name: Feedback
   category: feedback
   description: User feedback widget.
-
+  props:
+  - name: type
+    type: Symbol
+    default: ":info"
+    required: false
+  - name: title
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Feedback
+      message: User feedback widget.
 countdown:
   name: Countdown
   category: feedback
   description: Animated countdown timer.
-
+  props:
+  - name: type
+    type: Symbol
+    default: ":info"
+    required: false
+  - name: title
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Countdown
+      message: Animated countdown timer.
 status-dot:
   name: StatusDot
   category: feedback
   description: Small status indicator dot.
-
+  props:
+  - name: type
+    type: Symbol
+    default: ":info"
+    required: false
+  - name: title
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: StatusDot
+      message: Small status indicator dot.
 theme-controller:
   name: ThemeController
   category: feedback
   description: Theme toggle for light and dark mode.
-
+  props:
+  - name: type
+    type: Symbol
+    default: ":info"
+    required: false
+  - name: title
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: ThemeController
+      message: Theme toggle for light and dark mode.
 terminal:
   name: Terminal
   category: feedback
   description: Terminal emulator display.
-
-# === LAYOUT ===
-
+  props:
+  - name: type
+    type: Symbol
+    default: ":info"
+    required: false
+  - name: title
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: Terminal
+      message: Terminal emulator display.
 container:
   name: Container
   category: layout
   description: A responsive container for constraining content width.
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Container
 grid:
   name: Grid
   category: layout
   description: A CSS grid layout component.
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Grid
 flex:
   name: Flex
   category: layout
   description: A flexbox layout component.
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Flex
 stack:
   name: Stack
   category: layout
   description: A vertical stack layout with consistent spacing.
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Stack
 divider:
   name: Divider
   category: layout
   description: A visual divider between content.
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Divider
 aspect-ratio:
   name: AspectRatio
   category: layout
   description: Displays content within a desired ratio.
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: AspectRatio
 box:
   name: Box
   category: layout
   description: Generic polymorphic container.
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Box
 group:
   name: Group
   category: layout
   description: Horizontal group with gap and wrap.
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Group
 center:
   name: Center
   category: layout
   description: Center content.
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Center
 simple-grid:
   name: SimpleGrid
   category: layout
   description: Auto-fit responsive grid.
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: SimpleGrid
 space:
   name: Space
   category: layout
   description: Spacer element.
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Space
 join:
   name: Join
   category: layout
   description: Group items with shared borders.
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Join
 mask:
   name: Mask
   category: layout
   description: Image mask clip shapes.
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Mask
 bento-grid:
   name: BentoGrid
   category: layout
   description: Asymmetric feature grid.
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: BentoGrid
 device-mockup:
   name: DeviceMockup
   category: layout
   description: Device frame mockup.
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: DeviceMockup
 app-shell:
   name: AppShell
   category: layout
   description: Full app layout shell.
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: AppShell
 splitter:
   name: Splitter
   category: layout
   description: Split panel with resize handle.
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Splitter
 fluid:
   name: Fluid
   category: layout
   description: Full-width container.
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Fluid
 resizable:
   name: Resizable
   category: layout
   description: Resizable panels.
-
-# === ADVANCED ===
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Resizable
 carousel:
   name: Carousel
   category: advanced
   description: A carousel with motion for cycling through elements.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Carousel
 calendar:
   name: Calendar
   category: advanced
   description: A calendar date picker component.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Calendar
 chart:
   name: Chart
   category: advanced
   description: SVG-based chart components.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Chart
 kanban:
   name: Kanban
   category: advanced
   description: A kanban board with draggable columns and cards.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Kanban
 clipboard:
   name: Clipboard
   category: advanced
   description: Copy text to clipboard with feedback.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Clipboard
 qr-code:
   name: QRCode
   category: advanced
   description: QR code generator and display.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: QRCode
 marquee:
   name: Marquee
   category: advanced
   description: Infinite scrolling marquee.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Marquee
 chat-bubble:
   name: ChatBubble
   category: advanced
   description: Chat message bubble.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: ChatBubble
 gallery:
   name: Gallery
   category: advanced
   description: Image gallery grid with lightbox.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Gallery
 lightbox:
   name: Lightbox
   category: advanced
   description: Image lightbox overlay.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Lightbox
 search-component:
   name: Search
   category: advanced
   description: Search with suggestions and filters.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Search
 video-player:
   name: VideoPlayer
   category: advanced
   description: Embedded video player.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: VideoPlayer
 flyout-menu:
   name: FlyoutMenu
   category: advanced
   description: Hover or click popup menu.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: FlyoutMenu
 mega-menu:
   name: MegaMenu
   category: advanced
   description: Multi-column flyout navigation.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: MegaMenu
 highlight-terms:
   name: Highlight
   category: advanced
   description: Highlight search terms in text.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Highlight
 text-rotate:
   name: TextRotate
   category: advanced
   description: Rotating text animation.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: TextRotate
 hover-3d-card:
   name: Hover3dCard
   category: advanced
   description: 3D hover effect card.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Hover3dCard
 hover-gallery:
   name: HoverGallery
   category: advanced
   description: Image gallery on hover.
-
-image-compare:
-  name: ImageCompare
-  category: advanced
-  description: Before after image slider.
-
-speed-dial-fab:
-  name: SpeedDialFab
-  category: advanced
-  description: Floating action button.
-
-org-chart:
-  name: OrgChart
-  category: advanced
-  description: Organizational hierarchy chart.
-
-indicator-badge:
-  name: IndicatorBadge
-  category: advanced
-  description: Badge positioned on element.
-
-kanban-board:
-  name: KanbanBoard
-  category: advanced
-  description: Kanban board with draggable columns.
-
-# === MARKETING ===
-
-hero:
-  name: Hero
-  category: marketing
-  description: A hero section for landing pages.
-
-pricing:
-  name: Pricing
-  category: marketing
-  description: A pricing table section.
-
-faq:
-  name: FAQ
-  category: marketing
-  description: A frequently asked questions section.
-
-testimonials:
-  name: Testimonials
-  category: marketing
-  description: A testimonials section with quotes.
-
-auth:
-  name: Auth
-  category: marketing
-  description: Authentication forms for sign in and sign up.
-
-error-page:
-  name: ErrorPage
-  category: marketing
-  description: Error pages for 404, 500, and more.
-
-feature-section:
-  name: FeatureSection
-  category: marketing
-  description: Feature grid section.
-
-cta-section:
-  name: CtaSection
-  category: marketing
-  description: Call to action block.
-
-pricing-section:
-  name: PricingSection
-  category: marketing
-  description: Pricing cards section.
-
-faq-section:
-  name: FaqSection
-  category: marketing
-  description: FAQ accordion section.
-
-testimonials-section:
-  name: TestimonialsSection
-  category: marketing
-  description: Testimonials grid or carousel.
-
-logo-cloud:
-  name: LogoCloud
-  category: marketing
-  description: Partner client logos.
-
-auth-block:
-  name: AuthBlock
-  category: marketing
-  description: Sign in and sign up forms.
-
-cookie-consent:
-  name: CookieConsent
-  category: marketing
-  description: Cookie consent banner.
-
-header-section:
-  name: HeaderSection
-  category: marketing
-  description: Page header section.
-
-section-heading:
-  name: SectionHeading
-  category: marketing
-  description: Section heading with description.
-
-card-heading:
-  name: CardHeading
-  category: marketing
-  description: Card-level heading.
-
-page-heading:
-  name: PageHeading
-  category: marketing
-  description: Page-level heading with tabs and actions.
-
-team-section:
-  name: TeamSection
-  category: marketing
-  description: Team members grid.
-
-blog-section:
-  name: BlogSection
-  category: marketing
-  description: Blog post cards.
-
-contact-section:
-  name: ContactSection
-  category: marketing
-  description: Contact form section.
-
-newsletter-section:
-  name: NewsletterSection
-  category: marketing
-  description: Newsletter signup.
-
-logo-item:
-  name: LogoItem
-  category: marketing
-  description: Single logo display.
-
-header:
-  name: Header
-  category: marketing
-  description: Site header with navigation.
-
-stacked-list:
-  name: StackedList
-  category: marketing
-  description: Stacked list items with actions.
-
-promo-section:
-  name: PromoSection
-  category: marketing
-  description: Promotional content block.
-
-incentive:
-  name: Incentive
-  category: marketing
-  description: Benefit feature card.
-
-product-overview:
-  name: ProductOverview
-  category: marketing
-  description: Product detail section.
-
-product-list:
-  name: ProductList
-  category: marketing
-  description: Product grid.
-
-shopping-cart:
-  name: ShoppingCart
-  category: marketing
-  description: Cart sidebar section.
-
-checkout-form:
-  name: CheckoutForm
-  category: marketing
-  description: Checkout form layout.
-
-order-summary:
-  name: OrderSummary
-  category: marketing
-  description: Order summary card.
-
-review:
-  name: Review
-  category: marketing
-  description: Product review.
-
-# === NEWLY ADDED ===
-
-angle-slider:
-  name: AngleSlider
-  category: forms
-  description: Circular angle picker from 0 to 360 degrees.
-
-affix:
-  name: Affix
-  category: layout
-  description: Fixed position container.
-
-background-image:
-  name: BackgroundImage
-  category: layout
-  description: Responsive background image with optional overlay.
-
-code-highlight:
-  name: CodeHighlight
-  category: data-display
-  description: Syntax highlighted code block.
-
-context-menu:
-  name: ContextMenu
-  category: overlays
-  description: Right-click context menu.
-
-confirm-dialog:
-  name: ConfirmDialog
-  category: overlays
-  description: Programmatic confirmation dialog.
-
-confirm-popup:
-  name: ConfirmPopup
-  category: overlays
-  description: Popover-style confirmation popup.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: HoverGallery
 image-compare:
   name: ImageCompare
   category: advanced
   description: Before and after image comparison slider.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: ImageCompare
+speed-dial-fab:
+  name: SpeedDialFab
+  category: advanced
+  description: Floating action button.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: SpeedDialFab
+org-chart:
+  name: OrgChart
+  category: advanced
+  description: Organizational hierarchy chart.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: OrgChart
+indicator-badge:
+  name: IndicatorBadge
+  category: advanced
+  description: Badge positioned on element.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: IndicatorBadge
+kanban-board:
+  name: KanbanBoard
+  category: advanced
+  description: Kanban board with draggable columns.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: KanbanBoard
+hero:
+  name: Hero
+  category: marketing
+  description: A hero section for landing pages.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Hero
+pricing:
+  name: Pricing
+  category: marketing
+  description: A pricing table section.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Pricing
+faq:
+  name: FAQ
+  category: marketing
+  description: A frequently asked questions section.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: FAQ
+testimonials:
+  name: Testimonials
+  category: marketing
+  description: A testimonials section with quotes.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Testimonials
+auth:
+  name: Auth
+  category: marketing
+  description: Authentication forms for sign in and sign up.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Auth
+error-page:
+  name: ErrorPage
+  category: marketing
+  description: Error pages for 404, 500, and more.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: ErrorPage
+feature-section:
+  name: FeatureSection
+  category: marketing
+  description: Feature grid section.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: FeatureSection
+cta-section:
+  name: CtaSection
+  category: marketing
+  description: Call to action block.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: CtaSection
+pricing-section:
+  name: PricingSection
+  category: marketing
+  description: Pricing cards section.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: PricingSection
+faq-section:
+  name: FaqSection
+  category: marketing
+  description: FAQ accordion section.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: FaqSection
+testimonials-section:
+  name: TestimonialsSection
+  category: marketing
+  description: Testimonials grid or carousel.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: TestimonialsSection
+logo-cloud:
+  name: LogoCloud
+  category: marketing
+  description: Partner client logos.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: LogoCloud
+auth-block:
+  name: AuthBlock
+  category: marketing
+  description: Sign in and sign up forms.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: AuthBlock
+cookie-consent:
+  name: CookieConsent
+  category: marketing
+  description: Cookie consent banner.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: CookieConsent
+header-section:
+  name: HeaderSection
+  category: marketing
+  description: Page header section.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: HeaderSection
+section-heading:
+  name: SectionHeading
+  category: marketing
+  description: Section heading with description.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: SectionHeading
+card-heading:
+  name: CardHeading
+  category: marketing
+  description: Card-level heading.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: CardHeading
+page-heading:
+  name: PageHeading
+  category: marketing
+  description: Page-level heading with tabs and actions.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: PageHeading
+team-section:
+  name: TeamSection
+  category: marketing
+  description: Team members grid.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: TeamSection
+blog-section:
+  name: BlogSection
+  category: marketing
+  description: Blog post cards.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: BlogSection
+contact-section:
+  name: ContactSection
+  category: marketing
+  description: Contact form section.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: ContactSection
+newsletter-section:
+  name: NewsletterSection
+  category: marketing
+  description: Newsletter signup.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: NewsletterSection
+logo-item:
+  name: LogoItem
+  category: marketing
+  description: Single logo display.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: LogoItem
+header:
+  name: Header
+  category: marketing
+  description: Site header with navigation.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Header
+stacked-list:
+  name: StackedList
+  category: marketing
+  description: Stacked list items with actions.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: StackedList
+promo-section:
+  name: PromoSection
+  category: marketing
+  description: Promotional content block.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: PromoSection
+incentive:
+  name: Incentive
+  category: marketing
+  description: Benefit feature card.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Incentive
+product-overview:
+  name: ProductOverview
+  category: marketing
+  description: Product detail section.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: ProductOverview
+product-list:
+  name: ProductList
+  category: marketing
+  description: Product grid.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: ProductList
+shopping-cart:
+  name: ShoppingCart
+  category: marketing
+  description: Cart sidebar section.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: ShoppingCart
+checkout-form:
+  name: CheckoutForm
+  category: marketing
+  description: Checkout form layout.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: CheckoutForm
+order-summary:
+  name: OrderSummary
+  category: marketing
+  description: Order summary card.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: OrderSummary
+review:
+  name: Review
+  category: marketing
+  description: Product review.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Review
+angle-slider:
+  name: AngleSlider
+  category: forms
+  description: Circular angle picker from 0 to 360 degrees.
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
+affix:
+  name: Affix
+  category: layout
+  description: Fixed position container.
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Affix
+background-image:
+  name: BackgroundImage
+  category: layout
+  description: Responsive background image with optional overlay.
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: BackgroundImage
+code-highlight:
+  name: CodeHighlight
+  category: data-display
+  description: Syntax highlighted code block.
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: CodeHighlight
+      description: Syntax highlighted code block.
+context-menu:
+  name: ContextMenu
+  category: overlays
+  description: Right-click context menu.
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: open
+    type: Boolean
+    default: 'false'
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: ContextMenu
+      open: true
+confirm-dialog:
+  name: ConfirmDialog
+  category: overlays
+  description: Programmatic confirmation dialog.
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: open
+    type: Boolean
+    default: 'false'
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: ConfirmDialog
+      open: true
+confirm-popup:
+  name: ConfirmPopup
+  category: overlays
+  description: Popover-style confirmation popup.
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: open
+    type: Boolean
+    default: 'false'
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: ConfirmPopup
+      open: true
 json-input:
   name: JsonInput
   category: forms
   description: JSON editor with validation.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 month-picker:
   name: MonthPicker
   category: forms
   description: Month and year picker component.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 portal:
   name: Portal
   category: layout
   description: Render content in a different DOM location.
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: Portal
 semi-circle-progress:
   name: SemiCircleProgress
   category: data-display
   description: Half-circle progress bar.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: SemiCircleProgress
+      description: Half-circle progress bar.
 time-picker:
   name: TimePicker
   category: forms
   description: Time input picker.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 two-factor:
   name: TwoFactor
   category: forms
   description: Two-factor authentication code input.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 validator:
   name: Validator
   category: forms
   description: Form validation display with live feedback.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 month-picker-input:
   name: MonthPickerInput
   category: forms
   description: Month picker input field.
-
-# === BATCH 3 (240 TARGET) ===
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 password-toggle:
   name: PasswordToggle
   category: forms
   description: Password visibility toggle button.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 rich-text-editor:
   name: RichTextEditor
   category: forms
   description: Rich text editor with toolbar.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 drag-drop-list:
   name: DragDropList
   category: advanced
   description: Drag and drop sortable list.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: DragDropList
 inline-edit:
   name: InlineEdit
   category: data-display
   description: Click to edit inline display.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: InlineEdit
+      description: Click to edit inline display.
 stepper-form:
   name: StepperForm
   category: navigation
   description: Multi-step form with step indicators.
-
+  props:
+  - name: items
+    type: Array
+    default: "[]"
+    required: false
+  - name: label
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: StepperForm
 permission-badge:
   name: PermissionBadge
   category: primitives
   description: Role and permission badge.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      label: PermissionBadge
+  - label: Secondary
+    props:
+      label: PermissionBadge
+      variant: secondary
 notification-bell:
   name: NotificationBell
   category: navigation
   description: Bell icon with notification count.
-
+  props:
+  - name: items
+    type: Array
+    default: "[]"
+    required: false
+  - name: label
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: NotificationBell
 social-share:
   name: SocialShare
   category: marketing
   description: Social sharing buttons.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: SocialShare
 like-button:
   name: LikeButton
   category: primitives
   description: Like and heart button with count.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      label: LikeButton
+  - label: Secondary
+    props:
+      label: LikeButton
+      variant: secondary
 version-diff:
   name: VersionDiff
   category: data-display
   description: Code diff viewer.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: VersionDiff
+      description: Code diff viewer.
 digital-signature:
   name: DigitalSignature
   category: forms
   description: Signature pad for drawing signatures.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 split-button:
   name: SplitButton
   category: primitives
   description: Button with dropdown actions.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      label: SplitButton
+  - label: Secondary
+    props:
+      label: SplitButton
+      variant: secondary
 color-input:
   name: ColorInput
   category: forms
   description: Color input with hex text field.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 date-range-picker:
   name: DateRangePicker
   category: forms
   description: Date range selection picker.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 file-upload-progress:
   name: FileUploadProgress
   category: feedback
   description: File upload with progress indicator.
-
+  props:
+  - name: type
+    type: Symbol
+    default: ":info"
+    required: false
+  - name: title
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: FileUploadProgress
+      message: File upload with progress indicator.
 image-zoom:
   name: ImageZoom
   category: advanced
   description: Image with zoom on hover.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: ImageZoom
 product-quickview:
   name: ProductQuickview
   category: marketing
   description: Product quick view modal.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: ProductQuickview
 cookie-settings:
   name: CookieSettings
   category: marketing
   description: Cookie preference manager.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: CookieSettings
 theme-selector:
   name: ThemeSelector
   category: primitives
   description: Theme picker dropdown.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      label: ThemeSelector
+  - label: Secondary
+    props:
+      label: ThemeSelector
+      variant: secondary
 device-frame:
   name: DeviceFrame
   category: layout
   description: Generic device frame mockup.
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: DeviceFrame
 browser-mockup:
   name: BrowserMockup
   category: layout
   description: Browser window mockup.
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: BrowserMockup
 phone-mockup:
   name: PhoneMockup
   category: layout
   description: Phone device mockup.
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: PhoneMockup
 window-mockup:
   name: WindowMockup
   category: layout
   description: Desktop window mockup.
-
+  props:
+  - name: gap
+    type: Integer
+    default: '4'
+    required: false
+  - name: columns
+    type: Integer
+    default: '3'
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: WindowMockup
 code-mockup:
   name: CodeMockup
   category: data-display
   description: Code editor mockup display.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: CodeMockup
+      description: Code editor mockup display.
 text-gradient:
   name: TextGradient
   category: primitives
   description: Gradient text effect.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      label: TextGradient
+  - label: Secondary
+    props:
+      label: TextGradient
+      variant: secondary
 typing-indicator:
   name: TypingIndicator
   category: feedback
   description: Typing animation dots.
-
+  props:
+  - name: type
+    type: Symbol
+    default: ":info"
+    required: false
+  - name: title
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: TypingIndicator
+      message: Typing animation dots.
 voice-recorder:
   name: VoiceRecorder
   category: forms
   description: Voice recording button.
-
+  props:
+  - name: name
+    type: String
+    default: nil
+    required: false
+  - name: value
+    type: String
+    default: nil
+    required: false
+  - name: placeholder
+    type: String
+    default: nil
+    required: false
+  - name: disabled
+    type: Boolean
+    default: 'false'
+    required: false
+  - name: size
+    type: Symbol
+    default: ":md"
+    required: false
+    values:
+    - sm
+    - md
+    - lg
+  examples:
+  - label: Default
+    props:
+      placeholder: Enter value...
+  - label: Disabled
+    props:
+      placeholder: Disabled
+      disabled: true
 ai-chat:
   name: AiChat
   category: advanced
   description: Chat interface for AI conversations.
-
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: AiChat
 file-browser:
   name: FileBrowser
   category: navigation
   description: File tree browser.
-
+  props:
+  - name: items
+    type: Array
+    default: "[]"
+    required: false
+  - name: label
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: FileBrowser
 dashboard-card:
   name: DashboardCard
   category: data-display
   description: Dashboard stat card with trend.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: DashboardCard
+      description: Dashboard stat card with trend.
 activity-feed:
   name: ActivityFeed
   category: data-display
   description: Activity timeline feed.
-
+  props:
+  - name: title
+    type: String
+    default: nil
+    required: false
+  - name: description
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      title: ActivityFeed
+      description: Activity timeline feed.
 command-bar:
   name: CommandBar
   category: navigation
   description: Top command bar with shortcuts.
-
+  props:
+  - name: items
+    type: Array
+    default: "[]"
+    required: false
+  - name: label
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: CommandBar
 status-bar:
   name: StatusBar
   category: navigation
   description: Bottom status bar.
-
+  props:
+  - name: items
+    type: Array
+    default: "[]"
+    required: false
+  - name: label
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: StatusBar
 breadcrumb-advanced:
   name: BreadcrumbAdvanced
   category: navigation
   description: Breadcrumb with dropdown support.
-
+  props:
+  - name: items
+    type: Array
+    default: "[]"
+    required: false
+  - name: label
+    type: String
+    default: nil
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: BreadcrumbAdvanced
 empty-cart:
   name: EmptyCart
   category: marketing
   description: Empty shopping cart state.
+  props:
+  - name: label
+    type: String
+    default: nil
+    required: false
+  - name: variant
+    type: Symbol
+    default: ":default"
+    required: false
+  examples:
+  - label: Default
+    props:
+      label: EmptyCart

@@ -1,32 +1,131 @@
 <h1>HotwireBits</h1>
-<p>The most comprehensive free UI component library for Ruby on Rails. 190+ components styled with Tailwind CSS v4, interactive with Stimulus, and Turbo-compatible.</p>
-<div style="margin: 1.5rem 0;">
-  <code style="background: var(--hw-muted); padding: 0.75rem 1rem; border-radius: 0.5rem; display: block; font-size: 0.875rem;">
-    gem "hotwirebits"
-  </code>
+<p class="hw-description">The most comprehensive free UI component library for Ruby on Rails. 240+ components styled with Tailwind CSS v4, interactive with Stimulus, and Turbo-compatible.</p>
+<!-- Feature cards (Vercel style) -->
+<div class="hw-feature-grid">
+  <div class="hw-feature-card">
+    <div class="hw-hero-card-icon">◆</div>
+    <h3>240+ Components</h3>
+    <p>Every component you need — from buttons to kanban boards, all free and open source.</p>
+  </div>
+  <div class="hw-feature-card">
+    <div class="hw-hero-card-icon">⚡</div>
+    <h3>40 Stimulus Controllers</h3>
+    <p>Interactive components powered by Hotwire's Stimulus.js — no React, no Vue, just Rails.</p>
+  </div>
+  <div class="hw-feature-card">
+    <div class="hw-hero-card-icon">🎨</div>
+    <h3>Tailwind CSS v4</h3>
+    <p>CSS-first configuration with custom properties for theming. Dark mode included.</p>
+  </div>
+  <div class="hw-feature-card">
+    <div class="hw-hero-card-icon">📋</div>
+    <h3>Copy-Paste or Gem</h3>
+    <p>Use the CLI to copy components or install the gem. Your choice, full control.</p>
+  </div>
+  <div class="hw-feature-card">
+    <div class="hw-hero-card-icon">🚀</div>
+    <h3>Turbo Compatible</h3>
+    <p>Built for Turbo Drive, Turbo Frames, Turbo Streams, and Turbo Native.</p>
+  </div>
+  <div class="hw-feature-card">
+    <div class="hw-hero-card-icon">💎</div>
+    <h3>100% Free</h3>
+    <p>MIT licensed. No premium tier, no paywall. Every component is free forever.</p>
+  </div>
 </div>
-<h2>Component Categories</h2>
-<div class="hero-grid">
+<!-- Installation -->
+<h2>Installation</h2>
+<div class="hw-install-tabs">
+  <button class="hw-install-tab active" onclick="switchInstall('gem')">Gem</button>
+  <button class="hw-install-tab" onclick="switchInstall('cli')">CLI</button>
+  <button class="hw-install-tab" onclick="switchInstall('manual')">Manual</button>
+</div>
+<div id="install-gem" class="hw-code-block">
+  <div class="hw-code-header">
+    <span class="hw-code-lang">ruby</span>
+    <button class="hw-code-copy">Copy</button>
+  </div>
+  <div class="hw-code-body">
+    <pre><code><span class="cmt"># Gemfile</span>
+gem <span class="str">"hotwirebits"</span></code></pre>
+  </div>
+</div>
+<div id="install-cli" class="hw-code-block" style="display:none">
+  <div class="hw-code-header">
+    <span class="hw-code-lang">bash</span>
+    <button class="hw-code-copy">Copy</button>
+  </div>
+  <div class="hw-code-body">
+    <pre><code>gem install hotwirebits_cli
+hotwirebits init
+hotwirebits add button card alert</code></pre>
+  </div>
+</div>
+<div id="install-manual" class="hw-code-block" style="display:none">
+  <div class="hw-code-header">
+    <span class="hw-code-lang">bash</span>
+    <button class="hw-code-copy">Copy</button>
+  </div>
+  <div class="hw-code-body">
+    <pre><code>bundle install
+rails generate hotwirebits:install</code></pre>
+  </div>
+</div>
+<!-- Categories -->
+<h2>Components</h2>
+<div class="hw-hero-grid">
   <% @categories.each do |key, name| %>
-    <a href="/<%= key %>" class="hero-card">
+    <a href="/<%= key %>" class="hw-hero-card">
       <h3><%= name %></h3>
-      <p class="hero-card-count"><%= @components.count { |_, v| v["category"] == key } %> components</p>
+      <p class="count"><%= @components.count { |_, v| v["category"] == key } %> components</p>
     </a>
   <% end %>
 </div>
-<h2>Quick Start</h2>
-<div class="code-block">
-  <button class="copy-btn" onclick="navigator.clipboard.writeText('# Gemfile\ngem \'hotwirebits\'')">Copy</button>
-  <span class="comment"># Gemfile</span>
-  gem <span class="string">"hotwirebits"</span>
-</div>
-<div class="code-block">
-  <button class="copy-btn" onclick="navigator.clipboard.writeText('bundle install\nrails generate hotwirebits:install')">Copy</button>
-  bundle install
-  rails generate hotwirebits:install
-</div>
+<!-- Usage -->
 <h2>Usage</h2>
-<div class="code-block">
-  <span class="comment">&lt;%# ERB View %&gt;</span>
-  &lt;%= render <span class="keyword">HotwireBits::ButtonComponent</span>.new(label: <span class="string">"Click me"</span>, variant: <span class="string">:primary</span>) %&gt;
+<div class="hw-tab-group">
+  <div class="hw-tabs">
+    <button class="hw-tab active" data-tab="usage-ruby">Ruby</button>
+    <button class="hw-tab" data-tab="usage-erb">ERB</button>
+  </div>
+  <div id="usage-ruby" class="hw-tab-content active">
+    <div class="hw-code-block">
+      <div class="hw-code-header">
+        <span class="hw-code-lang">ruby</span>
+        <button class="hw-code-copy">Copy</button>
+      </div>
+      <div class="hw-code-body">
+        <pre><code><span class="cmt"># app/views/pages/index.html.erb</span>
+&lt;%= render <span class="cls">HotwireBits::ButtonComponent</span>.new(
+  label: <span class="str">"Click me"</span>,
+  variant: <span class="sym">:primary</span>,
+  size: <span class="sym">:lg</span>
+) %&gt;</code></pre>
+      </div>
+    </div>
+  </div>
+  <div id="usage-erb" class="hw-tab-content">
+    <div class="hw-code-block">
+      <div class="hw-code-header">
+        <span class="hw-code-lang">erb</span>
+        <button class="hw-code-copy">Copy</button>
+      </div>
+      <div class="hw-code-body">
+        <pre><code><span class="cmt">&lt;%# Partial: app/views/hotwirebits/_button.html.erb %&gt;</span>
+&lt;button type=<span class="str">"button"</span> class=<span class="str">"hw-button hw-button-primary hw-button-lg"</span>&gt;
+  Click me
+&lt;/button&gt;</code></pre>
+      </div>
+    </div>
+  </div>
 </div>
+<script>
+  function switchInstall(type){
+    ['gem','cli','manual'].forEach(t=>{
+      document.getElementById('install-'+t).style.display=t===type?'block':'none';
+    });
+    document.querySelectorAll('.hw-install-tab').forEach((btn,i)=>{
+      btn.classList.toggle('active',['gem','cli','manual'][i]===type);
+    });
+  }
+</script>
