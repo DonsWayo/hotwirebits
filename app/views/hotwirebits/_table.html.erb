@@ -1,0 +1,14 @@
+<%# Table partial - local variables: class %>
+<%
+  extra_class ||= local_assigns[:class]
+
+  classes = [
+    'w-full caption-bottom text-sm',
+    extra_class
+  ].compact.join(' ')
+%>
+<div class="relative w-full overflow-auto">
+  <table class="<%= classes %>">
+    <%= yield if block_given? %>
+  </table>
+</div>

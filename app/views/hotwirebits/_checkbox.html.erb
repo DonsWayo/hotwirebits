@@ -1,0 +1,37 @@
+<%# Checkbox partial - local variables: name, value, checked, indeterminate, disabled, label, size, error, class %>
+<%
+  name ||= local_assigns[:name]
+  value ||= local_assigns[:value]
+  checked ||= local_assigns[:checked] || false
+  indeterminate ||= local_assigns[:indeterminate] || false
+  disabled ||= local_assigns[:disabled] || false
+  label ||= local_assigns[:label]
+  size ||= local_assigns[:size] || :md
+  error ||= local_assigns[:error] || false
+  extra_class ||= local_assigns[:class]
+
+  size_map = { sm: 'h-3.5 w-3.5', md: 'h-4 w-4', lg: 'h-5 w-5' }
+  input_size = size_map[size.to_sym] || size_map[:md]
+  text_sizes = { sm: 'text-xs', md: 'text-sm', lg: 'text-base' }
+  text_size = text_sizes[size.to_sym] || text_sizes[:md]
+
+  error_classes = error ? 'border-hw-destructive' : 'border-hw-input'
+
+  input_classes = [
+    'peer shrink-0 rounded-sm border bg-hw-background ring-offset-hw-background',
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2',
+    'disabled:cursor-not-allowed disabled:opacity-50',
+    'checked:bg-hw-primary checked:border-hw-primary',
+    error_classes,
+    input_size
+  ].compact.join(' ')
+%>
+<label class="flex items-center gap-2 cursor-pointer <%= extra_class %>">
+  <input type="checkbox" name="<%= name %>" value="<%= value %>" <%= 'checked' if checked || indeterminate %> <%= 'disabled' if disabled %> class="<%= input_classes %>">
+  <span class="pointer-events-none absolute inset-0 flex items-center justify-center">
+    <svg class="text-hw-primary-foreground <%= input_size %>" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+  </span>
+  <% if label %>
+    <span class="font-medium leading-none <%= text_size %> peer-disabled:cursor-not-allowed peer-disabled:opacity-70"><%= label %></span>
+  <% end %>
+</label>

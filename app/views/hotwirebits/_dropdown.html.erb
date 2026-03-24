@@ -1,0 +1,35 @@
+<%# Dropdown partial - local variables: trigger_label, items, class %>
+<%
+  trigger_label ||= local_assigns[:trigger_label]
+  items ||= local_assigns[:items] || []
+  extra_class ||= local_assigns[:class]
+
+  panel_classes = [
+    'absolute right-0 z-50 mt-2 min-w-[8rem] overflow-hidden rounded-md border border-hw-border bg-hw-popover p-1 text-hw-popover-foreground shadow-md',
+    extra_class
+  ].compact.join(' ')
+%>
+<div class="relative inline-block" data-controller="hw-dropdown">
+  <button type="button"
+          data-action="click->hw-dropdown#toggle click@window->hw-dropdown#closeOnClickOutside"
+    class="inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-hw-foreground hover:bg-hw-accent transition-colors cursor-pointer">
+    <%= yield || trigger_label %>
+    <svg class="ml-2 h-4 w-4 text-hw-muted-foreground" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+  </button>
+  <div data-hw-dropdown-target="menu" class="<%= panel_classes %> hidden">
+    <% items.each do |item| %>
+      <% if item[:separator] %>
+        <div class="-mx-1 my-1 h-px bg-hw-border"></div>
+      <% else %>
+        <a href="<%= item[:href] %>"
+           class="relative flex cursor-pointer select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none transition-colors <%= item[:destructive] ? 'text-hw-destructive hover:bg-hw-destructive/10' : 'hover:bg-hw-accent hover:text-hw-accent-foreground' %>"
+           data-action="click->hw-dropdown#close">
+          <% if item[:icon] %>
+            <span class="h-4 w-4 shrink-0"><%= item[:icon].html_safe %></span>
+          <% end %>
+          <span><%= item[:label] %></span>
+        </a>
+      <% end %>
+    <% end %>
+  </div>
+</div>

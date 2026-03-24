@@ -1,0 +1,55 @@
+<%# Hero partial - local variables: title, subtitle, primary_cta, secondary_cta, image_url, variant, class %>
+<%
+  title ||= local_assigns[:title]
+  subtitle ||= local_assigns[:subtitle]
+  primary_cta ||= local_assigns[:primary_cta]
+  secondary_cta ||= local_assigns[:secondary_cta]
+  image_url ||= local_assigns[:image_url]
+  variant ||= local_assigns[:variant] || :centered
+  extra_class ||= local_assigns[:class]
+
+  container_classes = [
+    'py-12 md:py-24 lg:py-32',
+    extra_class
+  ].compact.join(' ')
+
+  inner_classes = case variant.to_sym
+                 when :split then 'mx-auto flex max-w-screen-xl flex-col items-center gap-8 px-4 md:flex-row'
+                 else 'mx-auto flex max-w-screen-xl flex-col items-center gap-8 px-4 text-center'
+                 end
+%>
+<section class="<%= container_classes %>">
+  <div class="<%= inner_classes %>">
+    <div class="flex flex-col gap-4 <%= 'md:max-w-xl' if variant.to_sym == :split %>">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-hw-foreground">
+        <%= title %>
+      </h1>
+      <% if subtitle %>
+        <p class="text-lg md:text-xl text-hw-muted-foreground max-w-2xl">
+          <%= subtitle %>
+        </p>
+      <% end %>
+      <% if primary_cta || secondary_cta %>
+        <div class="flex flex-wrap gap-3 mt-2 <%= 'justify-center' unless variant.to_sym == :split %>">
+          <% if primary_cta %>
+            <a href="<%= primary_cta[:href] %>"
+               class="inline-flex items-center justify-center rounded-lg bg-hw-primary text-hw-primary-foreground h-11 px-6 text-sm font-medium shadow-sm hover:bg-hw-primary/90 transition-colors">
+              <%= primary_cta[:label] %>
+            </a>
+          <% end %>
+          <% if secondary_cta %>
+            <a href="<%= secondary_cta[:href] %>"
+               class="inline-flex items-center justify-center rounded-lg border border-hw-border bg-hw-background h-11 px-6 text-sm font-medium text-hw-foreground hover:bg-hw-muted transition-colors">
+              <%= secondary_cta[:label] %>
+            </a>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <% if image_url %>
+      <div class="mt-8 md:mt-0 w-full <%= variant.to_sym == :split ? 'md:w-1/2' : 'max-w-3xl' %>">
+        <img src="<%= image_url %>" alt="" class="rounded-xl shadow-lg w-full object-cover">
+      </div>
+    <% end %>
+  </div>
+</section>

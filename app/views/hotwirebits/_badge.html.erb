@@ -1,0 +1,46 @@
+<%# Badge partial - local variables: label, variant, size, dot, removable, class %>
+<%
+  label ||= local_assigns[:label]
+  variant ||= local_assigns[:variant] || :default
+  size ||= local_assigns[:size] || :md
+  dot ||= local_assigns[:dot] || false
+  removable ||= local_assigns[:removable] || false
+  extra_class ||= local_assigns[:class]
+
+  variant_classes = {
+    default: 'border-transparent bg-hw-primary text-hw-primary-foreground',
+    secondary: 'border-transparent bg-hw-secondary text-hw-secondary-foreground',
+    destructive: 'border-transparent bg-hw-destructive text-hw-destructive-foreground',
+    outline: 'text-hw-foreground',
+    success: 'border-transparent bg-hw-success text-hw-success-foreground',
+    warning: 'border-transparent bg-hw-warning text-hw-warning-foreground',
+    info: 'border-transparent bg-hw-info text-hw-info-foreground'
+  }
+
+  size_classes = {
+    sm: 'px-1.5 py-0 text-[10px]',
+    md: 'px-2.5 py-0.5 text-xs',
+    lg: 'px-3 py-1 text-sm'
+  }
+
+  classes = [
+    'inline-flex items-center rounded-full border font-semibold transition-colors',
+    'focus:outline-none focus:ring-2 focus:ring-hw-ring focus:ring-offset-2',
+    variant_classes[variant.to_sym] || variant_classes[:default],
+    size_classes[size.to_sym] || size_classes[:md],
+    extra_class
+  ].compact.join(' ')
+%>
+<div class="<%= classes %>">
+  <% if dot %>
+    <span class="h-1.5 w-1.5 rounded-full bg-current mr-1"></span>
+  <% end %>
+  <%= yield || label %>
+  <% if removable %>
+    <button type="button" class="ml-1 -mr-0.5 h-3.5 w-3.5 rounded-full p-0.5 hover:bg-white/20 focus:outline-none" data-action="click->hw-badge#dismiss">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-2.5 w-2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  <% end %>
+</div>

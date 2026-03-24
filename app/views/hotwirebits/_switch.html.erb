@@ -1,0 +1,41 @@
+<%# Switch partial - local variables: name, checked, disabled, label, size, class %>
+<%
+  name ||= local_assigns[:name]
+  checked ||= local_assigns[:checked] || false
+  disabled ||= local_assigns[:disabled] || false
+  label ||= local_assigns[:label]
+  size ||= local_assigns[:size] || :md
+  extra_class ||= local_assigns[:class]
+
+  size_configs = {
+    sm: { track: 'h-5 w-9', thumb: 'h-4 w-4', translate_off: 'translate-x-0', translate_on: 'translate-x-4' },
+    md: { track: 'h-6 w-11', thumb: 'h-5 w-5', translate_off: 'translate-x-0', translate_on: 'translate-x-5' },
+    lg: { track: 'h-7 w-[52px]', thumb: 'h-6 w-6', translate_off: 'translate-x-0', translate_on: 'translate-x-6' }
+  }
+
+  config = size_configs[size.to_sym] || size_configs[:md]
+
+  track_classes = [
+    'peer inline-flex shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent',
+    'transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring',
+    'focus-visible:ring-offset-2 focus-visible:ring-offset-hw-background disabled:cursor-not-allowed disabled:opacity-50',
+    'bg-hw-input',
+    checked ? 'bg-hw-primary' : '',
+    config[:track]
+  ].compact.join(' ')
+
+  thumb_classes = [
+    'pointer-events-none block rounded-full bg-hw-background shadow-lg ring-0 transition-transform',
+    checked ? config[:translate_on] : config[:translate_off],
+    config[:thumb]
+  ].compact.join(' ')
+%>
+<label class="flex items-center gap-2 cursor-pointer <%= extra_class %>">
+  <input type="hidden" name="<%= name %>" value="0">
+  <button type="button" role="switch" aria-checked="<%= checked %>" <%= 'disabled' if disabled %> class="<%= track_classes %>" data-action="click->hw-switch#toggle">
+    <span class="<%= thumb_classes %>"></span>
+  </button>
+  <% if label %>
+    <span class="text-sm font-medium"><%= label %></span>
+  <% end %>
+</label>

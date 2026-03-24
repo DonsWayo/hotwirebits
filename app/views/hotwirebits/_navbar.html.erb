@@ -1,0 +1,35 @@
+<%# Navbar partial - local variables: brand, items, sticky, class %>
+<%
+  brand ||= local_assigns[:brand]
+  items ||= local_assigns[:items] || []
+  sticky ||= local_assigns[:sticky] || false
+  extra_class ||= local_assigns[:class]
+
+  nav_classes = [
+    'border-b border-hw-border bg-hw-background',
+    sticky ? 'sticky top-0 z-40' : '',
+    extra_class
+  ].compact.join(' ')
+%>
+<nav class="<%= nav_classes %>">
+  <div class="mx-auto flex h-14 max-w-screen-xl items-center px-4">
+    <% if brand %>
+      <a href="/" class="mr-6 flex items-center space-x-2 font-semibold text-hw-foreground">
+        <%= brand %>
+      </a>
+    <% end %>
+    <% if items.any? %>
+      <nav class="flex items-center gap-6 text-sm">
+        <% items.each do |item| %>
+          <a href="<%= item[:href] %>"
+             class="transition-colors hover:text-hw-foreground <%= item[:active] ? 'text-hw-foreground font-medium' : 'text-hw-muted-foreground' %>">
+            <%= item[:label] %>
+          </a>
+        <% end %>
+      </nav>
+    <% end %>
+    <div class="flex flex-1 items-center justify-end gap-2">
+      <%= yield if block_given? %>
+    </div>
+  </div>
+</nav>

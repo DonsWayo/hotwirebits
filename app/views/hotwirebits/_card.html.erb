@@ -1,0 +1,26 @@
+<%# Card partial - local variables: title, description, class %>
+<%
+  title ||= local_assigns[:title]
+  description ||= local_assigns[:description]
+  extra_class ||= local_assigns[:class]
+
+  card_classes = [
+    'rounded-lg border border-hw-border bg-hw-card text-hw-card-foreground shadow-sm',
+    extra_class
+  ].compact.join(' ')
+%>
+<div class="<%= card_classes %>">
+  <% if title || description %>
+    <div class="flex flex-col space-y-1.5 p-6">
+      <% if title %>
+        <h3 class="text-lg font-semibold leading-none tracking-tight"><%= title %></h3>
+      <% end %>
+      <% if description %>
+        <p class="text-sm text-hw-muted-foreground"><%= description %></p>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="p-6 pt-0">
+    <%= yield if block_given? %>
+  </div>
+</div>

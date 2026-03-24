@@ -1,0 +1,36 @@
+<%# Progress partial - local variables: value, max, size, color, show_label, animated, class %>
+<%
+  value ||= local_assigns[:value] || 0
+  max_val ||= local_assigns[:max] || 100
+  size ||= local_assigns[:size] || :md
+  color ||= local_assigns[:color] || :default
+  show_label ||= local_assigns[:show_label] || false
+  animated ||= local_assigns[:animated] || false
+  extra_class ||= local_assigns[:class]
+
+  percentage = max_val.zero? ? 0 : [(value.to_f / max_val * 100).round, 100].min
+
+  size_classes = { sm: 'h-1.5', md: 'h-2.5', lg: 'h-4' }
+  color_classes = { default: 'bg-hw-primary', success: 'bg-hw-success', warning: 'bg-hw-warning', destructive: 'bg-hw-destructive' }
+
+  track_classes = [
+    'w-full overflow-hidden rounded-full bg-hw-muted',
+    size_classes[size.to_sym] || size_classes[:md]
+  ].compact.join(' ')
+
+  bar_classes = [
+    'h-full rounded-full transition-all duration-300',
+    color_classes[color.to_sym] || color_classes[:default],
+    animated ? 'animate-pulse' : ''
+  ].compact.join(' ')
+%>
+<div class="<%= extra_class %>">
+  <div class="flex items-center justify-between mb-1">
+    <% if show_label %>
+      <span class="text-sm font-medium"><%= percentage %>%</span>
+    <% end %>
+  </div>
+  <div class="<%= track_classes %>">
+    <div class="<%= bar_classes %>" style="width: <%= percentage %>%;"></div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<%# Toast partial - local variables: title, description, type, duration, action, class %>
+<%
+  title ||= local_assigns[:title]
+  description ||= local_assigns[:description]
+  toast_type ||= local_assigns[:type] || :info
+  duration ||= local_assigns[:duration] || 5000
+  toast_action ||= local_assigns[:action]
+  extra_class ||= local_assigns[:class]
+
+  type_configs = {
+    success: { bg: 'border-hw-success/30', icon: 'text-hw-success' },
+    error: { bg: 'border-hw-destructive/30', icon: 'text-hw-destructive' },
+    warning: { bg: 'border-hw-warning/30', icon: 'text-hw-warning' },
+    info: { bg: 'border-hw-info/30', icon: 'text-hw-info' }
+  }
+
+  icon_svgs = {
+    success: '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>',
+    error: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/>',
+    warning: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/>',
+    info: '<path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"/>'
+  }
+
+  config = type_configs[toast_type.to_sym] || type_configs[:info]
+
+  toast_classes = [
+    'pointer-events-auto relative flex w-full items-center justify-between space-x-4 overflow-hidden rounded-md border p-4 pr-8 shadow-lg transition-all',
+    config[:bg],
+    'bg-hw-background',
+    extra_class
+  ].compact.join(' ')
+%>
+<div data-controller="hw-toast" data-hw-toast-duration-value="<%= duration %>" class="group pointer-events-auto">
+  <div class="<%= toast_classes %>">
+    <div class="flex items-start gap-3">
+      <svg class="h-5 w-5 shrink-0 <%= config[:icon] %>" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <%= (icon_svgs[toast_type.to_sym] || icon_svgs[:info]).html_safe %>
+      </svg>
+      <div class="grid gap-1">
+        <% if title %>
+          <div class="text-sm font-semibold"><%= title %></div>
+        <% end %>
+        <% if description %>
+          <div class="text-sm opacity-90 text-hw-muted-foreground"><%= description %></div>
+        <% end %>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <% if toast_action %>
+        <a href="<%= toast_action[:url] %>"
+           class="inline-flex h-8 shrink-0 items-center justify-center rounded-md border border-hw-border bg-transparent px-3 text-sm font-medium ring-offset-hw-background transition-colors hover:bg-hw-secondary focus:outline-none focus:ring-2 focus:ring-hw-ring focus:ring-offset-2">
+          <%= toast_action[:label] %>
+        </a>
+      <% end %>
+      <button type="button"
+              class="absolute right-1 top-1 rounded-md p-1 text-hw-foreground/50 opacity-0 transition-opacity hover:text-hw-foreground focus:opacity-100 focus:outline-none focus:ring-2 group-hover:opacity-100"
+              data-action="click->hw-toast#dismiss">
+        <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>

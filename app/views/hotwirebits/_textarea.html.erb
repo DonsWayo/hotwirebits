@@ -1,0 +1,29 @@
+<%# Textarea partial - local variables: name, value, placeholder, rows, max_length, disabled, readonly, required, error, resize, class %>
+<%
+  name ||= local_assigns[:name]
+  value ||= local_assigns[:value]
+  placeholder ||= local_assigns[:placeholder]
+  rows ||= local_assigns[:rows] || 3
+  max_length ||= local_assigns[:max_length]
+  disabled ||= local_assigns[:disabled] || false
+  readonly ||= local_assigns[:readonly] || false
+  required ||= local_assigns[:required] || false
+  error ||= local_assigns[:error] || false
+  resize ||= local_assigns[:resize]
+  resize = true if resize.nil?
+  extra_class ||= local_assigns[:class]
+
+  error_classes = error ? 'border-hw-destructive focus-visible:ring-hw-destructive' : 'border-hw-input focus-visible:ring-hw-ring'
+  resize_class = resize ? '' : 'resize-none'
+
+  classes = [
+    'flex min-h-[60px] w-full rounded-md border bg-hw-background px-3 py-2 text-sm text-hw-foreground',
+    'ring-offset-hw-background placeholder:text-hw-muted-foreground',
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
+    'disabled:cursor-not-allowed disabled:opacity-50',
+    resize_class,
+    error_classes,
+    extra_class
+  ].compact.join(' ')
+%>
+<textarea name="<%= name %>" placeholder="<%= placeholder %>" rows="<%= rows %>" <%= 'disabled' if disabled %> <%= 'readonly' if readonly %> <%= 'required' if required %> <%= "maxlength=\"#{max_length}\"" if max_length %> class="<%= classes %>"><%= value %></textarea>

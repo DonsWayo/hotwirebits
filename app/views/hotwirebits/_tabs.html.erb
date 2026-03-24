@@ -1,0 +1,57 @@
+<%# Tabs partial - local variables: tabs, variant, active_tab, class %>
+<%
+  tabs ||= local_assigns[:tabs] || []
+  variant ||= local_assigns[:variant] || :underline
+  active_tab ||= local_assigns[:active_tab] || (tabs.first && tabs.first[:id])
+  extra_class ||= local_assigns[:class]
+
+  container_classes = variant.to_sym == :enclosed ? 'rounded-md border border-hw-border p-1' : ''
+
+  list_base = 'flex'
+  list_base += ' gap-1' if [:pill, :enclosed].include?(variant.to_sym)
+  list_base += ' border-b border-hw-border' if variant.to_sym == :underline
+
+  def tab_classes_for(active, variant)
+    base = 'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring'
+    case variant.to_sym
+    when :underline
+      [base, '-mb-px border-b-2', active ? 'border-hw-primary text-hw-foreground' : 'border-transparent text-hw-muted-foreground hover:text-hw-foreground hover:border-hw-border'].join(' ')
+    when :pill
+      [base, active ? 'bg-hw-primary text-hw-primary-foreground' : 'text-hw-muted-foreground hover:bg-hw-accent hover:text-hw-accent-foreground'].join(' ')
+    when :enclosed
+      [base, active ? 'bg-hw-background text-hw-foreground shadow-sm' : 'text-hw-muted-foreground hover:text-hw-foreground'].join(' ')
+    else
+      base
+    end
+  end
+%>
+<div class="<%= container_classes %> <%= extra_class %>" data-controller="hw-tabs" data-hw-tabs-active-value="<%= active_tab %>">
+  <div role="tablist" class="<%= list_base %>">
+    <% tabs.each do |tab| %>
+      <button type="button"
+              role="tab"
+              id="tab-<%= tab[:id] %>"
+              data-hw-tabs-target="tab"
+              data-action="click->hw-tabs#select"
+        data-tab-id="<%= tab[:id] %>"
+        aria-controls="panel-<%= tab[:id] %>"
+        aria-selected="<%= tab[:id] == active_tab %>"
+        class="<%= tab_classes_for(tab[:id] == active_tab, variant) %>">
+        <% if tab[:icon] %>
+          <span class="h-4 w-4"><%= tab[:icon].html_safe %></span>
+        <% end %>
+        <%= tab[:label] %>
+      </button>
+    <% end %>
+  </div>
+  <% tabs.each do |tab| %>
+    <div role="tabpanel"
+         id="panel-<%= tab[:id] %>"
+         data-hw-tabs-target="panel"
+         data-tab-id="<%= tab[:id] %>"
+         aria-labelledby="tab-<%= tab[:id] %>"
+         class="<%= tab[:id] == active_tab ? '' : 'hidden' %> pt-4">
+      <%= tab[:content] if tab[:content] %>
+    </div>
+  <% end %>
+</div>
