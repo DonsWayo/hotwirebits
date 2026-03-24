@@ -1,0 +1,40 @@
+<div class="space-y-0" <%= tag.attributes(@extra_attrs) %>>
+  <div class="relative">
+    <div class="absolute left-4 top-0 bottom-0 w-px bg-hw-border"></div>
+    <div class="space-y-6">
+      <% @items.each do |item| %>
+        <div class="relative flex gap-4 pl-10">
+          <div class="absolute left-0 top-0">
+            <% if item[:avatar] %>
+              <img src="<%= item[:avatar] %>" alt="<%= item[:actor] %>" class="h-8 w-8 rounded-full object-cover border-2 border-hw-background">
+            <% else %>
+              <div class="h-8 w-8 rounded-full bg-hw-muted flex items-center justify-center text-xs font-medium text-hw-muted-foreground border-2 border-hw-background">
+                <%= item[:actor]&.chars&.first&.upcase %>
+              </div>
+            <% end %>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm text-hw-foreground">
+              <span class="font-medium"><%= item[:actor] %></span>
+              <span class="text-hw-muted-foreground"> <%= item[:action] %> </span>
+              <span class="font-medium"><%= item[:target] %></span>
+            </p>
+            <% if item[:time] %>
+              <p class="mt-0.5 text-xs text-hw-muted-foreground"><%= item[:time] %></p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <% if @load_more %>
+    <div class="pt-4 text-center">
+      <button type="button"
+              class="inline-flex h-8 items-center justify-center rounded-md border border-hw-input bg-hw-background px-4 text-xs font-medium text-hw-foreground hover:bg-hw-accent transition-colors cursor-pointer"
+              data-controller="hw-activity-feed"
+              data-action="click->hw-activity-feed#loadMore">
+        Load more
+      </button>
+    </div>
+  <% end %>
+</div>

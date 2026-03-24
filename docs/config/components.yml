@@ -1075,3 +1075,180 @@ month-picker-input:
   name: MonthPickerInput
   category: forms
   description: Month picker input field.
+
+# === BATCH 3 (240 TARGET) ===
+
+password-toggle:
+  name: PasswordToggle
+  category: forms
+  description: Password visibility toggle button.
+
+rich-text-editor:
+  name: RichTextEditor
+  category: forms
+  description: Rich text editor with toolbar.
+
+drag-drop-list:
+  name: DragDropList
+  category: advanced
+  description: Drag and drop sortable list.
+
+inline-edit:
+  name: InlineEdit
+  category: data-display
+  description: Click to edit inline display.
+
+stepper-form:
+  name: StepperForm
+  category: navigation
+  description: Multi-step form with step indicators.
+
+permission-badge:
+  name: PermissionBadge
+  category: primitives
+  description: Role and permission badge.
+
+notification-bell:
+  name: NotificationBell
+  category: navigation
+  description: Bell icon with notification count.
+
+social-share:
+  name: SocialShare
+  category: marketing
+  description: Social sharing buttons.
+
+like-button:
+  name: LikeButton
+  category: primitives
+  description: Like and heart button with count.
+
+version-diff:
+  name: VersionDiff
+  category: data-display
+  description: Code diff viewer.
+
+digital-signature:
+  name: DigitalSignature
+  category: forms
+  description: Signature pad for drawing signatures.
+
+split-button:
+  name: SplitButton
+  category: primitives
+  description: Button with dropdown actions.
+
+color-input:
+  name: ColorInput
+  category: forms
+  description: Color input with hex text field.
+
+date-range-picker:
+  name: DateRangePicker
+  category: forms
+  description: Date range selection picker.
+
+file-upload-progress:
+  name: FileUploadProgress
+  category: feedback
+  description: File upload with progress indicator.
+
+image-zoom:
+  name: ImageZoom
+  category: advanced
+  description: Image with zoom on hover.
+
+product-quickview:
+  name: ProductQuickview
+  category: marketing
+  description: Product quick view modal.
+
+cookie-settings:
+  name: CookieSettings
+  category: marketing
+  description: Cookie preference manager.
+
+theme-selector:
+  name: ThemeSelector
+  category: primitives
+  description: Theme picker dropdown.
+
+device-frame:
+  name: DeviceFrame
+  category: layout
+  description: Generic device frame mockup.
+
+browser-mockup:
+  name: BrowserMockup
+  category: layout
+  description: Browser window mockup.
+
+phone-mockup:
+  name: PhoneMockup
+  category: layout
+  description: Phone device mockup.
+
+window-mockup:
+  name: WindowMockup
+  category: layout
+  description: Desktop window mockup.
+
+code-mockup:
+  name: CodeMockup
+  category: data-display
+  description: Code editor mockup display.
+
+text-gradient:
+  name: TextGradient
+  category: primitives
+  description: Gradient text effect.
+
+typing-indicator:
+  name: TypingIndicator
+  category: feedback
+  description: Typing animation dots.
+
+voice-recorder:
+  name: VoiceRecorder
+  category: forms
+  description: Voice recording button.
+
+ai-chat:
+  name: AiChat
+  category: advanced
+  description: Chat interface for AI conversations.
+
+file-browser:
+  name: FileBrowser
+  category: navigation
+  description: File tree browser.
+
+dashboard-card:
+  name: DashboardCard
+  category: data-display
+  description: Dashboard stat card with trend.
+
+activity-feed:
+  name: ActivityFeed
+  category: data-display
+  description: Activity timeline feed.
+
+command-bar:
+  name: CommandBar
+  category: navigation
+  description: Top command bar with shortcuts.
+
+status-bar:
+  name: StatusBar
+  category: navigation
+  description: Bottom status bar.
+
+breadcrumb-advanced:
+  name: BreadcrumbAdvanced
+  category: navigation
+  description: Breadcrumb with dropdown support.
+
+empty-cart:
+  name: EmptyCart
+  category: marketing
+  description: Empty shopping cart state.

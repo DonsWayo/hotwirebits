@@ -1,0 +1,55 @@
+<div data-controller="hw-stepper-form"
+     data-hw-stepper-form-current-step-value="<%= @current_step %>"
+     data-hw-stepper-form-total-steps-value="<%= total_steps %>"
+     <%= tag.attributes(@extra_attrs) %>>
+  <div class="flex items-center justify-between mb-8">
+    <% @steps.each_with_index do |step, idx| %>
+      <% state = step_state(idx) %>
+      <div class="flex items-center<%= ' flex-1' unless idx == @steps.size - 1 %>">
+        <div class="flex items-center gap-3">
+          <div class="<%= merge_classes('flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-medium transition-colors',
+            state == :completed ? 'bg-hw-primary text-hw-primary-foreground' : state == :current ? 'border-2 border-hw-primary text-hw-primary' : 'border-2 border-hw-border text-hw-muted-foreground') %>">
+            <% if state == :completed %>
+              <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <% else %>
+              <%= idx + 1 %>
+            <% end %>
+          </div>
+          <span class="text-sm font-medium <%= state == :pending ? 'text-hw-muted-foreground' : 'text-hw-foreground' %>"><%= step[:label] %></span>
+        </div>
+        <% unless idx == @steps.size - 1 %>
+          <div class="flex-1 mx-4 h-0.5 <%= idx < @current_step ? 'bg-hw-primary' : 'bg-hw-border' %>"></div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="min-h-[200px]">
+    <% @steps.each_with_index do |step, idx| %>
+      <div data-hw-stepper-form-target="stepPanel"
+           class="<%= idx == @current_step ? '' : 'hidden' %>">
+        <%= step[:content] %>
+      </div>
+    <% end %>
+  </div>
+  <div class="flex items-center justify-between mt-6 pt-6 border-t border-hw-border">
+    <button type="button"
+            class="inline-flex h-9 items-center justify-center rounded-md border border-hw-input bg-hw-background px-4 text-sm font-medium text-hw-foreground hover:bg-hw-accent transition-colors cursor-pointer disabled:pointer-events-none disabled:opacity-50"
+            data-hw-stepper-form-target="prevBtn"
+            data-action="click->hw-stepper-form#prev"
+      <%= @current_step == 0 ? 'disabled' : '' %>>
+      Previous
+    </button>
+    <% if @current_step == total_steps - 1 %>
+      <button type="submit"
+              class="inline-flex h-9 items-center justify-center rounded-md bg-hw-primary px-4 text-sm font-medium text-hw-primary-foreground hover:bg-hw-primary/90 transition-colors cursor-pointer">
+        <%= @submit_label %>
+      </button>
+    <% else %>
+      <button type="button"
+              class="inline-flex h-9 items-center justify-center rounded-md bg-hw-primary px-4 text-sm font-medium text-hw-primary-foreground hover:bg-hw-primary/90 transition-colors cursor-pointer"
+              data-action="click->hw-stepper-form#next">
+        Next
+      </button>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div data-controller="hw-signature"
+     data-hw-signature-pen-color-value="<%= @pen_color %>"
+     data-hw-signature-pen-width-value="<%= @pen_width %>"
+     <%= tag.attributes(@extra_attrs) %>>
+  <div class="rounded-lg border border-hw-border bg-hw-background overflow-hidden">
+    <canvas data-hw-signature-target="canvas"
+            width="<%= @width %>"
+            height="<%= @height %>"
+            class="w-full cursor-crosshair touch-none"
+            data-action="mousedown->hw-signature#startDraw mousemove->hw-signature#draw mouseup->hw-signature#endDraw mouseleave->hw-signature#endDraw touchstart->hw-signature#startDraw touchmove->hw-signature#draw touchend->hw-signature#endDraw"></canvas>
+  </div>
+  <input type="hidden" name="<%= @name %>" data-hw-signature-target="input">
+  <div class="flex items-center gap-2 mt-2">
+    <button type="button"
+            class="inline-flex h-8 items-center justify-center rounded-md border border-hw-input bg-hw-background px-3 text-xs font-medium text-hw-foreground hover:bg-hw-accent transition-colors cursor-pointer"
+            data-action="click->hw-signature#clear">
+      Clear
+    </button>
+    <span class="text-xs text-hw-muted-foreground" data-hw-signature-target="status">Draw your signature above</span>
+  </div>
+</div>

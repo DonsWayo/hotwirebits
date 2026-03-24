@@ -1,0 +1,26 @@
+<div class="rounded-lg border border-hw-border bg-hw-card p-4" <%= tag.attributes(@extra_attrs) %>>
+  <div class="flex items-center gap-3 mb-3">
+    <%= status_icon.html_safe %>
+    <div class="flex-1 min-w-0">
+      <p class="text-sm font-medium text-hw-foreground truncate"><%= @file_name %></p>
+      <p class="text-xs text-hw-muted-foreground">
+        <% case @status %>
+        <% when :complete %>
+          Upload complete
+        <% when :error %>
+          Upload failed
+        <% else %>
+          Uploading... <%= @progress %>%
+        <% end %>
+      </p>
+    </div>
+    <% unless @status == :uploading %>
+      <button type="button" class="h-7 w-7 inline-flex items-center justify-center rounded hover:bg-hw-accent text-hw-muted-foreground cursor-pointer" aria-label="Dismiss">
+        <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    <% end %>
+  </div>
+  <div class="w-full overflow-hidden rounded-full bg-hw-muted h-2">
+    <div class="h-full rounded-full transition-all duration-300 <%= bar_color %>" style="width: <%= @progress %>%;"></div>
+  </div>
+</div>

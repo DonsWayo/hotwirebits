@@ -1,0 +1,55 @@
+<div class="rounded-lg border border-hw-border bg-hw-background overflow-hidden"
+     data-controller="hw-rich-text-editor"
+     <%= tag.attributes(@extra_attrs) %>>
+  <div class="flex flex-wrap items-center gap-0.5 border-b border-hw-border bg-hw-muted/50 px-2 py-1.5">
+    <% @toolbar.each do |btn| %>
+      <% case btn %>
+      <% when 'bold' %>
+        <button type="button" class="h-8 w-8 inline-flex items-center justify-center rounded hover:bg-hw-accent text-hw-muted-foreground hover:text-hw-accent-foreground cursor-pointer" data-action="click->hw-rich-text-editor#bold" title="Bold">
+          <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 4h8a4 4 0 014 4 4 4 0 01-4 4H6z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 12h9a4 4 0 014 4 4 4 0 01-4 4H6z"/></svg>
+        </button>
+      <% when 'italic' %>
+        <button type="button" class="h-8 w-8 inline-flex items-center justify-center rounded hover:bg-hw-accent text-hw-muted-foreground hover:text-hw-accent-foreground cursor-pointer" data-action="click->hw-rich-text-editor#italic" title="Italic">
+          <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 4h4m-2 0l-4 16m0 0h4"/></svg>
+        </button>
+      <% when 'underline' %>
+        <button type="button" class="h-8 w-8 inline-flex items-center justify-center rounded hover:bg-hw-accent text-hw-muted-foreground hover:text-hw-accent-foreground cursor-pointer" data-action="click->hw-rich-text-editor#underline" title="Underline">
+          <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 4v7a5 5 0 0010 0V4M5 21h14"/></svg>
+        </button>
+      <% when 'strikethrough' %>
+        <button type="button" class="h-8 w-8 inline-flex items-center justify-center rounded hover:bg-hw-accent text-hw-muted-foreground hover:text-hw-accent-foreground cursor-pointer" data-action="click->hw-rich-text-editor#strikethrough" title="Strikethrough">
+          <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 4H9a3 3 0 00-3 3v0a3 3 0 003 3h6a3 3 0 013 3v0a3 3 0 01-3 3H8M4 12h16"/></svg>
+        </button>
+      <% when 'link' %>
+        <button type="button" class="h-8 w-8 inline-flex items-center justify-center rounded hover:bg-hw-accent text-hw-muted-foreground hover:text-hw-accent-foreground cursor-pointer" data-action="click->hw-rich-text-editor#link" title="Link">
+          <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+        </button>
+      <% when 'bullet_list' %>
+        <button type="button" class="h-8 w-8 inline-flex items-center justify-center rounded hover:bg-hw-accent text-hw-muted-foreground hover:text-hw-accent-foreground cursor-pointer" data-action="click->hw-rich-text-editor#bulletList" title="Bullet List">
+          <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      <% when 'ordered_list' %>
+        <button type="button" class="h-8 w-8 inline-flex items-center justify-center rounded hover:bg-hw-accent text-hw-muted-foreground hover:text-hw-accent-foreground cursor-pointer" data-action="click->hw-rich-text-editor#orderedList" title="Ordered List">
+          <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 6h13M7 12h13M7 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+        </button>
+      <% when 'heading' %>
+        <button type="button" class="h-8 w-8 inline-flex items-center justify-center rounded hover:bg-hw-accent text-hw-muted-foreground hover:text-hw-accent-foreground cursor-pointer" data-action="click->hw-rich-text-editor#heading" title="Heading">
+          <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 4v16M17 4v16M7 12h10"/></svg>
+        </button>
+      <% when 'quote' %>
+        <button type="button" class="h-8 w-8 inline-flex items-center justify-center rounded hover:bg-hw-accent text-hw-muted-foreground hover:text-hw-accent-foreground cursor-pointer" data-action="click->hw-rich-text-editor#quote" title="Quote">
+          <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+        </button>
+      <% when 'code' %>
+        <button type="button" class="h-8 w-8 inline-flex items-center justify-center rounded hover:bg-hw-accent text-hw-muted-foreground hover:text-hw-accent-foreground cursor-pointer" data-action="click->hw-rich-text-editor#code" title="Code">
+          <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+        </button>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="min-h-[200px] p-4 text-sm text-hw-foreground focus:outline-none"
+       contenteditable="true"
+       data-hw-rich-text-editor-target="content"
+       data-placeholder="<%= @placeholder %>"><%= @value %></div>
+  <input type="hidden" name="<%= @name %>" data-hw-rich-text-editor-target="input" value="<%= @value %>">
+</div>
