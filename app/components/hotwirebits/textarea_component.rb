@@ -17,20 +17,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.textarea(
-        name: @name,
-        placeholder: @placeholder,
-        rows: @rows,
-        disabled: @disabled,
-        readonly: @readonly,
-        required: @required,
-        maxlength: @max_length,
-        class: textarea_classes,
-        **@extra_attrs
-      ) { @value }
-    end
-
     private
 
     def textarea_classes

@@ -9,16 +9,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.fieldset(class: fieldset_classes, disabled: @disabled, **@extra_attrs) do
-        safe_join([
-          (tag.legend(class: 'text-sm font-medium text-hw-foreground') { @legend } if @legend),
-          (tag.p(@description, class: 'text-xs text-hw-muted-foreground mt-1 mb-3') if @description),
-          tag.div(class: 'space-y-3') { content }
-        ].compact)
-      end
-    end
-
     private
 
     def fieldset_classes

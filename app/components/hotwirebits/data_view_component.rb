@@ -11,15 +11,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(class: 'space-y-4', data: { controller: 'hw-data-view' }, **@extra_attrs) do
-        safe_join([
-                    toolbar_element,
-                    content_element
-                  ])
-      end
-    end
-
     private
 
     def toolbar_element

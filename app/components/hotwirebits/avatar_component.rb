@@ -29,15 +29,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(class: 'relative inline-flex', **@extra_attrs) do
-        safe_join([
-          avatar_content,
-          (status_indicator if @status)
-        ].compact)
-      end
-    end
-
     private
 
     def avatar_content

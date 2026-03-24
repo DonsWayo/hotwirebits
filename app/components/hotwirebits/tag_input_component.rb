@@ -12,24 +12,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(
-        class: wrapper_classes,
-        data: {
-          controller: 'hw-tag-input',
-          rb_tag_input_max_value: @max,
-          rb_tag_input_pattern_value: @pattern
-        },
-        **@extra_attrs
-      ) do
-        safe_join([
-                    *@value.map { |v| tag_chip(v) },
-                    input_element,
-                    *@value.map { |v| tag.input(type: 'hidden', name: "#{@name}[]", value: v) }
-                  ])
-      end
-    end
-
     private
 
     def wrapper_classes

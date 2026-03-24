@@ -21,13 +21,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      content_or_label = content || @label
-      tag.span(class: tag_classes, **@extra_attrs) do
-        safe_join([content_or_label].compact)
-      end
-    end
-
     private
 
     def tag_classes

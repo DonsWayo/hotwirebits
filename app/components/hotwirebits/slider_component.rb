@@ -15,36 +15,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(class: 'relative w-full') do
-        safe_join([
-                    (if @show_value
-                       tag.div(class: 'flex justify-between mb-2') do
-                         safe_join([
-                           tag.span(@min.to_s, class: 'text-xs text-hw-muted-foreground'),
-                           (if @show_value
-                              tag.span(@value.to_s, class: 'text-xs font-medium text-hw-foreground',
-                                                    data: { rb_slider_target: 'value' })
-                            end),
-                           tag.span(@max.to_s, class: 'text-xs text-hw-muted-foreground')
-                         ].compact)
-                       end
-                     end),
-                    tag.input(
-                      type: 'range',
-                      name: @name,
-                      value: @value,
-                      min: @min,
-                      max: @max,
-                      step: @step,
-                      disabled: @disabled,
-                      class: slider_classes,
-                      **@extra_attrs
-                    )
-                  ])
-      end
-    end
-
     private
 
     def slider_classes

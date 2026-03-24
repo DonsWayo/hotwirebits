@@ -10,19 +10,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.button(
-        type: 'button',
-        aria: { pressed: @pressed },
-        disabled: @disabled,
-        class: button_classes,
-        data: { action: 'click->hw-toggle-button#toggle' },
-        **@extra_attrs
-      ) do
-        safe_join([icon_element, (tag.span(@label) if @label)].compact)
-      end
-    end
-
     private
 
     def button_classes

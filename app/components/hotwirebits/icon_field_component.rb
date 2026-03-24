@@ -13,16 +13,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(class: 'relative', **@extra_attrs) do
-        safe_join([
-          (icon_element if @position == :left),
-          tag.div(class: input_wrapper_classes) { content },
-          (icon_element if @position == :right)
-        ].compact)
-      end
-    end
-
     private
 
     def input_wrapper_classes

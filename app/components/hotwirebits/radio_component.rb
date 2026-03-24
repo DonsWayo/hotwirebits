@@ -18,18 +18,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.label(class: 'flex items-center gap-2 cursor-pointer') do
-        safe_join([
-          input_element,
-          (if @label
-             tag.span(@label,
-                      class: 'text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70')
-           end)
-        ].compact)
-      end
-    end
-
     private
 
     def input_element

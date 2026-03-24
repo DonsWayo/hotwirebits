@@ -14,24 +14,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(class: 'relative') do
-        safe_join([
-          search_icon,
-          tag.input(
-            type: 'search',
-            name: @name,
-            value: @value,
-            placeholder: @placeholder,
-            disabled: @disabled,
-            class: input_classes,
-            **@extra_attrs
-          ),
-          (clear_button if @value && !@disabled)
-        ].compact)
-      end
-    end
-
     private
 
     def input_classes

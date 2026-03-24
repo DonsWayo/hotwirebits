@@ -15,20 +15,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(
-        class: 'relative w-full',
-        data: { controller: 'hw-range-slider', rb_range_slider_min_value: @min, rb_range_slider_max_value: @max },
-        **@extra_attrs
-      ) do
-        safe_join([
-                    track_element,
-                    input_element(:min),
-                    input_element(:max)
-                  ])
-      end
-    end
-
     private
 
     def track_element

@@ -11,26 +11,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(class: 'flex items-center gap-2', data: { controller: 'hw-otp' }) do
-        safe_join([
-                    hidden_input,
-                    *@length.times.map do |i|
-                      tag.input(
-                        type: 'text',
-                        maxlength: 1,
-                        inputmode: @numeric_only ? 'numeric' : 'text',
-                        disabled: @disabled,
-                        value: @value[i],
-                        class: input_classes,
-                        data: { action: 'input->hw-otp#input keydown->hw-otp#keydown', index: i },
-                        **@extra_attrs
-                      )
-                    end
-                  ])
-      end
-    end
-
     private
 
     def hidden_input

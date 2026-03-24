@@ -14,15 +14,5 @@ module HotwireBits
       @with_tooltip = with_tooltip
       @extra_attrs = attrs
     end
-
-    def call
-      tag.span(
-        class: merge_classes('inline-block rounded-full border border-hw-border cursor-pointer',
-                             SIZES[@size] || SIZES[:md]),
-        style: "background-color: #{@color}",
-        title: @with_tooltip ? @color : nil,
-        **@extra_attrs
-      )
-    end
   end
 end

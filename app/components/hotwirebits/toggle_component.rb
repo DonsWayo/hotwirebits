@@ -22,19 +22,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.button(
-        type: 'button',
-        aria: { pressed: @pressed },
-        disabled: @disabled,
-        class: toggle_classes,
-        data: { action: 'click->hw-toggle#toggle' },
-        **@extra_attrs
-      ) do
-        content || @label
-      end
-    end
-
     private
 
     def toggle_classes

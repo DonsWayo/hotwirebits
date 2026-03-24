@@ -11,12 +11,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(class: group_classes, role: 'group', aria: { label: 'Toggle options' }, **@extra_attrs) do
-        safe_join(@options.map { |opt| option_element(opt) })
-      end
-    end
-
     private
 
     def group_classes

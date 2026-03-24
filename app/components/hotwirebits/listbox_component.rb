@@ -11,21 +11,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(
-        class: 'rounded-md border border-hw-input bg-hw-background',
-        role: 'listbox',
-        aria: { multiselectable: @multiple },
-        data: { controller: 'hw-listbox' },
-        **@extra_attrs
-      ) do
-        safe_join([
-          *@options.map { |opt| option_element(opt) },
-          (hidden_inputs if @name)
-        ].compact)
-      end
-    end
-
     private
 
     def option_element(opt)

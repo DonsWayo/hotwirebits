@@ -20,17 +20,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(class: 'flex items-center gap-0.5', data: { controller: 'hw-rating' }) do
-        safe_join([
-                    hidden_input,
-                    *@max.times.map do |i|
-                      star_button(i + 1)
-                    end
-                  ])
-      end
-    end
-
     private
 
     def hidden_input

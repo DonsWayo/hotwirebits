@@ -10,19 +10,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(
-        class: 'rounded-lg border border-hw-border bg-hw-card',
-        data: { controller: 'hw-panel', rb_panel_collapsed_value: @collapsed },
-        **@extra_attrs
-      ) do
-        safe_join([
-                    header_element,
-                    content_element
-                  ])
-      end
-    end
-
     private
 
     def header_element

@@ -13,18 +13,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.input(
-        type: 'tel',
-        name: @name,
-        value: @value,
-        placeholder: @placeholder,
-        disabled: @disabled,
-        class: input_classes,
-        **@extra_attrs
-      )
-    end
-
     private
 
     def input_classes

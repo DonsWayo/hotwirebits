@@ -15,17 +15,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(class: 'relative inline-flex') do
-        safe_join([
-          content,
-          tag.div(class: indicator_classes, **@extra_attrs) do
-            block_given? ? yield : nil
-          end
-        ].compact)
-      end
-    end
-
     private
 
     def indicator_classes

@@ -26,18 +26,5 @@ module HotwireBits
       @label = label
       @extra_attrs = attrs
     end
-
-    def call
-      tag.span(class: 'inline-flex items-center gap-1.5', **@extra_attrs) do
-        safe_join([
-          tag.span(class: merge_classes(
-            'rounded-full',
-            COLORS[@status] || COLORS[:offline],
-            SIZES[@size] || SIZES[:md]
-          )),
-          (@label ? tag.span(@label, class: 'text-sm text-hw-muted-foreground') : nil)
-        ].compact)
-      end
-    end
   end
 end

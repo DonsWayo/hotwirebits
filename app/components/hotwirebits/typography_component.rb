@@ -31,11 +31,5 @@ module HotwireBits
       @as = as
       @extra_attrs = attrs
     end
-
-    def call
-      tag_name = @as || TAG_MAP[:p]
-      style_key = @as || :p
-      tag.public_send(tag_name, content, class: STYLES[style_key] || STYLES[:p], **@extra_attrs)
-    end
   end
 end

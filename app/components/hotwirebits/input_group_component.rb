@@ -9,16 +9,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(class: group_classes, **@extra_attrs) do
-        safe_join([
-          (addon_element(:before) if @addon_before),
-          content,
-          (addon_element(:after) if @addon_after)
-        ].compact)
-      end
-    end
-
     private
 
     def group_classes

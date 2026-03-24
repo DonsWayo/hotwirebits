@@ -1,75 +1,126 @@
 <nav class="hw-breadcrumbs">
-  <a href="/">Components</a>
-  <span>/</span>
+  <a href="/">Home</a>
+  <span class="sep">/</span>
   <a href="/<%= @component["category"] %>"><%= PagesController::CATEGORIES[@component["category"]] %></a>
-  <span>/</span>
+  <span class="sep">/</span>
   <span><%= @component["name"] %></span>
 </nav>
-<h1><%= @component["name"] %></h1>
-<p><%= @component["description"] %></p>
-<div class="hw-tab-group">
-  <button class="hw-tab active" data-tab="preview">Preview</button>
-  <button class="hw-tab" data-tab="ruby">Ruby</button>
-  <button class="hw-tab" data-tab="erb">ERB</button>
+<div class="hw-page-title-row">
+  <h1><%= @component["name"] %></h1>
+  <button class="hw-copy-page-btn" onclick="copyPage()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    Copy page
+  </button>
 </div>
-<div class="hw-tab-content active" id="tab-preview">
-  <div class="hw-preview">
-    <% if @component["examples"].present? %>
+<p class="hw-page-desc"><%= @component["description"] %></p>
+<!-- Preview section -->
+<h2>Preview</h2>
+<div class="hw-preview-box">
+  <% if @component["examples"].present? %>
+    <div class="hw-preview-grid">
       <% @component["examples"].each do |example| %>
-        <div class="hw-preview-label"><%= example["label"] %></div>
-        <div class="hw-preview-row">
-          <%= rb_preview(@id, example["props"] || {}) %>
+        <div class="hw-preview-card">
+          <div class="hw-preview-card-label"><%= example["label"] %></div>
+          <div class="hw-preview-card-body">
+            <%= rb_preview(@id, example["props"] || {}) %>
+          </div>
         </div>
       <% end %>
-    <% else %>
-      <div class="hw-preview-row">
-        <%= rb_preview(@id, @component["default_props"] || {}) %>
+    </div>
+  <% else %>
+    <div class="hw-preview-card">
+      <div class="hw-preview-card-body">
+        <%= rb_preview(@id, {}) %>
       </div>
-    <% end %>
-  </div>
-</div>
-<div class="hw-tab-content" id="tab-ruby">
-  <div class="hw-code-block">
-    <div class="hw-code-header">
-      <span>Ruby</span>
-      <button class="hw-code-copy" onclick="navigator.clipboard.writeText(this.closest('.hw-code-block').querySelector('.hw-code-body').textContent)">Copy</button>
     </div>
-    <pre class="hw-code-body"><%= @source_rb %></pre>
-  </div>
+  <% end %>
 </div>
-<div class="hw-tab-content" id="tab-erb">
-  <div class="hw-code-block">
+<!-- Installation -->
+<h2>Installation</h2>
+<div class="hw-install-group">
+  <div class="hw-install-tabs">
+    <button class="hw-install-tab active" onclick="switchInstall('gem')">Gem</button>
+    <button class="hw-install-tab" onclick="switchInstall('cli')">CLI</button>
+  </div>
+  <div id="install-gem" class="hw-code-block">
     <div class="hw-code-header">
-      <span>ERB</span>
-      <button class="hw-code-copy" onclick="navigator.clipboard.writeText(this.closest('.hw-code-block').querySelector('.hw-code-body').textContent)">Copy</button>
+      <span class="hw-code-lang">ruby</span>
+      <button class="hw-code-copy">Copy</button>
     </div>
-    <pre class="hw-code-body"><%= @source_erb %></pre>
+    <div class="hw-code-body">
+      <pre><code><span class="cmt"># Gemfile</span>
+gem <span class="str">"hotwirebits"</span></code></pre>
+    </div>
+  </div>
+  <div id="install-cli" class="hw-code-block" style="display:none">
+    <div class="hw-code-header">
+      <span class="hw-code-lang">bash</span>
+      <button class="hw-code-copy">Copy</button>
+    </div>
+    <div class="hw-code-body">
+      <pre><code>hotwirebits add <%= @id %></code></pre>
+    </div>
   </div>
 </div>
+<!-- Usage -->
+<h2>Usage</h2>
+<div class="hw-tab-group">
+  <div class="hw-tabs">
+    <button class="hw-tab active" data-tab="tab-ruby">Ruby</button>
+    <button class="hw-tab" data-tab="tab-erb">ERB</button>
+  </div>
+  <div id="tab-ruby" class="hw-tab-content active">
+    <div class="hw-code-block">
+      <div class="hw-code-header">
+        <span class="hw-code-lang">ruby</span>
+        <button class="hw-code-copy">Copy</button>
+      </div>
+      <div class="hw-code-body">
+        <pre><code><%= @source_rb %></code></pre>
+      </div>
+    </div>
+  </div>
+  <div id="tab-erb" class="hw-tab-content">
+    <div class="hw-code-block">
+      <div class="hw-code-header">
+        <span class="hw-code-lang">erb</span>
+        <button class="hw-code-copy">Copy</button>
+      </div>
+      <div class="hw-code-body">
+        <pre><code><%= @source_erb %></code></pre>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Props -->
 <% if @component["props"].present? %>
   <h2>Props</h2>
-  <div class="hw-props-table">
-    <%= rb_props_table(@component["props"]) %>
-  </div>
+  <%= rb_props_table(@component["props"]) %>
 <% end %>
+<!-- Examples -->
 <% if @component["examples"].present? %>
   <h2>Examples</h2>
   <% @component["examples"].each do |example| %>
-    <div class="hw-preview">
-      <div class="hw-preview-label"><%= example["label"] %></div>
-      <div class="hw-preview-row">
-        <%= rb_preview(@id, example["props"] || {}) %>
-      </div>
-      <div class="hw-code-block">
-        <div class="hw-code-header">
-          <span>Ruby</span>
-          <button class="hw-code-copy" onclick="navigator.clipboard.writeText(this.closest('.hw-code-block').querySelector('.hw-code-body').textContent)">Copy</button>
+    <h3><%= example["label"] %></h3>
+    <div class="hw-preview-box" style="margin-bottom: 0.5rem">
+      <div class="hw-preview-card">
+        <div class="hw-preview-card-body">
+          <%= rb_preview(@id, example["props"] || {}) %>
         </div>
-        <pre class="hw-code-body"><%= example["props"]&.inspect || '{}' %></pre>
+      </div>
+    </div>
+    <div class="hw-code-block">
+      <div class="hw-code-header">
+        <span class="hw-code-lang">ruby</span>
+        <button class="hw-code-copy">Copy</button>
+      </div>
+      <div class="hw-code-body">
+        <pre><code>render <span class="cls">HotwireBits::<%= @component["name"] %>Component</span>.new(<%= example["props"]&.map { |k,v| "#{k}: #{v.inspect}" }&.join(", ") %>)</code></pre>
       </div>
     </div>
   <% end %>
 <% end %>
+<!-- Prev/Next -->
 <%
   all_ids = PagesController::COMPONENTS.keys
   current_index = all_ids.index(@id)
@@ -79,26 +130,26 @@
 <% if prev_id || next_id %>
   <div class="hw-prev-next">
     <% if prev_id %>
-      <a href="/<%= prev_id %>">
-        <span>&larr;</span>
-        <span><%= PagesController::COMPONENTS[prev_id]["name"] %></span>
+      <a href="/components/<%= prev_id %>">
+        <div class="label">&larr; Previous</div>
+        <div class="name"><%= PagesController::COMPONENTS[prev_id]["name"] %></div>
       </a>
     <% end %>
     <% if next_id %>
-      <a href="/<%= next_id %>">
-        <span><%= PagesController::COMPONENTS[next_id]["name"] %></span>
-        <span>&rarr;</span>
+      <a href="/components/<%= next_id %>" style="text-align:right">
+        <div class="label">Next &rarr;</div>
+        <div class="name"><%= PagesController::COMPONENTS[next_id]["name"] %></div>
       </a>
     <% end %>
   </div>
 <% end %>
 <script>
-  document.querySelectorAll('.hw-tab').forEach(function(tab) {
-    tab.addEventListener('click', function() {
-      document.querySelectorAll('.hw-tab').forEach(function(t) { t.classList.remove('active'); });
-      document.querySelectorAll('.hw-tab-content').forEach(function(c) { c.classList.remove('active'); });
-      tab.classList.add('active');
-      document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+  function switchInstall(type){
+    ['gem','cli'].forEach(t=>{
+      document.getElementById('install-'+t).style.display=t===type?'block':'none';
     });
-  });
+    document.querySelectorAll('.hw-install-tab').forEach((btn,i)=>{
+      btn.classList.toggle('active',['gem','cli'][i]===type);
+    });
+  }
 </script>

@@ -1,91 +1,81 @@
 # frozen_string_literal: true
 
 module PreviewHelper
-  def rb_preview(component_name, props = {})
-    component_class = "HotwireBits::#{component_name.to_s.camelize}Component".safe_constantize
-    return tag.p("Component not found: #{component_name}", class: 'text-hw-muted-fg text-sm') unless component_class
+  def rb_preview(component_slug, props = {})
+    class_name = component_slug.to_s.gsub('-', '_').split('_').map(&:capitalize).join
+    file_name = component_slug.to_s.gsub('-', '_')
+    components_dir = Rails.root.join('..', 'app', 'components', 'hotwirebits')
+    component_file = components_dir.join("#{file_name}_component.rb")
 
-    begin
-      render(component_class.new(**props.symbolize_keys))
-    rescue StandardError => e
-      tag.div(class: 'p-4 rounded-lg border border-hw-border bg-hw-muted/50') do
-        safe_join([
-                    tag.p("Preview: #{component_name}", class: 'text-sm font-medium text-hw-fg mb-1'),
-                    tag.p(e.message.truncate(100), class: 'text-xs text-hw-muted-fg')
-                  ])
+    # Load Base class first if not loaded
+    unless defined?(HotwireBits::Base)
+      base_file = components_dir.join('base.rb')
+      require base_file.to_s if File.exist?(base_file)
+    end
+
+    unless File.exist?(component_file)
+      return tag.div(class: 'hw-preview') do
+        tag.span('Preview', style: 'color: var(--hw-muted-fg); font-size: 0.75rem')
       end
     end
-  end
 
-  def rb_code_block(code, language: 'ruby', label: nil)
-    tag.div(class: 'code-block-wrapper') do
-      safe_join([
-                  (tag.div(class: 'code-block-header') do
-                    safe_join([
-                      (tag.span(label, class: 'code-block-label') if label),
-                      tag.span(language.upcase, class: 'code-block-lang'),
-                      tag.button('Copy', class: 'code-block-copy',
-                                         data: { controller: 'rb-docs-copy', action: 'click->rb-docs-copy#copy' })
-                    ].compact)
-                  end),
-                  tag.pre(class: "code-block code-block-#{language}") do
-                    tag.code(syntax_highlight(code, language))
-                  end
-                ])
+    begin
+      full_class = "HotwireBits::#{class_name}Component"
+      component_class = full_class.safe_constantize
+
+      # Load the file if class not yet loaded
+      unless component_class
+        require component_file.to_s
+        component_class = full_class.safe_constantize
+      end
+
+      unless component_class
+        return tag.div(class: 'hw-preview') do
+          tag.span(class_name, style: 'color: var(--hw-muted-fg); font-size: 0.75rem')
+        end
+      end
+
+      safe_props = (props || {}).respond_to?(:symbolize_keys) ? props.symbolize_keys : (props || {})
+      render(component_class.new(**safe_props))
+    rescue StandardError => e
+      tag.div(class: 'hw-preview') do
+        tag.div do
+          safe_join([
+                      tag.p(class_name, style: 'font-size: 0.875rem; font-weight: 500; color: var(--hw-fg)'),
+                      tag.p(e.message[0..120],
+                            style: 'font-size: 0.75rem; color: var(--hw-muted-fg); margin-top: 0.25rem')
+                    ])
+        end
+      end
     end
   end
 
   def rb_props_table(props)
     return '' if props.blank?
 
-    tag.table(class: 'props-table') do
-      safe_join([
-                  tag.thead do
-                    tag.tr do
-                      safe_join([
-                                  tag.th('Prop'),
-                                  tag.th('Type'),
-                                  tag.th('Default'),
-                                  tag.th('Required')
-                                ])
-                    end
-                  end,
-                  tag.tbody do
-                    safe_join(props.map do |p|
+    tag.div(class: 'hw-props-table') do
+      tag.table do
+        safe_join([
+                    tag.thead do
                       tag.tr do
-                        safe_join([
-                                    tag.td(tag.code(p['name']), class: 'font-mono'),
-                                    tag.td(tag.code(p['type']), class: 'text-hw-muted-fg'),
-                                    tag.td(p['default'] || 'nil', class: 'text-hw-muted-fg'),
-                                    tag.td(p['required'] ? 'Yes' : 'No',
-                                           class: p['required'] ? 'text-hw-destructive' : 'text-hw-muted-fg')
-                                  ])
+                        safe_join([tag.th('Prop'), tag.th('Type'), tag.th('Default'), tag.th('Required')])
                       end
-                    end)
-                  end
-                ])
+                    end,
+                    tag.tbody do
+                      safe_join(props.map do |p|
+                        tag.tr do
+                          safe_join([
+                                      tag.td(tag.code(p['name'])),
+                                      tag.td(tag.code(p['type']), style: 'color: var(--hw-muted-fg)'),
+                                      tag.td(p['default'] || 'nil', style: 'color: var(--hw-muted-fg)'),
+                                      tag.td(p['required'] ? 'Yes' : 'No',
+                                             style: p['required'] ? 'color: var(--hw-destructive)' : 'color: var(--hw-muted-fg)')
+                                    ])
+                        end
+                      end)
+                    end
+                  ])
+      end
     end
-  end
-
-  def rb_callout(type: :info, title: nil, &block)
-    colors = {
-      info: 'border-hw-info/30 bg-hw-info/10 text-hw-info',
-      warning: 'border-hw-warning/30 bg-hw-warning/10 text-hw-warning',
-      tip: 'border-hw-success/30 bg-hw-success/10 text-hw-success',
-      danger: 'border-hw-destructive/30 bg-hw-destructive/10 text-hw-destructive'
-    }
-
-    tag.div(class: "rounded-lg border p-4 #{colors[type] || colors[:info]}") do
-      safe_join([
-        (tag.p(title, class: 'font-medium mb-1') if title),
-        tag.div(class: 'text-sm', &block)
-      ].compact)
-    end
-  end
-
-  private
-
-  def syntax_highlight(code, _language)
-    code.to_s.html_safe
   end
 end

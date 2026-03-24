@@ -1,74 +1,78 @@
-<h1>HotwireBits</h1>
-<p class="hw-description">The most comprehensive free UI component library for Ruby on Rails. 240+ components styled with Tailwind CSS v4, interactive with Stimulus, and Turbo-compatible.</p>
-<!-- Feature cards (Vercel style) -->
-<div class="hw-feature-grid">
-  <div class="hw-feature-card">
-    <div class="hw-hero-card-icon">◆</div>
-    <h3>240+ Components</h3>
-    <p>Every component you need — from buttons to kanban boards, all free and open source.</p>
-  </div>
-  <div class="hw-feature-card">
-    <div class="hw-hero-card-icon">⚡</div>
-    <h3>40 Stimulus Controllers</h3>
-    <p>Interactive components powered by Hotwire's Stimulus.js — no React, no Vue, just Rails.</p>
-  </div>
-  <div class="hw-feature-card">
-    <div class="hw-hero-card-icon">🎨</div>
-    <h3>Tailwind CSS v4</h3>
-    <p>CSS-first configuration with custom properties for theming. Dark mode included.</p>
-  </div>
-  <div class="hw-feature-card">
-    <div class="hw-hero-card-icon">📋</div>
-    <h3>Copy-Paste or Gem</h3>
-    <p>Use the CLI to copy components or install the gem. Your choice, full control.</p>
-  </div>
-  <div class="hw-feature-card">
-    <div class="hw-hero-card-icon">🚀</div>
-    <h3>Turbo Compatible</h3>
-    <p>Built for Turbo Drive, Turbo Frames, Turbo Streams, and Turbo Native.</p>
-  </div>
-  <div class="hw-feature-card">
-    <div class="hw-hero-card-icon">💎</div>
-    <h3>100% Free</h3>
-    <p>MIT licensed. No premium tier, no paywall. Every component is free forever.</p>
+<!-- Hero -->
+<div style="text-align:center;padding:2rem 0 2.5rem">
+  <h1 style="font-size:2.5rem;letter-spacing:-0.03em;margin-bottom:0.5rem">HotwireBits</h1>
+  <p style="font-size:1.125rem;color:var(--hw-muted-fg);max-width:600px;margin:0 auto 1.5rem">
+    The most comprehensive free UI component library for Ruby on Rails. Built with Tailwind CSS v4, Stimulus, and Turbo.
+  </p>
+  <div style="display:flex;gap:0.75rem;justify-content:center">
+    <a href="/primitives" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.625rem 1.25rem;background:var(--hw-primary);color:var(--hw-primary-fg);border-radius:0.5rem;font-size:0.875rem;font-weight:500;transition:opacity 0.15s" onmouseover="this.style.opacity=0.9" onmouseout="this.style.opacity=1">
+      Browse Components
+    </a>
+    <a href="https://github.com/hotwirebits/hotwirebits" target="_blank" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.625rem 1.25rem;border:1px solid var(--hw-border);border-radius:0.5rem;font-size:0.875rem;font-weight:500;transition:background 0.15s" onmouseover="this.style.background='var(--hw-accent)'" onmouseout="this.style.background='transparent'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      GitHub
+    </a>
   </div>
 </div>
-<!-- Installation -->
-<h2>Installation</h2>
-<div class="hw-install-tabs">
-  <button class="hw-install-tab active" onclick="switchInstall('gem')">Gem</button>
-  <button class="hw-install-tab" onclick="switchInstall('cli')">CLI</button>
-  <button class="hw-install-tab" onclick="switchInstall('manual')">Manual</button>
-</div>
-<div id="install-gem" class="hw-code-block">
-  <div class="hw-code-header">
-    <span class="hw-code-lang">ruby</span>
-    <button class="hw-code-copy">Copy</button>
+<!-- Stats bar -->
+<div style="display:flex;gap:2rem;justify-content:center;margin-bottom:2.5rem;padding:1rem 0;border-top:1px solid var(--hw-border);border-bottom:1px solid var(--hw-border)">
+  <div style="text-align:center">
+    <div style="font-size:1.5rem;font-weight:700;letter-spacing:-0.02em">240+</div>
+    <div style="font-size:0.75rem;color:var(--hw-muted-fg)">Components</div>
   </div>
-  <div class="hw-code-body">
-    <pre><code><span class="cmt"># Gemfile</span>
-gem <span class="str">"hotwirebits"</span></code></pre>
+  <div style="text-align:center">
+    <div style="font-size:1.5rem;font-weight:700;letter-spacing:-0.02em">40</div>
+    <div style="font-size:0.75rem;color:var(--hw-muted-fg)">Stimulus Controllers</div>
   </div>
-</div>
-<div id="install-cli" class="hw-code-block" style="display:none">
-  <div class="hw-code-header">
-    <span class="hw-code-lang">bash</span>
-    <button class="hw-code-copy">Copy</button>
+  <div style="text-align:center">
+    <div style="font-size:1.5rem;font-weight:700;letter-spacing:-0.02em">Free</div>
+    <div style="font-size:0.75rem;color:var(--hw-muted-fg)">MIT License</div>
   </div>
-  <div class="hw-code-body">
-    <pre><code>gem install hotwirebits_cli
-hotwirebits init
-hotwirebits add button card alert</code></pre>
+  <div style="text-align:center">
+    <div style="font-size:1.5rem;font-weight:700;letter-spacing:-0.02em">v4</div>
+    <div style="font-size:0.75rem;color:var(--hw-muted-fg)">Tailwind CSS</div>
   </div>
 </div>
-<div id="install-manual" class="hw-code-block" style="display:none">
-  <div class="hw-code-header">
-    <span class="hw-code-lang">bash</span>
-    <button class="hw-code-copy">Copy</button>
-  </div>
-  <div class="hw-code-body">
-    <pre><code>bundle install
-rails generate hotwirebits:install</code></pre>
+<!-- Live preview mockup -->
+<h2>Live Preview</h2>
+<div class="hw-preview-box">
+  <div class="hw-preview-grid">
+    <div class="hw-preview-card">
+      <div class="hw-preview-card-label">Button</div>
+      <div class="hw-preview-card-body">
+        <%= rb_preview("button", {"label" => "Get Started", "variant" => "default"}) %>
+      </div>
+    </div>
+    <div class="hw-preview-card">
+      <div class="hw-preview-card-label">Badge</div>
+      <div class="hw-preview-card-body">
+        <%= rb_preview("badge", {"label" => "New", "variant" => "default"}) %>
+      </div>
+    </div>
+    <div class="hw-preview-card">
+      <div class="hw-preview-card-label">Avatar</div>
+      <div class="hw-preview-card-body">
+        <%= rb_preview("avatar", {"initials" => "HB", "size" => "md"}) %>
+      </div>
+    </div>
+    <div class="hw-preview-card">
+      <div class="hw-preview-card-label">Spinner</div>
+      <div class="hw-preview-card-body">
+        <%= rb_preview("spinner", {"size" => "md"}) %>
+      </div>
+    </div>
+    <div class="hw-preview-card">
+      <div class="hw-preview-card-label">Switch</div>
+      <div class="hw-preview-card-body">
+        <%= rb_preview("switch", {"checked" => true}) %>
+      </div>
+    </div>
+    <div class="hw-preview-card">
+      <div class="hw-preview-card-label">Rating</div>
+      <div class="hw-preview-card-body">
+        <%= rb_preview("rating", {"value" => 4}) %>
+      </div>
+    </div>
   </div>
 </div>
 <!-- Categories -->
@@ -77,18 +81,51 @@ rails generate hotwirebits:install</code></pre>
   <% @categories.each do |key, name| %>
     <a href="/<%= key %>" class="hw-hero-card">
       <h3><%= name %></h3>
-      <p class="count"><%= @components.count { |_, v| v["category"] == key } %> components</p>
+      <span class="count"><%= @components.count { |_, v| v["category"] == key } %> components</span>
     </a>
   <% end %>
+</div>
+<!-- Quick Start -->
+<h2>Quick Start</h2>
+<div class="hw-install-group">
+  <div class="hw-install-tabs">
+    <button class="hw-install-tab active" onclick="switchInstall('gem')">Gem</button>
+    <button class="hw-install-tab" onclick="switchInstall('cli')">CLI</button>
+  </div>
+  <div id="install-gem" class="hw-code-block">
+    <div class="hw-code-header">
+      <span class="hw-code-lang">ruby</span>
+      <button class="hw-code-copy">Copy</button>
+    </div>
+    <div class="hw-code-body">
+      <pre><code><span class="cmt"># Gemfile</span>
+gem <span class="str">"hotwirebits"</span>
+
+<span class="cmt"># Terminal</span>
+bundle install
+rails generate hotwirebits:install</code></pre>
+    </div>
+  </div>
+  <div id="install-cli" class="hw-code-block" style="display:none">
+    <div class="hw-code-header">
+      <span class="hw-code-lang">bash</span>
+      <button class="hw-code-copy">Copy</button>
+    </div>
+    <div class="hw-code-body">
+      <pre><code>gem install hotwirebits_cli
+hotwirebits init
+hotwirebits add button card alert navbar</code></pre>
+    </div>
+  </div>
 </div>
 <!-- Usage -->
 <h2>Usage</h2>
 <div class="hw-tab-group">
   <div class="hw-tabs">
-    <button class="hw-tab active" data-tab="usage-ruby">Ruby</button>
-    <button class="hw-tab" data-tab="usage-erb">ERB</button>
+    <button class="hw-tab active" data-tab="tab-ruby">Ruby</button>
+    <button class="hw-tab" data-tab="tab-erb">ERB</button>
   </div>
-  <div id="usage-ruby" class="hw-tab-content active">
+  <div id="tab-ruby" class="hw-tab-content active">
     <div class="hw-code-block">
       <div class="hw-code-header">
         <span class="hw-code-lang">ruby</span>
@@ -98,34 +135,31 @@ rails generate hotwirebits:install</code></pre>
         <pre><code><span class="cmt"># app/views/pages/index.html.erb</span>
 &lt;%= render <span class="cls">HotwireBits::ButtonComponent</span>.new(
   label: <span class="str">"Click me"</span>,
-  variant: <span class="sym">:primary</span>,
-  size: <span class="sym">:lg</span>
+  variant: <span class="sym">:primary</span>
 ) %&gt;</code></pre>
       </div>
     </div>
   </div>
-  <div id="usage-erb" class="hw-tab-content">
+  <div id="tab-erb" class="hw-tab-content">
     <div class="hw-code-block">
       <div class="hw-code-header">
         <span class="hw-code-lang">erb</span>
         <button class="hw-code-copy">Copy</button>
       </div>
       <div class="hw-code-body">
-        <pre><code><span class="cmt">&lt;%# Partial: app/views/hotwirebits/_button.html.erb %&gt;</span>
-&lt;button type=<span class="str">"button"</span> class=<span class="str">"hw-button hw-button-primary hw-button-lg"</span>&gt;
-  Click me
-&lt;/button&gt;</code></pre>
+        <pre><code><span class="cmt">&lt;%# Use the partial directly %&gt;</span>
+&lt;%= render <span class="str">"hotwirebits/button"</span>, label: <span class="str">"Click me"</span> %&gt;</code></pre>
       </div>
     </div>
   </div>
 </div>
 <script>
   function switchInstall(type){
-    ['gem','cli','manual'].forEach(t=>{
+    ['gem','cli'].forEach(t=>{
       document.getElementById('install-'+t).style.display=t===type?'block':'none';
     });
     document.querySelectorAll('.hw-install-tab').forEach((btn,i)=>{
-      btn.classList.toggle('active',['gem','cli','manual'][i]===type);
+      btn.classList.toggle('active',['gem','cli'][i]===type);
     });
   }
 </script>

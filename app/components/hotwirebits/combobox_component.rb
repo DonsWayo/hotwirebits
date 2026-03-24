@@ -13,16 +13,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(class: 'relative', data: { controller: 'hw-combobox' }) do
-        safe_join([
-                    hidden_input,
-                    search_input,
-                    dropdown
-                  ])
-      end
-    end
-
     private
 
     def hidden_input

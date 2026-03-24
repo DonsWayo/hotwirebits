@@ -9,16 +9,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.label(class: label_classes, for: @for_field, **@extra_attrs) do
-        safe_join([
-          content,
-          (tag.span(' *', class: 'text-hw-destructive') if @required),
-          (tag.span(' (optional)', class: 'text-hw-muted-foreground font-normal text-xs ml-1') if @optional)
-        ].compact)
-      end
-    end
-
     private
 
     def label_classes

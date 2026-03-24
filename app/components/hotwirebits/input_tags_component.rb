@@ -11,25 +11,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(
-        class: 'flex flex-wrap gap-1.5 rounded-md border border-hw-input bg-hw-background p-1.5 ring-offset-hw-background focus-within:ring-2 focus-within:ring-hw-ring focus-within:ring-offset-2', data: { controller: 'hw-tags' }
-      ) do
-        safe_join([
-                    *@value.map { |v| chip(v) },
-                    tag.input(
-                      type: 'text',
-                      placeholder: @placeholder,
-                      disabled: @disabled || (@max && @value.size >= @max),
-                      class: 'flex-1 bg-transparent text-sm text-hw-foreground placeholder:text-hw-muted-foreground outline-none min-w-[80px]',
-                      data: { action: 'keydown->hw-tags#keydown', rb_tags_target: 'input' },
-                      **@extra_attrs
-                    ),
-                    *@value.map { |v| tag.input(type: 'hidden', name: "#{@name}[]", value: v) }
-                  ])
-      end
-    end
-
     private
 
     def chip(value)

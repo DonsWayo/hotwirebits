@@ -14,10 +14,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.kbd(content || @label, class: kbd_classes, **@extra_attrs)
-    end
-
     private
 
     def kbd_classes

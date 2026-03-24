@@ -10,25 +10,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      level = strength_level
-      tag.div(class: 'space-y-1.5', data: { controller: 'hw-password-strength' }, **@extra_attrs) do
-        safe_join([
-                    tag.div(class: 'flex gap-1') do
-                      safe_join(4.times.map do |i|
-                        tag.div(class: "h-1.5 flex-1 rounded-full transition-colors #{i <= level && level >= 0 ? COLORS[level] : 'bg-hw-muted'}")
-                      end)
-                    end,
-                    tag.p(LABELS[level] || 'Too short',
-                          class: "text-xs #{if level >= 2
-                                              'text-green-600'
-                                            else
-                                              level >= 1 ? 'text-yellow-600' : 'text-red-600'
-                                            end}")
-                  ])
-      end
-    end
-
     private
 
     def strength_level

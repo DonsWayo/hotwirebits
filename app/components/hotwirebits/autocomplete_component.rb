@@ -12,24 +12,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(
-        class: 'relative',
-        data: {
-          controller: 'hw-autocomplete',
-          rb_autocomplete_url_value: @url,
-          rb_autocomplete_min_chars_value: @min_chars
-        },
-        **@extra_attrs
-      ) do
-        safe_join([
-                    input_element,
-                    results_element,
-                    tag.input(type: 'hidden', name: @name, value: @value, data: { rb_autocomplete_target: 'hidden' })
-                  ])
-      end
-    end
-
     private
 
     def input_element

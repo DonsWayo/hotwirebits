@@ -10,15 +10,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(class: 'flex items-center gap-2', data: { controller: 'hw-color-picker' }) do
-        safe_join([
-                    color_input,
-                    (text_input if @show_input)
-                  ])
-      end
-    end
-
     private
 
     def color_input

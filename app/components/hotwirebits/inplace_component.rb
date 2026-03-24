@@ -11,19 +11,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(
-        class: 'inline-block',
-        data: { controller: 'hw-inplace' },
-        **@extra_attrs
-      ) do
-        safe_join([
-                    display_element,
-                    edit_element
-                  ])
-      end
-    end
-
     private
 
     def display_element

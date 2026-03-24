@@ -46,19 +46,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      if @icon
-        tag.div(class: 'relative') do
-          safe_join([
-            icon_element,
-            input_element
-          ].compact)
-        end
-      else
-        input_element
-      end
-    end
-
     private
 
     def input_element

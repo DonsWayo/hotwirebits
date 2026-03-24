@@ -21,27 +21,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.select(class: select_classes, name: @name, disabled: @disabled, multiple: @multiple, **@extra_attrs) do
-        safe_join([
-                    tag.option(@placeholder, value: '', disabled: true, selected: @selected.nil?),
-                    *@options.map do |opt|
-                      if opt.is_a?(Array)
-                        tag.option(opt.first, value: opt.last, selected: Array(@selected).include?(opt.last))
-                      elsif opt.is_a?(Hash)
-                        tag.optgroup(label: opt[:label]) do
-                          safe_join(opt[:options].map do |o|
-                            tag.option(o.first, value: o.last, selected: Array(@selected).include?(o.last))
-                          end)
-                        end
-                      else
-                        tag.option(opt, value: opt, selected: Array(@selected).include?(opt))
-                      end
-                    end
-                  ])
-      end
-    end
-
     private
 
     def select_classes

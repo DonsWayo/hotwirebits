@@ -13,15 +13,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(class: 'relative', data: { controller: 'hw-multiselect' }) do
-        safe_join([
-                    trigger,
-                    dropdown
-                  ])
-      end
-    end
-
     private
 
     def trigger

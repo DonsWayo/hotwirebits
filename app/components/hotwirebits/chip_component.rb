@@ -11,19 +11,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      content_or_label = content || @label
-
-      tag.div(class: chip_classes, **@extra_attrs) do
-        safe_join([
-          avatar_element,
-          icon_element,
-          tag.span(content_or_label),
-          (dismiss_button if @removable)
-        ].compact)
-      end
-    end
-
     private
 
     def chip_classes

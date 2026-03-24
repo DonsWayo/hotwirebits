@@ -11,41 +11,5 @@ module HotwireBits
       @horizontal = horizontal
       @extra_attrs = attrs
     end
-
-    def call
-      if @horizontal
-        tag.div(class: 'grid grid-cols-4 items-start gap-4', **@extra_attrs) do
-          safe_join([
-                      tag.div(class: 'pt-2') do
-                        safe_join([
-                          (tag.label(for: @name, class: 'text-sm font-medium text-hw-foreground') { @label } if @label),
-                          (tag.span(' *', class: 'text-hw-destructive') if @required),
-                          (tag.p(@hint, class: 'text-xs text-hw-muted-foreground mt-0.5') if @hint)
-                        ].compact)
-                      end,
-                      tag.div(class: 'col-span-3') do
-                        safe_join([
-                          content,
-                          (tag.p(@error, class: 'text-xs text-hw-destructive mt-1') if @error)
-                        ].compact)
-                      end
-                    ])
-        end
-      else
-        tag.div(class: 'space-y-2', **@extra_attrs) do
-          safe_join([
-            (if @label
-               tag.label(for: @name,
-                         class: 'text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70') do
-                 safe_join([@label, (@required ? tag.span(' *', class: 'text-hw-destructive') : nil)].compact)
-               end
-             end),
-            content,
-            (tag.p(@hint, class: 'text-xs text-hw-muted-foreground') if @hint && !@error),
-            (tag.p(@error, class: 'text-xs text-hw-destructive') if @error)
-          ].compact)
-        end
-      end
-    end
   end
 end

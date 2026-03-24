@@ -28,18 +28,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      content_or_label = content || @label
-
-      tag.div(class: badge_classes, **@extra_attrs) do
-        safe_join([
-          (tag.span(class: 'h-1.5 w-1.5 rounded-full bg-current') if @dot),
-          content_or_label,
-          (dismiss_button if @removable)
-        ].compact)
-      end
-    end
-
     private
 
     def badge_classes

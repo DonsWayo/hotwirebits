@@ -14,15 +14,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(class: 'relative', data: { controller: 'hw-datepicker' }) do
-        safe_join([
-                    input_with_icon,
-                    calendar_dropdown
-                  ])
-      end
-    end
-
     private
 
     def input_with_icon

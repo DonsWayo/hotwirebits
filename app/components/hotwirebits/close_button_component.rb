@@ -21,20 +21,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.button(
-        type: 'button',
-        aria: { label: @label },
-        disabled: @disabled,
-        class: button_classes,
-        **@extra_attrs
-      ) do
-        tag.svg(class: icon_classes, fill: 'none', stroke: 'currentColor', stroke_width: '2', viewBox: '0 0 24 24') do
-          tag.path(stroke_linecap: 'round', stroke_linejoin: 'round', d: 'M6 18L18 6M6 6l12 12')
-        end
-      end
-    end
-
     private
 
     def button_classes

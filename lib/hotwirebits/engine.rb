@@ -2,6 +2,6 @@
 
 module HotwireBits
   class Engine < ::Rails::Engine
-    isolate_namespace HotwireBits
+    # No custom autoload — components are loaded manually in the preview helper
   end
 end

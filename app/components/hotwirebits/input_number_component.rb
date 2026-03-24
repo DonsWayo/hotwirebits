@@ -26,17 +26,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(class: 'inline-flex items-center rounded-md border border-hw-input',
-              data: { controller: 'hw-input-number' }, **@extra_attrs) do
-        safe_join([
-                    button_element(:decrement),
-                    input_element,
-                    button_element(:increment)
-                  ])
-      end
-    end
-
     private
 
     def input_element

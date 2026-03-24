@@ -15,16 +15,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(class: 'relative', data: { controller: 'hw-password' }) do
-        safe_join([
-          input_element,
-          (toggle_button if @show_toggle),
-          (strength_meter if @show_strength)
-        ].compact)
-      end
-    end
-
     private
 
     def size_classes

@@ -51,17 +51,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag = @href ? :a : :button
-      content_or_label = content || @label
-
-      tag.public_send(
-        tag,
-        content_or_label,
-        **button_attrs
-      )
-    end
-
     private
 
     def button_attrs

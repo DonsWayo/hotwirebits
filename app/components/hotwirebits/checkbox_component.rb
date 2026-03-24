@@ -21,16 +21,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.label(class: label_classes) do
-        safe_join([
-          input_element,
-          check_icon,
-          (tag.span(@label, class: label_text_classes) if @label)
-        ].compact)
-      end
-    end
-
     private
 
     def input_element

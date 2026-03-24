@@ -8,12 +8,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.div(class: toolbar_classes, role: 'toolbar', **@extra_attrs) do
-        safe_join(@items.each_with_index.map { |item, idx| item_element(item, idx) })
-      end
-    end
-
     private
 
     def toolbar_classes

@@ -16,21 +16,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.input(
-        type: 'number',
-        name: @name,
-        value: @value,
-        placeholder: @placeholder,
-        min: @min,
-        max: @max,
-        step: @step,
-        disabled: @disabled,
-        class: input_classes,
-        **@extra_attrs
-      )
-    end
-
     private
 
     def input_classes

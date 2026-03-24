@@ -14,12 +14,5 @@ module HotwireBits
       @size = size
       @extra_attrs = attrs
     end
-
-    def call
-      tag.span(class: merge_classes('inline-flex items-center justify-center', SIZES[@size] || SIZES[:md]),
-               **@extra_attrs) do
-        content
-      end
-    end
   end
 end

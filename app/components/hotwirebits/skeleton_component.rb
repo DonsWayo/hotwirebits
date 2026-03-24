@@ -10,11 +10,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      style = skeleton_style
-      tag.div(class: skeleton_classes, style: style, **@extra_attrs)
-    end
-
     private
 
     def skeleton_classes

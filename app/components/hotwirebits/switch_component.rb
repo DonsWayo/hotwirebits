@@ -17,16 +17,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def call
-      tag.label(class: 'flex items-center gap-2 cursor-pointer') do
-        safe_join([
-          hidden_input,
-          track,
-          (@label ? tag.span(@label, class: 'text-sm font-medium') : nil)
-        ].compact)
-      end
-    end
-
     private
 
     def hidden_input
