@@ -1,6 +1,8 @@
 # Component registry for HotwireBits documentation
 # Each key is a URL slug, values contain metadata
 
+# === PRIMITIVES ===
+
 button:
   name: Button
   category: primitives
@@ -75,6 +77,18 @@ toggle:
   name: Toggle
   category: primitives
   description: A two-state button that can be either on or off.
+
+animated-number:
+  name: AnimatedNumber
+  category: primitives
+  description: An animated number counter with transitions.
+
+theme-icon:
+  name: ThemeIcon
+  category: primitives
+  description: An icon wrapped in a themed container.
+
+# === FORMS ===
 
 input:
   name: Input
@@ -161,6 +175,118 @@ form-group:
   category: forms
   description: A wrapper for form fields with label, hint, and error.
 
+autocomplete:
+  name: Autocomplete
+  category: forms
+  description: Autocomplete input with async suggestions.
+
+native-select:
+  name: NativeSelect
+  category: forms
+  description: A native select dropdown.
+
+multiselect:
+  name: MultiSelect
+  category: forms
+  description: Multi-select dropdown with checkboxes.
+
+range-slider:
+  name: RangeSlider
+  category: forms
+  description: A dual-handle range slider.
+
+input-number:
+  name: InputNumber
+  category: forms
+  description: Numeric input with spin buttons.
+
+input-tags:
+  name: InputTags
+  category: forms
+  description: An input for adding and removing tags.
+
+password-input:
+  name: PasswordInput
+  category: forms
+  description: Password input with visibility toggle.
+
+phone-input:
+  name: PhoneInputField
+  category: forms
+  description: Phone number input field.
+
+search-input:
+  name: SearchInputField
+  category: forms
+  description: Search input with icon and clear button.
+
+color-swatch:
+  name: ColorSwatch
+  category: forms
+  description: A color swatch display.
+
+file-input:
+  name: FileInput
+  category: forms
+  description: File upload input field.
+
+dropzone:
+  name: Dropzone
+  category: forms
+  description: Drag and drop file upload zone.
+
+password-strength:
+  name: PasswordStrength
+  category: forms
+  description: Password strength indicator.
+
+float-label:
+  name: FloatLabel
+  category: forms
+  description: Floating label form input pattern.
+
+ifta-label:
+  name: IftaLabel
+  category: forms
+  description: Inline floating label animation.
+
+icon-field:
+  name: IconField
+  category: forms
+  description: Input with leading or trailing icon.
+
+input-group:
+  name: InputGroup
+  category: forms
+  description: Input with addon buttons or text.
+
+fieldset:
+  name: Fieldset
+  category: forms
+  description: Form grouping with legend.
+
+knob:
+  name: Knob
+  category: forms
+  description: Circular dial input.
+
+listbox:
+  name: Listbox
+  category: forms
+  description: Select from a list with optional virtualization.
+
+date-picker:
+  name: DatePickerCalendar
+  category: forms
+  description: A date picker component with calendar.
+
+tag-input:
+  name: TagInput
+  category: forms
+  description: Tag input with validation.
+
+# === DATA DISPLAY ===
+
 card:
   name: Card
   category: data-display
@@ -205,6 +331,108 @@ code-block:
   name: CodeBlock
   category: data-display
   description: Display code with syntax highlighting and copy button.
+
+stat:
+  name: Stat
+  category: data-display
+  description: A single stat block with trend indicator.
+
+animated-number-transition:
+  name: AnimatedNumber
+  category: data-display
+  description: Animated number transition.
+
+image:
+  name: Image
+  category: data-display
+  description: Responsive image with fallback and caption.
+
+mark:
+  name: Mark
+  category: data-display
+  description: Inline text highlight.
+
+highlight:
+  name: Highlight
+  category: data-display
+  description: Highlight search terms in text.
+
+number-formatter:
+  name: NumberFormatter
+  category: data-display
+  description: Format numbers with locale and currency.
+
+diff:
+  name: Diff
+  category: data-display
+  description: Side-by-side comparison slider.
+
+progress-ring:
+  name: ProgressRing
+  category: data-display
+  description: Circular progress indicator.
+
+meter-group:
+  name: MeterGroup
+  category: data-display
+  description: Multiple progress bars in one group.
+
+spoiler:
+  name: Spoiler
+  category: data-display
+  description: Truncate long text with show more.
+
+compare:
+  name: Compare
+  category: data-display
+  description: Before and after image comparison.
+
+data-view:
+  name: DataView
+  category: data-display
+  description: Grid and list view with pagination.
+
+paginator:
+  name: Paginator
+  category: data-display
+  description: Enhanced paginator with rows per page.
+
+panel:
+  name: Panel
+  category: data-display
+  description: Collapsible panel with header and actions.
+
+scroll-area:
+  name: ScrollArea
+  category: data-display
+  description: Custom scrollbar area.
+
+table-of-contents:
+  name: TableOfContents
+  category: data-display
+  description: Auto-generated page navigation.
+
+tree-view:
+  name: TreeView
+  category: data-display
+  description: Hierarchical tree display.
+
+list:
+  name: List
+  category: data-display
+  description: Simple list with dividers.
+
+loading-overlay:
+  name: LoadingOverlay
+  category: data-display
+  description: Full-container loading state.
+
+inplace:
+  name: Inplace
+  category: data-display
+  description: Click-to-edit inline display.
+
+# === NAVIGATION ===
 
 navbar:
   name: Navbar
@@ -251,6 +479,43 @@ footer:
   category: navigation
   description: A page footer with links and copyright.
 
+nav-link:
+  name: NavLink
+  category: navigation
+  description: A single navigation link with nested children.
+
+navigation-menu:
+  name: NavigationMenu
+  category: navigation
+  description: Mega menu style navigation.
+
+menubar:
+  name: Menubar
+  category: navigation
+  description: Desktop-style menu bar.
+
+dock-menu:
+  name: DockMenu
+  category: navigation
+  description: Mobile bottom navigation bar.
+
+bottom-navigation:
+  name: BottomNavigation
+  category: navigation
+  description: Mobile bottom tab bar.
+
+burger:
+  name: Burger
+  category: navigation
+  description: Hamburger menu button.
+
+speed-dial:
+  name: SpeedDial
+  category: navigation
+  description: Floating action button with expandable actions.
+
+# === OVERLAYS ===
+
 dialog:
   name: Dialog
   category: overlays
@@ -281,6 +546,23 @@ toast:
   category: overlays
   description: A succinct message that is displayed temporarily.
 
+drawer:
+  name: Drawer
+  category: overlays
+  description: Bottom-up drawer panel.
+
+hover-card:
+  name: HoverCard
+  category: overlays
+  description: Rich hover preview card.
+
+notification:
+  name: Notification
+  category: overlays
+  description: Inline notification card.
+
+# === FEEDBACK ===
+
 alert:
   name: Alert
   category: feedback
@@ -300,6 +582,38 @@ swap:
   name: Swap
   category: feedback
   description: Allows you to toggle the visibility of two elements.
+
+skeleton-card:
+  name: SkeletonCard
+  category: feedback
+  description: Pre-built card skeleton loader.
+
+feedback:
+  name: Feedback
+  category: feedback
+  description: User feedback widget.
+
+countdown:
+  name: Countdown
+  category: feedback
+  description: Animated countdown timer.
+
+status-dot:
+  name: StatusDot
+  category: feedback
+  description: Small status indicator dot.
+
+theme-controller:
+  name: ThemeController
+  category: feedback
+  description: Theme toggle for light and dark mode.
+
+terminal:
+  name: Terminal
+  category: feedback
+  description: Terminal emulator display.
+
+# === LAYOUT ===
 
 container:
   name: Container
@@ -331,6 +645,73 @@ aspect-ratio:
   category: layout
   description: Displays content within a desired ratio.
 
+box:
+  name: Box
+  category: layout
+  description: Generic polymorphic container.
+
+group:
+  name: Group
+  category: layout
+  description: Horizontal group with gap and wrap.
+
+center:
+  name: Center
+  category: layout
+  description: Center content.
+
+simple-grid:
+  name: SimpleGrid
+  category: layout
+  description: Auto-fit responsive grid.
+
+space:
+  name: Space
+  category: layout
+  description: Spacer element.
+
+join:
+  name: Join
+  category: layout
+  description: Group items with shared borders.
+
+mask:
+  name: Mask
+  category: layout
+  description: Image mask clip shapes.
+
+bento-grid:
+  name: BentoGrid
+  category: layout
+  description: Asymmetric feature grid.
+
+device-mockup:
+  name: DeviceMockup
+  category: layout
+  description: Device frame mockup.
+
+app-shell:
+  name: AppShell
+  category: layout
+  description: Full app layout shell.
+
+splitter:
+  name: Splitter
+  category: layout
+  description: Split panel with resize handle.
+
+fluid:
+  name: Fluid
+  category: layout
+  description: Full-width container.
+
+resizable:
+  name: Resizable
+  category: layout
+  description: Resizable panels.
+
+# === ADVANCED ===
+
 carousel:
   name: Carousel
   category: advanced
@@ -355,6 +736,98 @@ clipboard:
   name: Clipboard
   category: advanced
   description: Copy text to clipboard with feedback.
+
+qr-code:
+  name: QRCode
+  category: advanced
+  description: QR code generator and display.
+
+marquee:
+  name: Marquee
+  category: advanced
+  description: Infinite scrolling marquee.
+
+chat-bubble:
+  name: ChatBubble
+  category: advanced
+  description: Chat message bubble.
+
+gallery:
+  name: Gallery
+  category: advanced
+  description: Image gallery grid with lightbox.
+
+lightbox:
+  name: Lightbox
+  category: advanced
+  description: Image lightbox overlay.
+
+search-component:
+  name: Search
+  category: advanced
+  description: Search with suggestions and filters.
+
+video-player:
+  name: VideoPlayer
+  category: advanced
+  description: Embedded video player.
+
+flyout-menu:
+  name: FlyoutMenu
+  category: advanced
+  description: Hover or click popup menu.
+
+mega-menu:
+  name: MegaMenu
+  category: advanced
+  description: Multi-column flyout navigation.
+
+highlight-terms:
+  name: Highlight
+  category: advanced
+  description: Highlight search terms in text.
+
+text-rotate:
+  name: TextRotate
+  category: advanced
+  description: Rotating text animation.
+
+hover-3d-card:
+  name: Hover3dCard
+  category: advanced
+  description: 3D hover effect card.
+
+hover-gallery:
+  name: HoverGallery
+  category: advanced
+  description: Image gallery on hover.
+
+image-compare:
+  name: ImageCompare
+  category: advanced
+  description: Before after image slider.
+
+speed-dial-fab:
+  name: SpeedDialFab
+  category: advanced
+  description: Floating action button.
+
+org-chart:
+  name: OrgChart
+  category: advanced
+  description: Organizational hierarchy chart.
+
+indicator-badge:
+  name: IndicatorBadge
+  category: advanced
+  description: Badge positioned on element.
+
+kanban-board:
+  name: KanbanBoard
+  category: advanced
+  description: Kanban board with draggable columns.
+
+# === MARKETING ===
 
 hero:
   name: Hero
@@ -385,3 +858,138 @@ error-page:
   name: ErrorPage
   category: marketing
   description: Error pages for 404, 500, and more.
+
+feature-section:
+  name: FeatureSection
+  category: marketing
+  description: Feature grid section.
+
+cta-section:
+  name: CtaSection
+  category: marketing
+  description: Call to action block.
+
+pricing-section:
+  name: PricingSection
+  category: marketing
+  description: Pricing cards section.
+
+faq-section:
+  name: FaqSection
+  category: marketing
+  description: FAQ accordion section.
+
+testimonials-section:
+  name: TestimonialsSection
+  category: marketing
+  description: Testimonials grid or carousel.
+
+logo-cloud:
+  name: LogoCloud
+  category: marketing
+  description: Partner client logos.
+
+auth-block:
+  name: AuthBlock
+  category: marketing
+  description: Sign in and sign up forms.
+
+cookie-consent:
+  name: CookieConsent
+  category: marketing
+  description: Cookie consent banner.
+
+header-section:
+  name: HeaderSection
+  category: marketing
+  description: Page header section.
+
+section-heading:
+  name: SectionHeading
+  category: marketing
+  description: Section heading with description.
+
+card-heading:
+  name: CardHeading
+  category: marketing
+  description: Card-level heading.
+
+page-heading:
+  name: PageHeading
+  category: marketing
+  description: Page-level heading with tabs and actions.
+
+team-section:
+  name: TeamSection
+  category: marketing
+  description: Team members grid.
+
+blog-section:
+  name: BlogSection
+  category: marketing
+  description: Blog post cards.
+
+contact-section:
+  name: ContactSection
+  category: marketing
+  description: Contact form section.
+
+newsletter-section:
+  name: NewsletterSection
+  category: marketing
+  description: Newsletter signup.
+
+logo-item:
+  name: LogoItem
+  category: marketing
+  description: Single logo display.
+
+header:
+  name: Header
+  category: marketing
+  description: Site header with navigation.
+
+stacked-list:
+  name: StackedList
+  category: marketing
+  description: Stacked list items with actions.
+
+promo-section:
+  name: PromoSection
+  category: marketing
+  description: Promotional content block.
+
+incentive:
+  name: Incentive
+  category: marketing
+  description: Benefit feature card.
+
+product-overview:
+  name: ProductOverview
+  category: marketing
+  description: Product detail section.
+
+product-list:
+  name: ProductList
+  category: marketing
+  description: Product grid.
+
+shopping-cart:
+  name: ShoppingCart
+  category: marketing
+  description: Cart sidebar section.
+
+checkout-form:
+  name: CheckoutForm
+  category: marketing
+  description: Checkout form layout.
+
+order-summary:
+  name: OrderSummary
+  category: marketing
+  description: Order summary card.
+
+review:
+  name: Review
+  category: marketing
+  description: Product review.
