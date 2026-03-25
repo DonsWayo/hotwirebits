@@ -1,0 +1,29 @@
+<%# Clipboard component — ERB partial %>
+<%# Usage: render 'hotwirebits/clipboard', ... %>
+
+<div class="<%= wrapper_classes %>"
+     data-controller="hw-clipboard"
+     data-hw-clipboard-text-value="<%= text %>"
+     data-hw-clipboard-success-value="<%= success_message %>"
+     <%= tag.attributes(local_assigns) %>>
+  <% if label %>
+    <span class="text-sm text-hw-muted-foreground"><%= label %></span>
+  <% end %>
+  <div class="inline-flex items-center gap-1 rounded-md border border-hw-border bg-hw-muted px-2.5 py-1.5">
+    <code class="text-sm text-hw-foreground max-w-[200px] truncate"><%= text %></code>
+    <button type="button"
+            class="h-6 w-6 rounded flex items-center justify-center hover:bg-hw-accent transition-colors text-hw-muted-foreground hover:text-hw-foreground"
+            data-action="click->hw-clipboard#copy"
+      data-hw-clipboard-target="button">
+      <svg class="h-3.5 w-3.5" data-hw-clipboard-target="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+      </svg>
+      <svg class="hidden h-3.5 w-3.5 text-hw-success" data-hw-clipboard-target="check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+      <span class="sr-only">Copy</span>
+    </button>
+  </div>
+  <span class="hidden text-xs text-hw-success font-medium" data-hw-clipboard-target="feedback"><%= success_message %></span>
+</div>

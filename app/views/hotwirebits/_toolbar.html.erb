@@ -1,0 +1,21 @@
+<%# Toolbar component — ERB partial %>
+<%# Usage: render 'hotwirebits/toolbar', ... %>
+
+<div class="inline-flex items-center rounded-md border border-hw-input bg-hw-background p-1 gap-0.5" role="toolbar" <%= tag.attributes(local_assigns) %>>
+  <% items.each_with_index do |item, idx| %>
+    <% if with_separator && idx > 0 %>
+      <div class="mx-1 h-4 w-px bg-hw-border" role="separator"></div>
+    <% end %>
+    <% if item[:href] %>
+      <a href="<%= item[:href] %>" class="inline-flex items-center gap-1.5 rounded-sm px-2 py-1.5 text-sm text-hw-muted-foreground hover:bg-hw-accent hover:text-hw-accent-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring" title="<%= item[:label] %>">
+        <% if item[:icon] %><span class="h-4 w-4 shrink-0"><%= item[:icon].html_safe %></span><% end %>
+        <% if item[:label] %><span class="text-sm"><%= item[:label] %></span><% end %>
+      </a>
+    <% else %>
+      <button type="button" class="inline-flex items-center gap-1.5 rounded-sm px-2 py-1.5 text-sm text-hw-muted-foreground hover:bg-hw-accent hover:text-hw-accent-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring" title="<%= item[:label] %>">
+        <% if item[:icon] %><span class="h-4 w-4 shrink-0"><%= item[:icon].html_safe %></span><% end %>
+        <% if item[:label] %><span class="text-sm"><%= item[:label] %></span><% end %>
+      </button>
+    <% end %>
+  <% end %>
+</div>

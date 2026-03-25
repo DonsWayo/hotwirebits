@@ -1,0 +1,33 @@
+<%# SpeedDialFab component — ERB partial %>
+<%# Usage: render 'hotwirebits/speed_dial_fab', ... %>
+
+<div class="fixed bottom-6 right-6 z-40" data-controller="hw-speed-dial" <%= tag.attributes(local_assigns) %>>
+  <div class="relative flex items-center justify-center">
+    <div data-hw-speed-dial-target="actions" class="hidden">
+      <% actions.each_with_index do |action, index| %>
+        <a href="<%= action[:href] %>"
+           class="absolute flex h-12 w-12 items-center justify-center rounded-full bg-hw-muted text-hw-foreground shadow-lg transition-all hover:bg-hw-muted/80"
+           style="<%= action_position(index) %>"
+           title="<%= action[:label] %>">
+          <% if action[:icon] %>
+            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="<%= action[:icon] %>"/>
+            </svg>
+          <% else %>
+            <span class="text-xs font-medium"><%= action[:label]&.first %></span>
+            <% end %>
+            <span class="absolute right-full mr-2 whitespace-nowrap rounded bg-hw-foreground px-2 py-1 text-xs text-hw-background opacity-0 transition-opacity group-hover:opacity-100 pointer-events-none">
+              <%= action[:label] %>
+            </span>
+          </a>
+        <% end %>
+      </div>
+      <button type="button"
+            class="flex h-14 w-14 items-center justify-center rounded-full bg-hw-primary text-hw-primary-foreground shadow-lg transition-transform hover:bg-hw-primary/90 focus:outline-none focus:ring-2 focus:ring-hw-ring"
+            data-action="click->hw-speed-dial#toggle">
+        <svg class="h-6 w-6 transition-transform duration-200" data-hw-speed-dial-target="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <%= icon.html_safe %>
+        </svg>
+      </button>
+    </div>
+  </div>

@@ -1,0 +1,59 @@
+<%# Search component — ERB partial %>
+<%# Usage: render 'hotwirebits/search', ... %>
+
+<div class="<%= container_classes %>"
+     data-controller="hw-search"
+     data-hw-search-suggestions-value="<%= suggestions.to_json %>"
+     <%= tag.attributes(local_assigns) %>>
+  <div class="relative">
+    <svg class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-hw-muted-foreground" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="M21 21l-4.35-4.35"/>
+    </svg>
+    <input type="search"
+           name="<%= name %>"
+           value="<%= value %>"
+           placeholder="<%= placeholder %>"
+           class="w-full h-10 rounded-lg border border-hw-border bg-hw-background pl-10 pr-4 text-sm text-hw-foreground placeholder:text-hw-muted-foreground focus:outline-none focus:ring-2 focus:ring-hw-ring focus:border-transparent"
+           data-hw-search-target="input"
+           data-action="input->hw-search#debounce focus->hw-search#showSuggestions blur->hw-search#hideSuggestions">
+    <% if with_filters %>
+      <button type="button"
+              class="absolute right-2 top-1/2 -translate-y-1/2 h-7 w-7 rounded-md flex items-center justify-center hover:bg-hw-muted transition-colors"
+              data-action="click->hw-search#toggleFilters">
+        <svg class="h-4 w-4 text-hw-muted-foreground" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/>
+        </svg>
+        <span class="sr-only">Filters</span>
+      </button>
+    <% end %>
+  </div>
+  <div class="hidden absolute top-full left-0 right-0 mt-1 rounded-lg border border-hw-border bg-hw-popover shadow-lg z-50"
+       data-hw-search-target="suggestions">
+    <ul class="py-1 max-h-60 overflow-auto" data-hw-search-target="list">
+      <% suggestions.each do |suggestion| %>
+        <li>
+          <button type="button"
+                  class="w-full px-3 py-2 text-left text-sm hover:bg-hw-accent hover:text-hw-accent-foreground transition-colors"
+                  data-action="click->hw-search#select"
+            data-value="<%= suggestion.is_a?(Hash) ? suggestion[:value] : suggestion %>">
+            <% if suggestion.is_a?(Hash) %>
+              <span class="font-medium"><%= suggestion[:label] %></span>
+              <% if suggestion[:description] %>
+                <span class="ml-2 text-xs text-hw-muted-foreground"><%= suggestion[:description] %></span>
+              <% end %>
+            <% else %>
+              <%= suggestion %>
+            <% end %>
+          </button>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <% if with_filters %>
+    <div class="hidden mt-2 rounded-lg border border-hw-border bg-hw-card p-3" data-hw-search-target="filters">
+      <p class="text-xs font-medium text-hw-muted-foreground mb-2">Filters</p>
+      <div class="flex flex-wrap gap-2" data-hw-search-target="filterContainer">
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,8 @@
+<%# Autocomplete component — ERB partial %>
+<%# Usage: render 'hotwirebits/autocomplete', ... %>
+
+<div class="relative" data-controller="hw-autocomplete" data-hw-autocomplete-url-value="<%= url %>" data-hw-autocomplete-min-chars-value="<%= min_chars %>" <%= tag.attributes(local_assigns) %>>
+  <input type="text" placeholder="<%= placeholder %>" value="<%= value %>" <%= 'disabled' if disabled %> autocomplete="off" class="flex w-full rounded-md border border-hw-input bg-hw-background px-3 py-2 text-sm text-hw-foreground ring-offset-hw-background placeholder:text-hw-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" data-hw-autocomplete-target="input" data-action="input->hw-autocomplete#search keydown->hw-autocomplete#keydown">
+  <ul class="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-md border border-hw-border bg-hw-popover shadow-md hidden" role="listbox" data-hw-autocomplete-target="results"></ul>
+  <input type="hidden" name="<%= name %>" value="<%= value %>" data-hw-autocomplete-target="hidden">
+</div>

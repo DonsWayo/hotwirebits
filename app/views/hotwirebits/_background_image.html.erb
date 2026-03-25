@@ -1,0 +1,12 @@
+<%# BackgroundImage component — ERB partial %>
+<%# Usage: render 'hotwirebits/background_image', ... %>
+
+<div class="<%= container_classes %>" <%= tag.attributes(local_assigns) %>>
+  <div class="absolute inset-0 bg-no-repeat" style="background-image: url('<%= src %>'); background-size: <%= size %>; background-position: <%= position %>;"></div>
+  <% if overlay %>
+    <div class="absolute inset-0 bg-black/40"></div>
+  <% end %>
+  <div class="relative">
+    <%= content %>
+  </div>
+</div>

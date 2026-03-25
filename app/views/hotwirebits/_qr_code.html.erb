@@ -1,0 +1,22 @@
+<%# QrCode component — ERB partial %>
+<%# Usage: render 'hotwirebits/qr_code', ... %>
+
+<% qr = modules %>
+<% cell_size = (size.to_f / (qr.size + margin * 2)).round(2) %>
+<div class="<%= merge_classes('inline-block', extra_attrs.delete(:class)) %>"
+     <%= tag.attributes(local_assigns) %>>
+  <svg xmlns="http://www.w3.org/2000/svg"
+       width="<%= size %>"
+       height="<%= size %>"
+       viewBox="0 0 <%= qr.size + margin * 2 %> <%= qr.size + margin * 2 %>"
+       shape-rendering="crispEdges">
+    <rect width="<%= qr.size + margin * 2 %>" height="<%= qr.size + margin * 2 %>" fill="white"/>
+    <% qr.each_with_index do |row, r| %>
+      <% row.each_with_index do |cell, c| %>
+        <% if cell == 1 %>
+          <rect x="<%= c + margin %>" y="<%= r + margin %>" width="1" height="1" fill="black"/>
+        <% end %>
+      <% end %>
+    <% end %>
+  </svg>
+    </div>

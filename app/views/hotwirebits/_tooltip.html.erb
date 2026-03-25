@@ -1,35 +1,19 @@
-<%# Tooltip partial - local variables: content, side, delay, class %>
-<%
-  tooltip_content ||= local_assigns[:content]
-  side ||= local_assigns[:side] || :top
-  delay ||= local_assigns[:delay] || 0
-  extra_class ||= local_assigns[:class]
+<%# Tooltip component — ERB partial %>
+<%# Usage: render 'hotwirebits/tooltip', ... %>
 
-  side_classes = {
-    top: 'bottom-full left-1/2 -translate-x-1/2 mb-2',
-    bottom: 'top-full left-1/2 -translate-x-1/2 mt-2',
-    left: 'right-full top-1/2 -translate-y-1/2 mr-2',
-    right: 'left-full top-1/2 -translate-y-1/2 ml-2'
-  }
-
-  tooltip_classes = [
-    'absolute z-50 overflow-hidden rounded-md border border-hw-border bg-hw-popover px-3 py-1.5 text-sm text-hw-popover-foreground shadow-md',
-    side_classes[side.to_sym] || side_classes[:top],
-    extra_class
-  ].compact.join(' ')
-%>
 <div class="relative inline-block"
      data-controller="hw-tooltip"
      data-hw-tooltip-delay-value="<%= delay %>"
      data-action="mouseenter->hw-tooltip#show mouseleave->hw-tooltip#hide focus->hw-tooltip#show blur->hw-tooltip#hide">
   <div data-hw-tooltip-target="trigger">
-    <%= yield if block_given? %>
+    <%= content %>
   </div>
   <div class="<%= tooltip_classes %>"
        data-hw-tooltip-target="content"
        role="tooltip"
        data-side="<%= side %>"
-       hidden>
-    <%= tooltip_content %>
+       hidden
+       <%= tag.attributes(local_assigns) %>>
+    <%= content %>
   </div>
 </div>

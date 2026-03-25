@@ -1,0 +1,37 @@
+<%# OrgChart component — ERB partial %>
+<%# Usage: render 'hotwirebits/org_chart', ... %>
+
+<div class="<%= container_classes %>" <%= tag.attributes(local_assigns) %>>
+  <% render_node = nil %>
+  <% render_node = ->(node, depth = 0) { %>
+  <div class="flex flex-col items-center">
+    <div class="flex flex-col items-center rounded-lg border border-hw-border bg-white p-4 shadow-sm">
+      <% if node[:avatar] %>
+        <img src="<%= node[:avatar] %>" alt="<%= node[:name] %>" class="mb-2 h-12 w-12 rounded-full object-cover">
+      <% else %>
+        <div class="mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-hw-primary text-sm font-bold text-hw-primary-foreground">
+          <%= node[:name].to_s.split.map(&:first).join[0..1].upcase %>
+        </div>
+      <% end %>
+      <p class="text-sm font-semibold text-hw-foreground"><%= node[:name] %></p>
+      <p class="text-xs text-hw-muted-foreground"><%= node[:title] %></p>
+    </div>
+    <% if node[:children]&.any? %>
+      <div class="mt-2 h-6 w-px bg-hw-border"></div>
+      <div class="flex gap-6 pt-2">
+        <% node[:children].each do |child| %>
+          <div class="relative flex flex-col items-center">
+            <div class="absolute -top-2 h-2 w-px bg-hw-border"></div>
+            <% render_node.call(child, depth + 1) %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <% } %>
+  <div class="flex justify-center">
+    <% nodes.each do |node| %>
+      <% render_node.call(node) %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<%# AppShell component — ERB partial %>
+<%# Usage: render 'hotwirebits/app_shell', ... %>
+
+<div class="flex h-screen flex-col" <%= tag.attributes(local_assigns) %>>
+  <% if header? %>
+    <header class="shrink-0 border-b border-hw-border bg-hw-background">
+      <%= header %>
+    </header>
+  <% end %>
+  <div class="flex flex-1 overflow-hidden">
+    <% if sidebar? %>
+      <aside class="<%= sidebar_collapsed ? 'w-16' : 'w-64' %> shrink-0 border-r border-hw-border bg-hw-background overflow-y-auto transition-[width] duration-200">
+        <%= sidebar %>
+      </aside>
+    <% end %>
+    <main class="flex-1 overflow-y-auto bg-hw-background">
+      <%= content %>
+    </main>
+  </div>
+  <% if footer? %>
+    <footer class="shrink-0 border-t border-hw-border bg-hw-background">
+      <%= footer %>
+    </footer>
+  <% end %>
+</div>

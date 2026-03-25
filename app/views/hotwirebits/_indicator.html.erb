@@ -1,0 +1,9 @@
+<%# Indicator component — ERB partial %>
+<%# Usage: render 'hotwirebits/indicator', ... %>
+
+<div class="relative inline-flex">
+  <%= content %>
+  <div class="absolute flex items-center justify-center <%= color || 'bg-hw-primary' %> <%= POSITIONS[position] || '-top-1 -right-1' %>" <%= tag.attributes(local_assigns) %>>
+    <%= yield %>
+  </div>
+</div>

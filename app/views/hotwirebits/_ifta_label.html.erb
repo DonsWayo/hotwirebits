@@ -1,0 +1,7 @@
+<%# IftaLabel component — ERB partial %>
+<%# Usage: render 'hotwirebits/ifta_label', ... %>
+
+<div class="relative" <%= tag.attributes(local_assigns) %>>
+  <div class="peer"><%= content %></div>
+  <label for="<%= name %>" class="absolute left-3 top-0 -translate-y-1/2 bg-hw-background px-1 text-xs font-medium text-hw-muted-foreground transition-all peer-focus:text-hw-primary"><%= label %></label>
+</div>

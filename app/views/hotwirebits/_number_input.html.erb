@@ -1,0 +1,4 @@
+<%# NumberInput component — ERB partial %>
+<%# Usage: render 'hotwirebits/number_input', ... %>
+
+<input type="number" name="<%= name %>" value="<%= value %>" placeholder="<%= placeholder %>" min="<%= min %>" max="<%= max %>" step="<%= step %>" <%= 'disabled' if disabled %> class="<%= input_classes %>" <%= tag.attributes(local_assigns) %>>

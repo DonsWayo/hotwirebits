@@ -1,0 +1,10 @@
+<%# BentoGrid component — ERB partial %>
+<%# Usage: render 'hotwirebits/bento_grid', ... %>
+
+<div class="<%= grid_classes %>" <%= tag.attributes(local_assigns) %>>
+  <% items.each do |item| %>
+    <div class="<%= item.item_classes %>">
+      <%= item %>
+    </div>
+  <% end %>
+</div>

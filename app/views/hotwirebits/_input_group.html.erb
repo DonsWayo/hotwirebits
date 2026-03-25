@@ -1,0 +1,12 @@
+<%# InputGroup component — ERB partial %>
+<%# Usage: render 'hotwirebits/input_group', ... %>
+
+<div class="flex [&>*:first-child]:rounded-r-none [&>*:last-child]:rounded-l-none [&>*:not(:first-child):not(:last-child)]:rounded-none [&>*:not(:first-child)]:-ml-px" <%= tag.attributes(local_assigns) %>>
+  <% if addon_before %>
+    <span class="inline-flex items-center rounded-md border border-hw-input bg-hw-muted px-3 text-sm text-hw-muted-foreground whitespace-nowrap"><%= addon_before %></span>
+  <% end %>
+  <%= content %>
+  <% if addon_after %>
+    <span class="inline-flex items-center rounded-md border border-hw-input bg-hw-muted px-3 text-sm text-hw-muted-foreground whitespace-nowrap"><%= addon_after %></span>
+  <% end %>
+</div>

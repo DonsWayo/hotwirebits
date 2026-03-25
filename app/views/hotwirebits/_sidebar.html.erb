@@ -1,30 +1,39 @@
-<%# Sidebar partial - local variables: items, collapsed, width, class %>
-<%
-  items ||= local_assigns[:items] || []
-  collapsed ||= local_assigns[:collapsed] || false
-  width ||= local_assigns[:width] || 256
-  extra_class ||= local_assigns[:class]
+<%# Sidebar component — ERB partial %>
+<%# Usage: render 'hotwirebits/sidebar', ... %>
 
-  sidebar_classes = [
-    'flex h-screen flex-col border-r border-hw-border bg-hw-background',
-    extra_class
-  ].compact.join(' ')
-%>
 <aside class="<%= sidebar_classes %>"
        style="<%= "width: #{width}px" unless collapsed %>"
        data-controller="hw-sidebar"
-       data-hw-sidebar-collapsed-value="<%= collapsed %>">
+       data-hw-sidebar-collapsed-value="<%= collapsed %>"
+       <%= tag.attributes(local_assigns) %>>
+  <% if header? %>
+    <div class="flex h-14 items-center border-b border-hw-border px-4">
+      <%= header %>
+    </div>
+  <% end %>
   <div class="flex-1 overflow-y-auto py-2">
-    <nav class="space-y-1 px-2">
-      <% items.each do |item| %>
-        <a href="<%= item[:href] %>"
-           class="flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors <%= item[:active] ? 'bg-hw-accent text-hw-accent-foreground' : 'text-hw-muted-foreground hover:bg-hw-accent/50 hover:text-hw-accent-foreground' %>">
-          <% if item[:icon] %>
-            <span class="h-4 w-4 shrink-0"><%= item[:icon].html_safe %></span>
-          <% end %>
-          <span class="<%= collapsed ? 'hidden' : '' %>"><%= item[:label] %></span>
-        </a>
-      <% end %>
-    </nav>
+    <% if content? %>
+      <%= content %>
+    <% elsif items.any? %>
+      <nav class="space-y-1 px-2">
+        <% items.each do |item| %>
+          <a href="<%= item[:href] %>"
+             class="<%= merge_classes(
+               'flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors',
+               item[:active] ? 'bg-hw-accent text-hw-accent-foreground' : 'text-hw-muted-foreground hover:bg-hw-accent/50 hover:text-hw-accent-foreground'
+             ) %>">
+            <% if item[:icon] %>
+              <span class="h-4 w-4 shrink-0"><%= item[:icon].html_safe %></span>
+            <% end %>
+            <span class="<%= collapsed ? 'hidden' : '' %>"><%= item[:label] %></span>
+          </a>
+        <% end %>
+      </nav>
+    <% end %>
   </div>
+  <% if footer? %>
+    <div class="border-t border-hw-border p-4">
+      <%= footer %>
+    </div>
+  <% end %>
 </aside>

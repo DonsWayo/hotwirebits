@@ -1,0 +1,36 @@
+<%# HeaderSection component — ERB partial %>
+<%# Usage: render 'hotwirebits/header_section', ... %>
+
+<header class="<%= container_classes %>" <%= tag.attributes(local_assigns) %>>
+  <% if breadcrumbs.any? %>
+    <nav aria-label="Breadcrumb" class="mb-4">
+      <ol class="flex items-center space-x-2 text-sm text-hw-muted-foreground">
+        <% breadcrumbs.each_with_index do |item, idx| %>
+          <% if idx > 0 %>
+            <li class="text-hw-muted-foreground/50">/</li>
+          <% end %>
+          <li>
+            <% if item[:href] && idx < breadcrumbs.size - 1 %>
+              <a href="<%= item[:href] %>" class="hover:text-hw-foreground transition-colors"><%= item[:label] %></a>
+            <% else %>
+              <span class="font-medium text-hw-foreground"><%= item[:label] %></span>
+            <% end %>
+          </li>
+        <% end %>
+      </ol>
+    </nav>
+  <% end %>
+  <div class="flex items-start justify-between gap-4">
+    <div>
+      <h1 class="text-2xl font-bold text-hw-foreground"><%= title %></h1>
+      <% if subtitle %>
+        <p class="mt-1 text-sm text-hw-muted-foreground"><%= subtitle %></p>
+      <% end %>
+    </div>
+    <% if actions? %>
+      <div class="flex items-center gap-2 shrink-0">
+        <%= actions %>
+      </div>
+    <% end %>
+  </div>
+</header>

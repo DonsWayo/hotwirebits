@@ -1,0 +1,6 @@
+<%# ThemeIcon component — ERB partial %>
+<%# Usage: render 'hotwirebits/theme_icon', ... %>
+
+<span class="inline-flex items-center justify-center <%= SIZES[size] || 'h-5 w-5' %>" <%= tag.attributes(local_assigns) %>>
+  <%= content %>
+</span>

@@ -1,0 +1,6 @@
+<%# Slider component — ERB partial %>
+<%# Usage: render 'hotwirebits/slider', ... %>
+
+<div class="relative w-full">
+  <input type="range" name="<%= name %>" value="<%= value %>" min="<%= min %>" max="<%= max %>" step="<%= step %>" <%= 'disabled' if disabled %> class="<%= slider_classes %>" <%= tag.attributes(local_assigns) %>>
+</div>

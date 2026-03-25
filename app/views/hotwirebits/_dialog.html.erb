@@ -1,23 +1,9 @@
-<%# Dialog partial - local variables: title, open, closable, class %>
-<%
-  title ||= local_assigns[:title]
-  open ||= local_assigns[:open] || false
-  closable ||= local_assigns[:closable]
-  closable = true if closable.nil?
-  extra_class ||= local_assigns[:class]
+<%# Dialog component — ERB partial %>
+<%# Usage: render 'hotwirebits/dialog', ... %>
 
-  overlay_classes = [
-    'fixed inset-0 z-50 bg-black/80',
-    open ? '' : 'hidden'
-  ].compact.join(' ')
-
-  dialog_classes = [
-    'fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-hw-background p-6 shadow-lg duration-200 sm:rounded-lg',
-    open ? '' : 'hidden',
-    extra_class
-  ].compact.join(' ')
-%>
-<div data-controller="hw-dialog" data-hw-dialog-open-value="<%= open %>">
+<div data-controller="hw-dialog"
+     data-hw-dialog-open-value="<%= open %>"
+     <%= tag.attributes(local_assigns) %>>
   <div class="<%= overlay_classes %>"
        data-state="<%= open ? 'open' : 'closed' %>"
        data-hw-dialog-target="overlay"
@@ -30,13 +16,20 @@
        aria-modal="true"
        aria-labelledby="<%= title ? 'dialog-title' : nil %>">
     <div class="flex flex-col space-y-1.5 text-center sm:text-left">
-      <% if title %>
+      <% if header? %>
+        <%= header %>
+      <% elsif title %>
         <h2 id="dialog-title" class="text-lg font-semibold leading-none tracking-tight"><%= title %></h2>
       <% end %>
     </div>
     <div class="text-sm text-hw-muted-foreground">
-      <%= yield if block_given? %>
+      <%= content %>
     </div>
+    <% if footer? %>
+      <div class="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2">
+        <%= footer %>
+      </div>
+    <% end %>
     <% if closable %>
       <button type="button"
               class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-hw-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-hw-ring focus:ring-offset-2 disabled:pointer-events-none"

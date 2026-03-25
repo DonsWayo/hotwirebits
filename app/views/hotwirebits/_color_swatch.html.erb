@@ -1,0 +1,4 @@
+<%# ColorSwatch component — ERB partial %>
+<%# Usage: render 'hotwirebits/color_swatch', ... %>
+
+<span class="inline-block rounded-full border border-hw-border cursor-pointer <%= SIZES[size] || 'h-7 w-7' %>" style="background-color: <%= color %>" <%= with_tooltip ? "title='#{color}'" : '' %> <%= tag.attributes(local_assigns) %>></span>

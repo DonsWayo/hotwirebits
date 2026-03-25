@@ -1,0 +1,38 @@
+<%# FileBrowser component — ERB partial %>
+<%# Usage: render 'hotwirebits/file_browser', ... %>
+
+<div class="rounded-lg border border-hw-border bg-hw-card overflow-hidden font-mono text-sm"
+     data-controller="hw-file-browser"
+     <%= tag.attributes(local_assigns) %>>
+  <div class="p-3 border-b border-hw-border bg-hw-muted/50">
+    <p class="text-xs font-medium text-hw-muted-foreground uppercase tracking-wide">Files</p>
+  </div>
+  <div class="p-2">
+    <%= render_file_tree(files, 0) %>
+  </div>
+</div>
+<% def render_file_tree(files, depth) %>
+<% files.each do |file| %>
+  <div class="flex items-center gap-2 rounded-sm px-2 py-1.5 cursor-pointer hover:bg-hw-accent transition-colors <%= selected == file[:name] ? 'bg-hw-accent text-hw-accent-foreground' : 'text-hw-foreground' %>"
+         style="padding-left: <%= depth * 16 + 8 %>px;"
+         data-action="click->hw-file-browser#select"
+    data-file-name="<%= file[:name] %>">
+    <% if file[:type] == 'folder' %>
+      <svg class="h-4 w-4 text-yellow-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
+      </svg>
+    <% else %>
+      <svg class="h-4 w-4 text-hw-muted-foreground shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+      </svg>
+    <% end %>
+    <span class="truncate"><%= file[:name] %></span>
+    <% if file[:size] %>
+      <span class="ml-auto text-[10px] text-hw-muted-foreground shrink-0"><%= file[:size] %></span>
+    <% end %>
+  </div>
+  <% if file[:type] == 'folder' && file[:children]&.any? %>
+    <%= render_file_tree(file[:children], depth + 1) %>
+  <% end %>
+<% end %>
+<% end %>

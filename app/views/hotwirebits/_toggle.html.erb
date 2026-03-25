@@ -1,34 +1,6 @@
-<%# Toggle partial - local variables: label, variant, size, pressed, disabled, class %>
-<%
-  label ||= local_assigns[:label]
-  variant ||= local_assigns[:variant] || :default
-  size ||= local_assigns[:size] || :md
-  pressed ||= local_assigns[:pressed] || false
-  disabled ||= local_assigns[:disabled] || false
-  extra_class ||= local_assigns[:class]
+<%# Toggle component — ERB partial %>
+<%# Usage: render 'hotwirebits/toggle', ... %>
 
-  variant_classes = {
-    default: 'bg-transparent hover:bg-hw-accent hover:text-hw-accent-foreground',
-    outline: 'border border-hw-input bg-transparent hover:bg-hw-accent hover:text-hw-accent-foreground'
-  }
-
-  size_classes = {
-    sm: 'h-8 px-2 text-xs',
-    md: 'h-9 px-3 text-sm',
-    lg: 'h-10 px-4'
-  }
-
-  classes = [
-    'inline-flex items-center justify-center rounded-md font-medium ring-offset-hw-background',
-    'transition-colors focus-visible:outline-none focus-visible:ring-2',
-    'focus-visible:ring-hw-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
-    'cursor-pointer',
-    pressed ? 'bg-hw-accent text-hw-accent-foreground' : '',
-    variant_classes[variant.to_sym] || variant_classes[:default],
-    size_classes[size.to_sym] || size_classes[:md],
-    extra_class
-  ].compact.join(' ')
-%>
-<button type="button" aria-pressed="<%= pressed %>" <%= 'disabled' if disabled %> class="<%= classes %>">
-  <%= yield || label %>
+<button type="button" aria-pressed="<%= pressed %>" <%= 'disabled' if disabled %> class="inline-flex items-center justify-center rounded-md font-medium ring-offset-hw-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-hw-accent hover:text-hw-accent-foreground <%= pressed ? 'bg-hw-accent text-hw-accent-foreground' : 'bg-transparent' %> cursor-pointer h-9 px-3 text-sm" <%= tag.attributes(local_assigns) %>>
+  <%= content || label %>
 </button>

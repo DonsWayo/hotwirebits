@@ -1,0 +1,11 @@
+<%# DatePicker component — ERB partial %>
+<%# Usage: render 'hotwirebits/date_picker', ... %>
+
+<div class="relative" data-controller="hw-datepicker">
+  <div class="relative">
+    <div class="absolute left-3 top-1/2 -translate-y-1/2 text-hw-muted-foreground">
+      <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+    </div>
+    <input type="date" name="<%= name %>" value="<%= value %>" min="<%= min %>" max="<%= max %>" <%= 'disabled' if disabled %> class="flex w-full rounded-md border border-hw-input bg-hw-background text-hw-foreground ring-offset-hw-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 h-9 pl-9 text-sm" <%= tag.attributes(local_assigns) %>>
+  </div>
+</div>

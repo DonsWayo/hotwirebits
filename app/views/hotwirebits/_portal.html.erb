@@ -1,0 +1,6 @@
+<%# Portal component — ERB partial %>
+<%# Usage: render 'hotwirebits/portal', ... %>
+
+<template data-controller="hw-portal" data-hw-portal-target-value="<%= target %>" <%= tag.attributes(local_assigns) %>>
+  <%= content %>
+</template>

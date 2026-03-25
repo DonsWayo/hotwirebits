@@ -1,0 +1,22 @@
+<%# ColorInput component — ERB partial %>
+<%# Usage: render 'hotwirebits/color_input', ... %>
+
+<div class="flex items-center gap-2"
+     data-controller="hw-color-input"
+     data-hw-color-input-format-value="<%= format %>"
+     <%= tag.attributes(local_assigns) %>>
+  <label class="relative flex h-9 w-9 shrink-0 cursor-pointer overflow-hidden rounded-md border border-hw-input">
+    <input type="color"
+           value="<%= value %>"
+           class="absolute inset-0 h-full w-full cursor-pointer opacity-0"
+           data-hw-color-input-target="picker"
+           data-action="input->hw-color-input#update">
+    <div class="h-full w-full rounded-md" data-hw-color-input-target="preview" style="background-color: <%= value %>;"></div>
+  </label>
+  <input type="text"
+         name="<%= name %>"
+         value="<%= value %>"
+         class="h-9 w-28 rounded-md border border-hw-input bg-hw-background px-3 text-sm font-mono text-hw-foreground uppercase focus:outline-none focus:ring-2 focus:ring-hw-ring"
+         data-hw-color-input-target="text"
+         data-action="input->hw-color-input#updateFromText">
+</div>

@@ -1,0 +1,34 @@
+<%# FormGroup component — ERB partial %>
+<%# Usage: render 'hotwirebits/form_group', ... %>
+
+<% if horizontal %>
+  <div class="grid grid-cols-4 items-start gap-4" <%= tag.attributes(local_assigns) %>>
+    <div class="pt-2">
+      <% if label %>
+        <label for="<%= name %>" class="text-sm font-medium text-hw-foreground"><%= label %><% if required %> <span class="text-hw-destructive">*</span><% end %></label>
+      <% end %>
+      <% if hint %>
+        <p class="text-xs text-hw-muted-foreground mt-0.5"><%= hint %></p>
+      <% end %>
+    </div>
+    <div class="col-span-3">
+      <%= content %>
+      <% if error %>
+        <p class="text-xs text-hw-destructive mt-1"><%= error %></p>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div class="space-y-2" <%= tag.attributes(local_assigns) %>>
+    <% if label %>
+      <label for="<%= name %>" class="text-sm font-medium leading-none"><%= label %><% if required %> <span class="text-hw-destructive">*</span><% end %></label>
+    <% end %>
+    <%= content %>
+    <% if hint && !error %>
+      <p class="text-xs text-hw-muted-foreground"><%= hint %></p>
+    <% end %>
+    <% if error %>
+      <p class="text-xs text-hw-destructive"><%= error %></p>
+    <% end %>
+  </div>
+<% end %>

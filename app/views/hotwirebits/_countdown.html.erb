@@ -1,0 +1,11 @@
+<%# Countdown component — ERB partial %>
+<%# Usage: render 'hotwirebits/countdown', ... %>
+
+<span data-controller="hw-countdown"
+      data-hw-countdown-value-value="<%= value %>"
+      data-hw-countdown-target-value="<%= target %>"
+      data-hw-countdown-duration-value="<%= duration %>"
+      class="tabular-nums"
+      <%= tag.attributes(local_assigns) %>>
+  <%= prefix %><span data-hw-countdown-target="output"><%= value %></span><%= suffix %>
+</span>

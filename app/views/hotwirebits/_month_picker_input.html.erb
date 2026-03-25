@@ -1,0 +1,23 @@
+<%# MonthPickerInput component — ERB partial %>
+<%# Usage: render 'hotwirebits/month_picker_input', ... %>
+
+<div class="relative" data-controller="hw-month-picker-input" <%= tag.attributes(local_assigns) %>>
+  <input type="hidden" name="<%= name %>" value="<%= value %>" data-hw-month-picker-input-target="hidden">
+  <div class="relative">
+    <div class="absolute left-3 top-1/2 -translate-y-1/2 text-hw-muted-foreground">
+      <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+      </svg>
+    </div>
+    <input type="text"
+           readonly
+           value="<%= formatted_value %>"
+           placeholder="<%= placeholder %>"
+           class="flex h-9 w-full rounded-md border border-hw-input bg-hw-background pl-9 pr-3 text-sm text-hw-foreground ring-offset-hw-background placeholder:text-hw-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2 cursor-pointer"
+           data-action="click->hw-month-picker-input#open"
+    data-hw-month-picker-input-target="input">
+  </div>
+  <div class="absolute z-50 mt-1 hidden rounded-md border border-hw-border bg-hw-popover p-3 shadow-md"
+       data-hw-month-picker-input-target="dropdown">
+  </div>
+</div>

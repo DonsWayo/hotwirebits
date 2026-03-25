@@ -1,0 +1,10 @@
+<%# TextRotate component — ERB partial %>
+<%# Usage: render 'hotwirebits/text_rotate', ... %>
+
+<span class="<%= wrapper_classes %>" data-controller="text-rotate" data-text-rotate-interval-value="<%= interval %>" data-text-rotate-effect-value="<%= effect %>" <%= tag.attributes(local_assigns) %>>
+  <% texts.each_with_index do |text, idx| %>
+    <span class="block transition-all duration-500 <%= idx == 0 ? '' : effect_classes %>"
+          data-text-rotate-target="item"
+          data-index="<%= idx %>"><%= text %></span>
+<% end %>
+</span>

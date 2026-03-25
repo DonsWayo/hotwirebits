@@ -1,0 +1,8 @@
+<%# TypingIndicator component — ERB partial %>
+<%# Usage: render 'hotwirebits/typing_indicator', ... %>
+
+<div class="flex items-center <%= gap_class %>" <%= tag.attributes(local_assigns) %>>
+  <span class="<%= dot_size %> <%= dot_color %> rounded-full animate-bounce" style="animation-delay: 0ms;"></span>
+  <span class="<%= dot_size %> <%= dot_color %> rounded-full animate-bounce" style="animation-delay: 150ms;"></span>
+  <span class="<%= dot_size %> <%= dot_color %> rounded-full animate-bounce" style="animation-delay: 300ms;"></span>
+</div>

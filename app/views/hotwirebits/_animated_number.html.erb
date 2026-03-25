@@ -1,0 +1,11 @@
+<%# AnimatedNumber component — ERB partial %>
+<%# Usage: render 'hotwirebits/animated_number', ... %>
+
+<span data-controller="hw-animated-number"
+      data-hw-animated-number-value-value="<%= value %>"
+      data-hw-animated-number-duration-value="<%= duration %>"
+      data-hw-animated-number-easing-value="<%= easing_value %>"
+      class="tabular-nums inline-block"
+      <%= tag.attributes(local_assigns) %>>
+  <%= prefix %><span data-hw-animated-number-target="output">0</span><%= suffix %>
+</span>

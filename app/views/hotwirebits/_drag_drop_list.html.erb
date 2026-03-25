@@ -1,0 +1,19 @@
+<%# DragDropList component — ERB partial %>
+<%# Usage: render 'hotwirebits/drag_drop_list', ... %>
+
+<ul class="<%= list_classes %>"
+    data-controller="hw-drag-drop"
+    <%= tag.attributes(local_assigns) %>>
+  <% items.each do |item| %>
+    <li class="flex items-center gap-3 rounded-lg border border-hw-border bg-hw-card p-3 cursor-grab active:cursor-grabbing transition-shadow hover:shadow-md"
+        draggable="true"
+        data-hw-drag-drop-target="item"
+        data-item-id="<%= item[:id] %>"
+        data-action="dragstart->hw-drag-drop#dragStart dragend->hw-drag-drop#dragEnd dragover->hw-drag-drop#dragOver drop->hw-drag-drop#drop">
+      <svg class="h-4 w-4 text-hw-muted-foreground shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16"/>
+      </svg>
+      <span class="text-sm text-hw-foreground"><%= item[:label] %></span>
+    </li>
+  <% end %>
+</ul>

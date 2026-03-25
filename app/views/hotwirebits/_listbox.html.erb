@@ -1,0 +1,19 @@
+<%# Listbox component — ERB partial %>
+<%# Usage: render 'hotwirebits/listbox', ... %>
+
+<div class="rounded-md border border-hw-input bg-hw-background" role="listbox" aria-multiselectable="<%= multiple %>" data-controller="hw-listbox" <%= tag.attributes(local_assigns) %>>
+  <% options.each do |opt| %>
+    <% selected = selected.include?(opt[:value]) %>
+    <div class="<%= option_classes(selected, opt[:disabled]) %>" role="option" aria-selected="<%= selected %>" <%= 'aria-disabled="true"' if opt[:disabled] %> data-action="<%= 'click->hw-listbox#select' unless opt[:disabled] %>" data-value="<%= opt[:value] %>">
+      <% if selected %>
+        <svg class="h-4 w-4 text-hw-primary shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+      <% end %>
+      <span class="flex-1"><%= opt[:label] %></span>
+    </div>
+  <% end %>
+  <% if name %>
+    <% selected.each do |v| %>
+      <input type="hidden" name="<%= multiple ? "#{name}[]" : name %>" value="<%= v %>">
+    <% end %>
+  <% end %>
+</div>

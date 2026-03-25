@@ -1,0 +1,23 @@
+<%# Burger component — ERB partial %>
+<%# Usage: render 'hotwirebits/burger', ... %>
+
+<button type="button"
+        class="<%= button_classes %>"
+        data-controller="hw-burger"
+        data-hw-burger-open-value="<%= open %>"
+        data-action="click->hw-burger#toggle"
+  aria-label="Toggle menu"
+  aria-expanded="<%= open %>"
+  <%= tag.attributes(local_assigns) %>>
+  <span class="relative flex flex-col items-center justify-center gap-1">
+    <span class="<%= line_classes %>"
+          data-hw-burger-target="top"
+          style="<%= open ? 'transform: translateY(6px) rotate(45deg)' : '' %>"></span>
+    <span class="<%= line_classes %>"
+          data-hw-burger-target="middle"
+          style="<%= open ? 'opacity: 0' : '' %>"></span>
+    <span class="<%= line_classes %>"
+          data-hw-burger-target="bottom"
+          style="<%= open ? 'transform: translateY(-6px) rotate(-45deg)' : '' %>"></span>
+  </span>
+</button>

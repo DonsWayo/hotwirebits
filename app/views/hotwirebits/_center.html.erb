@@ -1,0 +1,6 @@
+<%# Center component — ERB partial %>
+<%# Usage: render 'hotwirebits/center', ... %>
+
+<div class="<%= center_classes %>" <% if center_styles %>style="<%= center_styles %>"<% end %> <%= tag.attributes(local_assigns) %>>
+  <%= content %>
+</div>

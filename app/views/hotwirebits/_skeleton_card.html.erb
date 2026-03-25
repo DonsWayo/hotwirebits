@@ -1,0 +1,18 @@
+<%# SkeletonCard component — ERB partial %>
+<%# Usage: render 'hotwirebits/skeleton_card', ... %>
+
+<div class="rounded-lg border border-hw-border bg-hw-card p-4 shadow-sm" <%= tag.attributes(local_assigns) %>>
+  <% if has_image %>
+    <div class="mb-4 h-32 w-full animate-pulse rounded-md bg-hw-muted"></div>
+  <% end %>
+  <div class="flex items-start gap-3">
+    <% if has_avatar %>
+      <div class="h-10 w-10 shrink-0 animate-pulse rounded-full bg-hw-muted"></div>
+    <% end %>
+    <div class="flex-1 space-y-2">
+      <% lines.times do |i| %>
+        <div class="h-4 animate-pulse rounded-md bg-hw-muted <%= line_width(i) %>"></div>
+      <% end %>
+    </div>
+  </div>
+</div>

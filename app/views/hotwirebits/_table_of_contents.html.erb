@@ -1,0 +1,15 @@
+<%# TableOfContents component — ERB partial %>
+<%# Usage: render 'hotwirebits/table_of_contents', ... %>
+
+<nav aria-label="Table of contents" class="space-y-0.5 text-sm" <%= tag.attributes(local_assigns) %>>
+  <% headings.each do |heading| %>
+    <a href="#<%= heading[:id] %>"
+       class="<%= merge_classes(
+         'block py-1 text-hw-muted-foreground hover:text-hw-foreground transition-colors',
+         indent_class(heading[:level]),
+         active_id == heading[:id] ? 'text-hw-foreground font-medium border-l-2 border-hw-primary pl-2' : nil
+       ) %>">
+  <%= heading[:text] %>
+</a>
+<% end %>
+</nav>

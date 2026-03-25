@@ -1,0 +1,6 @@
+<%# ScrollArea component — ERB partial %>
+<%# Usage: render 'hotwirebits/scroll_area', ... %>
+
+<div class="<%= scroll_classes %>" <% if scroll_styles %>style="<%= scroll_styles %>"<% end %> <%= tag.attributes(local_assigns) %>>
+  <%= content %>
+</div>

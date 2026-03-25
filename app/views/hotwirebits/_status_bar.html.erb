@@ -1,0 +1,16 @@
+<%# StatusBar component — ERB partial %>
+<%# Usage: render 'hotwirebits/status_bar', ... %>
+
+<div class="flex items-center justify-between px-4 py-1.5 bg-hw-muted/80 border-hw-border text-xs text-hw-muted-foreground <%= position_classes %>" <%= tag.attributes(local_assigns) %>>
+  <% items.each do |item| %>
+    <div class="flex items-center gap-1.5">
+      <% if item[:icon] %>
+        <span class="h-3.5 w-3.5"><%= item[:icon].html_safe %></span>
+      <% end %>
+      <span><%= item[:label] %></span>
+      <% if item[:value] %>
+        <span class="font-medium text-hw-foreground"><%= item[:value] %></span>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,12 @@
+<%# NavLink component — ERB partial %>
+<%# Usage: render 'hotwirebits/nav_link', ... %>
+
+<a href="<%= href %>" class="<%= link_classes %>" <%= tag.attributes(local_assigns) %>>
+  <% if icon %>
+    <span class="h-4 w-4 shrink-0"><%= icon.html_safe %></span>
+<% end %>
+<span class="flex-1"><%= content || label %></span>
+<% if badge %>
+  <span class="ml-auto rounded-full bg-hw-primary/10 px-2 py-0.5 text-xs font-medium text-hw-primary"><%= badge %></span>
+<% end %>
+</a>

@@ -1,25 +1,8 @@
-<%# Radio partial - local variables: name, value, checked, disabled, label, size, class %>
-<%
-  name ||= local_assigns[:name]
-  value ||= local_assigns[:value]
-  checked ||= local_assigns[:checked] || false
-  disabled ||= local_assigns[:disabled] || false
-  label ||= local_assigns[:label]
-  size ||= local_assigns[:size] || :md
-  extra_class ||= local_assigns[:class]
+<%# Radio component — ERB partial %>
+<%# Usage: render 'hotwirebits/radio', ... %>
 
-  size_map = { sm: 'h-3.5 w-3.5', md: 'h-4 w-4', lg: 'h-5 w-5' }
-  input_size = size_map[size.to_sym] || size_map[:md]
-
-  input_classes = [
-    'peer aspect-square shrink-0 rounded-full border border-hw-input bg-hw-background text-hw-primary',
-    'ring-offset-hw-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2',
-    'disabled:cursor-not-allowed disabled:opacity-50',
-    input_size
-  ].compact.join(' ')
-%>
-<label class="flex items-center gap-2 cursor-pointer <%= extra_class %>">
-  <input type="radio" name="<%= name %>" value="<%= value %>" <%= 'checked' if checked %> <%= 'disabled' if disabled %> class="<%= input_classes %>">
+<label class="flex items-center gap-2 cursor-pointer" <%= tag.attributes(local_assigns) %>>
+  <input type="radio" name="<%= name %>" value="<%= value %>" <%= 'checked' if checked %> <%= 'disabled' if disabled %> class="peer aspect-square shrink-0 rounded-full border border-hw-input bg-hw-background text-hw-primary ring-offset-hw-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 <%= SIZES[size] || 'h-4 w-4' %>">
   <% if label %>
     <span class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"><%= label %></span>
   <% end %>

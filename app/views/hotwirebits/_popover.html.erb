@@ -1,0 +1,23 @@
+<%# Popover component — ERB partial %>
+<%# Usage: render 'hotwirebits/popover', ... %>
+
+<div class="relative inline-block"
+     data-controller="hw-popover"
+     data-hw-popover-open-value="<%= open %>">
+  <div data-action="click->hw-popover#toggle" data-hw-popover-target="trigger" class="inline-block">
+    <% if trigger? %>
+      <%= trigger %>
+    <% else %>
+      <button type="button" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-hw-background transition-colors hover:bg-hw-accent hover:text-hw-accent-foreground h-9 px-3">
+        Open
+      </button>
+    <% end %>
+  </div>
+  <div class="<%= popover_classes %> <%= align_classes %>"
+       data-hw-popover-target="content"
+       data-state="<%= open ? 'open' : 'closed' %>"
+       data-side="<%= side %>"
+       <%= tag.attributes(local_assigns) %>>
+    <%= content %>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<%# DockMenu component — ERB partial %>
+<%# Usage: render 'hotwirebits/dock_menu', ... %>
+
+<nav class="fixed inset-x-0 bottom-0 z-50 border-t border-hw-border bg-hw-background/95 backdrop-blur supports-[backdrop-filter]:bg-hw-background/60" <%= tag.attributes(local_assigns) %>>
+  <div class="mx-auto flex h-16 max-w-md items-center justify-around px-6">
+    <% items.each do |item| %>
+      <a href="<%= item[:href] %>"
+         class="<%= merge_classes(
+           'group relative flex flex-col items-center gap-1 text-xs transition-colors',
+           item[:active] ? 'text-hw-primary' : 'text-hw-muted-foreground hover:text-hw-foreground'
+         ) %>">
+  <span class="relative">
+    <% if item[:icon] %>
+      <span class="h-6 w-6"><%= item[:icon].html_safe %></span>
+    <% end %>
+    <% if item[:badge] %>
+      <span class="absolute -right-2 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-hw-primary px-1 text-[10px] font-medium text-hw-primary-foreground"><%= item[:badge] %></span>
+    <% end %>
+  </span>
+  <span class="<%= item[:active] ? 'font-medium' : '' %>"><%= item[:label] %></span>
+</a>
+<% end %>
+</div>
+</nav>

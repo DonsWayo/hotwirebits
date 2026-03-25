@@ -1,0 +1,12 @@
+<%# SemiCircleProgress component — ERB partial %>
+<%# Usage: render 'hotwirebits/semi_circle_progress', ... %>
+
+<div class="relative inline-flex items-center justify-center" <%= tag.attributes(local_assigns) %>>
+  <svg width="<%= size %>" height="<%= size / 2 + 8 %>" viewBox="0 0 <%= size %> <%= size / 2 + 8 %>">
+    <path d="M <%= center_x - radius %> <%= center_y %> A <%= radius %> <%= radius %> 0 0 1 <%= center_x + radius %> <%= center_y %>" fill="none" stroke-width="8" class="stroke-hw-muted" stroke-linecap="round"/>
+    <path d="M <%= center_x - radius %> <%= center_y %> A <%= radius %> <%= radius %> 0 0 1 <%= center_x + radius %> <%= center_y %>" fill="none" stroke-width="8" class="<%= color_class %> transition-all duration-300" stroke-linecap="round" stroke-dasharray="<%= circumference %>" stroke-dashoffset="<%= stroke_dashoffset %>"/>
+  </svg>
+  <% if show_label %>
+    <span class="absolute bottom-0 text-sm font-medium"><%= percentage %>%</span>
+  <% end %>
+</div>

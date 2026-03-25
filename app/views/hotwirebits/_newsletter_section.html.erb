@@ -1,0 +1,21 @@
+<%# NewsletterSection component — ERB partial %>
+<%# Usage: render 'hotwirebits/newsletter_section', ... %>
+
+<section class="rounded-2xl bg-hw-muted px-6 py-12 text-center lg:px-8" <%= tag.attributes(local_assigns) %>>
+  <h2 class="text-2xl font-bold tracking-tight text-hw-foreground"><%= title %></h2>
+  <% if description %>
+    <p class="mx-auto mt-3 max-w-md text-sm text-hw-muted-foreground"><%= description %></p>
+  <% end %>
+  <form class="mx-auto mt-6 flex max-w-md gap-2" data-controller="hw-newsletter">
+    <input type="email" required
+           placeholder="<%= placeholder %>"
+           class="min-w-0 flex-1 rounded-lg border border-hw-border bg-white px-4 py-2.5 text-sm text-hw-foreground placeholder:text-hw-muted-foreground focus:border-hw-primary focus:outline-none focus:ring-2 focus:ring-hw-primary/20">
+    <button type="submit"
+            class="shrink-0 rounded-lg bg-hw-primary px-5 py-2.5 text-sm font-semibold text-hw-primary-foreground transition-colors hover:bg-hw-primary/90 focus:outline-none focus:ring-2 focus:ring-hw-ring">
+      <%= button_label %>
+    </button>
+  </form>
+  <% if privacy_note %>
+    <p class="mx-auto mt-3 max-w-md text-xs text-hw-muted-foreground"><%= privacy_note %></p>
+  <% end %>
+</section>

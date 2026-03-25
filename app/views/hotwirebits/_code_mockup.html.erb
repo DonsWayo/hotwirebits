@@ -1,0 +1,16 @@
+<%# CodeMockup component — ERB partial %>
+<%# Usage: render 'hotwirebits/code_mockup', ... %>
+
+<div class="rounded-lg border border-neutral-800 overflow-hidden bg-zinc-950 font-mono text-sm" <%= tag.attributes(local_assigns) %>>
+  <% if with_header %>
+    <div class="flex items-center justify-between px-4 py-2.5 bg-zinc-900 border-b border-zinc-800">
+      <div class="flex gap-1.5">
+        <div class="h-3 w-3 rounded-full bg-red-500"></div>
+        <div class="h-3 w-3 rounded-full bg-yellow-500"></div>
+        <div class="h-3 w-3 rounded-full bg-green-500"></div>
+      </div>
+      <span class="text-xs text-zinc-500"><%= language %></span>
+    </div>
+  <% end %>
+  <pre class="p-4 overflow-x-auto"><code><% lines.each_with_index do |line, i| %><span class="flex"><% if with_line_numbers %><span class="w-8 shrink-0 text-zinc-600 select-none text-right pr-3"><%= i + 1 %></span><% end %><span class="text-zinc-100 flex-1"><%= ERB::Util.html_escape(line.chomp) %></span></span><% end %></code></pre>
+</div>

@@ -1,0 +1,27 @@
+<%# Timeline component — ERB partial %>
+<%# Usage: render 'hotwirebits/timeline', ... %>
+
+<div class="<%= container_classes %>" <%= tag.attributes(local_assigns) %>>
+  <div class="border-l-2 border-hw-border ml-3">
+    <% items.each do |item| %>
+      <div class="relative pl-8 pb-8 last:pb-0">
+        <div class="absolute -left-[9px] top-0.5 h-4 w-4 rounded-full border-2 border-hw-border bg-hw-background flex items-center justify-center">
+          <% if item[:icon] %>
+            <span class="text-[10px] text-hw-muted-foreground"><%= item[:icon] %></span>
+          <% end %>
+        </div>
+        <div class="pt-0.5">
+          <div class="flex items-center gap-2">
+            <p class="text-sm font-medium text-hw-foreground"><%= item[:title] %></p>
+            <% if item[:time] %>
+              <span class="text-xs text-hw-muted-foreground"><%= item[:time] %></span>
+            <% end %>
+          </div>
+          <% if item[:description] %>
+            <p class="mt-1 text-sm text-hw-muted-foreground"><%= item[:description] %></p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

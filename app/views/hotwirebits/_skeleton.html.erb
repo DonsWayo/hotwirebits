@@ -1,29 +1,8 @@
-<%# Skeleton partial - local variables: shape, width, height, circle_size, class %>
-<%
-  shape ||= local_assigns[:shape] || :rectangle
-  width ||= local_assigns[:width]
-  height ||= local_assigns[:height]
-  circle_size ||= local_assigns[:circle_size] || '40px'
-  extra_class ||= local_assigns[:class]
+<%# Skeleton component — ERB partial %>
+<%# Usage: render 'hotwirebits/skeleton', ... %>
 
-  style_parts = []
-  if shape.to_sym == :circle
-    style_parts << "width: #{circle_size}; height: #{circle_size};"
-  else
-    style_parts << "width: #{width};" if width
-    style_parts << "height: #{height};" if height
-  end
-
-  shape_class = case shape.to_sym
-                when :circle then 'rounded-full'
-                when :text then 'rounded h-4 w-full'
-                else 'rounded-md'
-                end
-
-  classes = [
-    'animate-pulse bg-hw-muted',
-    shape_class,
-    extra_class
-  ].compact.join(' ')
-%>
-<div class="<%= classes %>" style="<%= style_parts.join %>"></div>
+<% style = [] %>
+<% style << "width: #{circle_size || '40px'}; height: #{circle_size || '40px'};" if shape == :circle %>
+<% style << "width: #{width};" if width && shape != :circle %>
+<% style << "height: #{height};" if height && shape != :circle %>
+<div class="animate-pulse bg-hw-muted <%= shape == :circle ? 'rounded-full' : shape == :text ? 'rounded h-4 w-full' : 'rounded-md' %>" style="<%= style.join %>" <%= tag.attributes(local_assigns) %>></div>

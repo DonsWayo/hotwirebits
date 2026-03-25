@@ -1,0 +1,12 @@
+<%# AngleSlider component — ERB partial %>
+<%# Usage: render 'hotwirebits/angle_slider', ... %>
+
+<div class="<%= container_classes %>" data-controller="hw-angle-slider" data-hw-angle-slider-value-value="<%= value %>" <%= tag.attributes(local_assigns) %>>
+  <input type="hidden" name="<%= name %>" value="<%= value %>" data-hw-angle-slider-target="hidden">
+  <svg width="120" height="120" viewBox="0 0 120 120" class="cursor-pointer" data-hw-angle-slider-target="svg" data-action="mousedown->hw-angle-slider#startDrag touchstart->hw-angle-slider#startDrag">
+    <circle cx="60" cy="60" r="50" fill="none" class="stroke-hw-muted" stroke-width="4"/>
+    <circle cx="60" cy="60" r="50" fill="none" class="stroke-hw-primary" stroke-width="4" stroke-dasharray="<%= (2 * Math::PI * 50 * value / 360.0).round(2) %> <%= (2 * Math::PI * 50).round(2) %>" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+    <circle cx="<%= (60 + 50 * Math.cos(radians)).round(2) %>" cy="<%= (60 + 50 * Math.sin(radians)).round(2) %>" r="8" fill="currentColor" class="text-hw-primary drop-shadow-sm" data-hw-angle-slider-target="handle"/>
+  </svg>
+  <span class="text-sm font-medium text-hw-foreground" data-hw-angle-slider-target="label"><%= value %>°</span>
+    </div>

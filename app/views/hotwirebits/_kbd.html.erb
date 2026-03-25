@@ -1,0 +1,4 @@
+<%# Kbd component — ERB partial %>
+<%# Usage: render 'hotwirebits/kbd', ... %>
+
+<kbd class="<%= kbd_classes %>" <%= tag.attributes(local_assigns) %>><%= content || label %></kbd>

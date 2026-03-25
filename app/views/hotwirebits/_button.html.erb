@@ -1,64 +1,24 @@
-<%# Button partial - local variables: label, variant, size, href, method, type, disabled, loading, id, data, class %>
-<%
-  label ||= local_assigns[:label]
-  variant ||= local_assigns[:variant] || :default
-  size ||= local_assigns[:size] || :md
-  href ||= local_assigns[:href]
-  method ||= local_assigns[:method]
-  btn_type ||= local_assigns[:type] || (href ? nil : 'button')
-  disabled ||= local_assigns[:disabled] || false
-  loading ||= local_assigns[:loading] || false
-  extra_class ||= local_assigns[:class]
+<%# Button component — ERB partial %>
+<%# Usage: render 'hotwirebits/button', ... %>
 
-  variant_classes = {
-    default: 'bg-hw-primary text-hw-primary-foreground hover:bg-hw-primary/90',
-    destructive: 'bg-hw-destructive text-hw-destructive-foreground hover:bg-hw-destructive/90',
-    outline: 'border border-hw-input bg-hw-background hover:bg-hw-accent hover:text-hw-accent-foreground',
-    secondary: 'bg-hw-secondary text-hw-secondary-foreground hover:bg-hw-secondary/80',
-    ghost: 'hover:bg-hw-accent hover:text-hw-accent-foreground',
-    link: 'text-hw-primary underline-offset-4 hover:underline',
-    success: 'bg-hw-success text-hw-success-foreground hover:bg-hw-success/90',
-    warning: 'bg-hw-warning text-hw-warning-foreground hover:bg-hw-warning/90',
-    info: 'bg-hw-info text-hw-info-foreground hover:bg-hw-info/90'
-  }
-
-  size_classes = {
-    xs: 'h-7 rounded-md px-2 text-xs',
-    sm: 'h-8 rounded-md px-3 text-sm',
-    md: 'h-9 rounded-md px-4 text-sm',
-    lg: 'h-10 rounded-md px-8',
-    xl: 'h-11 rounded-md px-10 text-base',
-    icon: 'h-9 w-9'
-  }
-
-  classes = [
-    'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium',
-    'ring-offset-hw-background transition-colors focus-visible:outline-none focus-visible:ring-2',
-    'focus-visible:ring-hw-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
-    'cursor-pointer',
-    variant_classes[variant.to_sym] || variant_classes[:default],
-    size_classes[size.to_sym] || size_classes[:md],
-    extra_class
-  ].compact.join(' ')
-%>
 <% if href %>
-  <%= link_to href, class: classes, disabled: disabled || loading do %>
+  <%= link_to href, **button_attrs do %>
     <% if loading %>
       <svg class="mr-1 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
       </svg>
     <% end %>
-    <%= yield || label %>
+    <%= content || label %>
   <% end %>
 <% else %>
-  <button type="<%= btn_type %>" class="<%= classes %>" <%= 'disabled' if disabled || loading %>>
+  <button type="<%= type %>" **button_attrs>
     <% if loading %>
       <svg class="mr-1 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
-  </svg>
-<% end %>
-<%= yield || label %>
-</button>
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+      </svg>
+    <% end %>
+    <%= content || label %>
+  </button>
 <% end %>

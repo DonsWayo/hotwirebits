@@ -1,0 +1,14 @@
+<%# Incentive component — ERB partial %>
+<%# Usage: render 'hotwirebits/incentive', ... %>
+
+<div class="<%= container_classes %>" <%= tag.attributes(local_assigns) %>>
+  <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-hw-primary/10 text-hw-primary">
+    <svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="<%= icon %>"/>
+    </svg>
+  </div>
+  <h3 class="text-base font-semibold text-hw-foreground"><%= title %></h3>
+        <% if description %>
+          <p class="mt-1.5 text-sm text-hw-muted-foreground"><%= description %></p>
+        <% end %>
+      </div>

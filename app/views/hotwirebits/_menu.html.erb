@@ -1,0 +1,35 @@
+<%# Menu component — ERB partial %>
+<%# Usage: render 'hotwirebits/menu', ... %>
+
+<nav class="<%= menu_classes %>" <%= tag.attributes(local_assigns) %>>
+  <% items.each do |item| %>
+    <div>
+  <a href="<%= item[:href] %>"
+         class="<%= merge_classes(
+           'flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors',
+           item[:active] ? 'bg-hw-accent text-hw-accent-foreground font-medium' : 'text-hw-muted-foreground hover:bg-hw-accent/50 hover:text-hw-accent-foreground'
+         ) %>">
+    <% if item[:icon] %>
+      <span class="h-4 w-4 shrink-0"><%= item[:icon].html_safe %></span>
+    <% end %>
+    <span class="flex-1"><%= item[:label] %></span>
+    <% if item[:badge] %>
+      <span class="ml-auto rounded-full bg-hw-primary/10 px-2 py-0.5 text-xs font-medium text-hw-primary"><%= item[:badge] %></span>
+    <% end %>
+  </a>
+  <% if item[:children]&.any? %>
+    <div class="ml-4 mt-0.5 space-y-0.5 border-l border-hw-border pl-3">
+      <% item[:children].each do |child| %>
+        <a href="<%= child[:href] %>"
+               class="<%= merge_classes(
+                 'flex items-center gap-2 rounded-md px-3 py-1.5 text-sm transition-colors',
+                 child[:active] ? 'text-hw-foreground font-medium' : 'text-hw-muted-foreground hover:text-hw-foreground'
+               ) %>">
+          <%= child[:label] %>
+        </a>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<% end %>
+</nav>

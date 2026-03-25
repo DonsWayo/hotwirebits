@@ -1,0 +1,23 @@
+<%# Validator component — ERB partial %>
+<%# Usage: render 'hotwirebits/validator', ... %>
+
+<div data-controller="hw-validator"
+     data-hw-validator-field-value="<%= field %>"
+     data-hw-validator-rules-value="<%= rules.to_json %>"
+     data-hw-validator-message-value="<%= message %>"
+     class="space-y-1"
+     <%= tag.attributes(local_assigns) %>>
+  <div data-hw-validator-target="errors" class="text-xs text-hw-destructive hidden"></div>
+  <% if rules.any? %>
+    <ul class="space-y-0.5">
+      <% rules.each do |rule| %>
+        <li class="flex items-center gap-1.5 text-xs text-hw-muted-foreground" data-rule="<%= rule.is_a?(Hash) ? rule.keys.first : rule %>">
+          <svg class="h-3 w-3" data-hw-validator-target="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+          </svg>
+          <span><%= rule.is_a?(Hash) ? rule.values.first : rule.to_s.humanize %></span>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

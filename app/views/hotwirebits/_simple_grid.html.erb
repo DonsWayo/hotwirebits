@@ -1,0 +1,6 @@
+<%# SimpleGrid component — ERB partial %>
+<%# Usage: render 'hotwirebits/simple_grid', ... %>
+
+<div class="<%= grid_classes %>" style="<%= grid_styles %>" <%= tag.attributes(local_assigns) %>>
+  <%= content %>
+</div>

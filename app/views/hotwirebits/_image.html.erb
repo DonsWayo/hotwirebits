@@ -1,0 +1,22 @@
+<%# Image component — ERB partial %>
+<%# Usage: render 'hotwirebits/image', ... %>
+
+<figure class="<%= figure_classes %>" <%= tag.attributes(local_assigns) %>>
+  <img
+    src="<%= src %>"
+    alt="<%= alt %>"
+    loading="lazy"
+    <% if width %>width="<%= width %>"<% end %>
+    <% if height %>height="<%= height %>"<% end %>
+    onerror="<%= fallback ? "this.src='#{fallback}'" : 'this.style.display=\\'none\\'' %>"
+    class="rounded-lg w-full h-auto object-cover"
+    <% if zoomable %>
+      data-controller="hw-image"
+      data-action="click->hw-image#zoom"
+    data-hw-image-src-value="<%= src %>"
+  <% end %>
+  />
+  <% if caption %>
+    <figcaption class="mt-2 text-center text-sm text-hw-muted-foreground"><%= caption %></figcaption>
+  <% end %>
+</figure>

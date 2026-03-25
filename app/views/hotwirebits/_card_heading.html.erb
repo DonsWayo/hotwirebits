@@ -1,0 +1,16 @@
+<%# CardHeading component — ERB partial %>
+<%# Usage: render 'hotwirebits/card_heading', ... %>
+
+<div class="flex items-start justify-between gap-4" <%= tag.attributes(local_assigns) %>>
+  <div>
+    <h3 class="text-base font-semibold text-hw-foreground"><%= title %></h3>
+    <% if subtitle %>
+      <p class="mt-0.5 text-sm text-hw-muted-foreground"><%= subtitle %></p>
+    <% end %>
+  </div>
+  <% if action_label && action_href %>
+    <a href="<%= action_href %>" class="text-sm font-medium text-hw-primary hover:text-hw-primary/80 transition-colors shrink-0">
+      <%= action_label %>
+    </a>
+  <% end %>
+</div>

@@ -1,0 +1,6 @@
+<%# Tag component — ERB partial %>
+<%# Usage: render 'hotwirebits/tag', ... %>
+
+<span class="<%= tag_classes %>" <%= tag.attributes(local_assigns) %>>
+  <%= content || label %>
+</span>

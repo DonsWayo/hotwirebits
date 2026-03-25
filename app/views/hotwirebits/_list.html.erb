@@ -1,0 +1,6 @@
+<%# List component — ERB partial %>
+<%# Usage: render 'hotwirebits/list', ... %>
+
+<ul role="list" class="<%= container_classes %>" <%= tag.attributes(local_assigns) %>>
+  <%= content %>
+</ul>

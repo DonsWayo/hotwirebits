@@ -1,0 +1,6 @@
+<%# TextGradient component — ERB partial %>
+<%# Usage: render 'hotwirebits/text_gradient', ... %>
+
+<span class="<%= gradient_class %> bg-clip-text text-transparent font-bold inline-block" <%= tag.attributes(local_assigns) %>>
+  <%= content %>
+</span>

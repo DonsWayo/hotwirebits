@@ -1,0 +1,23 @@
+<%# EmptyState component — ERB partial %>
+<%# Usage: render 'hotwirebits/empty_state', ... %>
+
+<div class="flex flex-col items-center justify-center rounded-lg border border-dashed border-hw-border p-8 text-center" <%= tag.attributes(local_assigns) %>>
+  <% if icon %>
+    <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-hw-muted text-hw-muted-foreground">
+      <%= icon.html_safe %>
+    </div>
+  <% end %>
+  <% if title %>
+    <h3 class="text-lg font-semibold tracking-tight"><%= title %></h3>
+  <% end %>
+  <% if description %>
+    <p class="mt-1.5 text-sm text-hw-muted-foreground max-w-sm"><%= description %></p>
+  <% end %>
+  <% if action_label && action_href %>
+    <a href="<%= action_href %>"
+       class="mt-4 inline-flex h-9 items-center justify-center rounded-md bg-hw-primary px-4 py-2 text-sm font-medium text-hw-primary-foreground ring-offset-hw-background transition-colors hover:bg-hw-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2">
+      <%= action_label %>
+    </a>
+  <% end %>
+  <%= content if content.present? %>
+</div>

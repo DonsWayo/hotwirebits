@@ -1,0 +1,43 @@
+<%# CheckoutForm component — ERB partial %>
+<%# Usage: render 'hotwirebits/checkout_form', ... %>
+
+<div class="mx-auto max-w-3xl" <%= tag.attributes(local_assigns) %>>
+  <nav aria-label="Progress" class="mb-10">
+    <ol class="flex items-center">
+      <% steps.each_with_index do |step, index| %>
+        <li class="<%= 'flex-1' unless index == steps.size - 1 %> flex items-center">
+          <div class="flex items-center gap-2">
+            <% case step_status(index)
+               when :complete %>
+              <div class="flex h-8 w-8 items-center justify-center rounded-full bg-hw-primary text-hw-primary-foreground">
+                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+              <span class="text-sm font-medium text-hw-foreground"><%= step[:label] %></span>
+            <% when :current %>
+              <div class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-hw-primary text-sm font-semibold text-hw-primary">
+                <%= index + 1 %>
+              </div>
+              <span class="text-sm font-semibold text-hw-primary"><%= step[:label] %></span>
+            <% when :upcoming %>
+              <div class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-hw-border text-sm text-hw-muted-foreground">
+                <%= index + 1 %>
+              </div>
+              <span class="text-sm text-hw-muted-foreground"><%= step[:label] %></span>
+            <% end %>
+          </div>
+          <% unless index == steps.size - 1 %>
+            <div class="mx-4 h-px flex-1 <%= step_status(index) == :complete ? 'bg-hw-primary' : 'bg-hw-border' %>"></div>
+          <% end %>
+        </li>
+      <% end %>
+    </ol>
+  </nav>
+  <div class="rounded-xl border border-hw-border bg-white p-6 shadow-sm">
+    <h2 class="mb-6 text-lg font-semibold text-hw-foreground"><%= steps[current_step]&.dig(:label) %></h2>
+    <div class="text-sm text-hw-muted-foreground">
+      <%= content %>
+    </div>
+  </div>
+</div>

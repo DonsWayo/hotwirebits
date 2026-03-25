@@ -1,50 +1,16 @@
-<%# Input partial - local variables: type, name, value, placeholder, size, disabled, readonly, required, error, icon, icon_position, autocomplete, class %>
-<%
-  input_type ||= local_assigns[:type] || 'text'
-  name ||= local_assigns[:name]
-  value ||= local_assigns[:value]
-  placeholder ||= local_assigns[:placeholder]
-  size ||= local_assigns[:size] || :md
-  disabled ||= local_assigns[:disabled] || false
-  readonly ||= local_assigns[:readonly] || false
-  required ||= local_assigns[:required] || false
-  error ||= local_assigns[:error] || false
-  icon ||= local_assigns[:icon]
-  icon_position ||= local_assigns[:icon_position] || :left
-  autocomplete ||= local_assigns[:autocomplete]
-  extra_class ||= local_assigns[:class]
+<%# Input component — ERB partial %>
+<%# Usage: render 'hotwirebits/input', ... %>
 
-  size_classes = {
-    sm: 'h-8 px-3 text-xs',
-    md: 'h-9 px-3 text-sm',
-    lg: 'h-10 px-4 text-base'
-  }
-
-  error_classes = error ? 'border-hw-destructive focus-visible:ring-hw-destructive' : 'border-hw-input focus-visible:ring-hw-ring'
-  icon_padding = icon ? (icon_position.to_sym == :left ? 'pl-9' : 'pr-9') : ''
-
-  classes = [
-    'flex w-full rounded-md border bg-hw-background text-hw-foreground ring-offset-hw-background',
-    'file:border-0 file:bg-transparent file:text-sm file:font-medium',
-    'placeholder:text-hw-muted-foreground',
-    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
-    'disabled:cursor-not-allowed disabled:opacity-50',
-    error_classes,
-    icon_padding,
-    size_classes[size.to_sym] || size_classes[:md],
-    extra_class
-  ].compact.join(' ')
-%>
 <% if icon %>
   <div class="relative">
-    <% if icon_position.to_sym == :left %>
+    <% if icon_position == :left %>
       <div class="absolute left-3 top-1/2 -translate-y-1/2 text-hw-muted-foreground"><%= icon.html_safe %></div>
     <% end %>
-    <input type="<%= input_type %>" name="<%= name %>" value="<%= value %>" placeholder="<%= placeholder %>" <%= 'disabled' if disabled %> <%= 'readonly' if readonly %> <%= 'required' if required %> autocomplete="<%= autocomplete %>" class="<%= classes %>">
-    <% if icon_position.to_sym == :right %>
+    <input type="<%= type %>" name="<%= name %>" value="<%= value %>" placeholder="<%= placeholder %>" <%= 'disabled' if disabled %> <%= 'readonly' if readonly %> <%= 'required' if required %> autocomplete="<%= autocomplete %>" class="<%= input_classes %>" <%= tag.attributes(local_assigns) %>>
+    <% if icon_position == :right %>
       <div class="absolute right-3 top-1/2 -translate-y-1/2 text-hw-muted-foreground"><%= icon.html_safe %></div>
     <% end %>
   </div>
 <% else %>
-  <input type="<%= input_type %>" name="<%= name %>" value="<%= value %>" placeholder="<%= placeholder %>" <%= 'disabled' if disabled %> <%= 'readonly' if readonly %> <%= 'required' if required %> autocomplete="<%= autocomplete %>" class="<%= classes %>">
+  <input type="<%= type %>" name="<%= name %>" value="<%= value %>" placeholder="<%= placeholder %>" <%= 'disabled' if disabled %> <%= 'readonly' if readonly %> <%= 'required' if required %> autocomplete="<%= autocomplete %>" class="<%= input_classes %>" <%= tag.attributes(local_assigns) %>>
 <% end %>

@@ -1,0 +1,19 @@
+<%# Dropzone component — ERB partial %>
+<%# Usage: render 'hotwirebits/dropzone', ... %>
+
+<label class="flex flex-col items-center justify-center w-full h-32 rounded-lg border-2 border-dashed border-hw-border bg-hw-muted/30 cursor-pointer hover:bg-hw-muted/50 transition-colors" <%= tag.attributes(local_assigns) %>>
+  <svg class="w-8 h-8 mb-2 text-hw-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+  </svg>
+  <p class="text-sm text-hw-foreground font-medium"><%= label %></p>
+  <% if description %>
+    <p class="text-xs text-hw-muted-foreground mt-1"><%= description %></p>
+  <% end %>
+  <input
+    type="file"
+    name="<%= name %>"
+    class="hidden"
+    <%= 'accept="' + accept + '"' if accept %>
+    <%= 'multiple' if multiple %>
+  >
+  </label>

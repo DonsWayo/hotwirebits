@@ -1,0 +1,29 @@
+<%# TwoFactor component — ERB partial %>
+<%# Usage: render 'hotwirebits/two_factor', ... %>
+
+<div data-controller="hw-two-factor"
+     data-hw-two-factor-length-value="<%= length %>"
+     data-hw-two-factor-auto-submit-value="<%= auto_submit %>"
+     class="space-y-4"
+     <%= tag.attributes(local_assigns) %>>
+  <input type="hidden" name="<%= name %>" value="" data-hw-two-factor-target="hidden">
+  <div class="flex items-center justify-center gap-2">
+    <% length.times do |i| %>
+      <input type="text"
+             maxlength="1"
+             inputmode="numeric"
+             autocomplete="one-time-code"
+             class="h-12 w-12 text-center text-lg font-semibold rounded-md border border-hw-input bg-hw-background text-hw-foreground ring-offset-hw-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2"
+             data-action="input->hw-two-factor#input keydown->hw-two-factor#keydown paste->hw-two-factor#paste"
+      data-index="<%= i %>">
+    <% end %>
+  </div>
+  <% if with_timer %>
+    <div class="text-center text-sm text-hw-muted-foreground">
+      <span data-hw-two-factor-target="timer"></span>
+      <% if resend_url %>
+        <a href="<%= resend_url %>" class="text-hw-primary hover:underline hidden" data-hw-two-factor-target="resend">Resend code</a>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,17 +1,12 @@
-<%# Separator partial - local variables: orientation, decorative, label, class %>
-<%
-  orientation ||= local_assigns[:orientation] || :horizontal
-  decorative ||= local_assigns[:decorative]
-  decorative = true if decorative.nil?
-  label ||= local_assigns[:label]
-  extra_class ||= local_assigns[:class]
-%>
+<%# Separator component — ERB partial %>
+<%# Usage: render 'hotwirebits/separator', ... %>
+
 <% if label %>
-  <div class="relative flex items-center <%= extra_class %>" role="none">
+  <div class="relative flex items-center" role="none">
     <div class="shrink-0 bg-hw-border h-[1px] w-full"></div>
     <span class="px-2 text-xs text-hw-muted-foreground font-medium"><%= label %></span>
     <div class="shrink-0 bg-hw-border h-[1px] w-full"></div>
   </div>
 <% else %>
-  <div class="<%= orientation.to_sym == :vertical ? 'shrink-0 bg-hw-border h-full w-[1px]' : 'shrink-0 bg-hw-border h-[1px] w-full' %> <%= extra_class %>" role="<%= decorative ? 'none' : 'separator' %>"></div>
+  <div class="<%= orientation == :vertical ? 'shrink-0 bg-hw-border h-full w-[1px]' : 'shrink-0 bg-hw-border h-[1px] w-full' %>" role="<%= decorative ? 'none' : 'separator' %>" <%= tag.attributes(local_assigns) %>></div>
 <% end %>

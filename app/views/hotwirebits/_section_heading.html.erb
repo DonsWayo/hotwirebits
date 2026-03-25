@@ -1,0 +1,9 @@
+<%# SectionHeading component — ERB partial %>
+<%# Usage: render 'hotwirebits/section_heading', ... %>
+
+<div class="flex flex-col gap-1 <%= container_classes %>" <%= tag.attributes(local_assigns) %>>
+  <h2 class="text-xl font-semibold text-hw-foreground"><%= title %></h2>
+  <% if description %>
+    <p class="text-sm text-hw-muted-foreground"><%= description %></p>
+  <% end %>
+</div>
