@@ -9,10 +9,12 @@ Rake::TestTask.new(:test) do |t|
   t.test_files = FileList["test/**/*_test.rb"]
 end
 
-Rake::TestTask.new(:spec) do |t|
-  t.libs << "lib"
-  t.libs << "spec"
-  t.test_files = FileList["spec/**/*_spec.rb"]
+desc "Run JavaScript tests with Vitest"
+task :js_test do
+  system("npm test") || abort("JavaScript tests failed!")
 end
+
+desc "Run all tests (Ruby + JavaScript)"
+task test_all: [:test, :js_test]
 
 task default: :test

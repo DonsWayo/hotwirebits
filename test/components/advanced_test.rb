@@ -55,7 +55,7 @@ end
 
 class CalendarComponentTest < ViewComponent::TestCase
   test "renders calendar" do
-    render_inline(HotwireBits::CalendarComponent.new(date: Date.new(2026, 3, 15)))
+    render_inline(HotwireBits::CalendarComponent.new(month: 3, year: 2026))
 
     assert_selector "div[data-controller='hw-calendar']"
     assert_text "March"

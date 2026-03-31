@@ -3,7 +3,7 @@
 
 require "fileutils"
 
-APP_ROOT = File.expand_path("test/dummy", __dir__)
+APP_ROOT = File.expand_path("../test/dummy", __dir__)
 
 def system!(*args)
   system(*args, exception: true)

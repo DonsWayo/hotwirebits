@@ -313,16 +313,12 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  capybara
-  cuprite
+  capybara (~> 3.40)
+  cuprite (~> 0.15)
   hotwirebits!
   minitest (~> 5.0)
   rake (~> 13.0)
   standard
-  stimulus-rails (~> 1.0)
-  tailwindcss-rails (~> 3.0)
-  turbo-rails (~> 2.0)
-  view_component (~> 3.0)
 
 BUNDLED WITH
    2.6.9

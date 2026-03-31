@@ -4,10 +4,6 @@ source "https://rubygems.org"
 
 gemspec
 
-gem "view_component", "~> 3.0"
-gem "turbo-rails", "~> 2.0"
-gem "stimulus-rails", "~> 1.0"
-
 group :development, :test do
   gem "minitest", "~> 5.0"
   gem "rake", "~> 13.0"
@@ -15,7 +11,6 @@ group :development, :test do
 end
 
 group :test do
-  gem "capybara"
-  gem "cuprite"
+  gem "capybara", "~> 3.40"
+  gem "cuprite", "~> 0.15"
 end
-gem "tailwindcss-rails", "~> 3.0"

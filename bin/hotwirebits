@@ -2,36 +2,54 @@
 # frozen_string_literal: true
 
 require "fileutils"
-require "net/http"
-require "json"
 
-module RailsBits
+module HotwireBits
   class CLI
     VERSION = "0.1.0"
-    REPO_URL = "https://raw.githubusercontent.com/railsbits/railsbits/main"
 
     COMPONENTS = %w[
-      accordion alert alert_dialog animated_number animated_number avatar
-      badge banner bento_grid box breadcrumb burger button
-      calendar card carousel center chart chat_bubble chip
-      clipboard code_block collapsible color_picker color_swatch combobox
-      container cookie_consent countdown cta_section data_table date_picker
-      device_mockup dialog diff divider dock_menu drawer dropdown
-      empty_state feedback file_input flex fluid footer form_group
-      grid group hero highlight hover_card icon image
-      indicator input input_otp input_tags join kbd kanban_board
-      label lightbox list list_component list loading loading_overlay
-      logo_cloud marquee mark mask menubar menu meter_group
-      multiselect navbar native_select navigation_menu nav_link notification
-      number_formatter number_input otp pagination panel paper
-      password_input phone_input popover pricing_section progress progress_ring
-      qr_code radio rating resizable scroll_area search search_input
-      select separator sheet sidebar simple_grid skeleton skeleton_card
-      slider space speed_dial spinner spoiler splitter stack
-      stat stats status status_dot steps switch table
-      tabs tag testimonial testimonials_section textarea theme_controller
-      theme_icon timeline toast toggle tooltip tree_view
-      typography
+      accordion activity_feed affix ai_chat alert alert_dialog anchor
+      angle_slider animated_number app_shell aspect_ratio auth_block
+      autocomplete avatar background_image badge banner bento_grid
+      blog_section bottom_navigation box breadcrumb breadcrumb_advanced
+      browser_mockup burger button calendar card card_heading carousel
+      center chart chat_bubble checkbox checkout_form chip clipboard
+      close_button code_block code_highlight code_mockup collapsible
+      color_input color_picker color_swatch combobox command_bar compare
+      confirm_dialog confirm_popup contact_section container context_menu
+      cookie_consent cookie_settings countdown cta_section dashboard_card
+      data_table data_view date_picker date_range_picker device_frame
+      device_mockup dialog diff diff_view digital_signature divider
+      dock_menu drag_drop_list drawer dropdown dropzone empty_cart
+      empty_state error_page faq_section feature_section feedback fieldset
+      file_browser file_input file_upload_progress flex float_label fluid
+      flyout_menu footer form_fieldset form_group gallery grid group
+      header header_section hero highlight hover3d_card hover_card
+      hover_gallery icon_field ifta_label image image_compare image_zoom
+      incentive indicator indicator_badge inline_edit inplace input
+      input_group input_number input_otp input_tags join json_input
+      kanban_board kbd knob label lightbox like_button list listbox
+      loading_overlay logo_cloud logo_item mark marquee mask mega_menu
+      menu menubar meter_group month_picker month_picker_input multiselect
+      native_select nav_link navbar navigation_menu newsletter_section
+      notification notification_bell number_formatter number_input
+      order_summary org_chart page_heading pagination paginator panel
+      password_input password_strength password_toggle permission_badge
+      phone_input phone_mockup popover portal pricing_section product_list
+      product_overview product_quickview progress progress_ring
+      promo_section qr_code radio range_slider rating resizable review
+      rich_text_editor scroll_area search search_input section_heading
+      select semi_circle_progress separator sheet shopping_cart sidebar
+      simple_grid skeleton skeleton_card slider social_share space
+      speed_dial speed_dial_fab spinner split_button splitter spoiler
+      stack stacked_list stat stats status status_bar status_dot
+      stepper_form steps swap switch table table_of_contents tabs tag
+      tag_input team_section terminal testimonial testimonials_section
+      text_gradient text_rotate textarea theme_controller theme_icon
+      theme_selector time_picker timeline toast toggle toggle_button
+      toggle_button_group toolbar tooltip tree_view two_factor
+      typing_indicator typography validator version_diff video_player
+      voice_recorder window_mockup
     ].freeze
 
     def self.start(args)
@@ -49,7 +67,7 @@ module RailsBits
       when "init"
         init
       when "version", "--version", "-v"
-        puts "RailsBits CLI v#{VERSION}"
+        puts "hotwirebits v#{VERSION}"
       when "help", "--help", "-h", nil
         help
       else
@@ -63,8 +81,8 @@ module RailsBits
 
     def add(components)
       if components.empty?
-        puts "Usage: railsbits add <component> [component...]"
-        puts "       railsbits add --all"
+        puts "Usage: hotwirebits add <component> [component...]"
+        puts "       hotwirebits add --all"
         exit 1
       end
 
@@ -78,54 +96,52 @@ module RailsBits
           copy_component(name)
         else
           puts "  Unknown component: #{name}"
-          puts "  Run 'railsbits list' to see available components."
+          puts "  Run 'hotwirebits list' to see available components."
         end
       end
     end
 
     def list
-      puts "Available RailsBits components (#{COMPONENTS.size}):"
+      puts "Available HotwireBits components (#{COMPONENTS.size}):"
       puts ""
       COMPONENTS.sort.each_slice(5) do |row|
-        puts "  " + row.map { |c| c.ljust(20) }.join
+        puts "  " + row.map { |c| c.ljust(22) }.join
       end
       puts ""
-      puts "Usage: railsbits add <component>"
+      puts "Usage: hotwirebits add <component>"
     end
 
     def init
-      puts "Setting up RailsBits in your project..."
+      puts "Setting up HotwireBits in your project..."
 
       # Create directories
-      FileUtils.mkdir_p("app/components/railsbits")
-      FileUtils.mkdir_p("app/views/railsbits")
-      FileUtils.mkdir_p("app/javascript/controllers/railsbits")
-      FileUtils.mkdir_p("app/assets/stylesheets/railsbits")
+      FileUtils.mkdir_p("app/components/hotwirebits")
+      FileUtils.mkdir_p("app/views/hotwirebits")
+      FileUtils.mkdir_p("app/javascript/controllers/hotwirebits")
+      FileUtils.mkdir_p("app/assets/stylesheets/hotwirebits")
 
       # Copy theme
-      if File.exist?("#{gem_path}/app/assets/stylesheets/railsbits/theme.css")
-        FileUtils.cp(
-          "#{gem_path}/app/assets/stylesheets/railsbits/theme.css",
-          "app/assets/stylesheets/railsbits/theme.css"
-        )
+      theme_path = "#{gem_path}/app/assets/stylesheets/hotwirebits/theme.css"
+      if File.exist?(theme_path)
+        FileUtils.cp(theme_path, "app/assets/stylesheets/hotwirebits/theme.css")
       end
 
-      puts "RailsBits initialized!"
+      puts "HotwireBits initialized!"
       puts ""
       puts "Add to your layout's <head>:"
-      puts '  <%= stylesheet_link_tag "railsbits/theme" %>'
+      puts '  <%= stylesheet_link_tag "hotwirebits/theme" %>'
       puts ""
       puts "Add components with:"
-      puts "  railsbits add button card alert"
+      puts "  hotwirebits add button card alert"
     end
 
     def copy_component(name)
-      src_rb = "#{gem_path}/app/components/railsbits/#{name}_component.rb"
-      src_erb = "#{gem_path}/app/components/railsbits/#{name}_component.html.erb"
+      src_rb = "#{gem_path}/app/components/hotwirebits/#{name}_component.rb"
+      src_erb = "#{gem_path}/app/components/hotwirebits/#{name}_component.html.erb"
 
       if File.exist?(src_rb)
-        FileUtils.cp(src_rb, "app/components/railsbits/#{name}_component.rb")
-        FileUtils.cp(src_erb, "app/components/railsbits/#{name}_component.html.erb") if File.exist?(src_erb)
+        FileUtils.cp(src_rb, "app/components/hotwirebits/#{name}_component.rb")
+        FileUtils.cp(src_erb, "app/components/hotwirebits/#{name}_component.html.erb") if File.exist?(src_erb)
         puts "  Added: #{name}"
       else
         puts "  Not found: #{name}"
@@ -138,27 +154,27 @@ module RailsBits
 
     def help
       puts <<~HELP
-        RailsBits CLI v#{VERSION}
+        HotwireBits CLI v#{VERSION}
 
         Usage:
-          railsbits <command> [options]
+          hotwirebits <command> [options]
 
         Commands:
-          init                  Initialize RailsBits in your project
+          init                  Initialize HotwireBits in your project
           add <component...>    Add components to your project
-          add --all             Add all available components
+          add --all             Add all #{COMPONENTS.size} available components
           list                  List all available components
           version               Show version
           help                  Show this help
 
         Examples:
-          railsbits init
-          railsbits add button card alert
-          railsbits add --all
-          railsbits list
+          hotwirebits init
+          hotwirebits add button card alert
+          hotwirebits add --all
+          hotwirebits list
       HELP
     end
   end
 end
 
-RailsBits::CLI.start(ARGV) if __FILE__ == $PROGRAM_NAME
+HotwireBits::CLI.start(ARGV) if __FILE__ == $PROGRAM_NAME
