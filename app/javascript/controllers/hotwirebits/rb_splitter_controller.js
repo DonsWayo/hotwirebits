@@ -6,6 +6,7 @@ export default class extends Controller {
 
   startResize(event) {
     event.preventDefault()
+    if (!this.hasPanelTarget) return
     this._startPos = event.clientX
     this._startSize = this.panelTarget.offsetWidth
     this._onMove = (e) => {

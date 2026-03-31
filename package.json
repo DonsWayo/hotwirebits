@@ -1,0 +1,38 @@
+{
+  "name": "@hotwirebits/stimulus",
+  "version": "0.1.0",
+  "description": "99 Stimulus controllers for HotwireBits — the most comprehensive free UI component library for Ruby on Rails",
+  "main": "app/javascript/controllers/hotwirebits/index.js",
+  "module": "app/javascript/controllers/hotwirebits/index.js",
+  "type": "module",
+  "files": [
+    "app/javascript/controllers/hotwirebits/**/*.js"
+  ],
+  "exports": {
+    ".": "./app/javascript/controllers/hotwirebits/index.js",
+    "./controllers/*": "./app/javascript/controllers/hotwirebits/*"
+  },
+  "keywords": [
+    "stimulus",
+    "hotwire",
+    "rails",
+    "ui-components",
+    "tailwindcss",
+    "turbo",
+    "viewcomponent",
+    "ruby-on-rails"
+  ],
+  "author": "HotwireBits Contributors",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DonsWayo/hotwirebits.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DonsWayo/hotwirebits/issues"
+  },
+  "homepage": "https://hotwirebits.dev",
+  "peerDependencies": {
+    "@hotwired/stimulus": "^3.0.0"
+  }
+}

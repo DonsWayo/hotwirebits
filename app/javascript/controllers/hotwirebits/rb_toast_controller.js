@@ -1,16 +1,21 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["toast", "container"]
+  static targets = ["toast"]
   static values = {
     duration: { type: Number, default: 3000 },
     position: { type: String, default: "bottom-right" }
   }
 
   connect() {
-    if (!this.hasContainerTarget) {
-      this.containerTarget = this.createContainer()
+    this._container = this.element.querySelector("[data-hw-toast-target='container']") || this.createContainer()
+  }
+
+  disconnect() {
+    if (this._container && this._container.parentElement === document.body) {
+      this._container.remove()
     }
+    this._container = null
   }
 
   show(event) {
@@ -20,7 +25,7 @@ export default class extends Controller {
     toast.setAttribute("role", "alert")
     toast.setAttribute("aria-live", "polite")
     toast.textContent = message
-    this.containerTarget.appendChild(toast)
+    this._container.appendChild(toast)
     setTimeout(() => this.dismiss(toast), this.durationValue)
   }
 
@@ -32,7 +37,6 @@ export default class extends Controller {
   createContainer() {
     const div = document.createElement("div")
     div.className = `toast-container toast-${this.positionValue}`
-    div.setAttribute("data-hw-toast-target", "container")
     document.body.appendChild(div)
     return div
   }

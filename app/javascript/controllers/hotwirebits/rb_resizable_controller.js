@@ -16,7 +16,7 @@ export default class extends Controller {
     this._onEnd = this.onEnd.bind(this)
 
     this.handleTarget.addEventListener("mousedown", this.onStart.bind(this))
-    this.handleTarget.addEventListener("touchstart", this.onStart.bind(this), { passive: true })
+    this.handleTarget.addEventListener("touchstart", this.onStart.bind(this), { passive: false })
   }
 
   disconnect() {

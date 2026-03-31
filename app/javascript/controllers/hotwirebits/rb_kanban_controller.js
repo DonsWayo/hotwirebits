@@ -5,17 +5,35 @@ export default class extends Controller {
 
   connect() {
     this.draggedCard = null
-    this.draggedCardGhost = null
+    this._onDragStart = this.onDragStart.bind(this)
+    this._onDragEnd = this.onDragEnd.bind(this)
+    this._onDragOver = this.onDragOver.bind(this)
+    this._onDrop = this.onDrop.bind(this)
+    this._onDragLeave = this.onDragLeave.bind(this)
+
     this.cardTargets.forEach((card) => {
       card.setAttribute("draggable", "true")
-      card.addEventListener("dragstart", this.onDragStart.bind(this))
-      card.addEventListener("dragend", this.onDragEnd.bind(this))
+      card.addEventListener("dragstart", this._onDragStart)
+      card.addEventListener("dragend", this._onDragEnd)
     })
     this.columnTargets.forEach((col) => {
-      col.addEventListener("dragover", this.onDragOver.bind(this))
-      col.addEventListener("drop", this.onDrop.bind(this))
-      col.addEventListener("dragleave", this.onDragLeave.bind(this))
+      col.addEventListener("dragover", this._onDragOver)
+      col.addEventListener("drop", this._onDrop)
+      col.addEventListener("dragleave", this._onDragLeave)
     })
+  }
+
+  disconnect() {
+    this.cardTargets.forEach((card) => {
+      card.removeEventListener("dragstart", this._onDragStart)
+      card.removeEventListener("dragend", this._onDragEnd)
+    })
+    this.columnTargets.forEach((col) => {
+      col.removeEventListener("dragover", this._onDragOver)
+      col.removeEventListener("drop", this._onDrop)
+      col.removeEventListener("dragleave", this._onDragLeave)
+    })
+    this.draggedCard = null
   }
 
   onDragStart(event) {
@@ -46,11 +64,12 @@ export default class extends Controller {
     const column = event.currentTarget
     column.classList.remove("drag-over")
     if (this.draggedCard) {
+      const fromColumn = this.draggedCard.parentElement?.dataset.id
       column.appendChild(this.draggedCard)
       this.dispatch("move", {
         detail: {
           cardId: this.draggedCard.dataset.id,
-          fromColumn: this.draggedCard.parentElement.dataset.id,
+          fromColumn: fromColumn,
           toColumn: column.dataset.id
         }
       })

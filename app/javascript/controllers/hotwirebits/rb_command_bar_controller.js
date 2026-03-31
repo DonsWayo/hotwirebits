@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["input", "list"]
+  static targets = ["input", "list", "overlay"]
   static values = { open: { type: Boolean, default: false } }
 
   connect() {
@@ -14,6 +14,19 @@ export default class extends Controller {
 
   disconnect() { document.removeEventListener("keydown", this._onKeydown) }
 
+  openValueChanged() {
+    if (this.hasOverlayTarget) {
+      this.overlayTarget.classList.toggle("hidden", !this.openValue)
+    }
+    this.element.classList.toggle("open", this.openValue)
+    if (this.openValue && this.hasInputTarget) {
+      this.inputTarget.focus()
+      this.inputTarget.value = ""
+    }
+    this.dispatch(this.openValue ? "open" : "close")
+  }
+
   search() { this.dispatch("search", { detail: { query: this.inputTarget?.value || "" } }) }
-  select(event) { this.dispatch("select", { detail: event.currentTarget.dataset }) }
+  select(event) { this.openValue = false; this.dispatch("select", { detail: event.currentTarget.dataset }) }
+  close() { this.openValue = false }
 }

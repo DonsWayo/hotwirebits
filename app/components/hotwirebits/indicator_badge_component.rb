@@ -9,8 +9,8 @@ module HotwireBits
       bottom_right: "bottom-0 right-0 translate-x-1/2 translate-y-1/2"
     }.freeze
 
-    def initialize(content: nil, position: :top_right, color: nil, dot: false, **attrs)
-      @content = content
+    def initialize(badge_content: nil, position: :top_right, color: nil, dot: false, **attrs)
+      @badge_content = badge_content
       @position = position
       @color = color || "bg-hw-primary"
       @dot = dot

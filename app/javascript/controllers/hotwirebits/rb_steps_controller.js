@@ -26,6 +26,7 @@ export default class extends Controller {
 
   goTo(event) {
     const index = parseInt(event.currentTarget.dataset.index || event.params.index, 10)
+    if (isNaN(index) || index < 0 || index >= this.stepTargets.length) return
     this.currentValue = index
     this.render()
     this.dispatch("change", { detail: { index } })

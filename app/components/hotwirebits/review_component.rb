@@ -2,11 +2,11 @@
 
 module HotwireBits
   class ReviewComponent < Base
-    def initialize(author:, content:, rating: 5, title: nil, date: nil, verified: false, **attrs)
+    def initialize(author:, review_content:, rating: 5, title: nil, date: nil, verified: false, **attrs)
       @author = author
       @rating = rating.to_i.clamp(0, 5)
       @title = title
-      @content = content
+      @review_content = review_content
       @date = date
       @verified = verified
       @extra_attrs = attrs

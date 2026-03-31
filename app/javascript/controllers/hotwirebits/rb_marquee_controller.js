@@ -17,17 +17,23 @@ export default class extends Controller {
     requestAnimationFrame(this.animate)
 
     if (this.pauseOnHoverValue) {
-      this.element.addEventListener("mouseenter", () => { this.animating = false })
-      this.element.addEventListener("mouseleave", () => {
+      this._onMouseEnter = () => { this.animating = false }
+      this._onMouseLeave = () => {
         this.animating = true
         this.lastTime = null
         requestAnimationFrame(this.animate)
-      })
+      }
+      this.element.addEventListener("mouseenter", this._onMouseEnter)
+      this.element.addEventListener("mouseleave", this._onMouseLeave)
     }
   }
 
   disconnect() {
     this.animating = false
+    if (this._onMouseEnter) {
+      this.element.removeEventListener("mouseenter", this._onMouseEnter)
+      this.element.removeEventListener("mouseleave", this._onMouseLeave)
+    }
   }
 
   setup() {

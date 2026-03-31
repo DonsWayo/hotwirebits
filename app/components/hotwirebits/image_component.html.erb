@@ -1,17 +1,20 @@
 <figure class="<%= figure_classes %>" <%= tag.attributes(@extra_attrs) %>>
+  <%
+    onerror_value = @fallback ? "this.src='#{@fallback}'" : "this.style.display='none'"
+  %>
   <img
     src="<%= @src %>"
     alt="<%= @alt %>"
     loading="lazy"
     <% if @width %>width="<%= @width %>"<% end %>
     <% if @height %>height="<%= @height %>"<% end %>
-    onerror="<%= @fallback ? "this.src='#{@fallback}'" : 'this.style.display=\\'none\\'' %>"
+    onerror="<%= onerror_value %>"
     class="rounded-lg w-full h-auto object-cover"
     <% if @zoomable %>
       data-controller="hw-image"
       data-action="click->hw-image#zoom"
-    data-hw-image-src-value="<%= @src %>"
-  <% end %>
+      data-hw-image-src-value="<%= @src %>"
+    <% end %>
   />
   <% if @caption %>
     <figcaption class="mt-2 text-center text-sm text-hw-muted-foreground"><%= @caption %></figcaption>

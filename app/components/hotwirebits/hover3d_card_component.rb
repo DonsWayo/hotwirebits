@@ -2,7 +2,7 @@
 
 module HotwireBits
   class Hover3dCardComponent < Base
-    renders_one :content
+    renders_one :body
 
     def initialize(intensity: 10, **attrs)
       @intensity = intensity
