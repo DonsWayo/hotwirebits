@@ -1,13 +1,13 @@
 <% qr = modules %>
-<% cell_size = (@size.to_f / (qr.size + @margin * 2)).round(2) %>
+<% total = qr.size + @margin * 2 %>
 <div class="<%= merge_classes('inline-block', @extra_attrs.delete(:class)) %>"
      <%= tag.attributes(@extra_attrs) %>>
   <svg xmlns="http://www.w3.org/2000/svg"
        width="<%= @size %>"
        height="<%= @size %>"
-       viewBox="0 0 <%= qr.size + @margin * 2 %> <%= qr.size + @margin * 2 %>"
+       viewBox="0 0 <%= total %> <%= total %>"
        shape-rendering="crispEdges">
-    <rect width="<%= qr.size + @margin * 2 %>" height="<%= qr.size + @margin * 2 %>" fill="white"/>
+    <rect width="<%= total %>" height="<%= total %>" fill="white"/>
     <% qr.each_with_index do |row, r| %>
       <% row.each_with_index do |cell, c| %>
         <% if cell == 1 %>
@@ -16,4 +16,4 @@
       <% end %>
     <% end %>
   </svg>
-    </div>
+</div>

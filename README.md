@@ -4,6 +4,7 @@
 
 [![CI](https://github.com/DonsWayo/hotwirebits/actions/workflows/ci.yml/badge.svg)](https://github.com/DonsWayo/hotwirebits/actions)
 [![Gem Version](https://badge.fury.io/rb/hotwirebits.svg)](https://rubygems.org/gems/hotwirebits)
+[![npm](https://img.shields.io/npm/v/@hotwirebits/stimulus)](https://www.npmjs.com/package/@hotwirebits/stimulus)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---
@@ -130,7 +131,23 @@ hw-theme      hw-toast      hw-toggle     hw-tree
 
 MIT License — free for personal and commercial use.
 
+## Test Suite
+
+| Suite | Tests | Tool |
+|-------|-------|------|
+| Components & Helpers | 670 tests, 1477 assertions | Minitest |
+| Stimulus Controllers | 156 tests | Vitest + jsdom |
+| Generators | 11 tests | Minitest |
+
+```bash
+bundle exec rake test   # Ruby tests
+npm test                # JavaScript tests
+bundle exec standardrb  # Lint
+```
+
 ## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 1. Fork it
 2. Create your feature branch (`git checkout -b feature/amazing`)

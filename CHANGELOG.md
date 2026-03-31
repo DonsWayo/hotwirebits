@@ -2,6 +2,25 @@
 
 All notable changes to HotwireBits will be documented in this file.
 
+## [Unreleased]
+
+### Added
+- JavaScript test suite: 156 Vitest tests covering 15 Stimulus controllers with jsdom
+- Generator tests: 11 Minitest tests for install and component generators
+- CONTRIBUTING.md guide for new contributors
+- CI job for JavaScript tests (`npm test`)
+
+### Fixed
+- QR code component: removed unused `cell_size` variable and dead `container_classes` method
+- Install generator: `File.exist?` now correctly uses `destination_root` instead of `Dir.pwd`
+- Component generator template: inherits from `HotwireBits::Base` with proper module wrapper
+- 14 Stimulus controller bugs (event listener cleanup, target guards, Turbo cache handling)
+- 30+ component rendering fixes across ViewComponents and ERB partials
+
+### Changed
+- All 33 ERB partials rewritten for consistency with ViewComponent counterparts
+- StandardRB lint: 0 violations across entire codebase
+
 ## [0.1.0] - 2026-03-23
 
 ### Added

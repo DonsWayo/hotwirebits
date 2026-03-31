@@ -9,13 +9,6 @@ module HotwireBits
       @extra_attrs = attrs
     end
 
-    def container_classes
-      merge_classes(
-        "inline-block",
-        @extra_attrs.delete(:class)
-      )
-    end
-
     def modules
       encode_qr(@value)
     end

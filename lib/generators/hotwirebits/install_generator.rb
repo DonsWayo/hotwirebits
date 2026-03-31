@@ -19,14 +19,15 @@ module HotwireBits
 
       def add_stimulus_import
         stimulus_manifest = "app/javascript/controllers/index.js"
-        return unless File.exist?(stimulus_manifest)
+        manifest_path = File.join(destination_root, stimulus_manifest)
+        return unless File.exist?(manifest_path)
 
         append_to_file stimulus_manifest do
-          <<~RUBY
+          <<~JS
 
             // HotwireBits Stimulus controllers
             import HotwireBits from "hotwirebits"
-          RUBY
+          JS
         end
       end
 

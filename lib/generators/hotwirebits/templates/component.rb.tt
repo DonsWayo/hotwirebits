@@ -1,9 +1,9 @@
-class HotwireBits::<%= class_name %>Component < ViewComponent::Base
-  def initialize(**attrs)
-    @attrs = attrs
+# frozen_string_literal: true
+
+module HotwireBits
+  class <%= class_name %>Component < Base
+    def initialize(**attrs)
+      @extra_attrs = attrs
+    end
   end
-
-  private
-
-  attr_reader :attrs
 end
