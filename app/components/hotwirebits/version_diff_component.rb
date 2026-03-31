@@ -12,7 +12,7 @@ module HotwireBits
     end
 
     def container_classes
-      merge_classes('rounded-lg border border-hw-border overflow-hidden text-sm font-mono', @extra_attrs.delete(:class))
+      merge_classes("rounded-lg border border-hw-border overflow-hidden text-sm font-mono", @extra_attrs.delete(:class))
     end
 
     private
@@ -26,10 +26,10 @@ module HotwireBits
         ol = old_lines[i]
         nl = new_lines[i]
         if ol == nl
-          result << { type: :context, old_line: i + 1, new_line: i + 1, content: ol&.chomp }
+          result << {type: :context, old_line: i + 1, new_line: i + 1, content: ol&.chomp}
         else
-          result << { type: :removed, old_line: i + 1, content: ol&.chomp } if ol
-          result << { type: :added, new_line: i + 1, content: nl&.chomp } if nl
+          result << {type: :removed, old_line: i + 1, content: ol&.chomp} if ol
+          result << {type: :added, new_line: i + 1, content: nl&.chomp} if nl
         end
       end
       result

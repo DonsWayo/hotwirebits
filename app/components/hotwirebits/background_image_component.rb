@@ -2,7 +2,7 @@
 
 module HotwireBits
   class BackgroundImageComponent < Base
-    def initialize(src:, size: :cover, position: 'center', overlay: false, **attrs)
+    def initialize(src:, size: :cover, position: "center", overlay: false, **attrs)
       @src = src
       @size = size
       @position = position
@@ -11,7 +11,7 @@ module HotwireBits
     end
 
     def container_classes
-      merge_classes('relative', @extra_attrs.delete(:class))
+      merge_classes("relative", @extra_attrs.delete(:class))
     end
   end
 end

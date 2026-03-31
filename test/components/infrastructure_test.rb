@@ -122,7 +122,7 @@ class StimulusIndexTest < ActionView::TestCase
     index = File.read(index_path)
 
     import_count = index.scan(/^import /).length
-    register_count = index.scan(/application\.register\(/).length
+    register_count = index.scan("application.register(").length
 
     assert import_count > 50, "Expected 50+ imports, got #{import_count}"
     assert_equal register_count, import_count - 1, "Registrations should match imports (minus application import)"

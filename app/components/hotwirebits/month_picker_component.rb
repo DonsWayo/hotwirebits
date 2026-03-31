@@ -16,7 +16,7 @@ module HotwireBits
       if @value.present?
         begin
           Date.parse(@value.to_s).month
-        rescue StandardError
+        rescue
           Date.today.month
         end
       else
@@ -28,7 +28,7 @@ module HotwireBits
       if @value.present?
         begin
           Date.parse(@value.to_s).year
-        rescue StandardError
+        rescue
           Date.today.year
         end
       else
@@ -38,13 +38,13 @@ module HotwireBits
 
     def min_year
       @min_date.present? ? Date.parse(@min_date.to_s).year : current_year - 10
-    rescue StandardError
+    rescue
       current_year - 10
     end
 
     def max_year
       @max_date.present? ? Date.parse(@max_date.to_s).year : current_year + 10
-    rescue StandardError
+    rescue
       current_year + 10
     end
   end

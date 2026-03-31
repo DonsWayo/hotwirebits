@@ -11,7 +11,7 @@ module HotwireBits
 
     def container_classes
       merge_classes(
-        'relative rounded-lg border border-hw-border bg-hw-muted',
+        "relative rounded-lg border border-hw-border bg-hw-muted",
         @extra_attrs.delete(:class)
       )
     end

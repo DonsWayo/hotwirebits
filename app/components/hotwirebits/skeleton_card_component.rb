@@ -10,7 +10,7 @@ module HotwireBits
     end
 
     def line_width(index)
-      widths = ['w-full', 'w-4/5', 'w-3/4', 'w-2/3', 'w-1/2']
+      widths = ["w-full", "w-4/5", "w-3/4", "w-2/3", "w-1/2"]
       widths[index % widths.length]
     end
   end

@@ -15,7 +15,7 @@ module HotwireBits
 
     def container_classes
       merge_classes(
-        'relative w-full overflow-hidden',
+        "relative w-full overflow-hidden",
         @extra_attrs.delete(:class)
       )
     end

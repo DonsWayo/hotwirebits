@@ -16,10 +16,10 @@ module HotwireBits
 
     def nav_classes
       merge_classes(
-        'w-full border-b border-hw-border',
-        'bg-hw-background/95 backdrop-blur supports-[backdrop-filter]:bg-hw-background/60',
-        @sticky ? 'sticky top-0 z-50' : nil,
-        @transparent ? 'bg-transparent border-transparent' : nil
+        "w-full border-b border-hw-border",
+        "bg-hw-background/95 backdrop-blur supports-[backdrop-filter]:bg-hw-background/60",
+        @sticky ? "sticky top-0 z-50" : nil,
+        @transparent ? "bg-transparent border-transparent" : nil
       )
     end
   end

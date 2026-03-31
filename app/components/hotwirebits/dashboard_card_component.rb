@@ -16,9 +16,9 @@ module HotwireBits
 
     def trend_color
       case @trend
-      when :up then 'text-hw-success'
-      when :down then 'text-hw-destructive'
-      else 'text-hw-muted-foreground'
+      when :up then "text-hw-success"
+      when :down then "text-hw-destructive"
+      else "text-hw-muted-foreground"
       end
     end
   end

@@ -70,7 +70,7 @@ class ButtonComponentTest < ViewComponent::TestCase
   end
 
   test "accepts extra HTML attributes" do
-    render_inline(HotwireBits::ButtonComponent.new(label: "Attrs", data: { testid: "my-button" }))
+    render_inline(HotwireBits::ButtonComponent.new(label: "Attrs", data: {testid: "my-button"}))
 
     assert_selector "button[data-testid='my-button']"
   end

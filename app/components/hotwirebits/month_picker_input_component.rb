@@ -2,7 +2,7 @@
 
 module HotwireBits
   class MonthPickerInputComponent < Base
-    def initialize(name: nil, value: nil, placeholder: 'Select month', **attrs)
+    def initialize(name: nil, value: nil, placeholder: "Select month", **attrs)
       @name = name
       @value = value
       @placeholder = placeholder
@@ -10,11 +10,11 @@ module HotwireBits
     end
 
     def formatted_value
-      return '' unless @value.present?
+      return "" unless @value.present?
 
       date = Date.parse(@value.to_s)
       "#{Date::MONTHNAMES[date.month]} #{date.year}"
-    rescue StandardError
+    rescue
       @value.to_s
     end
   end

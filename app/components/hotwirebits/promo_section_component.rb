@@ -3,10 +3,10 @@
 module HotwireBits
   class PromoSectionComponent < Base
     VARIANTS = {
-      default: 'bg-white',
-      dark: 'bg-hw-foreground text-hw-background',
-      gradient: 'bg-gradient-to-br from-hw-primary to-hw-primary/70 text-hw-primary-foreground',
-      light: 'bg-hw-muted'
+      default: "bg-white",
+      dark: "bg-hw-foreground text-hw-background",
+      gradient: "bg-gradient-to-br from-hw-primary to-hw-primary/70 text-hw-primary-foreground",
+      light: "bg-hw-muted"
     }.freeze
 
     def initialize(title:, badge: nil, description: nil, cta: nil, image: nil, variant: :default, **attrs)
@@ -21,7 +21,7 @@ module HotwireBits
 
     def section_classes
       merge_classes(
-        'rounded-2xl overflow-hidden',
+        "rounded-2xl overflow-hidden",
         VARIANTS[@variant] || VARIANTS[:default],
         @extra_attrs.delete(:class)
       )

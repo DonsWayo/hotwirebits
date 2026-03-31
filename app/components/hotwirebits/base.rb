@@ -7,7 +7,7 @@ module HotwireBits
     private
 
     def merge_classes(*classes)
-      classes.flatten.compact.reject { |c| c.to_s.strip.empty? }.join(' ')
+      classes.flatten.compact.reject { |c| c.to_s.strip.empty? }.join(" ")
     end
   end
 end

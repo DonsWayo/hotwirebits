@@ -10,7 +10,7 @@ module HotwireBits
     end
 
     def container_classes
-      merge_classes('flex flex-col items-center text-center', @extra_attrs.delete(:class))
+      merge_classes("flex flex-col items-center text-center", @extra_attrs.delete(:class))
     end
   end
 end

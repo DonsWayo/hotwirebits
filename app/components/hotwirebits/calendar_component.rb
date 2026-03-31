@@ -23,7 +23,7 @@ module HotwireBits
     end
 
     def month_name
-      date.strftime('%B')
+      date.strftime("%B")
     end
 
     def events_for(day)
@@ -41,7 +41,7 @@ module HotwireBits
 
     def container_classes
       merge_classes(
-        'rounded-lg border border-hw-border bg-hw-card p-4',
+        "rounded-lg border border-hw-border bg-hw-card p-4",
         @extra_attrs.delete(:class)
       )
     end

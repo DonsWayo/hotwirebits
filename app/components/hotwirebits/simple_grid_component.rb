@@ -2,7 +2,7 @@
 
 module HotwireBits
   class SimpleGridComponent < Base
-    def initialize(min_col_width: '250px', gap: nil, **attrs)
+    def initialize(min_col_width: "250px", gap: nil, **attrs)
       @min_col_width = min_col_width
       @gap = gap
       @extra_attrs = attrs
@@ -10,7 +10,7 @@ module HotwireBits
 
     def grid_classes
       merge_classes(
-        'grid',
+        "grid",
         @gap && "gap-#{@gap}",
         @extra_attrs.delete(:class)
       )

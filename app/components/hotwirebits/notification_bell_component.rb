@@ -3,9 +3,9 @@
 module HotwireBits
   class NotificationBellComponent < Base
     SIZES = {
-      sm: 'h-5 w-5',
-      md: 'h-6 w-6',
-      lg: 'h-7 w-7'
+      sm: "h-5 w-5",
+      md: "h-6 w-6",
+      lg: "h-7 w-7"
     }.freeze
 
     def initialize(count: 0, href: nil, size: :md, **attrs)

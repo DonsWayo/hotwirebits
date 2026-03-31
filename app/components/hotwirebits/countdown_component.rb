@@ -2,7 +2,7 @@
 
 module HotwireBits
   class CountdownComponent < Base
-    def initialize(value: 0, target: 0, prefix: '', suffix: '', duration: 2000, **attrs)
+    def initialize(value: 0, target: 0, prefix: "", suffix: "", duration: 2000, **attrs)
       @value = value
       @target = target
       @prefix = prefix

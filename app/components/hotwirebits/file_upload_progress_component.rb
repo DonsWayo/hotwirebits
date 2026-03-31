@@ -13,9 +13,9 @@ module HotwireBits
 
     def bar_color
       case @status
-      when :complete then 'bg-hw-success'
-      when :error then 'bg-hw-destructive'
-      else 'bg-hw-primary'
+      when :complete then "bg-hw-success"
+      when :error then "bg-hw-destructive"
+      else "bg-hw-primary"
       end
     end
 

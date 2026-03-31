@@ -3,13 +3,13 @@
 module HotwireBits
   class HeroComponent < Base
     VARIANTS = {
-      centered: 'text-center items-center',
-      split: 'md:text-left items-center md:items-start',
-      with_image: 'text-center items-center'
+      centered: "text-center items-center",
+      split: "md:text-left items-center md:items-start",
+      with_image: "text-center items-center"
     }.freeze
 
     def initialize(title:, subtitle: nil, primary_cta: nil, secondary_cta: nil, image_url: nil, variant: :centered,
-                   **attrs)
+      **attrs)
       @title = title
       @subtitle = subtitle
       @primary_cta = primary_cta
@@ -21,14 +21,14 @@ module HotwireBits
 
     def container_classes
       merge_classes(
-        'w-full py-16 md:py-24 px-4',
+        "w-full py-16 md:py-24 px-4",
         @extra_attrs.delete(:class)
       )
     end
 
     def inner_classes
       merge_classes(
-        'mx-auto max-w-5xl flex flex-col gap-6',
+        "mx-auto max-w-5xl flex flex-col gap-6",
         VARIANTS[@variant] || VARIANTS[:centered]
       )
     end

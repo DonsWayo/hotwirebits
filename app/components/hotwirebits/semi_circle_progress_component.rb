@@ -3,11 +3,11 @@
 module HotwireBits
   class SemiCircleProgressComponent < Base
     COLORS = {
-      default: 'stroke-hw-primary',
-      success: 'stroke-hw-success',
-      warning: 'stroke-hw-warning',
-      destructive: 'stroke-hw-destructive',
-      info: 'stroke-hw-info'
+      default: "stroke-hw-primary",
+      success: "stroke-hw-success",
+      warning: "stroke-hw-warning",
+      destructive: "stroke-hw-destructive",
+      info: "stroke-hw-info"
     }.freeze
 
     def initialize(value:, max: 100, size: 160, color: :default, show_label: true, **attrs)

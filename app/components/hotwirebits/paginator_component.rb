@@ -5,7 +5,7 @@ module HotwireBits
     MAX_VISIBLE = 5
 
     def initialize(current_page: 1, total_pages: 1, per_page: 20, total_items: 0, rows_options: [10, 20, 50, 100],
-                   path: nil, **attrs)
+      path: nil, **attrs)
       @current_page = current_page.to_i
       @total_pages = total_pages.to_i
       @per_page = per_page.to_i
@@ -16,7 +16,7 @@ module HotwireBits
     end
 
     def page_url(page)
-      return '#' unless @path
+      return "#" unless @path
 
       @path.is_a?(Proc) ? @path.call(page) : "#{@path}?page=#{page}&per_page=#{@per_page}"
     end

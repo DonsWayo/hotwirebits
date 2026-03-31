@@ -10,7 +10,7 @@ module HotwireBits
 
     def container_classes
       merge_classes(
-        'py-16 md:py-24 px-4',
+        "py-16 md:py-24 px-4",
         @extra_attrs.delete(:class)
       )
     end

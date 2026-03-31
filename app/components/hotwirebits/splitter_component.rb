@@ -13,17 +13,17 @@ module HotwireBits
 
     def container_classes
       merge_classes(
-        'flex',
-        @direction == :horizontal ? 'flex-row h-full' : 'flex-col w-full',
+        "flex",
+        (@direction == :horizontal) ? "flex-row h-full" : "flex-col w-full",
         @extra_attrs.delete(:class)
       )
     end
 
     def handle_classes
       if @direction == :horizontal
-        'w-[3px] cursor-col-resize bg-hw-border hover:bg-hw-primary active:bg-hw-primary shrink-0 transition-colors'
+        "w-[3px] cursor-col-resize bg-hw-border hover:bg-hw-primary active:bg-hw-primary shrink-0 transition-colors"
       else
-        'h-[3px] cursor-row-resize bg-hw-border hover:bg-hw-primary active:bg-hw-primary shrink-0 transition-colors'
+        "h-[3px] cursor-row-resize bg-hw-border hover:bg-hw-primary active:bg-hw-primary shrink-0 transition-colors"
       end
     end
 

@@ -10,7 +10,7 @@ module HotwireBits
     end
 
     def container_classes
-      merge_classes('group [perspective:1000px]', @extra_attrs.delete(:class))
+      merge_classes("group [perspective:1000px]", @extra_attrs.delete(:class))
     end
   end
 end

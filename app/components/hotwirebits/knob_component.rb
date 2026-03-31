@@ -14,7 +14,7 @@ module HotwireBits
       @max = max.to_i
       @step = step.to_i
       @size = size
-      @color = color || 'hw-primary'
+      @color = color || "hw-primary"
       @name = name
       @disabled = disabled
       @extra_attrs = attrs

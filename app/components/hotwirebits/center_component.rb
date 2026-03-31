@@ -10,7 +10,7 @@ module HotwireBits
 
     def center_classes
       merge_classes(
-        @inline ? 'inline-flex justify-center items-center' : 'flex justify-center items-center',
+        @inline ? "inline-flex justify-center items-center" : "flex justify-center items-center",
         @extra_attrs.delete(:class)
       )
     end

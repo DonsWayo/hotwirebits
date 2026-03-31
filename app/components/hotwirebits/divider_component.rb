@@ -14,14 +14,14 @@ module HotwireBits
 
     def divider_classes
       base = if @orientation == :horizontal
-               'w-full border-t'
-             else
-               'h-full border-l'
-             end
+        "w-full border-t"
+      else
+        "h-full border-l"
+      end
       merge_classes(
         base,
-        @dashed ? 'border-dashed' : 'border-solid',
-        'border-hw-border',
+        @dashed ? "border-dashed" : "border-solid",
+        "border-hw-border",
         @extra_attrs.delete(:class)
       )
     end

@@ -21,17 +21,17 @@ module HotwireBits
 
     def container_classes
       merge_classes(
-        'overflow-hidden',
-        vertical? ? 'h-64' : 'w-full',
+        "overflow-hidden",
+        vertical? ? "h-64" : "w-full",
         @extra_attrs.delete(:class)
       )
     end
 
     def track_classes
       merge_classes(
-        'flex',
-        vertical? ? 'flex-col' : 'flex-row',
-        @pause_on_hover ? 'hover:[animation-play-state:paused]' : nil
+        "flex",
+        vertical? ? "flex-col" : "flex-row",
+        @pause_on_hover ? "hover:[animation-play-state:paused]" : nil
       )
     end
   end

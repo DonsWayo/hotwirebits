@@ -2,7 +2,7 @@
 
 module HotwireBits
   class SearchComponent < Base
-    def initialize(name: 'q', placeholder: 'Search...', suggestions: [], with_filters: false, value: nil, **attrs)
+    def initialize(name: "q", placeholder: "Search...", suggestions: [], with_filters: false, value: nil, **attrs)
       @name = name
       @placeholder = placeholder
       @suggestions = suggestions
@@ -13,7 +13,7 @@ module HotwireBits
 
     def container_classes
       merge_classes(
-        'relative w-full',
+        "relative w-full",
         @extra_attrs.delete(:class)
       )
     end

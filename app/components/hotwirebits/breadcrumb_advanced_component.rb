@@ -3,9 +3,9 @@
 module HotwireBits
   class BreadcrumbAdvancedComponent < Base
     SEPARATORS = {
-      slash: '/',
+      slash: "/",
       chevron: nil,
-      arrow: '>'
+      arrow: ">"
     }.freeze
 
     def initialize(items: [], max_items: nil, separator: :slash, **attrs)
@@ -19,14 +19,14 @@ module HotwireBits
       if @max_items && @items.size > @max_items
         first = @items.first
         last_items = @items.last(@max_items - 1)
-        [first, { label: '...', collapsed: true }] + last_items
+        [first, {label: "...", collapsed: true}] + last_items
       else
         @items
       end
     end
 
     def separator_char
-      SEPARATORS[@separator] || '/'
+      SEPARATORS[@separator] || "/"
     end
   end
 end

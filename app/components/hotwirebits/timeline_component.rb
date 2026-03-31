@@ -9,7 +9,7 @@ module HotwireBits
 
     def container_classes
       merge_classes(
-        'relative',
+        "relative",
         @extra_attrs.delete(:class)
       )
     end

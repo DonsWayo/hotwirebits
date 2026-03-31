@@ -12,11 +12,11 @@ module HotwireBits
 
     def indent_class(level)
       case level.to_i
-      when 2 then 'pl-0'
-      when 3 then 'pl-3'
-      when 4 then 'pl-6'
-      when 5 then 'pl-9'
-      else 'pl-0'
+      when 2 then "pl-0"
+      when 3 then "pl-3"
+      when 4 then "pl-6"
+      when 5 then "pl-9"
+      else "pl-0"
       end
     end
   end

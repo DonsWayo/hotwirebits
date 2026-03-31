@@ -2,8 +2,8 @@
 
 module HotwireBits
   class NewsletterSectionComponent < Base
-    def initialize(title: 'Subscribe to our newsletter', description: nil, placeholder: 'Enter your email',
-                   button_label: 'Subscribe', privacy_note: nil, **attrs)
+    def initialize(title: "Subscribe to our newsletter", description: nil, placeholder: "Enter your email",
+      button_label: "Subscribe", privacy_note: nil, **attrs)
       @title = title
       @description = description
       @placeholder = placeholder

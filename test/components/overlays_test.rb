@@ -38,7 +38,7 @@ class DialogComponentTest < ViewComponent::TestCase
   end
 
   test "includes @extra_attrs" do
-    render_inline(HotwireBits::DialogComponent.new(title: "T", data: { testid: "dialog" })) { "C" }
+    render_inline(HotwireBits::DialogComponent.new(title: "T", data: {testid: "dialog"})) { "C" }
 
     assert_selector "div[data-testid='dialog']"
   end
@@ -133,7 +133,7 @@ class ToastComponentTest < ViewComponent::TestCase
     render_inline(HotwireBits::ToastComponent.new(
       type: :info,
       title: "Undo",
-      action: { label: "Undo", url: "/undo" }
+      action: {label: "Undo", url: "/undo"}
     ))
 
     assert_text "Undo"

@@ -2,7 +2,7 @@
 
 module HotwireBits
   class CodeHighlightComponent < Base
-    def initialize(code:, language: 'text', theme: :light, line_numbers: false, **attrs)
+    def initialize(code:, language: "text", theme: :light, line_numbers: false, **attrs)
       @code = code
       @language = language
       @theme = theme
@@ -12,7 +12,7 @@ module HotwireBits
 
     def container_classes
       merge_classes(
-        'rounded-lg border border-hw-border overflow-hidden',
+        "rounded-lg border border-hw-border overflow-hidden",
         theme_classes,
         @extra_attrs.delete(:class)
       )
@@ -20,8 +20,8 @@ module HotwireBits
 
     def theme_classes
       case @theme
-      when :dark then 'bg-gray-950 text-gray-100'
-      else 'bg-hw-background text-hw-foreground'
+      when :dark then "bg-gray-950 text-gray-100"
+      else "bg-hw-background text-hw-foreground"
       end
     end
 

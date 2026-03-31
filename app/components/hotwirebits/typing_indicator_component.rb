@@ -3,9 +3,9 @@
 module HotwireBits
   class TypingIndicatorComponent < Base
     SIZES = {
-      sm: 'h-1.5 w-1.5',
-      md: 'h-2 w-2',
-      lg: 'h-2.5 w-2.5'
+      sm: "h-1.5 w-1.5",
+      md: "h-2 w-2",
+      lg: "h-2.5 w-2.5"
     }.freeze
 
     def initialize(size: :md, color: nil, **attrs)
@@ -19,14 +19,14 @@ module HotwireBits
     end
 
     def dot_color
-      @color || 'bg-hw-muted-foreground'
+      @color || "bg-hw-muted-foreground"
     end
 
     def gap_class
       case @size
-      when :sm then 'gap-1'
-      when :lg then 'gap-1.5'
-      else 'gap-1'
+      when :sm then "gap-1"
+      when :lg then "gap-1.5"
+      else "gap-1"
       end
     end
   end

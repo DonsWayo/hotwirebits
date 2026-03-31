@@ -2,8 +2,8 @@
 
 module HotwireBits
   class CookieConsentComponent < Base
-    def initialize(message: 'We use cookies to improve your experience.', accept_label: 'Accept',
-                   settings_label: 'Settings', position: :bottom, **attrs)
+    def initialize(message: "We use cookies to improve your experience.", accept_label: "Accept",
+      settings_label: "Settings", position: :bottom, **attrs)
       @message = message
       @accept_label = accept_label
       @settings_label = settings_label
@@ -13,8 +13,8 @@ module HotwireBits
 
     def position_classes
       case @position
-      when :top then 'top-0'
-      else 'bottom-0'
+      when :top then "top-0"
+      else "bottom-0"
       end
     end
 

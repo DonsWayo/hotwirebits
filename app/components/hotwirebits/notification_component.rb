@@ -15,7 +15,7 @@ module HotwireBits
 
     def notification_classes
       merge_classes(
-        'flex items-start gap-3 rounded-lg border border-hw-border bg-hw-card p-4 shadow-sm',
+        "flex items-start gap-3 rounded-lg border border-hw-border bg-hw-card p-4 shadow-sm",
         @extra_attrs.delete(:class)
       )
     end

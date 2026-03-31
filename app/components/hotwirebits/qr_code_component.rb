@@ -11,7 +11,7 @@ module HotwireBits
 
     def container_classes
       merge_classes(
-        'inline-block',
+        "inline-block",
         @extra_attrs.delete(:class)
       )
     end
@@ -59,8 +59,8 @@ module HotwireBits
         7.times do |i|
           7.times do |j|
             on_edge = [0, 6].include?(i) || j == 0 || j == 6
-            in_center = i >= 2 && i <= 4 && j >= 2 && j <= 4
-            matrix[r + i][c + j] = on_edge || in_center ? 1 : 0
+            in_center = i.between?(2, 4) && j.between?(2, 4)
+            matrix[r + i][c + j] = (on_edge || in_center) ? 1 : 0
             reserved[r + i][c + j] = true
           end
         end
@@ -92,7 +92,7 @@ module HotwireBits
             (-2..2).each do |dc|
               on_edge = dr.abs == 2 || dc.abs == 2
               center = dr == 0 && dc == 0
-              matrix[r + dr][c + dc] = on_edge || center ? 1 : 0
+              matrix[r + dr][c + dc] = (on_edge || center) ? 1 : 0
               reserved[r + dr][c + dc] = true
             end
           end
@@ -108,18 +108,18 @@ module HotwireBits
     end
 
     def place_dark_module(matrix, reserved)
-      matrix[matrix.size - 8][8] = 1
+      matrix[-8][8] = 1
       reserved[matrix.size - 8][8] = true
     end
 
     def encode_data(data, version)
-      bits = '0100' # byte mode indicator
+      bits = "0100" # byte mode indicator
       char_count = data.bytesize
-      cc_bits = version <= 9 ? 8 : 16
-      bits += char_count.to_s(2).rjust(cc_bits, '0')
-      data.each_byte { |b| bits += b.to_s(2).rjust(8, '0') }
+      cc_bits = (version <= 9) ? 8 : 16
+      bits += char_count.to_s(2).rjust(cc_bits, "0")
+      data.each_byte { |b| bits += b.to_s(2).rjust(8, "0") }
       cap = data_capacity(version)
-      bits += '0' until bits.size >= cap || bits.size % 8 == 0
+      bits += "0" until bits.size >= cap || bits.size % 8 == 0
       pad_bytes = %w[11101100 00010001]
       pi = 0
       bits += pad_bytes[pi % 2] while bits.size < cap && (pi += 1)
@@ -140,7 +140,7 @@ module HotwireBits
           [col, col - 1].each do |c|
             next if reserved[r][c]
 
-            matrix[r][c] = bit_idx < bits.size && bits[bit_idx] == '1' ? 1 : 0
+            matrix[r][c] = (bit_idx < bits.size && bits[bit_idx] == "1") ? 1 : 0
             bit_idx += 1
           end
         end
@@ -160,22 +160,22 @@ module HotwireBits
     end
 
     def place_format_info(matrix, _reserved, size, _mask_pattern)
-      format_bits = '011010101011100'
+      format_bits = "011010101011100"
       coords1 = (0..5).to_a + [7, 8]
       coords2 = (0..7).reverse_each.to_a
       coords1.each_with_index do |i, j|
-        matrix[8][i] = format_bits[j] == '1' ? 1 : 0
+        matrix[8][i] = (format_bits[j] == "1") ? 1 : 0
         matrix[i][8] = begin
-          format_bits[j + 7] == '1' ? 1 : 0
-        rescue StandardError
+          (format_bits[j + 7] == "1") ? 1 : 0
+        rescue
           nil
         end
       end
       coords2.each_with_index do |i, j|
-        matrix[size - 1 - i][8] = format_bits[j] == '1' ? 1 : 0
+        matrix[size - 1 - i][8] = (format_bits[j] == "1") ? 1 : 0
         matrix[8][size - 1 - i] = begin
-          format_bits[j + 7] == '1' ? 1 : 0
-        rescue StandardError
+          (format_bits[j + 7] == "1") ? 1 : 0
+        rescue
           nil
         end
       end

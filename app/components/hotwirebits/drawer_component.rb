@@ -15,7 +15,7 @@ module HotwireBits
     private
 
     def snap_points_data
-      @snap_points.join(',')
+      @snap_points.join(",")
     end
   end
 end

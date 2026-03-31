@@ -10,14 +10,14 @@ module HotwireBits
     end
 
     def wrapper_classes
-      merge_classes('inline-block overflow-hidden relative align-baseline', @extra_attrs.delete(:class))
+      merge_classes("inline-block overflow-hidden relative align-baseline", @extra_attrs.delete(:class))
     end
 
     def effect_classes
       case @effect
-      when :slide then 'translate-y-full opacity-0'
-      when :flip then 'rotate-x-90 opacity-0'
-      else 'opacity-0'
+      when :slide then "translate-y-full opacity-0"
+      when :flip then "rotate-x-90 opacity-0"
+      else "opacity-0"
       end
     end
   end

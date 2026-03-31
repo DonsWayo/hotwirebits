@@ -3,8 +3,8 @@
 module HotwireBits
   class IconFieldComponent < Base
     POSITIONS = {
-      left: 'pr-3 pl-9',
-      right: 'pl-3 pr-9'
+      left: "pr-3 pl-9",
+      right: "pl-3 pr-9"
     }.freeze
 
     def initialize(icon:, position: :left, **attrs)
@@ -17,17 +17,17 @@ module HotwireBits
 
     def input_wrapper_classes
       merge_classes(
-        '[&>input]:pl-9 [&>select]:pl-9',
-        @position == :right ? '[&>input]:pr-9 [&>select]:pr-9' : ''
+        "[&>input]:pl-9 [&>select]:pl-9",
+        (@position == :right) ? "[&>input]:pr-9 [&>select]:pr-9" : ""
       )
     end
 
     def icon_classes
-      @position == :left ? 'left-3' : 'right-3'
+      (@position == :left) ? "left-3" : "right-3"
     end
 
     def icon_element
-      tag.div(class: merge_classes('absolute top-1/2 -translate-y-1/2 text-hw-muted-foreground pointer-events-none', icon_classes)) do
+      tag.div(class: merge_classes("absolute top-1/2 -translate-y-1/2 text-hw-muted-foreground pointer-events-none", icon_classes)) do
         safe_svg(@icon)
       end
     end

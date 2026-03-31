@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'rails'
-require 'view_component'
-require 'turbo-rails'
-require 'stimulus-rails'
+require "rails"
+require "view_component"
+require "turbo-rails"
+require "stimulus-rails"
 
-require_relative 'hotwirebits/version'
-require_relative 'hotwirebits/engine'
+require_relative "hotwirebits/version"
+require_relative "hotwirebits/engine"
 
 module HotwireBits
   # HotwireBits - The most comprehensive free UI component library for Ruby on Rails

@@ -3,9 +3,9 @@
 module HotwireBits
   class AccordionComponent < Base
     VARIANTS = {
-      default: '',
-      bordered: 'border border-hw-border rounded-lg overflow-hidden',
-      card: 'border border-hw-border rounded-lg overflow-hidden shadow-sm'
+      default: "",
+      bordered: "border border-hw-border rounded-lg overflow-hidden",
+      card: "border border-hw-border rounded-lg overflow-hidden shadow-sm"
     }.freeze
 
     def initialize(items: [], multiple: false, variant: :default, **attrs)
@@ -17,7 +17,7 @@ module HotwireBits
 
     def container_classes
       merge_classes(
-        @multiple ? '' : 'space-y-1',
+        @multiple ? "" : "space-y-1",
         VARIANTS[@variant] || VARIANTS[:default],
         @extra_attrs.delete(:class)
       )
@@ -25,9 +25,9 @@ module HotwireBits
 
     def panel_classes(index)
       if %i[bordered card].include?(@variant)
-        index > 0 ? 'border-t border-hw-border' : ''
+        (index > 0) ? "border-t border-hw-border" : ""
       else
-        'border border-hw-border rounded-lg'
+        "border border-hw-border rounded-lg"
       end
     end
   end

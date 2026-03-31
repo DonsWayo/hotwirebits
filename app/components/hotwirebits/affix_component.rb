@@ -11,14 +11,14 @@ module HotwireBits
 
     def container_classes
       merge_classes(
-        'w-full',
-        @position == :top ? 'fixed top-0' : 'fixed bottom-0',
+        "w-full",
+        (@position == :top) ? "fixed top-0" : "fixed bottom-0",
         @extra_attrs.delete(:class)
       )
     end
 
     def container_styles
-      offset_prop = @position == :top ? "top: #{@offset}px;" : "bottom: #{@offset}px;"
+      offset_prop = (@position == :top) ? "top: #{@offset}px;" : "bottom: #{@offset}px;"
       "#{offset_prop} z-index: #{@z_index};"
     end
   end

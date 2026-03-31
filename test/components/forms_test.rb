@@ -204,7 +204,7 @@ class RatingComponentTest < ViewComponent::TestCase
   end
 
   test "includes @extra_attrs" do
-    render_inline(HotwireBits::RatingComponent.new(name: "stars", value: 2, data: { testid: "rating" }))
+    render_inline(HotwireBits::RatingComponent.new(name: "stars", value: 2, data: {testid: "rating"}))
 
     assert_selector "div[data-testid='rating']"
   end

@@ -3,11 +3,11 @@
 module HotwireBits
   class MeterGroupComponent < Base
     COLORS = {
-      default: 'bg-hw-primary',
-      success: 'bg-hw-success',
-      warning: 'bg-hw-warning',
-      destructive: 'bg-hw-destructive',
-      info: 'bg-hw-info'
+      default: "bg-hw-primary",
+      success: "bg-hw-success",
+      warning: "bg-hw-warning",
+      destructive: "bg-hw-destructive",
+      info: "bg-hw-info"
     }.freeze
 
     def initialize(items: nil, meters: nil, **attrs)
@@ -28,7 +28,7 @@ module HotwireBits
 
     def container_classes
       merge_classes(
-        'space-y-3',
+        "space-y-3",
         @extra_attrs.delete(:class)
       )
     end

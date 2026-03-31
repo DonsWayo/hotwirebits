@@ -2,7 +2,7 @@
 
 module HotwireBits
   class StepperFormComponent < Base
-    def initialize(steps: [], current_step: 0, submit_label: 'Submit', **attrs)
+    def initialize(steps: [], current_step: 0, submit_label: "Submit", **attrs)
       @steps = steps
       @current_step = current_step.to_i
       @submit_label = submit_label

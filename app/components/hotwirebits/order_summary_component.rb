@@ -14,9 +14,9 @@ module HotwireBits
     private
 
     def calculate_total
-      sub = @items.sum { |i| i[:price].to_s.gsub(/[^0-9.]/, '').to_f * i[:quantity].to_i }
-      tax_val = @tax.to_s.gsub(/[^0-9.]/, '').to_f
-      ship_val = @shipping.to_s.gsub(/[^0-9.]/, '').to_f
+      sub = @items.sum { |i| i[:price].to_s.gsub(/[^0-9.]/, "").to_f * i[:quantity].to_i }
+      tax_val = @tax.to_s.gsub(/[^0-9.]/, "").to_f
+      ship_val = @shipping.to_s.gsub(/[^0-9.]/, "").to_f
       sub + tax_val + ship_val
     end
   end

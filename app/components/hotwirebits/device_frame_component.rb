@@ -14,22 +14,22 @@ module HotwireBits
     def frame_classes
       case @device
       when :phone
-        'rounded-[2.5rem] border-[10px] overflow-hidden bg-black shadow-xl'
+        "rounded-[2.5rem] border-[10px] overflow-hidden bg-black shadow-xl"
       when :tablet
-        'rounded-[1.5rem] border-[12px] overflow-hidden bg-black shadow-xl'
+        "rounded-[1.5rem] border-[12px] overflow-hidden bg-black shadow-xl"
       when :desktop
-        'rounded-lg border border-hw-border overflow-hidden bg-white shadow-xl'
+        "rounded-lg border border-hw-border overflow-hidden bg-white shadow-xl"
       when :watch
-        'rounded-[2rem] border-[8px] overflow-hidden bg-black shadow-xl'
+        "rounded-[2rem] border-[8px] overflow-hidden bg-black shadow-xl"
       end
     end
 
     def border_color
       case @color
-      when :silver then 'border-hw-border'
-      when :gold then 'border-amber-300'
-      when :midnight then 'border-hw-border'
-      else 'border-hw-foreground'
+      when :silver then "border-hw-border"
+      when :gold then "border-amber-300"
+      when :midnight then "border-hw-border"
+      else "border-hw-foreground"
       end
     end
   end

@@ -2,15 +2,15 @@
 
 module HotwireBits
   class FlexComponent < Base
-    DIRECTIONS = { row: 'flex-row', column: 'flex-col' }.freeze
-    WRAPS = { wrap: 'flex-wrap', nowrap: 'flex-nowrap', reverse: 'flex-wrap-reverse' }.freeze
+    DIRECTIONS = {row: "flex-row", column: "flex-col"}.freeze
+    WRAPS = {wrap: "flex-wrap", nowrap: "flex-nowrap", reverse: "flex-wrap-reverse"}.freeze
     JUSTIFIES = {
-      start: 'justify-start', end: 'justify-end', center: 'justify-center',
-      between: 'justify-between', around: 'justify-around', evenly: 'justify-evenly'
+      start: "justify-start", end: "justify-end", center: "justify-center",
+      between: "justify-between", around: "justify-around", evenly: "justify-evenly"
     }.freeze
     ALIGNS = {
-      start: 'items-start', end: 'items-end', center: 'items-center',
-      baseline: 'items-baseline', stretch: 'items-stretch'
+      start: "items-start", end: "items-end", center: "items-center",
+      baseline: "items-baseline", stretch: "items-stretch"
     }.freeze
 
     def initialize(direction: :row, wrap: nil, justify: nil, align: nil, gap: nil, **attrs)
@@ -24,7 +24,7 @@ module HotwireBits
 
     def flex_classes
       merge_classes(
-        'flex',
+        "flex",
         DIRECTIONS[@direction],
         @wrap && WRAPS[@wrap],
         @justify && JUSTIFIES[@justify],

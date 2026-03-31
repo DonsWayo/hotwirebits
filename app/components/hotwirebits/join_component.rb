@@ -9,8 +9,8 @@ module HotwireBits
 
     def join_classes
       merge_classes(
-        'join',
-        @direction == :vertical ? 'join-vertical' : 'join-horizontal',
+        "join",
+        (@direction == :vertical) ? "join-vertical" : "join-horizontal",
         @extra_attrs.delete(:class)
       )
     end

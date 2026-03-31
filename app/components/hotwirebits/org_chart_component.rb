@@ -8,7 +8,7 @@ module HotwireBits
     end
 
     def container_classes
-      merge_classes('overflow-x-auto', @extra_attrs.delete(:class))
+      merge_classes("overflow-x-auto", @extra_attrs.delete(:class))
     end
   end
 end

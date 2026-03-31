@@ -3,10 +3,10 @@
 module HotwireBits
   class ProgressRingComponent < Base
     COLORS = {
-      default: 'stroke-hw-primary',
-      success: 'stroke-hw-success',
-      warning: 'stroke-hw-warning',
-      destructive: 'stroke-hw-destructive'
+      default: "stroke-hw-primary",
+      success: "stroke-hw-success",
+      warning: "stroke-hw-warning",
+      destructive: "stroke-hw-destructive"
     }.freeze
 
     def initialize(value:, max: 100, size: 64, show_label: false, color: :default, **attrs)

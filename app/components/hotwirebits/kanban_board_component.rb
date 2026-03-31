@@ -9,7 +9,7 @@ module HotwireBits
 
     def container_classes
       merge_classes(
-        'flex gap-4 overflow-x-auto pb-4',
+        "flex gap-4 overflow-x-auto pb-4",
         @extra_attrs.delete(:class)
       )
     end

@@ -12,7 +12,7 @@ module HotwireBits
     end
 
     def container_classes
-      merge_classes('pb-6 border-b border-hw-border', @extra_attrs.delete(:class))
+      merge_classes("pb-6 border-b border-hw-border", @extra_attrs.delete(:class))
     end
   end
 end

@@ -15,13 +15,13 @@ module HotwireBits
 
     def container_classes
       merge_classes(
-        'w-full',
+        "w-full",
         @extra_attrs.delete(:class)
       )
     end
 
     def svg_width
-      @width || '100%'
+      @width || "100%"
     end
 
     def max_value
@@ -33,7 +33,7 @@ module HotwireBits
     end
 
     def line_points
-      return '' if @data.empty?
+      return "" if @data.empty?
 
       max = max_value
       w = 100.0 / (@data.size - 1)
@@ -41,12 +41,12 @@ module HotwireBits
         x = (i * w).round(2)
         y = max.zero? ? 50 : (50 - (d[:value].to_f / max * 48)).round(2)
         "#{x},#{y}"
-      end.join(' ')
+      end.join(" ")
     end
 
     def area_points
       points = line_points
-      return '' if points.empty?
+      return "" if points.empty?
 
       w = 100.0 / (@data.size - 1)
       "#{points} #{((@data.size - 1) * w).round(2)},50 0,50"

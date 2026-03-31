@@ -10,7 +10,7 @@ module HotwireBits
 
     def container_classes
       merge_classes(
-        'fixed inset-x-0 bottom-0 z-40 border-t border-hw-border bg-white/95 backdrop-blur',
+        "fixed inset-x-0 bottom-0 z-40 border-t border-hw-border bg-white/95 backdrop-blur",
         @extra_attrs.delete(:class)
       )
     end

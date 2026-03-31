@@ -3,13 +3,13 @@
 module HotwireBits
   class InputComponent < Base
     SIZES = {
-      sm: 'h-8 px-3 text-xs',
-      md: 'h-9 px-3 text-sm',
-      lg: 'h-10 px-4 text-base'
+      sm: "h-8 px-3 text-xs",
+      md: "h-9 px-3 text-sm",
+      lg: "h-10 px-4 text-base"
     }.freeze
 
     def initialize(
-      type: 'text',
+      type: "text",
       name: nil,
       value: nil,
       placeholder: nil,
@@ -68,19 +68,19 @@ module HotwireBits
     end
 
     def input_classes
-      error_classes = @error ? 'border-hw-destructive focus-visible:ring-hw-destructive' : 'border-hw-input focus-visible:ring-hw-ring'
+      error_classes = @error ? "border-hw-destructive focus-visible:ring-hw-destructive" : "border-hw-input focus-visible:ring-hw-ring"
       icon_padding = if @icon
-                       @icon_position == :left ? 'pl-9' : 'pr-9'
-                     else
-                       ''
-                     end
+        (@icon_position == :left) ? "pl-9" : "pr-9"
+      else
+        ""
+      end
 
       merge_classes(
-        'flex w-full rounded-md border bg-hw-background text-hw-foreground ring-offset-hw-background',
-        'file:border-0 file:bg-transparent file:text-sm file:font-medium',
-        'placeholder:text-hw-muted-foreground',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
-        'disabled:cursor-not-allowed disabled:opacity-50',
+        "flex w-full rounded-md border bg-hw-background text-hw-foreground ring-offset-hw-background",
+        "file:border-0 file:bg-transparent file:text-sm file:font-medium",
+        "placeholder:text-hw-muted-foreground",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+        "disabled:cursor-not-allowed disabled:opacity-50",
         error_classes,
         icon_padding,
         SIZES[@size] || SIZES[:md]
@@ -88,8 +88,8 @@ module HotwireBits
     end
 
     def icon_element
-      position_class = @icon_position == :left ? 'left-3' : 'right-3'
-      tag.div(class: merge_classes('absolute top-1/2 -translate-y-1/2 text-hw-muted-foreground', position_class)) do
+      position_class = (@icon_position == :left) ? "left-3" : "right-3"
+      tag.div(class: merge_classes("absolute top-1/2 -translate-y-1/2 text-hw-muted-foreground", position_class)) do
         safe_svg(@icon)
       end
     end

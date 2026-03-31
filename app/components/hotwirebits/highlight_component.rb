@@ -15,7 +15,7 @@ module HotwireBits
       escaped_query = Regexp.escape(ERB::Util.html_escape(@query))
 
       escaped_text.gsub(/(#{escaped_query})/i,
-                        '<mark class="bg-yellow-200 text-inherit rounded-sm px-0.5">\1</mark>').html_safe
+        '<mark class="bg-yellow-200 text-inherit rounded-sm px-0.5">\1</mark>').html_safe
     end
   end
 end

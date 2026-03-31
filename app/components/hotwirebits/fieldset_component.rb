@@ -13,8 +13,8 @@ module HotwireBits
 
     def fieldset_classes
       merge_classes(
-        'rounded-lg border border-hw-border p-4',
-        'disabled:opacity-50 disabled:cursor-not-allowed'
+        "rounded-lg border border-hw-border p-4",
+        "disabled:opacity-50 disabled:cursor-not-allowed"
       )
     end
   end

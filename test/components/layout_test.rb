@@ -110,8 +110,8 @@ end
 
 class DataTableComponentTest < ViewComponent::TestCase
   test "renders data table" do
-    columns = [{ key: :name, label: "Name" }, { key: :age, label: "Age" }]
-    rows = [{ name: "John", age: 30 }, { name: "Jane", age: 25 }]
+    columns = [{key: :name, label: "Name"}, {key: :age, label: "Age"}]
+    rows = [{name: "John", age: 30}, {name: "Jane", age: 25}]
 
     render_inline(HotwireBits::DataTableComponent.new(columns: columns, rows: rows))
 
@@ -125,7 +125,7 @@ end
 
 class StatsComponentTest < ViewComponent::TestCase
   test "renders stats" do
-    stats = [{ label: "Revenue", value: "$12,345" }, { label: "Users", value: "1,234" }]
+    stats = [{label: "Revenue", value: "$12,345"}, {label: "Users", value: "1,234"}]
     render_inline(HotwireBits::StatsComponent.new(stats: stats))
 
     assert_text "Revenue"
@@ -137,7 +137,7 @@ end
 
 class TimelineComponentTest < ViewComponent::TestCase
   test "renders timeline" do
-    items = [{ title: "Event 1", description: "First event" }, { title: "Event 2" }]
+    items = [{title: "Event 1", description: "First event"}, {title: "Event 2"}]
     render_inline(HotwireBits::TimelineComponent.new(items: items))
 
     assert_text "Event 1"
@@ -148,7 +148,7 @@ end
 
 class AccordionComponentTest < ViewComponent::TestCase
   test "renders accordion" do
-    items = [{ title: "Section 1", content: "Content 1" }, { title: "Section 2", content: "Content 2" }]
+    items = [{title: "Section 1", content: "Content 1"}, {title: "Section 2", content: "Content 2"}]
     render_inline(HotwireBits::AccordionComponent.new(items: items))
 
     assert_text "Section 1"
@@ -161,7 +161,7 @@ end
 
 class TreeViewComponentTest < ViewComponent::TestCase
   test "renders tree view" do
-    items = [{ label: "Root", children: [{ label: "Child" }] }]
+    items = [{label: "Root", children: [{label: "Child"}]}]
     render_inline(HotwireBits::TreeViewComponent.new(items: items))
 
     assert_text "Root"
@@ -195,7 +195,7 @@ end
 
 class MeterGroupComponentTest < ViewComponent::TestCase
   test "renders meter group" do
-    meters = [{ label: "CPU", value: 75, color: :default }, { label: "Memory", value: 50, color: :success }]
+    meters = [{label: "CPU", value: 75, color: :default}, {label: "Memory", value: 50, color: :success}]
     render_inline(HotwireBits::MeterGroupComponent.new(meters: meters))
 
     assert_text "CPU"

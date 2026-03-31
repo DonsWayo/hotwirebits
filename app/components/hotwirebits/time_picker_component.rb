@@ -19,9 +19,9 @@ module HotwireBits
 
     def input_classes
       merge_classes(
-        'h-9 w-full rounded-md border border-hw-input bg-hw-background px-3 text-sm text-hw-foreground',
-        'ring-offset-hw-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2',
-        'disabled:cursor-not-allowed disabled:opacity-50'
+        "h-9 w-full rounded-md border border-hw-input bg-hw-background px-3 text-sm text-hw-foreground",
+        "ring-offset-hw-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2",
+        "disabled:cursor-not-allowed disabled:opacity-50"
       )
     end
   end

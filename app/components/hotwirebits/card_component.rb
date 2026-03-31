@@ -13,7 +13,7 @@ module HotwireBits
 
     def card_classes
       merge_classes(
-        'rounded-lg border border-hw-border bg-hw-card text-hw-card-foreground shadow-sm',
+        "rounded-lg border border-hw-border bg-hw-card text-hw-card-foreground shadow-sm",
         @extra_attrs.delete(:class)
       )
     end

@@ -7,7 +7,7 @@ class HeroComponentTest < ViewComponent::TestCase
     render_inline(HotwireBits::HeroComponent.new(
       title: "Welcome",
       subtitle: "Get started today",
-      primary_cta: { label: "Sign Up", href: "/signup" }
+      primary_cta: {label: "Sign Up", href: "/signup"}
     ))
 
     assert_text "Welcome"
@@ -18,8 +18,8 @@ class HeroComponentTest < ViewComponent::TestCase
   test "renders hero with secondary CTA" do
     render_inline(HotwireBits::HeroComponent.new(
       title: "Title",
-      primary_cta: { label: "Primary", href: "/primary" },
-      secondary_cta: { label: "Learn More", href: "/learn" }
+      primary_cta: {label: "Primary", href: "/primary"},
+      secondary_cta: {label: "Learn More", href: "/learn"}
     ))
 
     assert_selector "a[href='/primary']", text: "Primary"
@@ -29,7 +29,7 @@ end
 
 class CarouselComponentTest < ViewComponent::TestCase
   test "renders carousel" do
-    items = [{ image: "/slide1.jpg", alt: "Slide 1" }, { image: "/slide2.jpg", alt: "Slide 2" }]
+    items = [{image: "/slide1.jpg", alt: "Slide 1"}, {image: "/slide2.jpg", alt: "Slide 2"}]
     render_inline(HotwireBits::CarouselComponent.new(items: items))
 
     assert_selector "div[data-controller='hw-carousel']"
@@ -38,7 +38,7 @@ class CarouselComponentTest < ViewComponent::TestCase
   end
 
   test "renders carousel with arrows" do
-    items = [{ content: "Slide 1" }, { content: "Slide 2" }]
+    items = [{content: "Slide 1"}, {content: "Slide 2"}]
     render_inline(HotwireBits::CarouselComponent.new(items: items, show_arrows: true))
 
     assert_selector "button[data-action='click->hw-carousel#prev']"
@@ -46,7 +46,7 @@ class CarouselComponentTest < ViewComponent::TestCase
   end
 
   test "renders carousel with dots" do
-    items = [{ content: "A" }, { content: "B" }]
+    items = [{content: "A"}, {content: "B"}]
     render_inline(HotwireBits::CarouselComponent.new(items: items, show_dots: true))
 
     assert_selector "button[data-hw-carousel-target='dot']", count: 2
@@ -66,8 +66,8 @@ end
 class KanbanBoardComponentTest < ViewComponent::TestCase
   test "renders kanban board" do
     columns = [
-      { title: "To Do", items: [{ title: "Task 1" }] },
-      { title: "Done", items: [{ title: "Task 2" }] }
+      {title: "To Do", items: [{title: "Task 1"}]},
+      {title: "Done", items: [{title: "Task 2"}]}
     ]
     render_inline(HotwireBits::KanbanBoardComponent.new(columns: columns))
 
@@ -151,8 +151,8 @@ end
 class PricingSectionComponentTest < ViewComponent::TestCase
   test "renders pricing section" do
     plans = [
-      { name: "Free", price: "$0", features: ["1 user", "10 items"] },
-      { name: "Pro", price: "$10", features: ["5 users", "100 items"], highlighted: true }
+      {name: "Free", price: "$0", features: ["1 user", "10 items"]},
+      {name: "Pro", price: "$10", features: ["5 users", "100 items"], highlighted: true}
     ]
     render_inline(HotwireBits::PricingSectionComponent.new(title: "Pricing", plans: plans))
 
@@ -167,8 +167,8 @@ end
 class FaqSectionComponentTest < ViewComponent::TestCase
   test "renders FAQ section" do
     items = [
-      { question: "What is this?", answer: "A UI library." },
-      { question: "Is it free?", answer: "Yes!" }
+      {question: "What is this?", answer: "A UI library."},
+      {question: "Is it free?", answer: "Yes!"}
     ]
     render_inline(HotwireBits::FaqSectionComponent.new(title: "FAQ", items: items))
 

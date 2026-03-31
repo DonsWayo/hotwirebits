@@ -19,10 +19,10 @@ module HotwireBits
 
     def sidebar_classes
       merge_classes(
-        'flex h-full flex-col border-r border-hw-border bg-hw-background',
-        'transition-[width] duration-300 ease-in-out',
-        @collapsed ? 'w-16' : nil,
-        @mobile ? 'fixed inset-y-0 left-0 z-50 shadow-lg' : nil
+        "flex h-full flex-col border-r border-hw-border bg-hw-background",
+        "transition-[width] duration-300 ease-in-out",
+        @collapsed ? "w-16" : nil,
+        @mobile ? "fixed inset-y-0 left-0 z-50 shadow-lg" : nil
       )
     end
   end

@@ -15,8 +15,8 @@ module HotwireBits
 
     def link_classes
       merge_classes(
-        'group flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors',
-        @active ? 'bg-hw-accent text-hw-accent-foreground font-medium' : 'text-hw-muted-foreground hover:bg-hw-accent/50 hover:text-hw-accent-foreground'
+        "group flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors",
+        @active ? "bg-hw-accent text-hw-accent-foreground font-medium" : "text-hw-muted-foreground hover:bg-hw-accent/50 hover:text-hw-accent-foreground"
       )
     end
   end

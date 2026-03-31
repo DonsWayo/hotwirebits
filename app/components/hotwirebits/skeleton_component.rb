@@ -13,27 +13,27 @@ module HotwireBits
     private
 
     def skeleton_classes
-      base = 'animate-pulse bg-hw-muted'
+      base = "animate-pulse bg-hw-muted"
       case @shape
       when :circle
-        merge_classes(base, 'rounded-full')
+        merge_classes(base, "rounded-full")
       when :text
-        merge_classes(base, 'rounded h-4 w-full')
+        merge_classes(base, "rounded h-4 w-full")
       else
-        merge_classes(base, 'rounded-md')
+        merge_classes(base, "rounded-md")
       end
     end
 
     def skeleton_style
       styles = []
       if @shape == :circle
-        size = @circle_size || '40px'
+        size = @circle_size || "40px"
         styles << "width: #{size}; height: #{size};"
       else
         styles << "width: #{@width};" if @width
         styles << "height: #{@height};" if @height
       end
-      styles.join(' ')
+      styles.join(" ")
     end
   end
 end

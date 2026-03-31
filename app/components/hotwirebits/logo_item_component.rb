@@ -12,8 +12,8 @@ module HotwireBits
 
     def item_classes
       merge_classes(
-        'flex items-center justify-center transition-all',
-        @grayscale ? 'grayscale opacity-60 hover:grayscale-0 hover:opacity-100' : nil
+        "flex items-center justify-center transition-all",
+        @grayscale ? "grayscale opacity-60 hover:grayscale-0 hover:opacity-100" : nil
       )
     end
   end

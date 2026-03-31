@@ -3,14 +3,14 @@
 module HotwireBits
   class AnimatedNumberComponent < Base
     EASINGS = {
-      linear: 'linear',
-      ease: 'ease',
-      ease_in: 'ease-in',
-      ease_out: 'ease-out',
-      ease_in_out: 'ease-in-out'
+      linear: "linear",
+      ease: "ease",
+      ease_in: "ease-in",
+      ease_out: "ease-out",
+      ease_in_out: "ease-in-out"
     }.freeze
 
-    def initialize(value: 0, duration: 1000, prefix: '', suffix: '', easing: :ease_out, **attrs)
+    def initialize(value: 0, duration: 1000, prefix: "", suffix: "", easing: :ease_out, **attrs)
       @value = value
       @duration = duration
       @prefix = prefix

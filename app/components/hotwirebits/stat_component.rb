@@ -13,12 +13,12 @@ module HotwireBits
     end
 
     def trend_color
-      @trend_up ? 'text-hw-success' : 'text-hw-destructive'
+      @trend_up ? "text-hw-success" : "text-hw-destructive"
     end
 
     def container_classes
       merge_classes(
-        'rounded-lg border border-hw-border bg-hw-card p-4 shadow-sm',
+        "rounded-lg border border-hw-border bg-hw-card p-4 shadow-sm",
         @extra_attrs.delete(:class)
       )
     end

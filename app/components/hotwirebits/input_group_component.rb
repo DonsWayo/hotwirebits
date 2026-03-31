@@ -13,8 +13,8 @@ module HotwireBits
 
     def group_classes
       merge_classes(
-        'flex [&>*:first-child]:rounded-r-none [&>*:last-child]:rounded-l-none [&>*:not(:first-child):not(:last-child)]:rounded-none',
-        '[&>*:not(:first-child)]:-ml-px'
+        "flex [&>*:first-child]:rounded-r-none [&>*:last-child]:rounded-l-none [&>*:not(:first-child):not(:last-child)]:rounded-none",
+        "[&>*:not(:first-child)]:-ml-px"
       )
     end
 
@@ -23,15 +23,15 @@ module HotwireBits
         if @addon_before.is_a?(String) && position == :before
           @addon_before
         else
-          (@addon_after.is_a?(String) && position == :after ? @addon_after : nil)
+          ((@addon_after.is_a?(String) && position == :after) ? @addon_after : nil)
         end
       end
     end
 
     def addon_classes(_position)
       merge_classes(
-        'inline-flex items-center rounded-md border border-hw-input bg-hw-muted px-3 text-sm text-hw-muted-foreground',
-        'whitespace-nowrap'
+        "inline-flex items-center rounded-md border border-hw-input bg-hw-muted px-3 text-sm text-hw-muted-foreground",
+        "whitespace-nowrap"
       )
     end
   end

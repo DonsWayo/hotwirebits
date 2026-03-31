@@ -2,7 +2,7 @@
 
 module HotwireBits
   class ContactSectionComponent < Base
-    def initialize(title:, description: nil, fields: [], submit_label: 'Submit', **attrs)
+    def initialize(title:, description: nil, fields: [], submit_label: "Submit", **attrs)
       @title = title
       @description = description
       @fields = fields
@@ -11,7 +11,7 @@ module HotwireBits
     end
 
     def container_classes
-      merge_classes('py-16 md:py-24 px-4', @extra_attrs.delete(:class))
+      merge_classes("py-16 md:py-24 px-4", @extra_attrs.delete(:class))
     end
   end
 end

@@ -6,7 +6,7 @@ module HotwireBits
       @type = type
       @providers = providers
       @show_forgot = show_forgot
-      @action_url = action_url || (type == :sign_up ? '/users' : '/users/sign_in')
+      @action_url = action_url || ((type == :sign_up) ? "/users" : "/users/sign_in")
       @extra_attrs = attrs
     end
 
@@ -16,7 +16,7 @@ module HotwireBits
 
     def container_classes
       merge_classes(
-        'w-full max-w-md mx-auto',
+        "w-full max-w-md mx-auto",
         @extra_attrs.delete(:class)
       )
     end

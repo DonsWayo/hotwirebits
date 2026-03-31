@@ -16,9 +16,9 @@ module HotwireBits
       return unless @columns.find { |c| c[:key] == column_key }&.dig(:sortable)
 
       if @sort_by == column_key
-        @sort_direction == :asc ? '↑' : '↓'
+        (@sort_direction == :asc) ? "↑" : "↓"
       else
-        '↕'
+        "↕"
       end
     end
 
@@ -32,7 +32,7 @@ module HotwireBits
 
     def container_classes
       merge_classes(
-        'rounded-lg border border-hw-border',
+        "rounded-lg border border-hw-border",
         @extra_attrs.delete(:class)
       )
     end

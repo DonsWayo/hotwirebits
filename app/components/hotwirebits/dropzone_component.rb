@@ -7,7 +7,7 @@ module HotwireBits
       @accept = accept
       @multiple = multiple
       @max_size = max_size
-      @label = label || 'Drop files here or click to upload'
+      @label = label || "Drop files here or click to upload"
       @description = description
       @extra_attrs = attrs
     end

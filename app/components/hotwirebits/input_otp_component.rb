@@ -14,15 +14,15 @@ module HotwireBits
     private
 
     def hidden_input
-      tag.input(type: 'hidden', name: @name, value: @value, data: { rb_otp_target: 'hidden' })
+      tag.input(type: "hidden", name: @name, value: @value, data: {rb_otp_target: "hidden"})
     end
 
     def input_classes
       merge_classes(
-        'h-10 w-10 text-center text-lg font-semibold rounded-md border border-hw-input bg-hw-background',
-        'text-hw-foreground ring-offset-hw-background focus-visible:outline-none',
-        'focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2',
-        'disabled:cursor-not-allowed disabled:opacity-50'
+        "h-10 w-10 text-center text-lg font-semibold rounded-md border border-hw-input bg-hw-background",
+        "text-hw-foreground ring-offset-hw-background focus-visible:outline-none",
+        "focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2",
+        "disabled:cursor-not-allowed disabled:opacity-50"
       )
     end
   end

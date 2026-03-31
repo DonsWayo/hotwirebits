@@ -11,7 +11,7 @@ class NavbarComponentTest < ViewComponent::TestCase
   end
 
   test "renders navbar with menu items" do
-    items = [{ label: "Home", href: "/" }, { label: "About", href: "/about" }]
+    items = [{label: "Home", href: "/"}, {label: "About", href: "/about"}]
     render_inline(HotwireBits::NavbarComponent.new(brand: "App", items: items))
 
     assert_text "Home"
@@ -21,7 +21,7 @@ end
 
 class BreadcrumbComponentTest < ViewComponent::TestCase
   test "renders breadcrumb" do
-    items = [{ label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: "Widget" }]
+    items = [{label: "Home", href: "/"}, {label: "Products", href: "/products"}, {label: "Widget"}]
     render_inline(HotwireBits::BreadcrumbComponent.new(items: items))
 
     assert_selector "nav[aria-label='Breadcrumb']"
@@ -50,8 +50,8 @@ end
 class TabsComponentTest < ViewComponent::TestCase
   test "renders tabs" do
     render_inline(HotwireBits::TabsComponent.new(tabs: [
-      { label: "Tab 1", content: "Content 1" },
-      { label: "Tab 2", content: "Content 2" }
+      {label: "Tab 1", content: "Content 1"},
+      {label: "Tab 2", content: "Content 2"}
     ]))
 
     assert_text "Tab 1"
@@ -62,7 +62,7 @@ end
 
 class MenuComponentTest < ViewComponent::TestCase
   test "renders menu" do
-    items = [{ label: "Settings", href: "/settings" }, { label: "Profile", href: "/profile" }]
+    items = [{label: "Settings", href: "/settings"}, {label: "Profile", href: "/profile"}]
     render_inline(HotwireBits::MenuComponent.new(items: items))
 
     assert_text "Settings"
@@ -72,7 +72,7 @@ end
 
 class DropdownComponentTest < ViewComponent::TestCase
   test "renders dropdown" do
-    items = [{ label: "Edit", href: "/edit" }, { label: "Delete", href: "/delete" }]
+    items = [{label: "Edit", href: "/edit"}, {label: "Delete", href: "/delete"}]
     render_inline(HotwireBits::DropdownComponent.new(trigger_label: "Actions", items: items))
 
     assert_text "Actions"
@@ -115,7 +115,7 @@ end
 
 class StepsComponentTest < ViewComponent::TestCase
   test "renders steps" do
-    steps = [{ label: "Step 1" }, { label: "Step 2" }, { label: "Step 3" }]
+    steps = [{label: "Step 1"}, {label: "Step 2"}, {label: "Step 3"}]
     render_inline(HotwireBits::StepsComponent.new(steps: steps, current: 1))
 
     assert_text "Step 1"
@@ -133,7 +133,7 @@ class FooterComponentTest < ViewComponent::TestCase
   end
 
   test "renders footer with links" do
-    sections = [{ title: "Links", links: [{ label: "Terms", href: "/terms" }] }]
+    sections = [{title: "Links", links: [{label: "Terms", href: "/terms"}]}]
     render_inline(HotwireBits::FooterComponent.new(brand: "App", sections: sections))
 
     assert_text "Terms"

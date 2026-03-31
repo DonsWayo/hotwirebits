@@ -3,11 +3,11 @@
 module HotwireBits
   class MaskComponent < Base
     SHAPES = {
-      circle: 'mask-circle',
-      squircle: 'mask-squircle',
-      hexagon: 'mask-hexagon',
-      triangle: 'mask-triangle',
-      diamond: 'mask-diamond'
+      circle: "mask-circle",
+      squircle: "mask-squircle",
+      hexagon: "mask-hexagon",
+      triangle: "mask-triangle",
+      diamond: "mask-diamond"
     }.freeze
 
     def initialize(shape: :circle, **attrs)

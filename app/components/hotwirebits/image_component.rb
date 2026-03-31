@@ -15,7 +15,7 @@ module HotwireBits
 
     def figure_classes
       merge_classes(
-        @zoomable ? 'cursor-zoom-in' : '',
+        @zoomable ? "cursor-zoom-in" : "",
         @extra_attrs.delete(:class)
       )
     end

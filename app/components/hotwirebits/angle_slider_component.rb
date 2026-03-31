@@ -9,7 +9,7 @@ module HotwireBits
     end
 
     def container_classes
-      merge_classes('relative inline-flex flex-col items-center gap-2', @extra_attrs.delete(:class))
+      merge_classes("relative inline-flex flex-col items-center gap-2", @extra_attrs.delete(:class))
     end
 
     def radians

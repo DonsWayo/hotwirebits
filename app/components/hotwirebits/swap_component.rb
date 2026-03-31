@@ -3,9 +3,9 @@
 module HotwireBits
   class SwapComponent < Base
     EFFECTS = {
-      rotate: 'swap-rotate',
-      flip: 'swap-flip',
-      fade: 'swap-fade'
+      rotate: "swap-rotate",
+      flip: "swap-flip",
+      fade: "swap-fade"
     }.freeze
 
     def initialize(on_content: nil, off_content: nil, active: :on, effect: :fade, **attrs)

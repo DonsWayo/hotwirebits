@@ -3,10 +3,10 @@
 module HotwireBits
   class ToastComponent < Base
     TYPES = {
-      success: { bg: 'border-hw-success/30', icon: 'text-hw-success', default_title: 'Success' },
-      error: { bg: 'border-hw-destructive/30', icon: 'text-hw-destructive', default_title: 'Error' },
-      warning: { bg: 'border-hw-warning/30', icon: 'text-hw-warning', default_title: 'Warning' },
-      info: { bg: 'border-hw-info/30', icon: 'text-hw-info', default_title: 'Info' }
+      success: {bg: "border-hw-success/30", icon: "text-hw-success", default_title: "Success"},
+      error: {bg: "border-hw-destructive/30", icon: "text-hw-destructive", default_title: "Error"},
+      warning: {bg: "border-hw-warning/30", icon: "text-hw-warning", default_title: "Warning"},
+      info: {bg: "border-hw-info/30", icon: "text-hw-info", default_title: "Info"}
     }.freeze
 
     ICONS = {
@@ -37,9 +37,9 @@ module HotwireBits
 
     def toast_classes
       merge_classes(
-        'pointer-events-auto relative flex w-full items-center justify-between space-x-4 overflow-hidden rounded-md border p-4 pr-8 shadow-lg transition-all',
+        "pointer-events-auto relative flex w-full items-center justify-between space-x-4 overflow-hidden rounded-md border p-4 pr-8 shadow-lg transition-all",
         type_config[:bg],
-        'bg-hw-background',
+        "bg-hw-background",
         @extra_attrs.delete(:class)
       )
     end

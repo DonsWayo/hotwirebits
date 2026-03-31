@@ -12,8 +12,8 @@ module HotwireBits
 
     def list_classes
       merge_classes(
-        'flex gap-2',
-        @orientation == :horizontal ? 'flex-row flex-wrap' : 'flex-col'
+        "flex gap-2",
+        (@orientation == :horizontal) ? "flex-row flex-wrap" : "flex-col"
       )
     end
   end

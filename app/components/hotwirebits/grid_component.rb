@@ -18,7 +18,7 @@ module HotwireBits
 
     def grid_classes
       merge_classes(
-        'grid',
+        "grid",
         COLS[@columns],
         @sm_cols && SM_COLS[@sm_cols],
         @md_cols && MD_COLS[@md_cols],

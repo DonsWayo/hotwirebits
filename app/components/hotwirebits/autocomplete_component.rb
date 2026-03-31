@@ -2,7 +2,7 @@
 
 module HotwireBits
   class AutocompleteComponent < Base
-    def initialize(name:, url:, placeholder: 'Search...', min_chars: 2, value: nil, disabled: false, **attrs)
+    def initialize(name:, url:, placeholder: "Search...", min_chars: 2, value: nil, disabled: false, **attrs)
       @name = name
       @url = url
       @placeholder = placeholder
@@ -16,29 +16,29 @@ module HotwireBits
 
     def input_element
       tag.input(
-        type: 'text',
+        type: "text",
         placeholder: @placeholder,
         value: @value,
         disabled: @disabled,
         class: merge_classes(
-          'flex w-full rounded-md border border-hw-input bg-hw-background px-3 py-2 text-sm text-hw-foreground',
-          'ring-offset-hw-background placeholder:text-hw-muted-foreground',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2',
-          'disabled:cursor-not-allowed disabled:opacity-50'
+          "flex w-full rounded-md border border-hw-input bg-hw-background px-3 py-2 text-sm text-hw-foreground",
+          "ring-offset-hw-background placeholder:text-hw-muted-foreground",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2",
+          "disabled:cursor-not-allowed disabled:opacity-50"
         ),
-        autocomplete: 'off',
+        autocomplete: "off",
         data: {
-          rb_autocomplete_target: 'input',
-          action: 'input->hw-autocomplete#search keydown->hw-autocomplete#keydown'
+          rb_autocomplete_target: "input",
+          action: "input->hw-autocomplete#search keydown->hw-autocomplete#keydown"
         }
       )
     end
 
     def results_element
       tag.ul(
-        class: 'absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-md border border-hw-border bg-hw-popover shadow-md hidden',
-        role: 'listbox',
-        data: { rb_autocomplete_target: 'results' }
+        class: "absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-md border border-hw-border bg-hw-popover shadow-md hidden",
+        role: "listbox",
+        data: {rb_autocomplete_target: "results"}
       )
     end
   end

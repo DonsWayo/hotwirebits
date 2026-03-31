@@ -12,8 +12,8 @@ module HotwireBits
 
     def position_classes
       case @position
-      when :top then 'top-0 border-b'
-      else 'bottom-0 border-t'
+      when :top then "top-0 border-b"
+      else "bottom-0 border-t"
       end
     end
   end

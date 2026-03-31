@@ -3,9 +3,9 @@
 module HotwireBits
   class SectionHeadingComponent < Base
     ALIGNS = {
-      left: 'text-left',
-      center: 'text-center',
-      right: 'text-right'
+      left: "text-left",
+      center: "text-center",
+      right: "text-right"
     }.freeze
 
     def initialize(title:, description: nil, align: :left, **attrs)
@@ -18,7 +18,7 @@ module HotwireBits
     def container_classes
       merge_classes(
         ALIGNS[@align] || ALIGNS[:left],
-        @align == :center ? 'items-center' : nil,
+        (@align == :center) ? "items-center" : nil,
         @extra_attrs.delete(:class)
       )
     end

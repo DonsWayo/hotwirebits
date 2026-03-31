@@ -7,7 +7,7 @@ module HotwireBits
     end
 
     def fluid_classes
-      merge_classes('w-full', @extra_attrs.delete(:class))
+      merge_classes("w-full", @extra_attrs.delete(:class))
     end
   end
 end

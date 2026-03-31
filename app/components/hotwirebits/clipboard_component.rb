@@ -2,7 +2,7 @@
 
 module HotwireBits
   class ClipboardComponent < Base
-    def initialize(text:, label: nil, success_message: 'Copied!', **attrs)
+    def initialize(text:, label: nil, success_message: "Copied!", **attrs)
       @text = text
       @label = label
       @success_message = success_message
@@ -11,7 +11,7 @@ module HotwireBits
 
     def wrapper_classes
       merge_classes(
-        'inline-flex items-center gap-2',
+        "inline-flex items-center gap-2",
         @extra_attrs.delete(:class)
       )
     end

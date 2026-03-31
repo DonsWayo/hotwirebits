@@ -10,8 +10,8 @@ module HotwireBits
 
     def container_classes
       merge_classes(
-        'space-y-0',
-        @divided ? 'divide-y divide-hw-border border-y border-hw-border' : '',
+        "space-y-0",
+        @divided ? "divide-y divide-hw-border border-y border-hw-border" : "",
         @extra_attrs.delete(:class)
       )
     end

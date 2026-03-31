@@ -12,11 +12,11 @@ module HotwireBits
       styles = []
       styles << "height: #{@h};" if @h
       styles << "width: #{@w};" if @w
-      styles.join(' ')
+      styles.join(" ")
     end
 
     def space_classes
-      merge_classes('shrink-0', @extra_attrs.delete(:class))
+      merge_classes("shrink-0", @extra_attrs.delete(:class))
     end
   end
 end

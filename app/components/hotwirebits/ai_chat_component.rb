@@ -2,7 +2,7 @@
 
 module HotwireBits
   class AiChatComponent < Base
-    def initialize(messages: [], placeholder: 'Type a message...', send_label: 'Send', **attrs)
+    def initialize(messages: [], placeholder: "Type a message...", send_label: "Send", **attrs)
       @messages = messages
       @placeholder = placeholder
       @send_label = send_label

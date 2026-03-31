@@ -11,7 +11,7 @@ module HotwireBits
     private
 
     def calculate_total
-      @items.sum { |item| (item[:price].to_s.gsub(/[^0-9.]/, '').to_f * item[:quantity].to_i) }
+      @items.sum { |item| (item[:price].to_s.gsub(/[^0-9.]/, "").to_f * item[:quantity].to_i) }
     end
   end
 end

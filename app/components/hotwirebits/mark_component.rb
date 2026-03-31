@@ -9,7 +9,7 @@ module HotwireBits
 
     def mark_classes
       merge_classes(
-        @color || 'bg-yellow-200 text-inherit rounded-sm px-0.5',
+        @color || "bg-yellow-200 text-inherit rounded-sm px-0.5",
         @extra_attrs.delete(:class)
       )
     end

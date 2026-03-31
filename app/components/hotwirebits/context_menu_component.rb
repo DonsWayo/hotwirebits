@@ -8,7 +8,7 @@ module HotwireBits
     end
 
     def container_classes
-      merge_classes('contents', @extra_attrs.delete(:class))
+      merge_classes("contents", @extra_attrs.delete(:class))
     end
   end
 end

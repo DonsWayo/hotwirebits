@@ -13,8 +13,8 @@ module HotwireBits
 
     def panel_classes
       merge_classes(
-        'absolute z-50 mt-1 min-w-[8rem] overflow-hidden rounded-md border border-hw-border bg-hw-popover p-1 text-hw-popover-foreground shadow-md',
-        @align == :end ? 'right-0' : 'left-0'
+        "absolute z-50 mt-1 min-w-[8rem] overflow-hidden rounded-md border border-hw-border bg-hw-popover p-1 text-hw-popover-foreground shadow-md",
+        (@align == :end) ? "right-0" : "left-0"
       )
     end
   end

@@ -18,11 +18,11 @@ module HotwireBits
 
     def grid_classes
       cols = case @columns
-             when 2 then 'grid-cols-2'
-             when 4 then 'grid-cols-2 md:grid-cols-4'
-             when 5 then 'grid-cols-2 md:grid-cols-3 lg:grid-cols-5'
-             else 'grid-cols-2 md:grid-cols-3'
-             end
+      when 2 then "grid-cols-2"
+      when 4 then "grid-cols-2 md:grid-cols-4"
+      when 5 then "grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
+      else "grid-cols-2 md:grid-cols-3"
+      end
       "grid #{cols} gap-#{@gap}"
     end
   end

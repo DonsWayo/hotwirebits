@@ -12,8 +12,8 @@ module HotwireBits
 
     def menu_classes
       merge_classes(
-        'flex',
-        @orientation == :horizontal ? 'flex-row gap-1' : 'flex-col gap-0.5'
+        "flex",
+        (@orientation == :horizontal) ? "flex-row gap-1" : "flex-col gap-0.5"
       )
     end
   end

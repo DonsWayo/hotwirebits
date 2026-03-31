@@ -13,14 +13,14 @@ module HotwireBits
 
     def separator_classes
       if @orientation == :horizontal
-        'shrink-0 bg-hw-border h-[1px] w-full'
+        "shrink-0 bg-hw-border h-[1px] w-full"
       else
-        'shrink-0 bg-hw-border h-full w-[1px]'
+        "shrink-0 bg-hw-border h-full w-[1px]"
       end
     end
 
     def horizontal_class
-      'shrink-0 bg-hw-border h-[1px] w-full'
+      "shrink-0 bg-hw-border h-[1px] w-full"
     end
   end
 end

@@ -11,16 +11,16 @@ module HotwireBits
 
     def table_classes
       merge_classes(
-        'w-full text-sm',
-        @bordered ? 'border border-hw-border' : '',
+        "w-full text-sm",
+        @bordered ? "border border-hw-border" : "",
         @extra_attrs.delete(:class)
       )
     end
 
     def row_classes(index)
       merge_classes(
-        @striped && index.odd? ? 'bg-hw-muted/50' : '',
-        @hoverable ? 'hover:bg-hw-muted/80 transition-colors' : ''
+        (@striped && index.odd?) ? "bg-hw-muted/50" : "",
+        @hoverable ? "hover:bg-hw-muted/80 transition-colors" : ""
       )
     end
   end
