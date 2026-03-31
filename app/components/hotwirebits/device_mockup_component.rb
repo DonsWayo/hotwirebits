@@ -15,9 +15,9 @@ module HotwireBits
       when :phone
         phone_classes
       when :tablet
-        'rounded-[2rem] border-[8px] border-neutral-800 overflow-hidden bg-black shadow-xl'
+        'rounded-[2rem] border-[8px] border-hw-border overflow-hidden bg-black shadow-xl'
       when :window
-        'rounded-lg border border-neutral-700 overflow-hidden bg-neutral-900 shadow-lg'
+        'rounded-lg border border-hw-border overflow-hidden bg-hw-foreground shadow-lg'
       end
     end
 
@@ -26,11 +26,11 @@ module HotwireBits
     def phone_classes
       case @device
       when :android
-        'rounded-[2rem] border-[6px] border-neutral-800 overflow-hidden bg-black shadow-xl'
+        'rounded-[2rem] border-[6px] border-hw-border overflow-hidden bg-black shadow-xl'
       when :iphone
-        'rounded-[3rem] border-[10px] border-neutral-900 overflow-hidden bg-black shadow-xl'
+        'rounded-[3rem] border-[10px] border-hw-foreground overflow-hidden bg-black shadow-xl'
       else
-        'rounded-[2rem] border-[8px] border-neutral-800 overflow-hidden bg-black shadow-xl'
+        'rounded-[2rem] border-[8px] border-hw-border overflow-hidden bg-black shadow-xl'
       end
     end
   end

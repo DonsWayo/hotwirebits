@@ -3,10 +3,10 @@
 module HotwireBits
   class PermissionBadgeComponent < Base
     ROLES = {
-      admin: { bg: 'bg-red-100 text-red-700 border-red-200', label: 'Admin' },
-      editor: { bg: 'bg-blue-100 text-blue-700 border-blue-200', label: 'Editor' },
-      viewer: { bg: 'bg-gray-100 text-gray-700 border-gray-200', label: 'Viewer' },
-      owner: { bg: 'bg-purple-100 text-purple-700 border-purple-200', label: 'Owner' }
+      admin: { bg: 'bg-hw-destructive/10 text-hw-destructive border-red-200', label: 'Admin' },
+      editor: { bg: 'bg-hw-info/10 text-hw-info border-blue-200', label: 'Editor' },
+      viewer: { bg: 'bg-hw-muted text-hw-foreground border-gray-200', label: 'Viewer' },
+      owner: { bg: 'bg-hw-primary/10 text-hw-primary border-purple-200', label: 'Owner' }
     }.freeze
 
     def initialize(role: :viewer, label: nil, **attrs)

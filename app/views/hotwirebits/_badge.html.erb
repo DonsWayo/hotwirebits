@@ -1,7 +1,7 @@
 <%# Badge component — ERB partial %>
 <%# Usage: render 'hotwirebits/badge', ... %>
 
-<div class="<%= badge_classes %>" <%= tag.attributes(local_assigns) %>>
+<div class="<%= badge_classes %>" <%= 'data-controller="hw-badge"' if removable %> <%= tag.attributes(local_assigns) %>>
   <% if dot %>
     <span class="h-1.5 w-1.5 rounded-full bg-current mr-1"></span>
   <% end %>

@@ -2,16 +2,16 @@
   <% if @view == :side_by_side %>
     <div class="grid grid-cols-2 divide-x divide-hw-border">
       <div>
-        <div class="bg-red-50 px-3 py-1.5 text-xs font-medium text-red-700 border-b border-hw-border">Old</div>
-        <pre class="p-3 overflow-x-auto text-xs leading-5"><% @old_text.to_s.lines.each_with_index do |line, i| %><span class="flex"><span class="w-8 shrink-0 text-hw-muted-foreground select-none"><%= i + 1 %></span><span class="text-red-700 bg-red-50/50 flex-1"><%= ERB::Util.html_escape(line.chomp) %></span></span><% end %></pre>
+        <div class="bg-hw-destructive/5 px-3 py-1.5 text-xs font-medium text-hw-destructive border-b border-hw-border">Old</div>
+        <pre class="p-3 overflow-x-auto text-xs leading-5"><% @old_text.to_s.lines.each_with_index do |line, i| %><span class="flex"><span class="w-8 shrink-0 text-hw-muted-foreground select-none"><%= i + 1 %></span><span class="text-hw-destructive bg-hw-destructive/5/50 flex-1"><%= ERB::Util.html_escape(line.chomp) %></span></span><% end %></pre>
       </div>
       <div>
-        <div class="bg-green-50 px-3 py-1.5 text-xs font-medium text-green-700 border-b border-hw-border">New</div>
-        <pre class="p-3 overflow-x-auto text-xs leading-5"><% @new_text.to_s.lines.each_with_index do |line, i| %><span class="flex"><span class="w-8 shrink-0 text-hw-muted-foreground select-none"><%= i + 1 %></span><span class="text-green-700 bg-green-50/50 flex-1"><%= ERB::Util.html_escape(line.chomp) %></span></span><% end %></pre>
+        <div class="bg-hw-success/5 px-3 py-1.5 text-xs font-medium text-hw-success border-b border-hw-border">New</div>
+        <pre class="p-3 overflow-x-auto text-xs leading-5"><% @new_text.to_s.lines.each_with_index do |line, i| %><span class="flex"><span class="w-8 shrink-0 text-hw-muted-foreground select-none"><%= i + 1 %></span><span class="text-hw-success bg-hw-success/5/50 flex-1"><%= ERB::Util.html_escape(line.chomp) %></span></span><% end %></pre>
       </div>
     </div>
   <% else %>
     <div class="bg-hw-muted/30 px-3 py-1.5 text-xs font-medium text-hw-muted-foreground border-b border-hw-border">Unified Diff</div>
-    <pre class="p-3 overflow-x-auto text-xs leading-5"><% diff_lines.each do |entry| %><% case entry[:type] %><% when :context %><span class="flex"><span class="w-8 shrink-0 text-hw-muted-foreground select-none"><%= entry[:old_line] %></span><span class="flex-1"><%= ERB::Util.html_escape(entry[:content]) %></span></span><% when :removed %><span class="flex bg-red-50"><span class="w-8 shrink-0 text-red-400 select-none">-</span><span class="flex-1 text-red-700"><%= ERB::Util.html_escape(entry[:content]) %></span></span><% when :added %><span class="flex bg-green-50"><span class="w-8 shrink-0 text-green-400 select-none">+</span><span class="flex-1 text-green-700"><%= ERB::Util.html_escape(entry[:content]) %></span></span><% end %><% end %></pre>
+    <pre class="p-3 overflow-x-auto text-xs leading-5"><% diff_lines.each do |entry| %><% case entry[:type] %><% when :context %><span class="flex"><span class="w-8 shrink-0 text-hw-muted-foreground select-none"><%= entry[:old_line] %></span><span class="flex-1"><%= ERB::Util.html_escape(entry[:content]) %></span></span><% when :removed %><span class="flex bg-hw-destructive/5"><span class="w-8 shrink-0 text-hw-destructive select-none">-</span><span class="flex-1 text-hw-destructive"><%= ERB::Util.html_escape(entry[:content]) %></span></span><% when :added %><span class="flex bg-hw-success/5"><span class="w-8 shrink-0 text-hw-success select-none">+</span><span class="flex-1 text-hw-success"><%= ERB::Util.html_escape(entry[:content]) %></span></span><% end %><% end %></pre>
   <% end %>
 </div>

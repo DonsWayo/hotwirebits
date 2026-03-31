@@ -1,4 +1,4 @@
-<button type="button" aria-pressed="<%= @pressed %>" <%= 'disabled' if @disabled %> class="<%= button_classes %>" data-action="click->hw-toggle-button#toggle" <%= tag.attributes(@extra_attrs) %>>
-  <% if @icon %><span class="h-4 w-4"><%= @icon.html_safe %></span><% end %>
+<button type="button" aria-pressed="<%= @pressed %>" <%= 'disabled' if @disabled %> class="<%= button_classes %>" data-controller="hw-toggle-button" data-action="click->hw-toggle-button#toggle" <%= tag.attributes(@extra_attrs) %>>
+  <% if @icon %><span class="h-4 w-4"><%= safe_svg(@icon) %></span><% end %>
   <% if @label %><span><%= @label %></span><% end %>
 </button>

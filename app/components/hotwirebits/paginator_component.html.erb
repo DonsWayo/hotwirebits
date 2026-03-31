@@ -1,4 +1,4 @@
-<nav class="flex flex-col sm:flex-row items-center justify-between gap-4" aria-label="Pagination" <%= tag.attributes(@extra_attrs) %>>
+<nav class="flex flex-col sm:flex-row items-center justify-between gap-4" data-controller="hw-paginator" aria-label="Pagination" <%= tag.attributes(@extra_attrs) %>>
   <div class="flex items-center gap-2 text-sm text-hw-muted-foreground">
     <span>Rows per page:</span>
     <select class="h-8 rounded-md border border-hw-input bg-hw-background px-2 text-sm text-hw-foreground focus:outline-none focus:ring-2 focus:ring-hw-ring" data-action="change->hw-paginator#changePerPage">

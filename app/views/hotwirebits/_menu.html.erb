@@ -10,7 +10,7 @@
            item[:active] ? 'bg-hw-accent text-hw-accent-foreground font-medium' : 'text-hw-muted-foreground hover:bg-hw-accent/50 hover:text-hw-accent-foreground'
          ) %>">
     <% if item[:icon] %>
-      <span class="h-4 w-4 shrink-0"><%= item[:icon].html_safe %></span>
+      <span class="h-4 w-4 shrink-0"><%= safe_svg(item[:icon]) %></span>
     <% end %>
     <span class="flex-1"><%= item[:label] %></span>
     <% if item[:badge] %>

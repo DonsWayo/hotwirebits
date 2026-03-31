@@ -81,11 +81,12 @@ class PagesController < ApplicationController
 
   def read_component_source(id, format)
     file_name = id.tr('-', '_')
+    base_path = Rails.root.join('..', '..', 'app', 'components', 'hotwirebits')
     if format == 'rb'
-      path = Rails.root.join('..', 'app', 'components', 'hotwirebits', "#{file_name}_component.rb")
+      path = base_path.join("#{file_name}_component.rb")
       File.exist?(path) ? File.read(path) : '# Source not found'
     else
-      path = Rails.root.join('..', 'app', 'components', 'hotwirebits', "#{file_name}_component.html.erb")
+      path = base_path.join("#{file_name}_component.html.erb")
       File.exist?(path) ? File.read(path) : '<!-- Source not found -->'
     end
   end

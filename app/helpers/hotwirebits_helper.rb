@@ -1,8 +1,18 @@
 # frozen_string_literal: true
 
 module HotwirebitsHelper
+  SAFE_SVG_TAG = /\A\s*<svg[\s>]/i
+  SAFE_ATTRIBUTES = /\s+(class|id|xmlns|viewBox|fill|stroke|stroke-width|stroke-linecap|stroke-linejoin|d|path|width|height|x|y|cx|cy|r|rx|ry|points|transform|style|opacity|data-|aria-|role)=/i
+
   def hw_merge_classes(*classes)
     classes.flatten.compact.join(' ')
+  end
+
+  def safe_svg(html)
+    return ''.html_safe if html.blank?
+    return html.html_safe if html.html_safe? || html.match?(SAFE_SVG_TAG)
+
+    ERB::Util.html_escape(html)
   end
 
   # === BUTTON ===
@@ -73,10 +83,10 @@ module HotwirebitsHelper
   }.freeze
 
   AVATAR_STATUS = {
-    online: 'bg-green-500',
-    offline: 'bg-gray-400',
-    busy: 'bg-red-500',
-    away: 'bg-yellow-500'
+    online: 'bg-hw-success',
+    offline: 'bg-hw-muted-foreground/60',
+    busy: 'bg-hw-destructive',
+    away: 'bg-hw-warning'
   }.freeze
 
   # === INPUT ===
@@ -113,13 +123,6 @@ module HotwirebitsHelper
       CHECKBOX_SIZES[size] || CHECKBOX_SIZES[:md]
     )
   end
-
-  # === RADIO ===
-  RADIO_SIZES = {
-    sm: 'h-3.5 w-3.5',
-    md: 'h-4 w-4',
-    lg: 'h-5 w-5'
-  }.freeze
 
   # === SELECT ===
   SELECT_SIZES = {
@@ -296,11 +299,11 @@ module HotwirebitsHelper
   # === TAG ===
   TAG_COLORS = {
     default: 'bg-hw-muted text-hw-muted-foreground',
-    red: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
-    orange: 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400',
-    green: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
-    blue: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
-    purple: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400'
+    red: 'bg-hw-destructive/10 text-hw-destructive dark:bg-hw-destructive/20 dark:text-hw-destructive-foreground',
+    orange: 'bg-hw-warning/10 text-hw-warning dark:bg-hw-warning/20 dark:text-hw-warning-foreground',
+    green: 'bg-hw-success/10 text-hw-success dark:bg-hw-success/20 dark:text-hw-success-foreground',
+    blue: 'bg-hw-info/10 text-hw-info dark:bg-hw-info/20 dark:text-hw-info-foreground',
+    purple: 'bg-hw-primary/10 text-hw-primary dark:bg-hw-primary/20 dark:text-hw-primary-foreground'
   }.freeze
 
   # === INDICATOR ===
@@ -312,12 +315,7 @@ module HotwirebitsHelper
   }.freeze
 
   # === STATUS ===
-  STATUS_COLORS = {
-    online: 'bg-green-500',
-    offline: 'bg-gray-400',
-    busy: 'bg-red-500',
-    away: 'bg-yellow-500'
-  }.freeze
+  STATUS_COLORS = AVATAR_STATUS
 
   # === KBD ===
   KBD_SIZES = { sm: 'px-1 py-0.5 text-[10px]', md: 'px-1.5 py-0.5 text-xs', lg: 'px-2 py-1 text-sm' }.freeze
@@ -394,4 +392,347 @@ module HotwirebitsHelper
   def hw_scroll_area_classes(height: '200px')
     'overflow-auto scrollbar-thin scrollbar-thumb-hw-border'
   end
+
+  # ============================================================================
+  # STANDALONE PARTIAL COMPATIBILITY
+  # These aliases and methods make standalone ERB partials work without
+  # ViewComponent instance methods.
+  # ============================================================================
+
+  # Core utility alias
+  alias_method :merge_classes, :hw_merge_classes
+
+  # CSS class method aliases (without hw_ prefix)
+  alias_method :button_classes, :hw_button_classes
+  alias_method :badge_classes, :hw_badge_classes
+  alias_method :input_classes, :hw_input_classes
+  alias_method :checkbox_classes, :hw_checkbox_classes
+  alias_method :select_classes, :hw_select_classes
+  alias_method :textarea_classes, :hw_textarea_classes
+  alias_method :card_classes, :hw_card_classes
+  alias_method :alert_classes, :hw_alert_classes
+  alias_method :skeleton_classes, :hw_skeleton_classes
+  alias_method :tab_classes, :hw_tab_classes
+  alias_method :toggle_classes, :hw_toggle_classes
+  alias_method :tooltip_classes, :hw_tooltip_classes
+  alias_method :separator_classes, :hw_separator_classes
+  alias_method :dialog_classes, :hw_dialog_classes
+  alias_method :dropdown_classes, :hw_dropdown_classes
+  alias_method :pagination_item_classes, :hw_pagination_item_classes
+  alias_method :toast_classes, :hw_toast_classes
+  alias_method :slider_classes, :hw_slider_classes
+  alias_method :form_group_classes, :hw_form_group_classes
+  alias_method :chip_classes, :hw_chip_classes
+  alias_method :hero_classes, :hw_hero_classes
+  alias_method :pricing_card_classes, :hw_pricing_card_classes
+  alias_method :file_input_classes, :hw_file_input_classes
+  alias_method :stack_classes, :hw_stack_classes
+  alias_method :group_classes, :hw_group_classes
+  alias_method :scroll_area_classes, :hw_scroll_area_classes
+
+  # --- Missing CSS class methods called by partials ---
+
+  def container_classes(size: :md)
+    hw_merge_classes('mx-auto w-full px-4', CONTAINER_SIZES[size] || CONTAINER_SIZES[:md])
+  end
+
+  def overlay_classes
+    'fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0'
+  end
+
+  def panel_classes(index = nil)
+    'rounded-lg border border-hw-border bg-hw-card overflow-hidden'
+  end
+
+  def nav_classes
+    'flex items-center justify-between w-full'
+  end
+
+  def tag_classes(color: :default)
+    hw_merge_classes(
+      'inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold',
+      TAG_COLORS[color] || TAG_COLORS[:default]
+    )
+  end
+
+  def wrapper_classes
+    'relative'
+  end
+
+  def icon_classes
+    'h-4 w-4'
+  end
+
+  def label_classes
+    'text-sm font-medium leading-none'
+  end
+
+  def list_classes
+    'list-none p-0 m-0 space-y-1'
+  end
+
+  def link_classes
+    'text-hw-primary underline-offset-4 hover:underline'
+  end
+
+  def section_classes
+    'py-12'
+  end
+
+  def box_classes
+    'rounded-lg border border-hw-border bg-hw-card p-4'
+  end
+
+  def center_classes
+    'flex items-center justify-center'
+  end
+
+  def flex_classes(direction: :row, gap: nil)
+    hw_merge_classes('flex', FLEX_DIRECTIONS[direction] || 'flex-row', gap && "gap-#{gap}")
+  end
+
+  def grid_classes(columns: 3, gap: 4)
+    hw_merge_classes('grid', GRID_COLS[columns] || "grid-cols-#{columns}", "gap-#{gap}")
+  end
+
+  def space_classes(size: 4)
+    "space-y-#{size}"
+  end
+
+  def fluid_classes
+    'w-full'
+  end
+
+  def divider_classes(orientation: :horizontal)
+    hw_separator_classes(orientation: orientation)
+  end
+
+  def join_classes
+    'inline-flex'
+  end
+
+  def mask_classes
+    'overflow-hidden'
+  end
+
+  def scroll_classes
+    'overflow-auto'
+  end
+
+  def mark_classes
+    'bg-yellow-200 dark:bg-yellow-800 px-0.5 rounded'
+  end
+
+  def kbd_classes(size: :md)
+    hw_merge_classes(
+      'inline-flex items-center rounded border border-hw-border bg-hw-muted font-mono font-medium text-hw-muted-foreground',
+      KBD_SIZES[size] || KBD_SIZES[:md]
+    )
+  end
+
+  def sidebar_classes
+    'flex flex-col h-full border-r border-hw-border bg-hw-background'
+  end
+
+  def menu_classes
+    'flex flex-col gap-0.5'
+  end
+
+  def trigger_classes
+    'inline-flex items-center justify-center'
+  end
+
+  def bar_classes
+    'h-2 bg-hw-primary rounded-full transition-transform origin-left'
+  end
+
+  def dot_classes(active: false)
+    hw_merge_classes('h-2 w-2 rounded-full transition-colors', active ? 'bg-hw-primary' : 'bg-hw-muted-foreground/40')
+  end
+
+  def header_classes
+    'flex items-center justify-between'
+  end
+
+  def inner_classes
+    ''
+  end
+
+  def figure_classes
+    'overflow-hidden rounded-lg'
+  end
+
+  def frame_classes
+    'rounded-lg border border-hw-border overflow-hidden'
+  end
+
+  def option_classes
+    'relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-hw-accent hover:text-hw-accent-foreground'
+  end
+
+  def popup_classes
+    'z-50 rounded-md border border-hw-border bg-hw-popover shadow-md'
+  end
+
+  def position_classes
+    'relative'
+  end
+
+  def bubble_classes
+    'rounded-lg bg-hw-card p-4 shadow-sm'
+  end
+
+  def effect_classes
+    ''
+  end
+
+  def track_classes
+    'h-2 bg-hw-input rounded-full'
+  end
+
+  def connector_classes
+    'flex-1 h-px bg-hw-border'
+  end
+
+  def step_circle_classes(active: false, completed: false)
+    hw_merge_classes(
+      'flex h-8 w-8 items-center justify-center rounded-full border-2 text-sm font-medium',
+      completed ? 'border-hw-primary bg-hw-primary text-hw-primary-foreground' : '',
+      active ? 'border-hw-primary text-hw-primary' : 'border-hw-border text-hw-muted-foreground'
+    )
+  end
+
+  def notification_classes
+    'rounded-lg border border-hw-border bg-hw-card p-4 shadow-lg'
+  end
+
+  def fieldset_classes
+    'space-y-4 rounded-lg border border-hw-border p-4'
+  end
+
+  def action_classes
+    'inline-flex items-center justify-center'
+  end
+
+  def actions_classes
+    'flex flex-col gap-2'
+  end
+
+  def fab_classes
+    'inline-flex h-14 w-14 items-center justify-center rounded-full bg-hw-primary text-hw-primary-foreground shadow-lg'
+  end
+
+  def speed_dial_classes
+    'fixed bottom-6 right-6 z-50'
+  end
+
+  def confirm_classes
+    hw_button_classes(variant: :primary)
+  end
+
+  def cancel_classes
+    hw_button_classes(variant: :outline)
+  end
+
+  def confirm_button_classes
+    hw_button_classes(variant: :primary)
+  end
+
+  def input_number_classes
+    hw_input_classes
+  end
+
+  # --- Type/config methods for feedback components ---
+
+  ALERT_CONFIG = {
+    info: { icon: 'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
+    success: { icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' },
+    warning: { icon: 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z' },
+    error: { icon: 'M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z' }
+  }.freeze
+
+  def type_config(type = :info)
+    ALERT_CONFIG[type] || ALERT_CONFIG[:info]
+  end
+
+  BANNER_CONFIG = {
+    info: { icon: 'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
+    success: { icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' },
+    warning: { icon: 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z' },
+    error: { icon: 'M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z' }
+  }.freeze
+
+  def banner_classes(type: :info)
+    hw_merge_classes(
+      'relative w-full rounded-lg border p-4',
+      ALERT_TYPES[type] || ALERT_TYPES[:info]
+    )
+  end
+
+  def banner_config(type = :info)
+    BANNER_CONFIG[type] || BANNER_CONFIG[:info]
+  end
+
+  def ratio_classes(ratio: "16/9")
+    case ratio
+    when "16/9" then 'aspect-video'
+    when "4/3" then 'aspect-[4/3]'
+    when "1/1" then 'aspect-square'
+    else "aspect-[#{ratio}]"
+    end
+  end
+
+  def container_styles
+    ''
+  end
+
+  # --- ViewComponent slot compatibility (safe stubs) ---
+
+  def header?
+    false
+  end
+
+  def header
+    nil
+  end
+
+  def footer?
+    false
+  end
+
+  def footer
+    nil
+  end
+
+  def slides?
+    false
+  end
+
+  def confirm_action?
+    false
+  end
+
+  def confirm_action
+    nil
+  end
+
+  def cancel_action?
+    false
+  end
+
+  def cancel_action
+    nil
+  end
+
+  def all_slides
+    []
+  end
+
+  # --- Constants referenced by partials ---
+
+  INPUT_NUMBER_BUTTON_SIZES = {
+    sm: 'h-7 w-7',
+    md: 'h-9 w-9',
+    lg: 'h-10 w-10'
+  }.freeze
 end

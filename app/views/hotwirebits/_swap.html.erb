@@ -7,14 +7,14 @@
   <input type="checkbox" data-action="change->hw-swap#toggle" class="sr-only" <%= 'checked' if on? %> />
   <div class="swap-on" data-hw-swap-target="onContent">
     <% if on_content %>
-      <%= on_content.html_safe %>
+      <%= safe_svg(on_content) %>
     <% else %>
       <%= content %>
     <% end %>
   </div>
   <div class="swap-off" data-hw-swap-target="offContent">
     <% if off_content %>
-      <%= off_content.html_safe %>
+      <%= safe_svg(off_content) %>
     <% end %>
   </div>
 </label>

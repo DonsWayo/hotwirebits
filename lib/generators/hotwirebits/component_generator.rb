@@ -9,6 +9,7 @@ module HotwireBits
       desc 'Generate a HotwireBits component (ERB partial + ViewComponent)'
 
       class_option :format, type: :string, default: 'both', desc: 'Format: erb, view_component, or both'
+      class_option :skip_stimulus, type: :boolean, default: false, desc: 'Skip Stimulus controller generation'
 
       def create_erb_partial
         return unless erb? || both?
@@ -24,6 +25,8 @@ module HotwireBits
       end
 
       def create_stimulus_controller
+        return if options[:skip_stimulus]
+
         template 'controller.js.tt', "app/javascript/controllers/hotwirebits/#{file_name}_controller.js"
       end
 

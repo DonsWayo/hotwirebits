@@ -29,7 +29,7 @@
                 <a href="<%= link[:href] %>" class="text-hw-muted-foreground hover:text-hw-foreground transition-colors" target="_blank" rel="noopener noreferrer">
                   <span class="sr-only"><%= link[:label] %></span>
                   <% if link[:icon] %>
-                    <span class="h-5 w-5 inline-block"><%= link[:icon].html_safe %></span>
+                    <span class="h-5 w-5 inline-block"><%= safe_svg(link[:icon]) %></span>
                   <% end %>
                 </a>
               <% end %>

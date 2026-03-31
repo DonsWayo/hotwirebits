@@ -2,13 +2,28 @@
 @theme {
   --color-hw-primary: hsl(263 70% 58%);
   --color-hw-primary-foreground: hsl(0 0% 100%);
+  --color-hw-secondary: hsl(240 3.7% 15.9%);
+  --color-hw-secondary-foreground: hsl(0 0% 98%);
+  --color-hw-accent: hsl(263 70% 58%);
+  --color-hw-accent-foreground: hsl(0 0% 100%);
   --color-hw-background: hsl(240 10% 3.9%);
   --color-hw-foreground: hsl(0 0% 98%);
   --color-hw-card: hsl(240 10% 3.9%);
   --color-hw-card-foreground: hsl(0 0% 98%);
+  --color-hw-popover: hsl(240 10% 3.9%);
+  --color-hw-popover-foreground: hsl(0 0% 98%);
   --color-hw-muted: hsl(240 3.7% 15.9%);
   --color-hw-muted-foreground: hsl(240 5% 64.9%);
+  --color-hw-destructive: hsl(0 63% 31%);
+  --color-hw-destructive-foreground: hsl(0 0% 98%);
+  --color-hw-success: hsl(142 71% 45%);
+  --color-hw-success-foreground: hsl(0 0% 98%);
+  --color-hw-warning: hsl(48 96% 53%);
+  --color-hw-warning-foreground: hsl(240 10% 3.9%);
+  --color-hw-info: hsl(217 91% 60%);
+  --color-hw-info-foreground: hsl(0 0% 98%);
   --color-hw-border: hsl(240 3.7% 15.9%);
   --color-hw-input: hsl(240 3.7% 15.9%);
-  --color-hw-accent: hsl(263 70% 58%);
+  --color-hw-ring: hsl(240 5% 64.9%);
+  --color-hw-selection: hsl(240 3.7% 15.9%);
 }

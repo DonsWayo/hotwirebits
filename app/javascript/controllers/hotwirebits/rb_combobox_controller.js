@@ -5,12 +5,17 @@ export default class extends Controller {
   static values = { open: { type: Boolean, default: false } }
 
   connect() {
+    this._beforeCache = () => this.close()
+    document.addEventListener("turbo:before-cache", this._beforeCache)
     this.activeIndex = -1
     this.handleOutsideClick = this.handleOutsideClick.bind(this)
     document.addEventListener("click", this.handleOutsideClick)
   }
 
   disconnect() {
+    document.removeEventListener("turbo:before-cache", this._beforeCache)
+    this._beforeCache = () => this.close()
+    document.addEventListener("turbo:before-cache", this._beforeCache)
     document.removeEventListener("click", this.handleOutsideClick)
   }
 

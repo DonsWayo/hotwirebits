@@ -23,7 +23,7 @@
             <a href="<%= child[:href] %>"
                      class="group flex items-start gap-3 rounded-md p-3 transition-colors hover:bg-hw-accent">
               <% if child[:icon] %>
-                <span class="mt-0.5 h-5 w-5 shrink-0 text-hw-muted-foreground group-hover:text-hw-accent-foreground"><%= child[:icon].html_safe %></span>
+                <span class="mt-0.5 h-5 w-5 shrink-0 text-hw-muted-foreground group-hover:text-hw-accent-foreground"><%= safe_svg(child[:icon]) %></span>
               <% end %>
               <div>
                 <div class="text-sm font-medium text-hw-foreground"><%= child[:label] %></div>

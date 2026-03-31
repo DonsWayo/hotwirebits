@@ -15,7 +15,7 @@ module PreviewHelper
 
     unless File.exist?(component_file)
       return tag.div(class: 'hw-preview') do
-        tag.span('Preview', style: 'color: var(--hw-muted-fg); font-size: 0.75rem')
+        tag.span('Preview', style: 'color: var(--color-hw-muted-foreground); font-size: 0.75rem')
       end
     end
 
@@ -31,7 +31,7 @@ module PreviewHelper
 
       unless component_class
         return tag.div(class: 'hw-preview') do
-          tag.span(class_name, style: 'color: var(--hw-muted-fg); font-size: 0.75rem')
+          tag.span(class_name, style: 'color: var(--color-hw-muted-foreground); font-size: 0.75rem')
         end
       end
 
@@ -41,9 +41,9 @@ module PreviewHelper
       tag.div(class: 'hw-preview') do
         tag.div do
           safe_join([
-                      tag.p(class_name, style: 'font-size: 0.875rem; font-weight: 500; color: var(--hw-fg)'),
+                      tag.p(class_name, style: 'font-size: 0.875rem; font-weight: 500; color: var(--color-hw-foreground)'),
                       tag.p(e.message[0..120],
-                            style: 'font-size: 0.75rem; color: var(--hw-muted-fg); margin-top: 0.25rem')
+                            style: 'font-size: 0.75rem; color: var(--color-hw-muted-foreground); margin-top: 0.25rem')
                     ])
         end
       end
@@ -66,10 +66,10 @@ module PreviewHelper
                         tag.tr do
                           safe_join([
                                       tag.td(tag.code(p['name'])),
-                                      tag.td(tag.code(p['type']), style: 'color: var(--hw-muted-fg)'),
-                                      tag.td(p['default'] || 'nil', style: 'color: var(--hw-muted-fg)'),
+                                      tag.td(tag.code(p['type']), style: 'color: var(--color-hw-muted-foreground)'),
+                                      tag.td(p['default'] || 'nil', style: 'color: var(--color-hw-muted-foreground)'),
                                       tag.td(p['required'] ? 'Yes' : 'No',
-                                             style: p['required'] ? 'color: var(--hw-destructive)' : 'color: var(--hw-muted-fg)')
+                                             style: p['required'] ? 'color: var(--color-hw-destructive)' : 'color: var(--color-hw-muted-foreground)')
                                     ])
                         end
                       end)

@@ -1,6 +1,6 @@
 <a href="<%= @href %>" class="inline-flex items-center gap-1.5 text-sm text-hw-primary hover:text-hw-primary/80 transition-colors scroll-smooth" <%= tag.attributes(@extra_attrs) %>>
   <% if @icon %>
-    <span class="h-4 w-4"><%= @icon.html_safe %></span>
+    <span class="h-4 w-4"><%= safe_svg(@icon) %></span>
 <% end %>
 <% if @label %>
   <span><%= @label %></span>

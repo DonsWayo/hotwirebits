@@ -12,9 +12,15 @@ export default class extends Controller {
     this.isResizing = false
     this.startPos = 0
     this.startSize = 0
+    this._onMove = this.onMove.bind(this)
+    this._onEnd = this.onEnd.bind(this)
 
     this.handleTarget.addEventListener("mousedown", this.onStart.bind(this))
     this.handleTarget.addEventListener("touchstart", this.onStart.bind(this), { passive: true })
+  }
+
+  disconnect() {
+    this.cleanupListeners()
   }
 
   onStart(event) {
@@ -27,22 +33,10 @@ export default class extends Controller {
       ? this.panelTarget.offsetWidth
       : this.panelTarget.offsetHeight
 
-    const onMove = this.onMove.bind(this)
-    const onEnd = () => {
-      this.isResizing = false
-      document.removeEventListener("mousemove", onMove)
-      document.removeEventListener("mouseup", onEnd)
-      document.removeEventListener("touchmove", onMove)
-      document.removeEventListener("touchend", onEnd)
-      document.body.style.cursor = ""
-      document.body.style.userSelect = ""
-      this.dispatch("resize-end", { detail: { size: this.directionValue === "horizontal" ? this.panelTarget.offsetWidth : this.panelTarget.offsetHeight } })
-    }
-
-    document.addEventListener("mousemove", onMove)
-    document.addEventListener("mouseup", onEnd)
-    document.addEventListener("touchmove", onMove, { passive: false })
-    document.addEventListener("touchend", onEnd)
+    document.addEventListener("mousemove", this._onMove)
+    document.addEventListener("mouseup", this._onEnd)
+    document.addEventListener("touchmove", this._onMove, { passive: false })
+    document.addEventListener("touchend", this._onEnd)
     document.body.style.cursor = this.directionValue === "horizontal" ? "col-resize" : "row-resize"
     document.body.style.userSelect = "none"
   }
@@ -63,5 +57,26 @@ export default class extends Controller {
     }
 
     this.dispatch("resize", { detail: { size: newSize } })
+  }
+
+  onEnd() {
+    this.isResizing = false
+    this.cleanupListeners()
+    this.dispatch("resize-end", {
+      detail: {
+        size: this.directionValue === "horizontal"
+          ? this.panelTarget.offsetWidth
+          : this.panelTarget.offsetHeight
+      }
+    })
+  }
+
+  cleanupListeners() {
+    document.removeEventListener("mousemove", this._onMove)
+    document.removeEventListener("mouseup", this._onEnd)
+    document.removeEventListener("touchmove", this._onMove)
+    document.removeEventListener("touchend", this._onEnd)
+    document.body.style.cursor = ""
+    document.body.style.userSelect = ""
   }
 }

@@ -18,7 +18,7 @@ module HotwireBits
       code: 'relative rounded bg-hw-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold',
       list: 'my-6 ml-6 list-disc [&>li]:mt-2',
       inline_code: 'relative rounded bg-hw-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold',
-      mark: 'bg-yellow-200 dark:bg-yellow-800 px-0.5 rounded'
+      mark: 'bg-hw-warning/20 dark:bg-hw-warning/30 px-0.5 rounded'
     }.freeze
 
     TAG_MAP = {

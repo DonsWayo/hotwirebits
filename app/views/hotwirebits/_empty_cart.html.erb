@@ -4,7 +4,7 @@
 <div class="flex flex-col items-center justify-center rounded-lg border border-dashed border-hw-border p-12 text-center" <%= tag.attributes(local_assigns) %>>
   <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-hw-muted text-hw-muted-foreground">
     <% if icon %>
-      <%= icon.html_safe %>
+      <%= safe_svg(icon) %>
     <% else %>
       <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-5.98.572m5.98-.572h9m-9 0a3 3 0 01-5.98.572M17.25 14.25a3 3 0 005.98.572m-5.98-.572h-9m9 0a3 3 0 015.98.572M3.75 6.75h16.5l-1.5 9H5.25l-1.5-9z"/>

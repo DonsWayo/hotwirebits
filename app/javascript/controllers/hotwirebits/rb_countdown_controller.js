@@ -9,6 +9,7 @@ export default class extends Controller {
 
   connect() {
     this.endDate = new Date(this.endValue).getTime()
+    this.startDate = Date.now()
     this.rafId = null
     this.started = false
     if (this.autoStartValue) this.start()
@@ -33,7 +34,7 @@ export default class extends Controller {
     if (!this.started) return
     const now = Date.now()
     const remaining = Math.max(0, this.endDate - now)
-    const total = this.endDate - (this.endDate - remaining)
+    const total = this.endDate - this.startDate
 
     const days = Math.floor(remaining / 86400000)
     const hours = Math.floor((remaining % 86400000) / 3600000)

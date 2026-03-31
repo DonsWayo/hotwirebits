@@ -10,7 +10,7 @@
         <% end %>
         <a href="<%= action[:href] %>" class="<%= action_classes %>" aria-label="<%= action[:label] %>">
           <% if action[:icon] %>
-            <span class="h-5 w-5"><%= action[:icon].html_safe %></span>
+            <span class="h-5 w-5"><%= safe_svg(action[:icon]) %></span>
           <% end %>
         </a>
       </div>

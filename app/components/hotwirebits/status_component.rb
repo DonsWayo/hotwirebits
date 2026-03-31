@@ -3,14 +3,14 @@
 module HotwireBits
   class StatusComponent < Base
     COLORS = {
-      online: 'bg-green-500',
-      offline: 'bg-gray-400',
-      busy: 'bg-red-500',
-      away: 'bg-yellow-500',
-      error: 'bg-red-500',
-      success: 'bg-green-500',
-      warning: 'bg-yellow-500',
-      info: 'bg-blue-500'
+      online: 'bg-hw-success',
+      offline: 'bg-hw-muted-foreground/60',
+      busy: 'bg-hw-destructive',
+      away: 'bg-hw-warning',
+      error: 'bg-hw-destructive',
+      success: 'bg-hw-success',
+      warning: 'bg-hw-warning',
+      info: 'bg-hw-info'
     }.freeze
 
     SIZES = {

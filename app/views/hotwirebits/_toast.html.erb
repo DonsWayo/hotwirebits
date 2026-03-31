@@ -7,7 +7,7 @@
   <div class="<%= toast_classes %>" <%= tag.attributes(local_assigns) %>>
     <div class="flex items-start gap-3">
       <svg class="h-5 w-5 shrink-0 <%= type_config[:icon] %>" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-        <%= icon_svg.html_safe %>
+        <%= safe_svg(icon_svg) %>
       </svg>
       <div class="grid gap-1">
         <% if title %>

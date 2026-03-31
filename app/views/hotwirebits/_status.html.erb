@@ -2,7 +2,7 @@
 <%# Usage: render 'hotwirebits/status', ... %>
 
 <span class="inline-flex items-center gap-1.5" <%= tag.attributes(local_assigns) %>>
-  <span class="rounded-full <%= COLORS[status] || 'bg-gray-400' %> <%= SIZES[size] || 'h-2.5 w-2.5' %>"></span>
+  <span class="rounded-full <%= COLORS[status] || 'bg-hw-muted-foreground/60' %> <%= SIZES[size] || 'h-2.5 w-2.5' %>"></span>
 <% if label %>
   <span class="text-sm text-hw-muted-foreground"><%= label %></span>
 <% end %>

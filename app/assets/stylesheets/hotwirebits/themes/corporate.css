@@ -3,5 +3,27 @@
   --color-hw-primary: hsl(220 60% 50%);
   --color-hw-primary-foreground: hsl(0 0% 100%);
   --color-hw-secondary: hsl(220 20% 94%);
+  --color-hw-secondary-foreground: hsl(220 60% 15%);
   --color-hw-accent: hsl(180 60% 45%);
+  --color-hw-accent-foreground: hsl(0 0% 100%);
+  --color-hw-background: hsl(0 0% 100%);
+  --color-hw-foreground: hsl(220 60% 10%);
+  --color-hw-card: hsl(0 0% 100%);
+  --color-hw-card-foreground: hsl(220 60% 10%);
+  --color-hw-popover: hsl(0 0% 100%);
+  --color-hw-popover-foreground: hsl(220 60% 10%);
+  --color-hw-muted: hsl(220 20% 94%);
+  --color-hw-muted-foreground: hsl(220 15% 45%);
+  --color-hw-destructive: hsl(0 84% 60%);
+  --color-hw-destructive-foreground: hsl(0 0% 100%);
+  --color-hw-success: hsl(142 76% 36%);
+  --color-hw-success-foreground: hsl(0 0% 100%);
+  --color-hw-warning: hsl(38 92% 50%);
+  --color-hw-warning-foreground: hsl(0 0% 100%);
+  --color-hw-info: hsl(220 83% 53%);
+  --color-hw-info-foreground: hsl(0 0% 100%);
+  --color-hw-border: hsl(220 20% 88%);
+  --color-hw-input: hsl(220 20% 88%);
+  --color-hw-ring: hsl(220 60% 50%);
+  --color-hw-selection: hsl(220 20% 94%);
 }

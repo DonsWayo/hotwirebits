@@ -30,7 +30,7 @@ module HotwireBits
       filled = index <= @value
       tag.button(
         type: 'button',
-        class: merge_classes('text-hw-muted-foreground', filled ? 'text-yellow-400' : ''),
+        class: merge_classes('text-hw-muted-foreground', filled ? 'text-hw-warning' : ''),
         data: { action: @readonly ? nil : 'click->hw-rating#select', value: index },
         disabled: @readonly
       ) do

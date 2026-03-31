@@ -5,6 +5,8 @@ export default class extends Controller {
   static values = { open: { type: Boolean, default: false } }
 
   connect() {
+    this._beforeCache = () => { if (this.hasMenuTarget) this.menuTarget.classList.add("hidden") }
+    document.addEventListener("turbo:before-cache", this._beforeCache)
     this.handleOutsideClick = this.handleOutsideClick.bind(this)
     this.handleKeydown = this.handleKeydown.bind(this)
     document.addEventListener("click", this.handleOutsideClick)
@@ -12,6 +14,9 @@ export default class extends Controller {
   }
 
   disconnect() {
+    document.removeEventListener("turbo:before-cache", this._beforeCache)
+    this._beforeCache = () => { if (this.hasMenuTarget) this.menuTarget.classList.add("hidden") }
+    document.addEventListener("turbo:before-cache", this._beforeCache)
     document.removeEventListener("click", this.handleOutsideClick)
     document.removeEventListener("keydown", this.handleKeydown)
   }

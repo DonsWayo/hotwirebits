@@ -2,7 +2,7 @@
   <% @items.each do |item| %>
     <div class="flex items-center gap-1.5">
       <% if item[:icon] %>
-        <span class="h-3.5 w-3.5"><%= item[:icon].html_safe %></span>
+        <span class="h-3.5 w-3.5"><%= safe_svg(item[:icon]) %></span>
       <% end %>
       <span><%= item[:label] %></span>
       <% if item[:value] %>

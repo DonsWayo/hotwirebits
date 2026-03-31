@@ -18,7 +18,7 @@ module HotwireBits
 
     def item_element(item, index)
       content = safe_join([
-        (tag.span(class: 'h-4 w-4 shrink-0') { item[:icon].html_safe } if item[:icon]),
+        (tag.span(class: 'h-4 w-4 shrink-0') { safe_svg(item[:icon]) } if item[:icon]),
         (tag.span(item[:label], class: 'text-sm') if item[:label])
       ].compact)
 

@@ -1,27 +1,37 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["content", "overlay"]
+  static targets = ["panel", "overlay"]
   static values = { open: { type: Boolean, default: false } }
 
   connect() {
     this.handleKeydown = this.handleKeydown.bind(this)
     this.element.addEventListener("keydown", this.handleKeydown)
+    document.addEventListener("turbo:before-cache", this.beforeCache)
   }
 
   disconnect() {
+
+  // Turbo: reset state before page cache
+  resetForCache() {
+    this.openValue = false
+    if (this.hasPanelTarget && this.panelTarget.open) this.panelTarget.close()
+  }
+
+  beforeCache = this.resetForCache.bind(this)
     this.element.removeEventListener("keydown", this.handleKeydown)
+    document.removeEventListener("turbo:before-cache", this.beforeCache)
   }
 
   open() {
     this.openValue = true
-    this.contentTarget.showModal()
+    this.panelTarget.showModal()
     this.trapFocus()
   }
 
   close() {
     this.openValue = false
-    this.contentTarget.close()
+    this.panelTarget.close()
     this.releaseFocus()
   }
 
@@ -33,7 +43,7 @@ export default class extends Controller {
   }
 
   trapFocus() {
-    const focusable = this.contentTarget.querySelectorAll(
+    const focusable = this.panelTarget.querySelectorAll(
       'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
     )
     if (focusable.length) focusable[0].focus()

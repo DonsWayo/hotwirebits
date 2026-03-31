@@ -6,7 +6,7 @@
     <p class="text-sm font-medium text-hw-muted-foreground"><%= title %></p>
     <% if icon %>
       <div class="h-9 w-9 inline-flex items-center justify-center rounded-lg bg-hw-muted text-hw-muted-foreground">
-        <%= icon.html_safe %>
+        <%= safe_svg(icon) %>
       </div>
     <% end %>
   </div>

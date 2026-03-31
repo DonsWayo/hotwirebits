@@ -26,7 +26,7 @@
             class="flex h-14 w-14 items-center justify-center rounded-full bg-hw-primary text-hw-primary-foreground shadow-lg transition-transform hover:bg-hw-primary/90 focus:outline-none focus:ring-2 focus:ring-hw-ring"
             data-action="click->hw-speed-dial#toggle">
         <svg class="h-6 w-6 transition-transform duration-200" data-hw-speed-dial-target="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-          <%= icon.html_safe %>
+          <%= safe_svg(icon) %>
         </svg>
       </button>
     </div>

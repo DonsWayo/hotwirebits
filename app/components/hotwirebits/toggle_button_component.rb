@@ -25,7 +25,7 @@ module HotwireBits
     def icon_element
       return unless @icon
 
-      tag.span(class: 'h-4 w-4') { @icon.html_safe }
+      tag.span(class: 'h-4 w-4') { safe_svg(@icon) }
     end
   end
 end

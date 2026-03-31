@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["slides", "slide", "prev", "next", "indicator"]
+  static targets = ["track", "slide", "prev", "next", "dots", "dot"]
   static values = {
     index: { type: Number, default: 0 },
     autoplay: { type: Boolean, default: false },
@@ -48,9 +48,9 @@ export default class extends Controller {
       slide.classList.toggle("hidden", i !== this.indexValue)
       slide.setAttribute("aria-hidden", (i !== this.indexValue).toString())
     })
-    this.indicatorTargets.forEach((ind, i) => {
-      ind.classList.toggle("active", i === this.indexValue)
-      ind.setAttribute("aria-selected", (i === this.indexValue).toString())
+    this.dotTargets.forEach((dot, i) => {
+      dot.classList.toggle("active", i === this.indexValue)
+      dot.setAttribute("aria-selected", (i === this.indexValue).toString())
     })
     if (this.hasPrevTarget) this.prevTarget.disabled = !this.loopValue && this.indexValue === 0
     if (this.hasNextTarget) this.nextTarget.disabled = !this.loopValue && this.indexValue === this.slideTargets.length - 1

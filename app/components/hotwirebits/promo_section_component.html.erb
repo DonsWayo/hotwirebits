@@ -3,7 +3,7 @@
     <div class="flex flex-col items-start gap-4">
       <% if @badge %>
         <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ring-1 ring-inset
-                     <%= @variant == :dark || @variant == :gradient ? 'ring-white/30 text-white/90' : 'ring-hw-primary/30 text-hw-primary bg-hw-primary/5' %>">
+                     <%= @variant == :dark || @variant == :gradient ? 'ring-white/30 text-hw-primary-foreground/90' : 'ring-hw-primary/30 text-hw-primary bg-hw-primary/5' %>">
           <%= @badge %>
         </span>
       <% end %>

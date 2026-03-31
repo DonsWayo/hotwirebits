@@ -4,12 +4,12 @@ module HotwireBits
   class TagComponent < Base
     COLORS = {
       default: 'bg-hw-muted text-hw-muted-foreground',
-      red: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
-      orange: 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400',
-      yellow: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400',
-      green: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
-      blue: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
-      purple: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400',
+      red: 'bg-hw-destructive/10 text-hw-destructive dark:bg-hw-destructive/20 dark:text-hw-destructive-foreground',
+      orange: 'bg-hw-warning/10 text-hw-warning dark:bg-hw-warning/20 dark:text-hw-warning-foreground',
+      yellow: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-hw-warning',
+      green: 'bg-hw-success/10 text-hw-success dark:bg-hw-success/20 dark:text-hw-success-foreground',
+      blue: 'bg-hw-info/10 text-hw-info dark:bg-hw-info/20 dark:text-hw-info-foreground',
+      purple: 'bg-hw-primary/10 text-hw-primary dark:bg-hw-primary/20 dark:text-hw-primary-foreground',
       pink: 'bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-400'
     }.freeze
 

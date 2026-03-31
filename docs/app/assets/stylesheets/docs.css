@@ -3,7 +3,7 @@
    ========================================================================== */
 
 .code-block-wrapper {
-  border: 1px solid var(--hw-border, #313244);
+  border: 1px solid var(--color-hw-border, #313244);
   border-radius: 0.5rem;
   overflow: hidden;
   margin: 1rem 0;
@@ -107,13 +107,13 @@
   border-collapse: collapse;
   font-size: 0.85rem;
   margin: 1rem 0;
-  border: 1px solid var(--hw-border, #313244);
+  border: 1px solid var(--color-hw-border, #313244);
   border-radius: 0.5rem;
   overflow: hidden;
 }
 
 .props-table thead {
-  background: var(--hw-muted, #181825);
+  background: var(--color-hw-muted, #181825);
 }
 
 .props-table th {
@@ -123,13 +123,13 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--hw-muted-fg, #a6adc8);
-  border-bottom: 1px solid var(--hw-border, #313244);
+  color: var(--color-hw-muted-foreground, #a6adc8);
+  border-bottom: 1px solid var(--color-hw-border, #313244);
 }
 
 .props-table td {
   padding: 0.625rem 0.75rem;
-  border-bottom: 1px solid var(--hw-border, #313244);
+  border-bottom: 1px solid var(--color-hw-border, #313244);
 }
 
 .props-table tbody tr:last-child td {
@@ -137,11 +137,11 @@
 }
 
 .props-table tbody tr:nth-child(even) {
-  background: var(--hw-muted, #181825);
+  background: var(--color-hw-muted, #181825);
 }
 
 .props-table tbody tr:hover {
-  background: var(--hw-accent, #1e1e2e);
+  background: var(--color-hw-accent, #1e1e2e);
 }
 
 /* ==========================================================================
@@ -151,7 +151,7 @@
 .tab-bar {
   display: flex;
   gap: 0;
-  border-bottom: 1px solid var(--hw-border, #313244);
+  border-bottom: 1px solid var(--color-hw-border, #313244);
   margin-bottom: 1.5rem;
 }
 
@@ -160,7 +160,7 @@
   padding: 0.625rem 1rem;
   font-size: 0.85rem;
   font-weight: 500;
-  color: var(--hw-muted-fg, #a6adc8);
+  color: var(--color-hw-muted-foreground, #a6adc8);
   text-decoration: none;
   border-bottom: 2px solid transparent;
   transition: color 0.15s, border-color 0.15s;
@@ -173,13 +173,13 @@
 
 .tab-bar [role="tab"]:hover,
 .tab-bar a:hover {
-  color: var(--hw-fg, #cdd6f4);
+  color: var(--color-hw-foreground, #cdd6f4);
 }
 
 .tab-bar [role="tab"][aria-selected="true"],
 .tab-bar a.active {
-  color: var(--hw-fg, #cdd6f4);
-  border-bottom-color: var(--hw-primary, #89b4fa);
+  color: var(--color-hw-foreground, #cdd6f4);
+  border-bottom-color: var(--color-hw-primary, #89b4fa);
 }
 
 /* ==========================================================================
@@ -187,7 +187,7 @@
    ========================================================================== */
 
 .example-card {
-  border: 1px solid var(--hw-border, #313244);
+  border: 1px solid var(--color-hw-border, #313244);
   border-radius: 0.75rem;
   overflow: hidden;
   margin: 1.5rem 0;
@@ -195,8 +195,8 @@
 
 .example-card .example-preview {
   padding: 1.5rem;
-  background: var(--hw-card, #1e1e2e);
-  border-bottom: 1px solid var(--hw-border, #313244);
+  background: var(--color-hw-card, #1e1e2e);
+  border-bottom: 1px solid var(--color-hw-border, #313244);
 }
 
 .example-card .example-preview .code-block-wrapper {
@@ -233,8 +233,8 @@
   position: relative;
   width: 100%;
   max-width: 36rem;
-  background: var(--hw-card, #1e1e2e);
-  border: 1px solid var(--hw-border, #313244);
+  background: var(--color-hw-card, #1e1e2e);
+  border: 1px solid var(--color-hw-border, #313244);
   border-radius: 0.75rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   overflow: hidden;
@@ -249,14 +249,14 @@
   padding: 1rem 1.25rem;
   font-size: 1rem;
   background: transparent;
-  color: var(--hw-fg, #cdd6f4);
+  color: var(--color-hw-foreground, #cdd6f4);
   border: none;
   outline: none;
-  border-bottom: 1px solid var(--hw-border, #313244);
+  border-bottom: 1px solid var(--color-hw-border, #313244);
 }
 
 .search-input::placeholder {
-  color: var(--hw-muted-fg, #6c7086);
+  color: var(--color-hw-muted-foreground, #6c7086);
 }
 
 /* ==========================================================================
@@ -277,13 +277,13 @@
   border-radius: 0.375rem;
   cursor: pointer;
   transition: background 0.1s;
-  color: var(--hw-fg, #cdd6f4);
+  color: var(--color-hw-foreground, #cdd6f4);
   text-decoration: none;
 }
 
 .search-results-item:hover,
 .search-results-item[aria-selected="true"] {
-  background: var(--hw-accent, #313244);
+  background: var(--color-hw-accent, #313244);
 }
 
 .search-results-item-title {
@@ -293,14 +293,14 @@
 
 .search-results-item-desc {
   font-size: 0.75rem;
-  color: var(--hw-muted-fg, #a6adc8);
+  color: var(--color-hw-muted-foreground, #a6adc8);
 }
 
 .search-results-empty {
   padding: 2rem;
   text-align: center;
   font-size: 0.85rem;
-  color: var(--hw-muted-fg, #6c7086);
+  color: var(--color-hw-muted-foreground, #6c7086);
 }
 
 .search-results-hint {
@@ -308,9 +308,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem;
-  border-top: 1px solid var(--hw-border, #313244);
+  border-top: 1px solid var(--color-hw-border, #313244);
   font-size: 0.7rem;
-  color: var(--hw-muted-fg, #6c7086);
+  color: var(--color-hw-muted-foreground, #6c7086);
 }
 
 .search-results-hint kbd {
@@ -318,7 +318,7 @@
   padding: 0.1rem 0.35rem;
   font-size: 0.65rem;
   font-family: inherit;
-  border: 1px solid var(--hw-border, #313244);
+  border: 1px solid var(--color-hw-border, #313244);
   border-radius: 0.25rem;
-  background: var(--hw-muted, #181825);
+  background: var(--color-hw-muted, #181825);
 }

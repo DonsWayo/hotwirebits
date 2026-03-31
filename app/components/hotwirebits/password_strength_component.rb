@@ -3,7 +3,7 @@
 module HotwireBits
   class PasswordStrengthComponent < Base
     LABELS = %w[Weak Fair Good Strong].freeze
-    COLORS = %w[bg-red-500 bg-orange-500 bg-yellow-500 bg-green-500].freeze
+    COLORS = %w[bg-hw-destructive bg-hw-warning bg-hw-warning bg-hw-success].freeze
 
     def initialize(password: '', **attrs)
       @password = password.to_s

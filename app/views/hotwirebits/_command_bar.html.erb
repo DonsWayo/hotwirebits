@@ -22,7 +22,7 @@
               data-action="click->hw-command-bar#select"
         data-command="<%= cmd[:action] %>">
         <% if cmd[:icon] %>
-          <span class="h-4 w-4 shrink-0 text-hw-muted-foreground"><%= cmd[:icon].html_safe %></span>
+          <span class="h-4 w-4 shrink-0 text-hw-muted-foreground"><%= safe_svg(cmd[:icon]) %></span>
         <% end %>
         <span class="flex-1 text-left"><%= cmd[:label] %></span>
         <% if cmd[:shortcut] %>

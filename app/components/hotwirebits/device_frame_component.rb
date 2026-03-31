@@ -18,7 +18,7 @@ module HotwireBits
       when :tablet
         'rounded-[1.5rem] border-[12px] overflow-hidden bg-black shadow-xl'
       when :desktop
-        'rounded-lg border border-neutral-300 overflow-hidden bg-white shadow-xl'
+        'rounded-lg border border-hw-border overflow-hidden bg-white shadow-xl'
       when :watch
         'rounded-[2rem] border-[8px] overflow-hidden bg-black shadow-xl'
       end
@@ -26,10 +26,10 @@ module HotwireBits
 
     def border_color
       case @color
-      when :silver then 'border-neutral-300'
+      when :silver then 'border-hw-border'
       when :gold then 'border-amber-300'
-      when :midnight then 'border-neutral-800'
-      else 'border-neutral-900'
+      when :midnight then 'border-hw-border'
+      else 'border-hw-foreground'
       end
     end
   end

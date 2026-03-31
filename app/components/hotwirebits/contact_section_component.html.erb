@@ -12,7 +12,7 @@
           <label for="<%= field[:name] %>" class="block text-sm font-medium text-hw-foreground mb-1.5">
             <%= field[:label] %>
             <% if field[:required] %>
-              <span class="text-red-500">*</span>
+              <span class="text-hw-destructive">*</span>
             <% end %>
           </label>
           <% case field[:type] %>

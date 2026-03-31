@@ -11,10 +11,10 @@ module HotwireBits
     }.freeze
 
     STATUS_COLORS = {
-      online: 'bg-green-500',
-      offline: 'bg-gray-400',
-      busy: 'bg-red-500',
-      away: 'bg-yellow-500'
+      online: 'bg-hw-success',
+      offline: 'bg-hw-muted-foreground/60',
+      busy: 'bg-hw-destructive',
+      away: 'bg-hw-warning'
     }.freeze
 
     def initialize(src: nil, alt: nil, initials: nil, fallback: nil, size: :md, status: nil,

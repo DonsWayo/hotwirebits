@@ -2,8 +2,11 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = ["banner", "modal", "settings"]
-  static value = { accepted: { type: Boolean, default: false } }
-  static values = { key: { type: String, default: "hw-cookie-consent" }, categories: { type: Array, default: ["essential"] } }
+  static values = {
+    accepted: { type: Boolean, default: false },
+    key: { type: String, default: "hw-cookie-consent" },
+    categories: { type: Array, default: ["essential"] }
+  }
 
   connect() {
     const stored = localStorage.getItem(this.keyValue)

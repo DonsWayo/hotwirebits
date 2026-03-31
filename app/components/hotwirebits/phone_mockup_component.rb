@@ -21,9 +21,9 @@ module HotwireBits
 
     def border_color
       case @color
-      when :silver then 'border-neutral-300 bg-neutral-300'
-      when :gold then 'border-amber-200 bg-amber-200'
-      else 'border-neutral-900 bg-neutral-900'
+      when :silver then 'border-hw-border bg-hw-muted'
+      when :gold then 'border-hw-warning/30 bg-amber-200'
+      else 'border-hw-foreground bg-hw-foreground'
       end
     end
   end

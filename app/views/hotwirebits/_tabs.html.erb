@@ -14,7 +14,7 @@
         aria-selected="<%= tab[:id] == active_tab %>"
         class="<%= tab_classes(tab[:id] == active_tab) %>">
         <% if tab[:icon] %>
-          <span class="h-4 w-4"><%= tab[:icon].html_safe %></span>
+          <span class="h-4 w-4"><%= safe_svg(tab[:icon]) %></span>
         <% end %>
         <%= tab[:label] %>
       </button>

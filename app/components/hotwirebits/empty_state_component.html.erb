@@ -1,7 +1,7 @@
 <div class="flex flex-col items-center justify-center rounded-lg border border-dashed border-hw-border p-8 text-center" <%= tag.attributes(@extra_attrs) %>>
   <% if @icon %>
     <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-hw-muted text-hw-muted-foreground">
-      <%= @icon.html_safe %>
+      <%= safe_svg(@icon) %>
     </div>
   <% end %>
   <% if @title %>

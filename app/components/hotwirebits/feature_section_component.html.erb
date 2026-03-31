@@ -15,7 +15,7 @@
         <div class="flex flex-col gap-3 rounded-lg border border-hw-border bg-hw-card p-6">
           <% if feature[:icon] %>
             <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-hw-accent text-hw-accent-foreground shrink-0">
-              <span class="h-5 w-5"><%= feature[:icon].html_safe %></span>
+              <span class="h-5 w-5"><%= safe_svg(feature[:icon]) %></span>
             </div>
           <% end %>
           <h3 class="text-base font-semibold text-hw-foreground"><%= feature[:title] %></h3>

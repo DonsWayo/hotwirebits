@@ -22,11 +22,13 @@ module HotwireBits
       )
     end
 
-    def icon_classes = @position == :left ? 'left-3' : 'right-3'
+    def icon_classes
+      @position == :left ? 'left-3' : 'right-3'
+    end
 
     def icon_element
       tag.div(class: merge_classes('absolute top-1/2 -translate-y-1/2 text-hw-muted-foreground pointer-events-none', icon_classes)) do
-        @icon.html_safe
+        safe_svg(@icon)
       end
     end
   end

@@ -1,7 +1,7 @@
 <div class="<%= notification_classes %>" data-controller="hw-notification" <%= tag.attributes(@extra_attrs) %>>
   <% if @icon %>
     <div class="shrink-0 text-hw-muted-foreground">
-      <%= @icon.html_safe %>
+      <%= safe_svg(@icon) %>
     </div>
   <% end %>
   <div class="flex-1 space-y-1">

@@ -16,7 +16,7 @@
         <% providers.each do |provider| %>
           <button type="button"
                   class="w-full inline-flex items-center justify-center gap-2 rounded-lg border border-hw-border bg-hw-background h-10 px-4 text-sm font-medium text-hw-foreground hover:bg-hw-muted transition-colors">
-            <%= provider_icon(provider)&.html_safe %>
+            <%= safe_svg(provider_icon(provider)) %>
             Continue with <%= provider.to_s.capitalize %>
           </button>
         <% end %>

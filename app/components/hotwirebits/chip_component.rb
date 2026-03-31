@@ -35,7 +35,7 @@ module HotwireBits
     def icon_element
       return unless @icon
 
-      tag.span(@icon.html_safe, class: 'h-4 w-4') if @icon.is_a?(String)
+      tag.span(safe_svg(@icon), class: 'h-4 w-4') if @icon.is_a?(String)
     end
 
     def dismiss_button

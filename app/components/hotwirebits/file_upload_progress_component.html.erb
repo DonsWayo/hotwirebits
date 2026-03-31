@@ -1,6 +1,6 @@
 <div class="rounded-lg border border-hw-border bg-hw-card p-4" <%= tag.attributes(@extra_attrs) %>>
   <div class="flex items-center gap-3 mb-3">
-    <%= status_icon.html_safe %>
+    <%= safe_svg(status_icon) %>
     <div class="flex-1 min-w-0">
       <p class="text-sm font-medium text-hw-foreground truncate"><%= @file_name %></p>
       <p class="text-xs text-hw-muted-foreground">

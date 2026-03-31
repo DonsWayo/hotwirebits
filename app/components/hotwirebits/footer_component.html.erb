@@ -10,7 +10,7 @@
             <% @social_links.each do |link| %>
               <a href="<%= link[:href] %>" class="text-hw-muted-foreground hover:text-hw-foreground transition-colors" aria-label="<%= link[:label] %>" target="_blank" rel="noopener noreferrer">
                 <% if link[:icon] %>
-                  <span class="h-5 w-5"><%= link[:icon].html_safe %></span>
+                  <span class="h-5 w-5"><%= safe_svg(link[:icon]) %></span>
                 <% else %>
                   <span class="text-sm"><%= link[:label] %></span>
                 <% end %>

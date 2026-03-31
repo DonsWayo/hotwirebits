@@ -26,7 +26,7 @@ module HotwireBits
         'absolute flex items-center justify-center rounded-full',
         POSITIONS[@position] || POSITIONS[:top_right],
         @color,
-        @dot ? 'h-2.5 w-2.5' : 'h-5 min-w-5 px-1 text-xs font-medium text-white'
+        @dot ? 'h-2.5 w-2.5' : 'h-5 min-w-5 px-1 text-xs font-medium text-hw-primary-foreground'
       )
     end
   end

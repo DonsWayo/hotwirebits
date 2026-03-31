@@ -16,6 +16,6 @@
     </div>
   <% end %>
   <% if status %>
-    <span class="absolute block h-2.5 w-2.5 rounded-full ring-2 ring-white <%= status == :online ? 'bg-green-500' : status == :busy ? 'bg-red-500' : status == :away ? 'bg-yellow-500' : 'bg-gray-400' %> -bottom-0.5 -right-0.5"></span>
+    <span class="absolute block h-2.5 w-2.5 rounded-full ring-2 ring-white <%= status == :online ? 'bg-hw-success' : status == :busy ? 'bg-hw-destructive' : status == :away ? 'bg-hw-warning' : 'bg-hw-muted-foreground/60' %> -bottom-0.5 -right-0.5"></span>
   <% end %>
 </div>

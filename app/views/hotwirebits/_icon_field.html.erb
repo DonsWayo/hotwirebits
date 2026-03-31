@@ -3,10 +3,10 @@
 
 <div class="relative" <%= tag.attributes(local_assigns) %>>
   <% if position == :left %>
-    <div class="absolute top-1/2 -translate-y-1/2 left-3 text-hw-muted-foreground pointer-events-none"><%= icon.html_safe %></div>
+    <div class="absolute top-1/2 -translate-y-1/2 left-3 text-hw-muted-foreground pointer-events-none"><%= safe_svg(icon) %></div>
   <% end %>
   <%= content %>
   <% if position == :right %>
-    <div class="absolute top-1/2 -translate-y-1/2 right-3 text-hw-muted-foreground pointer-events-none"><%= icon.html_safe %></div>
+    <div class="absolute top-1/2 -translate-y-1/2 right-3 text-hw-muted-foreground pointer-events-none"><%= safe_svg(icon) %></div>
   <% end %>
 </div>
