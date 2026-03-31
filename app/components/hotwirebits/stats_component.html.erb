@@ -1,3 +1,15 @@
 <div class="<%= container_classes %>" <%= tag.attributes(@extra_attrs) %>>
-  <%= content %>
+  <% if @stats %>
+    <% @stats.each do |stat| %>
+      <div class="rounded-lg border border-hw-border bg-hw-card p-6">
+        <p class="text-sm font-medium text-hw-muted-foreground"><%= stat[:label] %></p>
+        <p class="mt-2 text-3xl font-bold text-hw-foreground"><%= stat[:value] %></p>
+        <% if stat[:change] %>
+          <p class="mt-1 text-sm text-hw-muted-foreground"><%= stat[:change] %></p>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <%= content %>
+  <% end %>
 </div>

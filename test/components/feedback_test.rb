@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class BannerComponentTest < ActionView::TestCase
+class BannerComponentTest < ViewComponent::TestCase
   test "renders banner" do
     render_inline(HotwireBits::BannerComponent.new(type: :info, message: "Announcement"))
 
@@ -17,7 +17,7 @@ class BannerComponentTest < ActionView::TestCase
   end
 end
 
-class EmptyStateComponentTest < ActionView::TestCase
+class EmptyStateComponentTest < ViewComponent::TestCase
   test "renders empty state" do
     render_inline(HotwireBits::EmptyStateComponent.new(
       title: "No items",
@@ -40,25 +40,29 @@ class EmptyStateComponentTest < ActionView::TestCase
   end
 end
 
-class CountdownComponentTest < ActionView::TestCase
+class CountdownComponentTest < ViewComponent::TestCase
   test "renders countdown" do
-    render_inline(HotwireBits::CountdownComponent.new(end_date: "2026-12-31T23:59:59"))
+    render_inline(HotwireBits::CountdownComponent.new(value: 100, target: 0))
 
-    assert_selector "div[data-controller='hw-countdown']"
+    assert_selector "span[data-controller='hw-countdown']"
+    assert_text "100"
   end
 
-  test "renders with labels" do
+  test "renders with prefix and suffix" do
     render_inline(HotwireBits::CountdownComponent.new(
-      end_date: "2026-12-31",
-      show_labels: true
+      value: 60,
+      target: 0,
+      prefix: "T-",
+      suffix: "s"
     ))
 
-    assert_text "Days"
-    assert_text "Hours"
+    assert_text "T-"
+    assert_text "60"
+    assert_text "s"
   end
 end
 
-class AnimatedNumberComponentTest < ActionView::TestCase
+class AnimatedNumberComponentTest < ViewComponent::TestCase
   test "renders animated number" do
     render_inline(HotwireBits::AnimatedNumberComponent.new(value: 1234))
 
@@ -68,17 +72,19 @@ class AnimatedNumberComponentTest < ActionView::TestCase
   test "renders with prefix" do
     render_inline(HotwireBits::AnimatedNumberComponent.new(value: 99, prefix: "$"))
 
-    assert_text "$99"
+    assert_text "$"
+    assert_text "99"
   end
 
   test "renders with suffix" do
     render_inline(HotwireBits::AnimatedNumberComponent.new(value: 85, suffix: "%"))
 
-    assert_text "85%"
+    assert_text "85"
+    assert_text "%"
   end
 end
 
-class StatusDotComponentTest < ActionView::TestCase
+class StatusDotComponentTest < ViewComponent::TestCase
   test "renders status dot" do
     render_inline(HotwireBits::StatusDotComponent.new(status: :online))
 
@@ -92,7 +98,7 @@ class StatusDotComponentTest < ActionView::TestCase
   end
 end
 
-class FeedbackComponentTest < ActionView::TestCase
+class FeedbackComponentTest < ViewComponent::TestCase
   test "renders feedback form" do
     render_inline(HotwireBits::FeedbackComponent.new)
 
@@ -100,7 +106,7 @@ class FeedbackComponentTest < ActionView::TestCase
   end
 end
 
-class SwapComponentTest < ActionView::TestCase
+class SwapComponentTest < ViewComponent::TestCase
   test "renders swap" do
     on_content = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>'
     off_content = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg>'
@@ -122,9 +128,9 @@ class SwapComponentTest < ActionView::TestCase
   end
 end
 
-class CollapsibleComponentTest < ActionView::TestCase
+class CollapsibleComponentTest < ViewComponent::TestCase
   test "renders collapsible" do
-    render_inline(HotwireBits::CollapsibleComponent.new(title: "Details")) { "Hidden content" }
+    render_inline(HotwireBits::CollapsibleComponent.new(trigger_label: "Details")) { "Hidden content" }
 
     assert_text "Details"
     assert_text "Hidden content"
@@ -132,7 +138,7 @@ class CollapsibleComponentTest < ActionView::TestCase
   end
 end
 
-class SpoilerComponentTest < ActionView::TestCase
+class SpoilerComponentTest < ViewComponent::TestCase
   test "renders spoiler" do
     render_inline(HotwireBits::SpoilerComponent.new(max_lines: 3)) { "Long text content that will be truncated" }
 

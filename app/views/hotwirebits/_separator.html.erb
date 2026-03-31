@@ -1,5 +1,11 @@
 <%# Separator component — ERB partial %>
-<%# Usage: render 'hotwirebits/separator', ... %>
+<%# Usage: render 'hotwirebits/separator', orientation: :horizontal %>
+
+<%
+  orientation = local_assigns.fetch(:orientation, :horizontal)
+  label       = local_assigns[:label]
+  decorative  = local_assigns.fetch(:decorative, true)
+%>
 
 <% if label %>
   <div class="relative flex items-center" role="none">
@@ -8,5 +14,5 @@
     <div class="shrink-0 bg-hw-border h-[1px] w-full"></div>
   </div>
 <% else %>
-  <div class="<%= orientation == :vertical ? 'shrink-0 bg-hw-border h-full w-[1px]' : 'shrink-0 bg-hw-border h-[1px] w-full' %>" role="<%= decorative ? 'none' : 'separator' %>" <%= tag.attributes(local_assigns) %>></div>
+  <div class="<%= orientation == :vertical ? 'shrink-0 bg-hw-border h-full w-[1px]' : 'shrink-0 bg-hw-border h-[1px] w-full' %>" role="<%= decorative ? 'none' : 'separator' %>"></div>
 <% end %>

@@ -1,24 +1,53 @@
 <%# Button component — ERB partial %>
-<%# Usage: render 'hotwirebits/button', ... %>
+<%# Usage: render 'hotwirebits/button', label: "Click", variant: :default, size: :md %>
+
+<%
+  label    = local_assigns.fetch(:label, "Button")
+  variant  = local_assigns.fetch(:variant, :default)
+  size     = local_assigns.fetch(:size, :md)
+  type     = local_assigns.fetch(:type, "button")
+  href     = local_assigns[:href]
+  loading  = local_assigns.fetch(:loading, false)
+  disabled = local_assigns.fetch(:disabled, false)
+  icon     = local_assigns[:icon]
+
+  size_classes = case size
+                 when :xs then "h-7 px-2 text-xs"
+                 when :sm then "h-8 px-3 text-xs"
+                 when :lg then "h-11 px-8 text-base"
+                 when :xl then "h-12 px-10 text-lg"
+                 else "h-9 px-4 py-2 text-sm"
+                 end
+  variant_classes = case variant
+                    when :destructive then "bg-hw-destructive text-hw-destructive-foreground hover:bg-hw-destructive/90"
+                    when :outline then "border border-hw-input bg-hw-background hover:bg-hw-accent hover:text-hw-accent-foreground"
+                    when :secondary then "bg-hw-secondary text-hw-secondary-foreground hover:bg-hw-secondary/80"
+                    when :ghost then "hover:bg-hw-accent hover:text-hw-accent-foreground"
+                    when :link then "text-hw-primary underline-offset-4 hover:underline"
+                    else "bg-hw-primary text-hw-primary-foreground hover:bg-hw-primary/90"
+                    end
+  base = "inline-flex items-center justify-center rounded-md font-medium ring-offset-hw-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer"
+  btn_class = [base, variant_classes, size_classes].join(" ")
+%>
 
 <% if href %>
-  <%= link_to href, **button_attrs do %>
+  <a href="<%= href %>" class="<%= btn_class %>">
     <% if loading %>
       <svg class="mr-1 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
       </svg>
     <% end %>
-    <%= content || label %>
-  <% end %>
+    <%= label %>
+  </a>
 <% else %>
-  <button type="<%= type %>" **button_attrs>
+  <button type="<%= type %>" class="<%= btn_class %>" <%= 'disabled' if disabled %>>
     <% if loading %>
       <svg class="mr-1 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
       </svg>
     <% end %>
-    <%= content || label %>
+    <%= label %>
   </button>
 <% end %>

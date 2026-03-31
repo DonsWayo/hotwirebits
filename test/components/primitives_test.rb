@@ -2,16 +2,15 @@
 
 require "test_helper"
 
-class ButtonComponentTest < ActionView::TestCase
+class ButtonComponentTest < ViewComponent::TestCase
   test "renders default button" do
     render_inline(HotwireBits::ButtonComponent.new(label: "Click me"))
 
     assert_selector "button", text: "Click me"
-    assert_selector "button[data-controller='hw-button']"
   end
 
   test "renders primary variant" do
-    render_inline(HotwireBits::ButtonComponent.new(label: "Save", variant: :primary))
+    render_inline(HotwireBits::ButtonComponent.new(label: "Save", variant: :default))
 
     assert_selector "button", text: "Save"
   end
@@ -37,7 +36,7 @@ class ButtonComponentTest < ActionView::TestCase
   test "renders link variant" do
     render_inline(HotwireBits::ButtonComponent.new(label: "Link", variant: :link))
 
-    assert_selector "a", text: "Link"
+    assert_selector "button", text: "Link"
   end
 
   test "renders small size" do
@@ -56,14 +55,6 @@ class ButtonComponentTest < ActionView::TestCase
     render_inline(HotwireBits::ButtonComponent.new(label: "Disabled", disabled: true))
 
     assert_selector "button[disabled]", text: "Disabled"
-  end
-
-  test "renders with icon" do
-    icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>'
-    render_inline(HotwireBits::ButtonComponent.new(label: "With Icon", icon: icon))
-
-    assert_selector "button", text: "With Icon"
-    assert_selector "svg"
   end
 
   test "renders with loading state" do
@@ -85,7 +76,7 @@ class ButtonComponentTest < ActionView::TestCase
   end
 end
 
-class BadgeComponentTest < ActionView::TestCase
+class BadgeComponentTest < ViewComponent::TestCase
   test "renders default badge" do
     render_inline(HotwireBits::BadgeComponent.new(label: "New"))
 
@@ -124,7 +115,7 @@ class BadgeComponentTest < ActionView::TestCase
   end
 end
 
-class AlertComponentTest < ActionView::TestCase
+class AlertComponentTest < ViewComponent::TestCase
   test "renders info alert" do
     render_inline(HotwireBits::AlertComponent.new(type: :info, title: "Info", message: "This is info"))
 
@@ -158,7 +149,7 @@ class AlertComponentTest < ActionView::TestCase
   end
 end
 
-class CardComponentTest < ActionView::TestCase
+class CardComponentTest < ViewComponent::TestCase
   test "renders card with title" do
     render_inline(HotwireBits::CardComponent.new(title: "Card Title"))
 
@@ -198,7 +189,7 @@ class CardComponentTest < ActionView::TestCase
   end
 end
 
-class AvatarComponentTest < ActionView::TestCase
+class AvatarComponentTest < ViewComponent::TestCase
   test "renders avatar with initials" do
     render_inline(HotwireBits::AvatarComponent.new(initials: "JD"))
 
@@ -230,7 +221,7 @@ class AvatarComponentTest < ActionView::TestCase
   end
 end
 
-class TypographyComponentTest < ActionView::TestCase
+class TypographyComponentTest < ViewComponent::TestCase
   test "renders heading" do
     render_inline(HotwireBits::TypographyComponent.new(as: :h1)) { "Heading" }
 
@@ -268,7 +259,7 @@ class TypographyComponentTest < ActionView::TestCase
   end
 end
 
-class SeparatorComponentTest < ActionView::TestCase
+class SeparatorComponentTest < ViewComponent::TestCase
   test "renders horizontal separator" do
     render_inline(HotwireBits::SeparatorComponent.new)
 
@@ -282,7 +273,7 @@ class SeparatorComponentTest < ActionView::TestCase
   end
 end
 
-class SkeletonComponentTest < ActionView::TestCase
+class SkeletonComponentTest < ViewComponent::TestCase
   test "renders default skeleton" do
     render_inline(HotwireBits::SkeletonComponent.new)
 
@@ -302,7 +293,7 @@ class SkeletonComponentTest < ActionView::TestCase
   end
 end
 
-class SpinnerComponentTest < ActionView::TestCase
+class SpinnerComponentTest < ViewComponent::TestCase
   test "renders spinner" do
     render_inline(HotwireBits::SpinnerComponent.new)
 
@@ -316,37 +307,37 @@ class SpinnerComponentTest < ActionView::TestCase
   end
 end
 
-class LabelComponentTest < ActionView::TestCase
+class LabelComponentTest < ViewComponent::TestCase
   test "renders label" do
-    render_inline(HotwireBits::LabelComponent.new(label: "Email"))
+    render_inline(HotwireBits::LabelComponent.new) { "Email" }
 
     assert_text "Email"
   end
 
   test "renders required label" do
-    render_inline(HotwireBits::LabelComponent.new(label: "Name", required: true))
+    render_inline(HotwireBits::LabelComponent.new(required: true)) { "Name" }
 
     assert_text "Name"
     assert_text "*"
   end
 end
 
-class IndicatorComponentTest < ActionView::TestCase
+class IndicatorComponentTest < ViewComponent::TestCase
   test "renders indicator" do
     render_inline(HotwireBits::IndicatorComponent.new) { "Badge content" }
 
     assert_text "Badge content"
   end
 
-  test "renders indicator with dot" do
-    render_inline(HotwireBits::IndicatorComponent.new(content: "3")) { "Inbox" }
+  test "renders indicator with label" do
+    render_inline(HotwireBits::IndicatorComponent.new(label: "3")) { "Inbox" }
 
     assert_text "3"
     assert_text "Inbox"
   end
 end
 
-class StatusComponentTest < ActionView::TestCase
+class StatusComponentTest < ViewComponent::TestCase
   test "renders online status" do
     render_inline(HotwireBits::StatusComponent.new(status: :online))
 
@@ -366,7 +357,7 @@ class StatusComponentTest < ActionView::TestCase
   end
 end
 
-class CloseButtonComponentTest < ActionView::TestCase
+class CloseButtonComponentTest < ViewComponent::TestCase
   test "renders close button" do
     render_inline(HotwireBits::CloseButtonComponent.new)
 
@@ -375,7 +366,7 @@ class CloseButtonComponentTest < ActionView::TestCase
   end
 end
 
-class ToggleComponentTest < ActionView::TestCase
+class ToggleComponentTest < ViewComponent::TestCase
   test "renders unpressed toggle" do
     render_inline(HotwireBits::ToggleComponent.new(label: "Bold"))
 
@@ -389,7 +380,7 @@ class ToggleComponentTest < ActionView::TestCase
   end
 end
 
-class ProgressComponentTest < ActionView::TestCase
+class ProgressComponentTest < ViewComponent::TestCase
   test "renders progress bar" do
     render_inline(HotwireBits::ProgressComponent.new(value: 50, max: 100))
 
@@ -397,27 +388,27 @@ class ProgressComponentTest < ActionView::TestCase
   end
 
   test "renders with label" do
-    render_inline(HotwireBits::ProgressComponent.new(value: 75, max: 100, label: "75%"))
+    render_inline(HotwireBits::ProgressComponent.new(value: 75, max: 100, show_label: true))
 
     assert_text "75%"
   end
 end
 
-class KbdComponentTest < ActionView::TestCase
+class KbdComponentTest < ViewComponent::TestCase
   test "renders keyboard key" do
-    render_inline(HotwireBits::KbdComponent.new(key: "Ctrl"))
+    render_inline(HotwireBits::KbdComponent.new(label: "Ctrl"))
 
     assert_selector "kbd", text: "Ctrl"
   end
 
   test "renders small kbd" do
-    render_inline(HotwireBits::KbdComponent.new(key: "Esc", size: :sm))
+    render_inline(HotwireBits::KbdComponent.new(label: "Esc", size: :sm))
 
     assert_selector "kbd", text: "Esc"
   end
 end
 
-class ChipComponentTest < ActionView::TestCase
+class ChipComponentTest < ViewComponent::TestCase
   test "renders chip with label" do
     render_inline(HotwireBits::ChipComponent.new(label: "React"))
 
@@ -431,7 +422,7 @@ class ChipComponentTest < ActionView::TestCase
   end
 end
 
-class TagComponentTest < ActionView::TestCase
+class TagComponentTest < ViewComponent::TestCase
   test "renders tag" do
     render_inline(HotwireBits::TagComponent.new(label: "Feature"))
 

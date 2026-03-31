@@ -1,21 +1,28 @@
 <%# Breadcrumb component — ERB partial %>
-<%# Usage: render 'hotwirebits/breadcrumb', ... %>
+<%# Usage: render 'hotwirebits/breadcrumb', items: [{label: "Home", href: "/"}, {label: "Page"}] %>
 
-<nav aria-label="Breadcrumb" class="<%= merge_classes('flex items-center text-sm text-hw-muted-foreground', extra_attrs.delete(:class)) %>" <%= tag.attributes(local_assigns) %>>
+<%
+  items       = local_assigns.fetch(:items, [])
+  separator   = local_assigns.fetch(:separator, "/")
+  extra_class = local_assigns[:class]
+  nav_cls     = ["flex items-center text-sm text-hw-muted-foreground", extra_class].compact.join(" ")
+%>
+
+<nav aria-label="Breadcrumb" class="<%= nav_cls %>">
   <ol class="flex items-center space-x-2">
     <% items.each_with_index do |item, idx| %>
       <% if idx > 0 %>
         <li class="text-hw-muted-foreground/50"><%= separator %></li>
-<% end %>
-<li>
-  <% if item[:active] %>
-    <span class="font-medium text-hw-foreground" aria-current="page"><%= item[:label] %></span>
-  <% elsif item[:href] %>
-    <a href="<%= item[:href] %>" class="hover:text-hw-foreground transition-colors"><%= item[:label] %></a>
-  <% else %>
-    <span><%= item[:label] %></span>
-  <% end %>
-</li>
-<% end %>
-</ol>
+      <% end %>
+      <li>
+        <% if item[:active] %>
+          <span class="font-medium text-hw-foreground" aria-current="page"><%= item[:label] %></span>
+        <% elsif item[:href] %>
+          <a href="<%= item[:href] %>" class="hover:text-hw-foreground transition-colors"><%= item[:label] %></a>
+        <% else %>
+          <span><%= item[:label] %></span>
+        <% end %>
+      </li>
+    <% end %>
+  </ol>
 </nav>

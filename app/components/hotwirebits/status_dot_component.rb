@@ -15,10 +15,11 @@ module HotwireBits
       lg: 'h-3 w-3'
     }.freeze
 
-    def initialize(status: :online, size: :md, with_pulse: false, **attrs)
+    def initialize(status: :online, size: :md, with_pulse: false, label: nil, **attrs)
       @status = status
       @size = size
       @with_pulse = with_pulse
+      @label = label
       @extra_attrs = attrs
     end
 

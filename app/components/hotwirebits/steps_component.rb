@@ -2,9 +2,9 @@
 
 module HotwireBits
   class StepsComponent < Base
-    def initialize(steps: [], current_step: 0, orientation: :horizontal, clickable: false, **attrs)
+    def initialize(steps: [], current_step: nil, current: nil, orientation: :horizontal, clickable: false, **attrs)
       @steps = steps
-      @current_step = current_step.to_i
+      @current_step = (current || current_step || 0).to_i
       @orientation = orientation
       @clickable = clickable
       @extra_attrs = attrs

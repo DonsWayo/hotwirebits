@@ -1,8 +1,17 @@
 <%# FormGroup component — ERB partial %>
-<%# Usage: render 'hotwirebits/form_group', ... %>
+<%# Usage: render 'hotwirebits/form_group', label: "Email", hint: "Enter email" %>
+
+<%
+  label      = local_assigns[:label]
+  name       = local_assigns[:name]
+  hint       = local_assigns[:hint]
+  error      = local_assigns[:error]
+  required   = local_assigns.fetch(:required, false)
+  horizontal = local_assigns.fetch(:horizontal, false)
+%>
 
 <% if horizontal %>
-  <div class="grid grid-cols-4 items-start gap-4" <%= tag.attributes(local_assigns) %>>
+  <div class="grid grid-cols-4 items-start gap-4">
     <div class="pt-2">
       <% if label %>
         <label for="<%= name %>" class="text-sm font-medium text-hw-foreground"><%= label %><% if required %> <span class="text-hw-destructive">*</span><% end %></label>
@@ -12,18 +21,18 @@
       <% end %>
     </div>
     <div class="col-span-3">
-      <%= content %>
+      <% if block_given? %><%= yield %><% end %>
       <% if error %>
         <p class="text-xs text-hw-destructive mt-1"><%= error %></p>
       <% end %>
     </div>
   </div>
 <% else %>
-  <div class="space-y-2" <%= tag.attributes(local_assigns) %>>
+  <div class="space-y-2">
     <% if label %>
       <label for="<%= name %>" class="text-sm font-medium leading-none"><%= label %><% if required %> <span class="text-hw-destructive">*</span><% end %></label>
     <% end %>
-    <%= content %>
+    <% if block_given? %><%= yield %><% end %>
     <% if hint && !error %>
       <p class="text-xs text-hw-muted-foreground"><%= hint %></p>
     <% end %>

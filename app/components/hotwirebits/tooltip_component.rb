@@ -2,8 +2,8 @@
 
 module HotwireBits
   class TooltipComponent < Base
-    def initialize(content: nil, side: :top, delay: 200, **attrs)
-      @content = content
+    def initialize(tip: nil, side: :top, delay: 200, **attrs)
+      @tip = tip
       @side = side
       @delay = delay
       @extra_attrs = attrs

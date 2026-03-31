@@ -1,6 +1,17 @@
 <%# Slider component — ERB partial %>
-<%# Usage: render 'hotwirebits/slider', ... %>
+<%# Usage: render 'hotwirebits/slider', name: "volume", min: 0, max: 100, value: 50 %>
+
+<%
+  name     = local_assigns.fetch(:name, "")
+  value    = local_assigns.fetch(:value, 50)
+  min      = local_assigns.fetch(:min, 0)
+  max      = local_assigns.fetch(:max, 100)
+  step     = local_assigns.fetch(:step, 1)
+  disabled = local_assigns.fetch(:disabled, false)
+
+  slider_cls = "w-full h-2 rounded-lg appearance-none cursor-pointer bg-hw-muted accent-hw-primary disabled:cursor-not-allowed disabled:opacity-50"
+%>
 
 <div class="relative w-full">
-  <input type="range" name="<%= name %>" value="<%= value %>" min="<%= min %>" max="<%= max %>" step="<%= step %>" <%= 'disabled' if disabled %> class="<%= slider_classes %>" <%= tag.attributes(local_assigns) %>>
+  <input type="range" name="<%= name %>" value="<%= value %>" min="<%= min %>" max="<%= max %>" step="<%= step %>" <%= 'disabled' if disabled %> class="<%= slider_cls %>">
 </div>

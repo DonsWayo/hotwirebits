@@ -4,5 +4,5 @@
       data-hw-animated-number-easing-value="<%= easing_value %>"
       class="tabular-nums inline-block"
       <%= tag.attributes(@extra_attrs) %>>
-  <%= @prefix %><span data-hw-animated-number-target="output">0</span><%= @suffix %>
+  <%= @prefix %><span data-hw-animated-number-target="output"><%= number_with_delimiter(@value) %></span><%= @suffix %>
 </span>

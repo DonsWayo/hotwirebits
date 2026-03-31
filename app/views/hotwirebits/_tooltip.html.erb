@@ -1,19 +1,26 @@
 <%# Tooltip component — ERB partial %>
-<%# Usage: render 'hotwirebits/tooltip', ... %>
+<%# Usage: render 'hotwirebits/tooltip', tip: "Help" do %><%# ? %><%# end %>
+
+<%
+  tip   = local_assigns.fetch(:tip, "")
+  delay = local_assigns.fetch(:delay, 200)
+  side  = local_assigns.fetch(:side, :top)
+
+  tooltip_cls = "absolute z-50 overflow-hidden rounded-md border border-hw-border bg-hw-popover px-3 py-1.5 text-sm text-hw-popover-foreground shadow-md"
+%>
 
 <div class="relative inline-block"
      data-controller="hw-tooltip"
      data-hw-tooltip-delay-value="<%= delay %>"
      data-action="mouseenter->hw-tooltip#show mouseleave->hw-tooltip#hide focus->hw-tooltip#show blur->hw-tooltip#hide">
   <div data-hw-tooltip-target="trigger">
-    <%= content %>
+    <% if block_given? %><%= yield %><% end %>
   </div>
-  <div class="<%= tooltip_classes %>"
+  <div class="<%= tooltip_cls %>"
        data-hw-tooltip-target="content"
        role="tooltip"
        data-side="<%= side %>"
-       hidden
-       <%= tag.attributes(local_assigns) %>>
-    <%= content %>
+       hidden>
+    <%= tip %>
   </div>
 </div>

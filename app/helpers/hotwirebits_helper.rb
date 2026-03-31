@@ -5,7 +5,7 @@ module HotwirebitsHelper
   SAFE_ATTRIBUTES = /\s+(class|id|xmlns|viewBox|fill|stroke|stroke-width|stroke-linecap|stroke-linejoin|d|path|width|height|x|y|cx|cy|r|rx|ry|points|transform|style|opacity|data-|aria-|role)=/i
 
   def hw_merge_classes(*classes)
-    classes.flatten.compact.join(' ')
+    classes.flatten.compact.reject { |c| c.to_s.strip.empty? }.join(' ')
   end
 
   def safe_svg(html)

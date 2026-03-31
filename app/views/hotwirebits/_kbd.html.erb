@@ -1,4 +1,17 @@
 <%# Kbd component — ERB partial %>
-<%# Usage: render 'hotwirebits/kbd', ... %>
+<%# Usage: render 'hotwirebits/kbd', key: "Ctrl", size: :md %>
 
-<kbd class="<%= kbd_classes %>" <%= tag.attributes(local_assigns) %>><%= content || label %></kbd>
+<%
+  key   = local_assigns.fetch(:key, "")
+  label = local_assigns.fetch(:label, key)
+  size  = local_assigns.fetch(:size, :md)
+
+  size_cls = case size
+             when :sm then "px-1 py-0.5 text-[10px]"
+             when :lg then "px-2.5 py-1 text-sm"
+             else "px-1.5 py-0.5 text-xs"
+             end
+  kbd_cls = "inline-flex items-center rounded border border-hw-border bg-hw-muted font-mono font-medium text-hw-muted-foreground #{size_cls}"
+%>
+
+<kbd class="<%= kbd_cls %>"><%= label %></kbd>

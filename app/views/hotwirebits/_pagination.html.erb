@@ -1,32 +1,46 @@
 <%# Pagination component — ERB partial %>
-<%# Usage: render 'hotwirebits/pagination', ... %>
+<%# Usage: render 'hotwirebits/pagination', current_page: 2, total_pages: 10, page_url: ->(p) { "/page/#{p}" } %>
 
-<nav aria-label="Pagination" class="flex items-center justify-center gap-1" <%= tag.attributes(local_assigns) %>>
+<%
+  current_page  = local_assigns.fetch(:current_page, 1)
+  total_pages   = local_assigns.fetch(:total_pages, 1)
+  page_url      = local_assigns.fetch(:page_url, ->(p) { "#page-#{p}" })
+  sibling_count = local_assigns.fetch(:sibling_count, 1)
+
+  # Build page range with gaps
+  range_start = [current_page - sibling_count, 1].max
+  range_end   = [current_page + sibling_count, total_pages].min
+  pages = []
+  pages << 1 if range_start > 1
+  pages << :gap if range_start > 2
+  (range_start..range_end).each { |p| pages << p unless pages.include?(p) }
+  pages << :gap if range_end < total_pages - 1
+  pages << total_pages if range_end < total_pages && !pages.include?(total_pages)
+%>
+
+<nav aria-label="Pagination" class="flex items-center justify-center gap-1">
   <% if current_page > 1 %>
-    <a href="<%= page_url(current_page - 1) %>"
+    <a href="<%= page_url.call(current_page - 1) %>"
        class="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm text-hw-muted-foreground hover:bg-hw-accent hover:text-hw-accent-foreground transition-colors">
-  <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-  Prev
-</a>
-<% end %>
-<% pages.each do |page| %>
-  <% if page == :gap %>
-    <span class="px-2 text-hw-muted-foreground">&hellip;</span>
-  <% else %>
-    <a href="<%= page_url(page) %>"
-         class="<%= merge_classes(
-           'inline-flex h-9 w-9 items-center justify-center rounded-md text-sm transition-colors',
-           page == current_page ? 'bg-hw-primary text-hw-primary-foreground' : 'hover:bg-hw-accent hover:text-hw-accent-foreground text-hw-muted-foreground'
-         ) %>">
-      <%= page %>
+      <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+      Prev
     </a>
   <% end %>
-<% end %>
-<% if current_page < total_pages %>
-  <a href="<%= page_url(current_page + 1) %>"
+  <% pages.each do |page| %>
+    <% if page == :gap %>
+      <span class="px-2 text-hw-muted-foreground">&hellip;</span>
+    <% else %>
+      <a href="<%= page_url.call(page) %>"
+         class="inline-flex h-9 w-9 items-center justify-center rounded-md text-sm transition-colors <%= page == current_page ? 'bg-hw-primary text-hw-primary-foreground' : 'hover:bg-hw-accent hover:text-hw-accent-foreground text-hw-muted-foreground' %>">
+        <%= page %>
+      </a>
+    <% end %>
+  <% end %>
+  <% if current_page < total_pages %>
+    <a href="<%= page_url.call(current_page + 1) %>"
        class="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm text-hw-muted-foreground hover:bg-hw-accent hover:text-hw-accent-foreground transition-colors">
-    Next
-    <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-  </a>
-<% end %>
+      Next
+      <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  <% end %>
 </nav>

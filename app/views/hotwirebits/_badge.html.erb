@@ -1,11 +1,27 @@
 <%# Badge component — ERB partial %>
-<%# Usage: render 'hotwirebits/badge', ... %>
+<%# Usage: render 'hotwirebits/badge', label: "New", variant: :default %>
 
-<div class="<%= badge_classes %>" <%= 'data-controller="hw-badge"' if removable %> <%= tag.attributes(local_assigns) %>>
+<%
+  label     = local_assigns.fetch(:label, "")
+  variant   = local_assigns.fetch(:variant, :default)
+  removable = local_assigns.fetch(:removable, false)
+  dot       = local_assigns.fetch(:dot, false)
+
+  variant_classes = case variant
+                    when :secondary then "bg-hw-secondary text-hw-secondary-foreground"
+                    when :destructive then "bg-hw-destructive text-hw-destructive-foreground"
+                    when :outline then "border border-hw-border text-hw-foreground"
+                    else "bg-hw-primary text-hw-primary-foreground"
+                    end
+  base = "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors"
+  badge_cls = [base, variant_classes].join(" ")
+%>
+
+<div class="<%= badge_cls %>" <%= 'data-controller="hw-badge"'.html_safe if removable %>>
   <% if dot %>
     <span class="h-1.5 w-1.5 rounded-full bg-current mr-1"></span>
   <% end %>
-  <%= content || label %>
+  <%= label %>
   <% if removable %>
     <button type="button" class="ml-1 -mr-0.5 h-3.5 w-3.5 rounded-full p-0.5 hover:bg-white/20 focus:outline-none" data-action="click->hw-badge#dismiss">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-2.5 w-2.5">

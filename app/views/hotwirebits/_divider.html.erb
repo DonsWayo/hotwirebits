@@ -1,14 +1,22 @@
 <%# Divider component — ERB partial %>
-<%# Usage: render 'hotwirebits/divider', ... %>
+<%# Usage: render 'hotwirebits/divider', orientation: :horizontal %>
 
-<% if with_label && (label || label_slot?) %>
-  <div class="relative flex items-center <%= orientation == :vertical ? 'flex-col h-full' : '' %>" role="separator" <%= tag.attributes(local_assigns) %>>
+<%
+  orientation = local_assigns.fetch(:orientation, :horizontal)
+  label       = local_assigns[:label]
+  with_label  = local_assigns.fetch(:with_label, label.present?)
+  dashed      = local_assigns.fetch(:dashed, false)
+  extra_class = local_assigns[:class]
+%>
+
+<% if with_label && label %>
+  <div class="relative flex items-center <%= orientation == :vertical ? 'flex-col h-full' : '' %>" role="separator">
     <div class="<%= orientation == :horizontal ? 'flex-1 border-t' : 'flex-1 border-l' %> <%= dashed ? 'border-dashed' : 'border-solid' %> border-hw-border"></div>
     <span class="<%= orientation == :horizontal ? 'px-3' : 'py-3' %> text-xs text-hw-muted-foreground font-medium">
-      <%= label_slot? ? label_slot : label %>
+      <%= label %>
     </span>
     <div class="<%= orientation == :horizontal ? 'flex-1 border-t' : 'flex-1 border-l' %> <%= dashed ? 'border-dashed' : 'border-solid' %> border-hw-border"></div>
   </div>
 <% else %>
-  <div class="<%= divider_classes %>" role="separator" <%= tag.attributes(local_assigns) %>></div>
+  <div class="<%= orientation == :vertical ? 'shrink-0 bg-hw-border h-full w-[1px]' : 'shrink-0 bg-hw-border h-[1px] w-full' %>" role="separator"></div>
 <% end %>

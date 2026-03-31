@@ -395,7 +395,8 @@ class HotwirebitsHelperTest < ActionView::TestCase
   end
 
   test "content returns nil" do
-    assert_nil content rescue nil
+    result = begin; content; rescue; nil; end
+    assert_nil result
   end
 
   # === Constants defined ===

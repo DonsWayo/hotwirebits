@@ -4,7 +4,7 @@ module HotwireBits
   class AppShellComponent < Base
     renders_one :header
     renders_one :sidebar
-    renders_one :content
+    renders_one :body
     renders_one :footer
 
     def initialize(sidebar_collapsed: false, **attrs)

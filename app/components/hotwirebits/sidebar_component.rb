@@ -3,14 +3,15 @@
 module HotwireBits
   class SidebarComponent < Base
     renders_one :header
-    renders_one :content
+    renders_one :body
     renders_one :footer
 
-    def initialize(items: [], collapsed: false, width: 260, mobile: false, **attrs)
+    def initialize(items: [], collapsed: false, width: 260, mobile: false, title: nil, **attrs)
       @items = items
       @collapsed = collapsed
       @width = width
       @mobile = mobile
+      @title = title
       @extra_attrs = attrs
     end
 

@@ -9,7 +9,7 @@
     <%= content || @label %>
   <% end %>
 <% else %>
-  <button type="<%= @type %>" **button_attrs>
+  <%= tag.button(**button_attrs) do %>
     <% if @loading %>
       <svg class="mr-1 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -17,5 +17,5 @@
       </svg>
     <% end %>
     <%= content || @label %>
-  </button>
+  <% end %>
 <% end %>

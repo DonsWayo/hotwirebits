@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class InputComponentTest < ActionView::TestCase
+class InputComponentTest < ViewComponent::TestCase
   test "renders text input" do
     render_inline(HotwireBits::InputComponent.new(name: "email", placeholder: "Enter email"))
 
@@ -48,7 +48,7 @@ class InputComponentTest < ActionView::TestCase
   end
 end
 
-class CheckboxComponentTest < ActionView::TestCase
+class CheckboxComponentTest < ViewComponent::TestCase
   test "renders checkbox" do
     render_inline(HotwireBits::CheckboxComponent.new(name: "agree"))
 
@@ -74,7 +74,7 @@ class CheckboxComponentTest < ActionView::TestCase
   end
 end
 
-class SwitchComponentTest < ActionView::TestCase
+class SwitchComponentTest < ViewComponent::TestCase
   test "renders unchecked switch" do
     render_inline(HotwireBits::SwitchComponent.new(name: "notifications"))
 
@@ -106,7 +106,7 @@ class SwitchComponentTest < ActionView::TestCase
   end
 end
 
-class SelectComponentTest < ActionView::TestCase
+class SelectComponentTest < ViewComponent::TestCase
   test "renders select with options" do
     render_inline(HotwireBits::SelectComponent.new(
       name: "country",
@@ -149,7 +149,7 @@ class SelectComponentTest < ActionView::TestCase
   end
 end
 
-class TextareaComponentTest < ActionView::TestCase
+class TextareaComponentTest < ViewComponent::TestCase
   test "renders textarea" do
     render_inline(HotwireBits::TextareaComponent.new(name: "bio", placeholder: "Your bio"))
 
@@ -175,7 +175,7 @@ class TextareaComponentTest < ActionView::TestCase
   end
 end
 
-class SliderComponentTest < ActionView::TestCase
+class SliderComponentTest < ViewComponent::TestCase
   test "renders slider" do
     render_inline(HotwireBits::SliderComponent.new(name: "volume", min: 0, max: 100, value: 50))
 
@@ -189,7 +189,7 @@ class SliderComponentTest < ActionView::TestCase
   end
 end
 
-class RatingComponentTest < ActionView::TestCase
+class RatingComponentTest < ViewComponent::TestCase
   test "renders rating" do
     render_inline(HotwireBits::RatingComponent.new(name: "stars", value: 3, max: 5))
 
@@ -210,7 +210,7 @@ class RatingComponentTest < ActionView::TestCase
   end
 end
 
-class FormFieldsetComponentTest < ActionView::TestCase
+class FormFieldsetComponentTest < ViewComponent::TestCase
   test "renders fieldset with legend" do
     render_inline(HotwireBits::FormFieldsetComponent.new(legend: "Personal Info")) { "Fields here" }
 
@@ -220,7 +220,7 @@ class FormFieldsetComponentTest < ActionView::TestCase
   end
 end
 
-class ColorPickerComponentTest < ActionView::TestCase
+class ColorPickerComponentTest < ViewComponent::TestCase
   test "renders color picker" do
     render_inline(HotwireBits::ColorPickerComponent.new(name: "color", value: "#ff0000"))
 
@@ -228,7 +228,7 @@ class ColorPickerComponentTest < ActionView::TestCase
   end
 end
 
-class InputOtpComponentTest < ActionView::TestCase
+class InputOtpComponentTest < ViewComponent::TestCase
   test "renders OTP input" do
     render_inline(HotwireBits::InputOtpComponent.new(name: "code", length: 6))
 

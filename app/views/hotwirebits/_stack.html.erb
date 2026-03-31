@@ -1,6 +1,20 @@
 <%# Stack component — ERB partial %>
-<%# Usage: render 'hotwirebits/stack', ... %>
+<%# Usage: render 'hotwirebits/stack', gap: 4 %>
 
-<div class="<%= stack_classes %>" <%= tag.attributes(local_assigns) %>>
-  <%= content %>
+<%
+  gap         = local_assigns.fetch(:gap, 4)
+  align       = local_assigns[:align]
+  extra_class = local_assigns[:class]
+
+  align_cls = case align
+              when :center then "items-center"
+              when :end then "items-end"
+              when :stretch then "items-stretch"
+              else ""
+              end
+  stack_cls = ["flex flex-col gap-#{gap} #{align_cls}", extra_class].compact.join(" ")
+%>
+
+<div class="<%= stack_cls %>">
+  <% if block_given? %><%= yield %><% end %>
 </div>

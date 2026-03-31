@@ -4,10 +4,11 @@ module HotwireBits
   class PopoverComponent < Base
     renders_one :trigger
 
-    def initialize(align: :center, side: :bottom, open: false, **attrs)
+    def initialize(align: :center, side: :bottom, open: false, trigger_label: "Open", **attrs)
       @align = align
       @side = side
       @open = open
+      @trigger_label = trigger_label
       @extra_attrs = attrs
     end
 

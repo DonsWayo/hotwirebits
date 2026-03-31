@@ -7,10 +7,14 @@
     <div class="flex h-14 items-center border-b border-hw-border px-4">
       <%= header %>
     </div>
+  <% elsif @title %>
+    <div class="flex h-14 items-center border-b border-hw-border px-4">
+      <span class="text-lg font-semibold"><%= @title %></span>
+    </div>
   <% end %>
   <div class="flex-1 overflow-y-auto py-2">
-    <% if content? %>
-      <%= content %>
+    <% if body? %>
+      <%= body %>
     <% elsif @items.any? %>
       <nav class="space-y-1 px-2">
         <% @items.each do |item| %>

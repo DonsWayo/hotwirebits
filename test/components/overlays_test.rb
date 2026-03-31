@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class DialogComponentTest < ActionView::TestCase
+class DialogComponentTest < ViewComponent::TestCase
   test "renders dialog" do
     render_inline(HotwireBits::DialogComponent.new(title: "Confirm")) { "Are you sure?" }
 
@@ -44,7 +44,7 @@ class DialogComponentTest < ActionView::TestCase
   end
 end
 
-class AlertDialogComponentTest < ActionView::TestCase
+class AlertDialogComponentTest < ViewComponent::TestCase
   test "renders alert dialog" do
     render_inline(HotwireBits::AlertDialogComponent.new(
       title: "Delete?",
@@ -71,7 +71,7 @@ class AlertDialogComponentTest < ActionView::TestCase
   end
 end
 
-class SheetComponentTest < ActionView::TestCase
+class SheetComponentTest < ViewComponent::TestCase
   test "renders sheet" do
     render_inline(HotwireBits::SheetComponent.new(title: "Details")) { "Sheet content" }
 
@@ -96,7 +96,7 @@ class SheetComponentTest < ActionView::TestCase
   end
 end
 
-class DrawerComponentTest < ActionView::TestCase
+class DrawerComponentTest < ViewComponent::TestCase
   test "renders drawer" do
     render_inline(HotwireBits::DrawerComponent.new(title: "Nav")) { "Drawer content" }
 
@@ -105,7 +105,7 @@ class DrawerComponentTest < ActionView::TestCase
   end
 end
 
-class PopoverComponentTest < ActionView::TestCase
+class PopoverComponentTest < ViewComponent::TestCase
   test "renders popover" do
     render_inline(HotwireBits::PopoverComponent.new(trigger_label: "Info")) { "Popover content" }
 
@@ -115,9 +115,9 @@ class PopoverComponentTest < ActionView::TestCase
   end
 end
 
-class ToastComponentTest < ActionView::TestCase
+class ToastComponentTest < ViewComponent::TestCase
   test "renders toast" do
-    render_inline(HotwireBits::ToastComponent.new(type: :success, title: "Saved!", message: "Changes saved"))
+    render_inline(HotwireBits::ToastComponent.new(type: :success, title: "Saved!", description: "Changes saved"))
 
     assert_text "Saved!"
     assert_text "Changes saved"
@@ -133,8 +133,7 @@ class ToastComponentTest < ActionView::TestCase
     render_inline(HotwireBits::ToastComponent.new(
       type: :info,
       title: "Undo",
-      action_label: "Undo",
-      action_href: "/undo"
+      action: { label: "Undo", url: "/undo" }
     ))
 
     assert_text "Undo"
@@ -142,7 +141,7 @@ class ToastComponentTest < ActionView::TestCase
   end
 end
 
-class LoadingOverlayComponentTest < ActionView::TestCase
+class LoadingOverlayComponentTest < ViewComponent::TestCase
   test "renders loading overlay" do
     render_inline(HotwireBits::LoadingOverlayComponent.new) { "Content behind overlay" }
 
@@ -157,7 +156,7 @@ class LoadingOverlayComponentTest < ActionView::TestCase
   end
 end
 
-class TooltipComponentTest < ActionView::TestCase
+class TooltipComponentTest < ViewComponent::TestCase
   test "renders tooltip" do
     render_inline(HotwireBits::TooltipComponent.new(tip: "Help text")) { "?" }
 

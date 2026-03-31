@@ -5,38 +5,45 @@ require "test_helper"
 class ErbPartialsRenderingTest < ActionView::TestCase
   include HotwirebitsHelper
 
+  # Helper to get the rendered HTML string for text assertions.
+  # ActionView::TestCase stores rendered output in `rendered` (Rails 7.1+)
+  # or `@rendered` / `@response.body` depending on version.
+  private def rendered_html
+    rendered.to_s
+  end
+
   # === Primitives ===
 
   test "_button partial renders" do
     render partial: "hotwirebits/button", locals: { label: "Click", variant: :default, size: :md }
 
-    assert_text "Click"
+    assert_includes rendered_html, "Click"
   end
 
   test "_badge partial renders" do
     render partial: "hotwirebits/badge", locals: { label: "New", variant: :default }
 
-    assert_text "New"
+    assert_includes rendered_html, "New"
   end
 
   test "_alert partial renders" do
     render partial: "hotwirebits/alert", locals: { type: :info, title: "Note", message: "Hello" }
 
-    assert_text "Note"
-    assert_text "Hello"
+    assert_includes rendered_html, "Note"
+    assert_includes rendered_html, "Hello"
   end
 
   test "_card partial renders" do
     render partial: "hotwirebits/card", locals: { title: "Card Title", description: "Description" }
 
-    assert_text "Card Title"
-    assert_text "Description"
+    assert_includes rendered_html, "Card Title"
+    assert_includes rendered_html, "Description"
   end
 
   test "_avatar partial renders" do
     render partial: "hotwirebits/avatar", locals: { initials: "JD", size: :md }
 
-    assert_text "JD"
+    assert_includes rendered_html, "JD"
   end
 
   test "_separator partial renders" do
@@ -60,25 +67,25 @@ class ErbPartialsRenderingTest < ActionView::TestCase
   test "_toggle partial renders" do
     render partial: "hotwirebits/toggle", locals: { label: "Bold", pressed: false }
 
-    assert_text "Bold"
+    assert_includes rendered_html, "Bold"
   end
 
   test "_kbd partial renders" do
     render partial: "hotwirebits/kbd", locals: { key: "Ctrl", size: :md }
 
-    assert_text "Ctrl"
+    assert_includes rendered_html, "Ctrl"
   end
 
   test "_tag partial renders" do
     render partial: "hotwirebits/tag", locals: { label: "Feature", color: :default }
 
-    assert_text "Feature"
+    assert_includes rendered_html, "Feature"
   end
 
   test "_chip partial renders" do
     render partial: "hotwirebits/chip", locals: { label: "React", size: :md }
 
-    assert_text "React"
+    assert_includes rendered_html, "React"
   end
 
   # === Forms ===
@@ -99,7 +106,7 @@ class ErbPartialsRenderingTest < ActionView::TestCase
     render partial: "hotwirebits/switch", locals: { name: "dark", label: "Dark", checked: false }
 
     assert_select "label[data-controller='hw-switch']"
-    assert_text "Dark"
+    assert_includes rendered_html, "Dark"
   end
 
   test "_select partial renders" do
@@ -130,11 +137,12 @@ class ErbPartialsRenderingTest < ActionView::TestCase
   end
 
   test "_form_group partial renders" do
-    render partial: "hotwirebits/form_group", locals: { label: "Email", hint: "Enter email", error: nil, horizontal: false } do
+    # render layout: supports blocks, unlike render partial:
+    render layout: "hotwirebits/form_group", locals: { label: "Email", hint: "Enter email", error: nil, horizontal: false } do
       "<input name='email'>".html_safe
     end
 
-    assert_text "Email"
+    assert_includes rendered_html, "Email"
   end
 
   # === Navigation ===
@@ -142,7 +150,7 @@ class ErbPartialsRenderingTest < ActionView::TestCase
   test "_navbar partial renders" do
     render partial: "hotwirebits/navbar", locals: { brand: "MyApp", items: [], class: nil }
 
-    assert_text "MyApp"
+    assert_includes rendered_html, "MyApp"
   end
 
   test "_breadcrumb partial renders" do
@@ -151,8 +159,8 @@ class ErbPartialsRenderingTest < ActionView::TestCase
       separator: :slash, class: nil
     }
 
-    assert_text "Home"
-    assert_text "Page"
+    assert_includes rendered_html, "Home"
+    assert_includes rendered_html, "Page"
   end
 
   test "_tabs partial renders" do
@@ -161,8 +169,8 @@ class ErbPartialsRenderingTest < ActionView::TestCase
       active: 0, class: nil
     }
 
-    assert_text "Tab 1"
-    assert_text "Tab 2"
+    assert_includes rendered_html, "Tab 1"
+    assert_includes rendered_html, "Tab 2"
   end
 
   test "_dropdown partial renders" do
@@ -172,8 +180,8 @@ class ErbPartialsRenderingTest < ActionView::TestCase
       align: :start, class: nil
     }
 
-    assert_text "Menu"
-    assert_text "Item 1"
+    assert_includes rendered_html, "Menu"
+    assert_includes rendered_html, "Item 1"
   end
 
   test "_pagination partial renders" do
@@ -193,8 +201,8 @@ class ErbPartialsRenderingTest < ActionView::TestCase
       closable: true, open: false, class: nil
     }
 
-    assert_text "Confirm"
-    assert_text "Are you sure?"
+    assert_includes rendered_html, "Confirm"
+    assert_includes rendered_html, "Are you sure?"
   end
 
   test "_toast partial renders" do
@@ -202,15 +210,16 @@ class ErbPartialsRenderingTest < ActionView::TestCase
       type: :success, title: "Saved", message: "OK", dismissible: true
     }
 
-    assert_text "Saved"
+    assert_includes rendered_html, "Saved"
   end
 
   test "_tooltip partial renders" do
-    render partial: "hotwirebits/tooltip", locals: { tip: "Help" } do
+    # render layout: supports blocks, unlike render partial:
+    render layout: "hotwirebits/tooltip", locals: { tip: "Help" } do
       "?"
     end
 
-    assert_text "Help"
+    assert_includes rendered_html, "Help"
   end
 
   # === Feedback ===
@@ -218,7 +227,7 @@ class ErbPartialsRenderingTest < ActionView::TestCase
   test "_banner partial renders" do
     render partial: "hotwirebits/banner", locals: { type: :info, message: "Notice", dismissible: true, class: nil }
 
-    assert_text "Notice"
+    assert_includes rendered_html, "Notice"
     assert_select "div[data-controller='hw-banner']"
   end
 
@@ -228,34 +237,35 @@ class ErbPartialsRenderingTest < ActionView::TestCase
       action_label: "Create", action_href: "/new", class: nil
     }
 
-    assert_text "Nothing here"
-    assert_text "Create something"
+    assert_includes rendered_html, "Nothing here"
+    assert_includes rendered_html, "Create something"
   end
 
   # === Layout ===
 
   test "_container partial renders" do
-    render partial: "hotwirebits/container", locals: { size: :lg, class: nil } do
+    # render layout: supports blocks, unlike render partial:
+    render layout: "hotwirebits/container", locals: { size: :lg, class: nil } do
       "Container content"
     end
 
-    assert_text "Container content"
+    assert_includes rendered_html, "Container content"
   end
 
   test "_grid partial renders" do
-    render partial: "hotwirebits/grid", locals: { columns: 3, gap: 4, class: nil } do
+    render layout: "hotwirebits/grid", locals: { columns: 3, gap: 4, class: nil } do
       "Grid content"
     end
 
-    assert_text "Grid content"
+    assert_includes rendered_html, "Grid content"
   end
 
   test "_stack partial renders" do
-    render partial: "hotwirebits/stack", locals: { gap: 4, align: nil, class: nil } do
+    render layout: "hotwirebits/stack", locals: { gap: 4, align: nil, class: nil } do
       "Stack content"
     end
 
-    assert_text "Stack content"
+    assert_includes rendered_html, "Stack content"
   end
 
   test "_divider partial renders" do

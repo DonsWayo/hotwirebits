@@ -8,8 +8,8 @@ module HotwireBits
       lg: 'h-12 w-12'
     }.freeze
 
-    def initialize(text: nil, spinner_size: :md, **attrs)
-      @text = text
+    def initialize(text: nil, message: nil, spinner_size: :md, **attrs)
+      @text = text || message
       @spinner_size = spinner_size
       @extra_attrs = attrs
     end

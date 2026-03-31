@@ -2,8 +2,9 @@
 
 module HotwireBits
   class StatsComponent < Base
-    def initialize(columns: nil, **attrs)
-      @columns = columns
+    def initialize(columns: nil, stats: nil, **attrs)
+      @stats = stats
+      @columns = columns || (stats ? stats.size : nil)
       @extra_attrs = attrs
     end
 

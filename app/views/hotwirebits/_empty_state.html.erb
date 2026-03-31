@@ -1,12 +1,16 @@
 <%# EmptyState component — ERB partial %>
-<%# Usage: render 'hotwirebits/empty_state', ... %>
+<%# Usage: render 'hotwirebits/empty_state', title: "Nothing here", description: "Create something" %>
 
-<div class="flex flex-col items-center justify-center rounded-lg border border-dashed border-hw-border p-8 text-center" <%= tag.attributes(local_assigns) %>>
-  <% if icon %>
-    <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-hw-muted text-hw-muted-foreground">
-      <%= safe_svg(icon) %>
-    </div>
-  <% end %>
+<%
+  title        = local_assigns[:title]
+  description  = local_assigns[:description]
+  icon         = local_assigns[:icon]
+  action_label = local_assigns[:action_label]
+  action_href  = local_assigns[:action_href]
+  extra_class  = local_assigns[:class]
+%>
+
+<div class="flex flex-col items-center justify-center rounded-lg border border-dashed border-hw-border p-8 text-center">
   <% if title %>
     <h3 class="text-lg font-semibold tracking-tight"><%= title %></h3>
   <% end %>
@@ -19,5 +23,4 @@
       <%= action_label %>
     </a>
   <% end %>
-  <%= content if content.present? %>
 </div>

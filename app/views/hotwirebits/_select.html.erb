@@ -1,19 +1,30 @@
 <%# Select component — ERB partial %>
-<%# Usage: render 'hotwirebits/select', ... %>
+<%# Usage: render 'hotwirebits/select', name: "country", options: [["US","us"]], placeholder: "Choose" %>
 
-<select name="<%= name %>" <%= 'disabled' if disabled %> <%= 'multiple' if multiple %> class="<%= select_classes %>" <%= tag.attributes(local_assigns) %>>
+<%
+  name        = local_assigns.fetch(:name, "")
+  options     = local_assigns.fetch(:options, [])
+  placeholder = local_assigns.fetch(:placeholder, "Select...")
+  selected    = local_assigns[:selected]
+  disabled    = local_assigns.fetch(:disabled, false)
+  multiple    = local_assigns.fetch(:multiple, false)
+
+  select_cls = "flex h-10 w-full rounded-md border border-hw-input bg-hw-background px-3 py-2 text-sm ring-offset-hw-background focus:outline-none focus:ring-2 focus:ring-hw-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+%>
+
+<select name="<%= name %>" <%= 'disabled' if disabled %> <%= 'multiple' if multiple %> class="<%= select_cls %>">
   <option value="" disabled <%= 'selected' unless selected %>><%= placeholder %></option>
   <% options.each do |opt| %>
     <% if opt.is_a?(Array) %>
       <option value="<%= opt.last %>" <%= 'selected' if Array(selected).include?(opt.last) %>><%= opt.first %></option>
-      <% elsif opt.is_a?(Hash) %>
-        <optgroup label="<%= opt[:label] %>">
-          <% opt[:options].each do |o| %>
-            <option value="<%= o.last %>" <%= 'selected' if Array(selected).include?(o.last) %>><%= o.first %></option>
-            <% end %>
-          </optgroup>
-        <% else %>
-          <option value="<%= opt %>" <%= 'selected' if Array(selected).include?(opt) %>><%= opt %></option>
-          <% end %>
+    <% elsif opt.is_a?(Hash) %>
+      <optgroup label="<%= opt[:label] %>">
+        <% opt[:options].each do |o| %>
+          <option value="<%= o.last %>" <%= 'selected' if Array(selected).include?(o.last) %>><%= o.first %></option>
         <% end %>
-      </select>
+      </optgroup>
+    <% else %>
+      <option value="<%= opt %>" <%= 'selected' if Array(selected).include?(opt) %>><%= opt %></option>
+    <% end %>
+  <% end %>
+</select>

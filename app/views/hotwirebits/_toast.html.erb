@@ -1,37 +1,52 @@
 <%# Toast component — ERB partial %>
-<%# Usage: render 'hotwirebits/toast', ... %>
+<%# Usage: render 'hotwirebits/toast', type: :success, title: "Saved", message: "OK" %>
 
-<div data-controller="hw-toast"
-     data-hw-toast-duration-value="<%= duration %>"
-     class="group pointer-events-auto">
-  <div class="<%= toast_classes %>" <%= tag.attributes(local_assigns) %>>
+<%
+  type        = local_assigns.fetch(:type, :info)
+  title       = local_assigns[:title]
+  message     = local_assigns[:message]
+  description = local_assigns[:description] || message
+  dismissible = local_assigns.fetch(:dismissible, true)
+  duration    = local_assigns.fetch(:duration, 5000)
+  action      = local_assigns[:action]
+
+  variant_cls = case type
+                when :success then "border-green-200 bg-green-50 text-green-800"
+                when :warning then "border-yellow-200 bg-yellow-50 text-yellow-800"
+                when :error, :destructive then "border-red-200 bg-red-50 text-red-800"
+                else "border-hw-border bg-hw-background text-hw-foreground"
+                end
+  toast_cls = "relative flex w-full items-center justify-between space-x-4 overflow-hidden rounded-md border p-4 shadow-lg #{variant_cls}"
+%>
+
+<div data-controller="hw-toast" data-hw-toast-duration-value="<%= duration %>" class="group pointer-events-auto">
+  <div class="<%= toast_cls %>">
     <div class="flex items-start gap-3">
-      <svg class="h-5 w-5 shrink-0 <%= type_config[:icon] %>" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-        <%= safe_svg(icon_svg) %>
-      </svg>
       <div class="grid gap-1">
         <% if title %>
           <div class="text-sm font-semibold"><%= title %></div>
         <% end %>
         <% if description %>
-          <div class="text-sm opacity-90 text-hw-muted-foreground"><%= description %></div>
+          <div class="text-sm opacity-90"><%= description %></div>
         <% end %>
       </div>
     </div>
     <div class="flex items-center gap-2">
-      <% if action %>
+      <% if action.is_a?(Hash) && action[:url] %>
         <a href="<%= action[:url] %>"
-           class="inline-flex h-8 shrink-0 items-center justify-center rounded-md border border-hw-border bg-transparent px-3 text-sm font-medium ring-offset-hw-background transition-colors hover:bg-hw-secondary focus:outline-none focus:ring-2 focus:ring-hw-ring focus:ring-offset-2">
+           class="inline-flex h-8 shrink-0 items-center justify-center rounded-md border border-hw-border bg-transparent px-3 text-sm font-medium">
           <%= action[:label] %>
         </a>
       <% end %>
-      <button type="button"
-              class="absolute right-1 top-1 rounded-md p-1 text-hw-foreground/50 opacity-0 transition-opacity hover:text-hw-foreground focus:opacity-100 focus:outline-none focus:ring-2 group-hover:opacity-100"
-              data-action="click->hw-toast#dismiss">
-        <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-        </svg>
-      </button>
+      <% if dismissible %>
+        <button type="button"
+                class="absolute right-1 top-1 rounded-md p-1 text-hw-foreground/50 opacity-0 transition-opacity hover:text-hw-foreground focus:opacity-100 focus:outline-none group-hover:opacity-100"
+                data-action="click->hw-toast#dismiss">
+          <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      <% end %>
     </div>
   </div>
 </div>

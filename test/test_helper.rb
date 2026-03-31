@@ -4,19 +4,12 @@ ENV['RAILS_ENV'] = 'test'
 
 require_relative '../test/dummy/config/environment'
 require 'rails/test_help'
-require 'capybara/cuprite'
+require 'view_component/test_helpers'
 
 class ActiveSupport::TestCase
-  parallelize(workers: :number_of_processors)
-  fixtures :all
+  # No parallelization for now — keep debugging simple
 end
 
-class ActionDispatch::IntegrationTest
-  include Capybara::DSL
-
-  Capybara.register_driver(:cuprite) do |app|
-    Capybara::Cuprite::Driver.new(app, window_size: [1400, 900])
-  end
-
-  Capybara.javascript_driver = :cuprite
+class ViewComponent::TestCase
+  include ViewComponent::TestHelpers
 end

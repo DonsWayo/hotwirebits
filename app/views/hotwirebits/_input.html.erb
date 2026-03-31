@@ -1,16 +1,33 @@
 <%# Input component — ERB partial %>
-<%# Usage: render 'hotwirebits/input', ... %>
+<%# Usage: render 'hotwirebits/input', name: "email", placeholder: "Email", type: :text %>
+
+<%
+  type         = local_assigns.fetch(:type, :text)
+  name         = local_assigns.fetch(:name, "")
+  value        = local_assigns.fetch(:value, "")
+  placeholder  = local_assigns.fetch(:placeholder, "")
+  disabled     = local_assigns.fetch(:disabled, false)
+  readonly     = local_assigns.fetch(:readonly, false)
+  required     = local_assigns.fetch(:required, false)
+  autocomplete = local_assigns.fetch(:autocomplete, "off")
+  icon         = local_assigns[:icon]
+  icon_position = local_assigns.fetch(:icon_position, :left)
+
+  input_cls = "flex h-10 w-full rounded-md border border-hw-input bg-hw-background px-3 py-2 text-sm ring-offset-hw-background placeholder:text-hw-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+  input_cls += " pl-10" if icon && icon_position == :left
+  input_cls += " pr-10" if icon && icon_position == :right
+%>
 
 <% if icon %>
   <div class="relative">
     <% if icon_position == :left %>
-      <div class="absolute left-3 top-1/2 -translate-y-1/2 text-hw-muted-foreground"><%= safe_svg(icon) %></div>
+      <div class="absolute left-3 top-1/2 -translate-y-1/2 text-hw-muted-foreground"><%= icon %></div>
     <% end %>
-    <input type="<%= type %>" name="<%= name %>" value="<%= value %>" placeholder="<%= placeholder %>" <%= 'disabled' if disabled %> <%= 'readonly' if readonly %> <%= 'required' if required %> autocomplete="<%= autocomplete %>" class="<%= input_classes %>" <%= tag.attributes(local_assigns) %>>
+    <input type="<%= type %>" name="<%= name %>" value="<%= value %>" placeholder="<%= placeholder %>" <%= 'disabled' if disabled %> <%= 'readonly' if readonly %> <%= 'required' if required %> autocomplete="<%= autocomplete %>" class="<%= input_cls %>">
     <% if icon_position == :right %>
-      <div class="absolute right-3 top-1/2 -translate-y-1/2 text-hw-muted-foreground"><%= safe_svg(icon) %></div>
+      <div class="absolute right-3 top-1/2 -translate-y-1/2 text-hw-muted-foreground"><%= icon %></div>
     <% end %>
   </div>
 <% else %>
-  <input type="<%= type %>" name="<%= name %>" value="<%= value %>" placeholder="<%= placeholder %>" <%= 'disabled' if disabled %> <%= 'readonly' if readonly %> <%= 'required' if required %> autocomplete="<%= autocomplete %>" class="<%= input_classes %>" <%= tag.attributes(local_assigns) %>>
+  <input type="<%= type %>" name="<%= name %>" value="<%= value %>" placeholder="<%= placeholder %>" <%= 'disabled' if disabled %> <%= 'readonly' if readonly %> <%= 'required' if required %> autocomplete="<%= autocomplete %>" class="<%= input_cls %>">
 <% end %>

@@ -1,8 +1,20 @@
 <%# Skeleton component — ERB partial %>
-<%# Usage: render 'hotwirebits/skeleton', ... %>
+<%# Usage: render 'hotwirebits/skeleton', shape: :rectangle %>
 
-<% style = [] %>
-<% style << "width: #{circle_size || '40px'}; height: #{circle_size || '40px'};" if shape == :circle %>
-<% style << "width: #{width};" if width && shape != :circle %>
-<% style << "height: #{height};" if height && shape != :circle %>
-<div class="animate-pulse bg-hw-muted <%= shape == :circle ? 'rounded-full' : shape == :text ? 'rounded h-4 w-full' : 'rounded-md' %>" style="<%= style.join %>" <%= tag.attributes(local_assigns) %>></div>
+<%
+  shape       = local_assigns.fetch(:shape, :rectangle)
+  width       = local_assigns[:width]
+  height      = local_assigns[:height]
+  circle_size = local_assigns[:circle_size]
+
+  style = []
+  if shape == :circle
+    style << "width: #{circle_size || '40px'}; height: #{circle_size || '40px'};"
+  else
+    style << "width: #{width};" if width
+    style << "height: #{height};" if height
+  end
+  shape_cls = shape == :circle ? 'rounded-full' : shape == :text ? 'rounded h-4 w-full' : 'rounded-md'
+%>
+
+<div class="animate-pulse bg-hw-muted <%= shape_cls %>" style="<%= style.join %>"></div>

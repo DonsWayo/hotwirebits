@@ -11,7 +11,7 @@
       </aside>
     <% end %>
     <main class="flex-1 overflow-y-auto bg-hw-background">
-      <%= content %>
+      <%= body? ? body : content %>
     </main>
   </div>
   <% if footer? %>

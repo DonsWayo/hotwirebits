@@ -1,14 +1,17 @@
 # frozen_string_literal: true
 
 require_relative 'boot'
-require 'rails/all'
+
+# Only require the Rails frameworks we need (no ActiveRecord for a UI component gem)
+require 'action_controller/railtie'
+require 'action_view/railtie'
+require 'active_support/railtie'
+require 'rails/test_unit/railtie'
 
 module Dummy
   class Application < Rails::Application
-    config.load_defaults Rails::VERSION.to_f
+    config.load_defaults "#{Rails::VERSION::MAJOR}.#{Rails::VERSION::MINOR}".to_f
     config.eager_load = false
-    config.active_support.deprecation = :stderr
-    config.view_component.show_previews = true
-    config.view_component.preview_paths << Rails.root.join('previews')
+    config.root = File.expand_path('../..', __FILE__)
   end
 end

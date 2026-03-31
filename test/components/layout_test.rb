@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class ContainerComponentTest < ActionView::TestCase
+class ContainerComponentTest < ViewComponent::TestCase
   test "renders container" do
     render_inline(HotwireBits::ContainerComponent.new) { "Content" }
 
@@ -17,7 +17,7 @@ class ContainerComponentTest < ActionView::TestCase
   end
 end
 
-class GridComponentTest < ActionView::TestCase
+class GridComponentTest < ViewComponent::TestCase
   test "renders grid" do
     render_inline(HotwireBits::GridComponent.new(columns: 3)) { "Grid content" }
 
@@ -25,7 +25,7 @@ class GridComponentTest < ActionView::TestCase
   end
 end
 
-class FlexComponentTest < ActionView::TestCase
+class FlexComponentTest < ViewComponent::TestCase
   test "renders flex" do
     render_inline(HotwireBits::FlexComponent.new) { "Flex content" }
 
@@ -39,7 +39,7 @@ class FlexComponentTest < ActionView::TestCase
   end
 end
 
-class StackComponentTest < ActionView::TestCase
+class StackComponentTest < ViewComponent::TestCase
   test "renders stack" do
     render_inline(HotwireBits::StackComponent.new) { "Stacked" }
 
@@ -53,7 +53,7 @@ class StackComponentTest < ActionView::TestCase
   end
 end
 
-class DividerComponentTest < ActionView::TestCase
+class DividerComponentTest < ViewComponent::TestCase
   test "renders horizontal divider" do
     render_inline(HotwireBits::DividerComponent.new)
 
@@ -73,7 +73,7 @@ class DividerComponentTest < ActionView::TestCase
   end
 end
 
-class ScrollAreaComponentTest < ActionView::TestCase
+class ScrollAreaComponentTest < ViewComponent::TestCase
   test "renders scroll area" do
     render_inline(HotwireBits::ScrollAreaComponent.new(height: "300px")) { "Scrollable content" }
 
@@ -81,7 +81,7 @@ class ScrollAreaComponentTest < ActionView::TestCase
   end
 end
 
-class AspectRatioComponentTest < ActionView::TestCase
+class AspectRatioComponentTest < ViewComponent::TestCase
   test "renders aspect ratio" do
     render_inline(HotwireBits::AspectRatioComponent.new(ratio: "16/9")) { "Content" }
 
@@ -89,13 +89,13 @@ class AspectRatioComponentTest < ActionView::TestCase
   end
 end
 
-class AppShellComponentTest < ActionView::TestCase
+class AppShellComponentTest < ViewComponent::TestCase
   test "renders app shell" do
     component = HotwireBits::AppShellComponent.new
     render_inline(component) do |c|
       c.with_header { "Header" }
       c.with_sidebar { "Sidebar" }
-      c.with_content { "Main" }
+      c.with_body { "Main" }
       c.with_footer { "Footer" }
     end
 
@@ -108,7 +108,7 @@ end
 
 # Data Display
 
-class DataTableComponentTest < ActionView::TestCase
+class DataTableComponentTest < ViewComponent::TestCase
   test "renders data table" do
     columns = [{ key: :name, label: "Name" }, { key: :age, label: "Age" }]
     rows = [{ name: "John", age: 30 }, { name: "Jane", age: 25 }]
@@ -123,7 +123,7 @@ class DataTableComponentTest < ActionView::TestCase
   end
 end
 
-class StatsComponentTest < ActionView::TestCase
+class StatsComponentTest < ViewComponent::TestCase
   test "renders stats" do
     stats = [{ label: "Revenue", value: "$12,345" }, { label: "Users", value: "1,234" }]
     render_inline(HotwireBits::StatsComponent.new(stats: stats))
@@ -135,7 +135,7 @@ class StatsComponentTest < ActionView::TestCase
   end
 end
 
-class TimelineComponentTest < ActionView::TestCase
+class TimelineComponentTest < ViewComponent::TestCase
   test "renders timeline" do
     items = [{ title: "Event 1", description: "First event" }, { title: "Event 2" }]
     render_inline(HotwireBits::TimelineComponent.new(items: items))
@@ -146,7 +146,7 @@ class TimelineComponentTest < ActionView::TestCase
   end
 end
 
-class AccordionComponentTest < ActionView::TestCase
+class AccordionComponentTest < ViewComponent::TestCase
   test "renders accordion" do
     items = [{ title: "Section 1", content: "Content 1" }, { title: "Section 2", content: "Content 2" }]
     render_inline(HotwireBits::AccordionComponent.new(items: items))
@@ -159,18 +159,18 @@ class AccordionComponentTest < ActionView::TestCase
   end
 end
 
-class TreeViewComponentTest < ActionView::TestCase
+class TreeViewComponentTest < ViewComponent::TestCase
   test "renders tree view" do
     items = [{ label: "Root", children: [{ label: "Child" }] }]
     render_inline(HotwireBits::TreeViewComponent.new(items: items))
 
     assert_text "Root"
     assert_text "Child"
-    assert_selector "div[data-controller='hw-tree']"
+    assert_selector "[data-controller='hw-tree']"
   end
 end
 
-class CodeBlockComponentTest < ActionView::TestCase
+class CodeBlockComponentTest < ViewComponent::TestCase
   test "renders code block" do
     render_inline(HotwireBits::CodeBlockComponent.new(code: "puts 'hello'", language: "ruby"))
 
@@ -179,7 +179,7 @@ class CodeBlockComponentTest < ActionView::TestCase
   end
 end
 
-class HighlightComponentTest < ActionView::TestCase
+class HighlightComponentTest < ViewComponent::TestCase
   test "renders highlighted text" do
     render_inline(HotwireBits::HighlightComponent.new(text: "Hello World", query: "World"))
 
@@ -193,9 +193,9 @@ class HighlightComponentTest < ActionView::TestCase
   end
 end
 
-class MeterGroupComponentTest < ActionView::TestCase
+class MeterGroupComponentTest < ViewComponent::TestCase
   test "renders meter group" do
-    meters = [{ label: "CPU", value: 75, color: :primary }, { label: "Memory", value: 50, color: :success }]
+    meters = [{ label: "CPU", value: 75, color: :default }, { label: "Memory", value: 50, color: :success }]
     render_inline(HotwireBits::MeterGroupComponent.new(meters: meters))
 
     assert_text "CPU"

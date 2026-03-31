@@ -1,18 +1,18 @@
 <label class="swap inline-flex items-center cursor-pointer <%= effect_class %>"
        data-controller="hw-swap"
        data-hw-swap-active-value="<%= on? %>"
-       <%= tag.attributes(@extra_attrs) %>
+       <%= tag.attributes(@extra_attrs) %>>
   <input type="checkbox" data-action="change->hw-swap#toggle" class="sr-only" <%= 'checked' if on? %> />
   <div class="swap-on" data-hw-swap-target="onContent">
     <% if @on_content %>
-      <%= @safe_svg(on_content) %>
+      <%= safe_svg(@on_content) %>
     <% else %>
       <%= content %>
     <% end %>
   </div>
   <div class="swap-off" data-hw-swap-target="offContent">
     <% if @off_content %>
-      <%= @safe_svg(off_content) %>
+      <%= safe_svg(@off_content) %>
     <% end %>
   </div>
 </label>

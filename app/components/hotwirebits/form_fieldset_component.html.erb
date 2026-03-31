@@ -1,0 +1,9 @@
+<fieldset class="space-y-4" <%= tag.attributes(@extra_attrs) %>>
+  <% if @legend %>
+    <legend class="text-base font-semibold text-hw-foreground"><%= @legend %></legend>
+  <% end %>
+  <% if @description %>
+    <p class="text-sm text-hw-muted-foreground"><%= @description %></p>
+  <% end %>
+  <%= content %>
+</fieldset>

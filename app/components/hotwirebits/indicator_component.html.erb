@@ -1,6 +1,6 @@
 <div class="relative inline-flex">
   <%= content %>
   <div class="absolute flex items-center justify-center <%= @color || 'bg-hw-primary' %> <%= POSITIONS[@position] || '-top-1 -right-1' %>" <%= tag.attributes(@extra_attrs) %>>
-    <%= yield %>
+    <%= @label %>
   </div>
 </div>

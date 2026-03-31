@@ -1,6 +1,20 @@
 <%# Tag component — ERB partial %>
-<%# Usage: render 'hotwirebits/tag', ... %>
+<%# Usage: render 'hotwirebits/tag', label: "Feature", color: :default %>
 
-<span class="<%= tag_classes %>" <%= tag.attributes(local_assigns) %>>
-  <%= content || label %>
+<%
+  label = local_assigns.fetch(:label, "")
+  color = local_assigns.fetch(:color, :default)
+
+  color_cls = case color
+              when :primary then "bg-hw-primary/10 text-hw-primary border-hw-primary/20"
+              when :success then "bg-green-50 text-green-700 border-green-200"
+              when :warning then "bg-yellow-50 text-yellow-700 border-yellow-200"
+              when :danger, :destructive then "bg-red-50 text-red-700 border-red-200"
+              else "bg-hw-muted text-hw-muted-foreground border-hw-border"
+              end
+  tag_cls = "inline-flex items-center rounded-md border px-2 py-0.5 text-xs font-medium #{color_cls}"
+%>
+
+<span class="<%= tag_cls %>">
+  <%= label %>
 </span>

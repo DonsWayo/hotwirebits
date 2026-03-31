@@ -29,6 +29,12 @@
   --color-hw-selection: hsl(210 40% 96.1%);
   --color-hw-bg: var(--color-hw-background);
   --color-hw-fg: var(--color-hw-foreground);
+
+  /* Border radius scale */
+  --radius-hw-sm: 0.25rem;
+  --radius-hw-md: 0.375rem;
+  --radius-hw-lg: 0.5rem;
+  --radius-hw-xl: 0.75rem;
 }
 
 @layer base {

@@ -1,4 +1,17 @@
 <%# Textarea component — ERB partial %>
-<%# Usage: render 'hotwirebits/textarea', ... %>
+<%# Usage: render 'hotwirebits/textarea', name: "bio", placeholder: "Bio" %>
 
-<textarea name="<%= name %>" placeholder="<%= placeholder %>" rows="<%= rows %>" <%= 'disabled' if disabled %> <%= 'readonly' if readonly %> <%= 'required' if required %> maxlength="<%= max_length %>" class="<%= textarea_classes %>" <%= tag.attributes(local_assigns) %>><%= value %></textarea>
+<%
+  name       = local_assigns.fetch(:name, "")
+  placeholder = local_assigns.fetch(:placeholder, "")
+  value      = local_assigns.fetch(:value, "")
+  rows       = local_assigns.fetch(:rows, 3)
+  disabled   = local_assigns.fetch(:disabled, false)
+  readonly   = local_assigns.fetch(:readonly, false)
+  required   = local_assigns.fetch(:required, false)
+  max_length = local_assigns[:max_length]
+
+  textarea_cls = "flex min-h-[80px] w-full rounded-md border border-hw-input bg-hw-background px-3 py-2 text-sm ring-offset-hw-background placeholder:text-hw-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+%>
+
+<textarea name="<%= name %>" placeholder="<%= placeholder %>" rows="<%= rows %>" <%= 'disabled' if disabled %> <%= 'readonly' if readonly %> <%= 'required' if required %> <%= "maxlength=\"#{max_length}\"" if max_length %> class="<%= textarea_cls %>"><%= value %></textarea>

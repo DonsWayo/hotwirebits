@@ -9,9 +9,10 @@ module HotwireBits
       bottom_right: '-bottom-1 -right-1'
     }.freeze
 
-    def initialize(position: :top_right, color: nil, **attrs)
+    def initialize(position: :top_right, color: nil, label: nil, **attrs)
       @position = position
       @color = color
+      @label = label
       @extra_attrs = attrs
     end
 

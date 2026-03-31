@@ -10,8 +10,8 @@ module HotwireBits
       info: 'bg-hw-info'
     }.freeze
 
-    def initialize(items: [], **attrs)
-      @items = items
+    def initialize(items: nil, meters: nil, **attrs)
+      @items = items || meters || []
       @extra_attrs = attrs
     end
 

@@ -2,13 +2,12 @@
 
 require "test_helper"
 
-class HeroComponentTest < ActionView::TestCase
+class HeroComponentTest < ViewComponent::TestCase
   test "renders centered hero" do
     render_inline(HotwireBits::HeroComponent.new(
       title: "Welcome",
       subtitle: "Get started today",
-      cta_label: "Sign Up",
-      cta_href: "/signup"
+      primary_cta: { label: "Sign Up", href: "/signup" }
     ))
 
     assert_text "Welcome"
@@ -19,10 +18,8 @@ class HeroComponentTest < ActionView::TestCase
   test "renders hero with secondary CTA" do
     render_inline(HotwireBits::HeroComponent.new(
       title: "Title",
-      cta_label: "Primary",
-      cta_href: "/primary",
-      secondary_cta_label: "Learn More",
-      secondary_cta_href: "/learn"
+      primary_cta: { label: "Primary", href: "/primary" },
+      secondary_cta: { label: "Learn More", href: "/learn" }
     ))
 
     assert_selector "a[href='/primary']", text: "Primary"
@@ -30,10 +27,10 @@ class HeroComponentTest < ActionView::TestCase
   end
 end
 
-class CarouselComponentTest < ActionView::TestCase
+class CarouselComponentTest < ViewComponent::TestCase
   test "renders carousel" do
-    slides = [{ image: "/slide1.jpg", alt: "Slide 1" }, { image: "/slide2.jpg", alt: "Slide 2" }]
-    render_inline(HotwireBits::CarouselComponent.new(slides: slides))
+    items = [{ image: "/slide1.jpg", alt: "Slide 1" }, { image: "/slide2.jpg", alt: "Slide 2" }]
+    render_inline(HotwireBits::CarouselComponent.new(items: items))
 
     assert_selector "div[data-controller='hw-carousel']"
     assert_selector "img[src='/slide1.jpg']"
@@ -41,22 +38,22 @@ class CarouselComponentTest < ActionView::TestCase
   end
 
   test "renders carousel with arrows" do
-    slides = [{ content: "Slide 1" }, { content: "Slide 2" }]
-    render_inline(HotwireBits::CarouselComponent.new(slides: slides, show_arrows: true))
+    items = [{ content: "Slide 1" }, { content: "Slide 2" }]
+    render_inline(HotwireBits::CarouselComponent.new(items: items, show_arrows: true))
 
     assert_selector "button[data-action='click->hw-carousel#prev']"
     assert_selector "button[data-action='click->hw-carousel#next']"
   end
 
   test "renders carousel with dots" do
-    slides = [{ content: "A" }, { content: "B" }]
-    render_inline(HotwireBits::CarouselComponent.new(slides: slides, show_dots: true))
+    items = [{ content: "A" }, { content: "B" }]
+    render_inline(HotwireBits::CarouselComponent.new(items: items, show_dots: true))
 
     assert_selector "button[data-hw-carousel-target='dot']", count: 2
   end
 end
 
-class CalendarComponentTest < ActionView::TestCase
+class CalendarComponentTest < ViewComponent::TestCase
   test "renders calendar" do
     render_inline(HotwireBits::CalendarComponent.new(date: Date.new(2026, 3, 15)))
 
@@ -66,7 +63,7 @@ class CalendarComponentTest < ActionView::TestCase
   end
 end
 
-class KanbanBoardComponentTest < ActionView::TestCase
+class KanbanBoardComponentTest < ViewComponent::TestCase
   test "renders kanban board" do
     columns = [
       { title: "To Do", items: [{ title: "Task 1" }] },
@@ -82,7 +79,7 @@ class KanbanBoardComponentTest < ActionView::TestCase
   end
 end
 
-class MarqueeComponentTest < ActionView::TestCase
+class MarqueeComponentTest < ViewComponent::TestCase
   test "renders marquee" do
     render_inline(HotwireBits::MarqueeComponent.new) { "Scrolling text" }
 
@@ -91,29 +88,29 @@ class MarqueeComponentTest < ActionView::TestCase
   end
 end
 
-class ClipboardComponentTest < ActionView::TestCase
+class ClipboardComponentTest < ViewComponent::TestCase
   test "renders clipboard" do
-    render_inline(HotwireBits::ClipboardComponent.new(value: "copy-me"))
+    render_inline(HotwireBits::ClipboardComponent.new(text: "copy-me"))
 
     assert_selector "div[data-controller='hw-clipboard']"
   end
 
   test "renders with copy button" do
-    render_inline(HotwireBits::ClipboardComponent.new(value: "text", show_button: true))
+    render_inline(HotwireBits::ClipboardComponent.new(text: "text"))
 
     assert_selector "button"
   end
 end
 
-class QrCodeComponentTest < ActionView::TestCase
+class QrCodeComponentTest < ViewComponent::TestCase
   test "renders QR code" do
     render_inline(HotwireBits::QrCodeComponent.new(value: "https://example.com"))
 
-    assert_text "https://example.com"
+    assert_selector "svg"
   end
 end
 
-class SearchComponentTest < ActionView::TestCase
+class SearchComponentTest < ViewComponent::TestCase
   test "renders search" do
     render_inline(HotwireBits::SearchComponent.new(placeholder: "Search..."))
 
@@ -122,7 +119,7 @@ class SearchComponentTest < ActionView::TestCase
   end
 end
 
-class ChatBubbleComponentTest < ActionView::TestCase
+class ChatBubbleComponentTest < ViewComponent::TestCase
   test "renders chat bubble" do
     render_inline(HotwireBits::ChatBubbleComponent.new(message: "Hello!", sender: "Alice"))
 
@@ -137,7 +134,7 @@ class ChatBubbleComponentTest < ActionView::TestCase
   end
 end
 
-class TestimonialComponentTest < ActionView::TestCase
+class TestimonialComponentTest < ViewComponent::TestCase
   test "renders testimonial" do
     render_inline(HotwireBits::TestimonialComponent.new(
       quote: "Great product!",
@@ -151,7 +148,7 @@ class TestimonialComponentTest < ActionView::TestCase
   end
 end
 
-class PricingSectionComponentTest < ActionView::TestCase
+class PricingSectionComponentTest < ViewComponent::TestCase
   test "renders pricing section" do
     plans = [
       { name: "Free", price: "$0", features: ["1 user", "10 items"] },
@@ -167,7 +164,7 @@ class PricingSectionComponentTest < ActionView::TestCase
   end
 end
 
-class FaqSectionComponentTest < ActionView::TestCase
+class FaqSectionComponentTest < ViewComponent::TestCase
   test "renders FAQ section" do
     items = [
       { question: "What is this?", answer: "A UI library." },
@@ -183,7 +180,7 @@ class FaqSectionComponentTest < ActionView::TestCase
   end
 end
 
-class ErrorPageComponentTest < ActionView::TestCase
+class ErrorPageComponentTest < ViewComponent::TestCase
   test "renders error page" do
     render_inline(HotwireBits::ErrorPageComponent.new(code: 404, title: "Not Found", description: "Page missing"))
 
@@ -193,7 +190,7 @@ class ErrorPageComponentTest < ActionView::TestCase
   end
 
   test "renders with back link" do
-    render_inline(HotwireBits::ErrorPageComponent.new(code: 500, title: "Error", back_href: "/"))
+    render_inline(HotwireBits::ErrorPageComponent.new(code: 500, title: "Error", action_label: "Go Back", action_href: "/"))
 
     assert_selector "a[href='/']"
   end

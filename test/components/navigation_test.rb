@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class NavbarComponentTest < ActionView::TestCase
+class NavbarComponentTest < ViewComponent::TestCase
   test "renders navbar" do
     render_inline(HotwireBits::NavbarComponent.new(brand: "MyApp"))
 
@@ -19,7 +19,7 @@ class NavbarComponentTest < ActionView::TestCase
   end
 end
 
-class BreadcrumbComponentTest < ActionView::TestCase
+class BreadcrumbComponentTest < ViewComponent::TestCase
   test "renders breadcrumb" do
     items = [{ label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: "Widget" }]
     render_inline(HotwireBits::BreadcrumbComponent.new(items: items))
@@ -31,7 +31,7 @@ class BreadcrumbComponentTest < ActionView::TestCase
   end
 end
 
-class PaginationComponentTest < ActionView::TestCase
+class PaginationComponentTest < ViewComponent::TestCase
   test "renders pagination" do
     render_inline(HotwireBits::PaginatorComponent.new(current_page: 2, total_pages: 10))
 
@@ -47,7 +47,7 @@ class PaginationComponentTest < ActionView::TestCase
   end
 end
 
-class TabsComponentTest < ActionView::TestCase
+class TabsComponentTest < ViewComponent::TestCase
   test "renders tabs" do
     render_inline(HotwireBits::TabsComponent.new(tabs: [
       { label: "Tab 1", content: "Content 1" },
@@ -60,7 +60,7 @@ class TabsComponentTest < ActionView::TestCase
   end
 end
 
-class MenuComponentTest < ActionView::TestCase
+class MenuComponentTest < ViewComponent::TestCase
   test "renders menu" do
     items = [{ label: "Settings", href: "/settings" }, { label: "Profile", href: "/profile" }]
     render_inline(HotwireBits::MenuComponent.new(items: items))
@@ -70,7 +70,7 @@ class MenuComponentTest < ActionView::TestCase
   end
 end
 
-class DropdownComponentTest < ActionView::TestCase
+class DropdownComponentTest < ViewComponent::TestCase
   test "renders dropdown" do
     items = [{ label: "Edit", href: "/edit" }, { label: "Delete", href: "/delete" }]
     render_inline(HotwireBits::DropdownComponent.new(trigger_label: "Actions", items: items))
@@ -82,7 +82,7 @@ class DropdownComponentTest < ActionView::TestCase
   end
 end
 
-class SidebarComponentTest < ActionView::TestCase
+class SidebarComponentTest < ViewComponent::TestCase
   test "renders sidebar" do
     render_inline(HotwireBits::SidebarComponent.new(title: "Dashboard"))
 
@@ -92,14 +92,14 @@ class SidebarComponentTest < ActionView::TestCase
   test "renders sidebar with content slot" do
     component = HotwireBits::SidebarComponent.new(title: "Nav")
     render_inline(component) do |c|
-      c.with_content { "Menu items" }
+      c.with_body { "Menu items" }
     end
 
     assert_text "Menu items"
   end
 end
 
-class NavLinkComponentTest < ActionView::TestCase
+class NavLinkComponentTest < ViewComponent::TestCase
   test "renders nav link" do
     render_inline(HotwireBits::NavLinkComponent.new(label: "Home", href: "/"))
 
@@ -113,7 +113,7 @@ class NavLinkComponentTest < ActionView::TestCase
   end
 end
 
-class StepsComponentTest < ActionView::TestCase
+class StepsComponentTest < ViewComponent::TestCase
   test "renders steps" do
     steps = [{ label: "Step 1" }, { label: "Step 2" }, { label: "Step 3" }]
     render_inline(HotwireBits::StepsComponent.new(steps: steps, current: 1))
@@ -125,7 +125,7 @@ class StepsComponentTest < ActionView::TestCase
   end
 end
 
-class FooterComponentTest < ActionView::TestCase
+class FooterComponentTest < ViewComponent::TestCase
   test "renders footer" do
     render_inline(HotwireBits::FooterComponent.new(brand: "MyApp"))
 

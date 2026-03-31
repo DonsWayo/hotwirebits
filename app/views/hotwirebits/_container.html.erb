@@ -1,6 +1,21 @@
 <%# Container component — ERB partial %>
-<%# Usage: render 'hotwirebits/container', ... %>
+<%# Usage: render 'hotwirebits/container', size: :lg %>
 
-<div class="<%= container_classes %>" <%= tag.attributes(local_assigns) %>>
-  <%= content %>
+<%
+  size        = local_assigns.fetch(:size, :lg)
+  extra_class = local_assigns[:class]
+
+  size_cls = case size
+             when :sm then "max-w-screen-sm"
+             when :md then "max-w-screen-md"
+             when :xl then "max-w-screen-xl"
+             when :"2xl" then "max-w-screen-2xl"
+             when :full then "max-w-full"
+             else "max-w-screen-lg"
+             end
+  container_cls = ["mx-auto w-full px-4 #{size_cls}", extra_class].compact.join(" ")
+%>
+
+<div class="<%= container_cls %>">
+  <% if block_given? %><%= yield %><% end %>
 </div>

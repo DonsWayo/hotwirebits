@@ -6,9 +6,9 @@ module HotwireBits
 
     def initialize(orientation: :horizontal, with_label: false, dashed: false, label: nil, **attrs)
       @orientation = orientation
-      @with_label = with_label
       @dashed = dashed
       @label = label
+      @with_label = with_label || !label.nil?
       @extra_attrs = attrs
     end
 

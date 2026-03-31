@@ -133,7 +133,7 @@ class StimulusIndexTest < ActionView::TestCase
     index = File.read(index_path)
     js_dir = File.join(HotwireBits::Engine.root, "app", "javascript", "controllers", "hotwirebits")
 
-    index.scan(/from ".*?(rb_\w+_controller|text_rotate_controller)"/).flatten.each do |filename|
+    index.scan(/from ".*?(\w+_controller)"/).flatten.each do |filename|
       path = File.join(js_dir, "#{filename}.js")
       assert File.exist?(path), "Missing JS file: #{filename}.js"
     end

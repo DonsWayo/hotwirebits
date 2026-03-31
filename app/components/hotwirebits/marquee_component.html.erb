@@ -1,4 +1,4 @@
-<div class="<%= container_classes %>" <%= tag.attributes(@extra_attrs) %>>
+<div class="<%= container_classes %>" data-controller="hw-marquee" <%= tag.attributes(@extra_attrs) %>>
   <div class="<%= track_classes %>"
        style="animation: <%= animation_name %> <%= @speed %>s linear infinite;">
     <div class="flex <%= vertical? ? 'flex-col' : 'flex-row' %> items-center gap-8 shrink-0 px-4">

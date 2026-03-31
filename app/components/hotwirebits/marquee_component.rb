@@ -2,7 +2,7 @@
 
 module HotwireBits
   class MarqueeComponent < Base
-    renders_one :content
+    renders_one :body
 
     def initialize(direction: :left, speed: 30, pause_on_hover: true, **attrs)
       @direction = direction

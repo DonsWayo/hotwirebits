@@ -1,6 +1,14 @@
 <%# Grid component — ERB partial %>
-<%# Usage: render 'hotwirebits/grid', ... %>
+<%# Usage: render 'hotwirebits/grid', columns: 3, gap: 4 %>
 
-<div class="<%= grid_classes %>" <%= tag.attributes(local_assigns) %>>
-  <%= content %>
+<%
+  columns     = local_assigns.fetch(:columns, 3)
+  gap         = local_assigns.fetch(:gap, 4)
+  extra_class = local_assigns[:class]
+
+  grid_cls = ["grid grid-cols-#{columns} gap-#{gap}", extra_class].compact.join(" ")
+%>
+
+<div class="<%= grid_cls %>">
+  <% if block_given? %><%= yield %><% end %>
 </div>

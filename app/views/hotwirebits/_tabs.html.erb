@@ -1,21 +1,30 @@
 <%# Tabs component — ERB partial %>
-<%# Usage: render 'hotwirebits/tabs', ... %>
+<%# Usage: render 'hotwirebits/tabs', tabs: [{label: "Tab 1"}, {label: "Tab 2"}], active: 0 %>
 
-<div class="<%= container_classes %>" data-controller="hw-tabs" data-hw-tabs-active-value="<%= active_tab %>" <%= tag.attributes(local_assigns) %>>
-  <div role="tablist" class="<%= list_classes %>">
+<%
+  tabs        = local_assigns.fetch(:tabs, [])
+  active      = local_assigns.fetch(:active, 0)
+  extra_class = local_assigns[:class]
+
+  # Assign IDs to tabs if not present
+  tabs = tabs.each_with_index.map { |t, i| t.is_a?(Hash) ? t.merge(id: t.fetch(:id, i)) : { label: t.to_s, id: i } }
+
+  container_cls = extra_class || ""
+  list_cls = "inline-flex h-10 items-center justify-center rounded-md bg-hw-muted p-1 text-hw-muted-foreground"
+%>
+
+<div class="<%= container_cls %>" data-controller="hw-tabs" data-hw-tabs-active-value="<%= active %>">
+  <div role="tablist" class="<%= list_cls %>">
     <% tabs.each do |tab| %>
       <button type="button"
               role="tab"
               id="tab-<%= tab[:id] %>"
               data-hw-tabs-target="tab"
               data-action="click->hw-tabs#select"
-        data-tab-id="<%= tab[:id] %>"
-        aria-controls="panel-<%= tab[:id] %>"
-        aria-selected="<%= tab[:id] == active_tab %>"
-        class="<%= tab_classes(tab[:id] == active_tab) %>">
-        <% if tab[:icon] %>
-          <span class="h-4 w-4"><%= safe_svg(tab[:icon]) %></span>
-        <% end %>
+              data-tab-id="<%= tab[:id] %>"
+              aria-controls="panel-<%= tab[:id] %>"
+              aria-selected="<%= tab[:id] == active %>"
+              class="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-hw-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hw-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 <%= tab[:id] == active ? 'bg-hw-background text-hw-foreground shadow-sm' : '' %>">
         <%= tab[:label] %>
       </button>
     <% end %>
@@ -26,21 +35,10 @@
          data-hw-tabs-target="panel"
          data-tab-id="<%= tab[:id] %>"
          aria-labelledby="tab-<%= tab[:id] %>"
-         class="<%= tab[:id] == active_tab ? '' : 'hidden' %> pt-4">
+         class="<%= tab[:id] == active ? '' : 'hidden' %> pt-4">
       <% if tab[:content] %>
         <%= tab[:content] %>
       <% end %>
     </div>
-  <% end %>
-  <% if tab_contents? %>
-    <% tab_contents.each do |tc| %>
-      <div role="tabpanel"
-           id="panel-<%= tc.instance_variable_get(:id) %>"
-           data-hw-tabs-target="panel"
-           data-tab-id="<%= tc.instance_variable_get(:id) %>"
-           class="<%= tc.instance_variable_get(:id) == active_tab ? '' : 'hidden' %> pt-4">
-        <%= tc %>
-      </div>
-    <% end %>
   <% end %>
 </div>
