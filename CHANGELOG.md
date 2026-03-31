@@ -5,9 +5,9 @@ All notable changes to HotwireBits will be documented in this file.
 ## [0.1.0] - 2026-03-23
 
 ### Added
-- Initial release with 130+ components
+- Initial release with 240+ components
 - Theme system with CSS custom properties (light/dark mode)
-- 40 Stimulus controllers for interactive components
+- 99 Stimulus controllers for interactive components
 - CLI tool (`hotwirebits`) for copy-paste installation
 - ERB partial + ViewComponent dual format for all components
 - Tailwind CSS v4 support

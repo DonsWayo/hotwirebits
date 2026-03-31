@@ -10,7 +10,7 @@
 %>
 
 <% if with_label && label %>
-  <div class="relative flex items-center <%= orientation == :vertical ? 'flex-col h-full' : '' %>" role="separator">
+  <div class="relative flex items-center <%= orientation == :vertical ? 'flex-col h-full' : '' %><%= " #{extra_class}" if extra_class %>" role="separator">
     <div class="<%= orientation == :horizontal ? 'flex-1 border-t' : 'flex-1 border-l' %> <%= dashed ? 'border-dashed' : 'border-solid' %> border-hw-border"></div>
     <span class="<%= orientation == :horizontal ? 'px-3' : 'py-3' %> text-xs text-hw-muted-foreground font-medium">
       <%= label %>
@@ -18,5 +18,5 @@
     <div class="<%= orientation == :horizontal ? 'flex-1 border-t' : 'flex-1 border-l' %> <%= dashed ? 'border-dashed' : 'border-solid' %> border-hw-border"></div>
   </div>
 <% else %>
-  <div class="<%= orientation == :vertical ? 'shrink-0 bg-hw-border h-full w-[1px]' : 'shrink-0 bg-hw-border h-[1px] w-full' %>" role="separator"></div>
+  <div class="<%= orientation == :vertical ? 'shrink-0 bg-hw-border h-full w-[1px]' : 'shrink-0 bg-hw-border h-[1px] w-full' %><%= " #{extra_class}" if extra_class %>" role="separator"></div>
 <% end %>

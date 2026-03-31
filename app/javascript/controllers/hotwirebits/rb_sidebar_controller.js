@@ -16,8 +16,6 @@ export default class extends Controller {
 
   disconnect() {
     document.removeEventListener("turbo:before-cache", this._beforeCache)
-    this._beforeCache = () => { if (this.hasOverlayTarget) this.overlayTarget.classList.add("hidden") }
-    document.addEventListener("turbo:before-cache", this._beforeCache)
     window.removeEventListener("resize", this.handleResize)
     document.removeEventListener("keydown", this.handleKeydown)
   }

@@ -15,8 +15,6 @@ export default class extends Controller {
 
   disconnect() {
     document.removeEventListener("turbo:before-cache", this._beforeCache)
-    this._beforeCache = () => { if (this.hasMenuTarget) this.menuTarget.classList.add("hidden") }
-    document.addEventListener("turbo:before-cache", this._beforeCache)
     document.removeEventListener("click", this.handleOutsideClick)
     document.removeEventListener("keydown", this.handleKeydown)
   }

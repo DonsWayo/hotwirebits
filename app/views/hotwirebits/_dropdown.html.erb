@@ -10,7 +10,7 @@
   panel_cls = "absolute z-50 min-w-[8rem] overflow-hidden rounded-md border border-hw-border bg-hw-popover p-1 text-hw-popover-foreground shadow-md #{align == :end ? 'right-0' : 'left-0'}"
 %>
 
-<div class="relative inline-block" data-controller="hw-dropdown">
+<div class="relative inline-block<%= " #{extra_class}" if extra_class %>" data-controller="hw-dropdown">
   <button type="button"
           data-action="click->hw-dropdown#toggle click@window->hw-dropdown#closeOnClickOutside"
           class="inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-hw-foreground hover:bg-hw-accent transition-colors cursor-pointer">

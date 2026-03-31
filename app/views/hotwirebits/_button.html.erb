@@ -32,6 +32,9 @@
 
 <% if href %>
   <a href="<%= href %>" class="<%= btn_class %>">
+    <% if icon %>
+      <span class="mr-1"><%= icon %></span>
+    <% end %>
     <% if loading %>
       <svg class="mr-1 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -42,6 +45,9 @@
   </a>
 <% else %>
   <button type="<%= type %>" class="<%= btn_class %>" <%= 'disabled' if disabled %>>
+    <% if icon %>
+      <span class="mr-1"><%= icon %></span>
+    <% end %>
     <% if loading %>
       <svg class="mr-1 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>

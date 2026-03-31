@@ -14,8 +14,6 @@ export default class extends Controller {
 
   disconnect() {
     document.removeEventListener("turbo:before-cache", this._beforeCache)
-    this._beforeCache = () => this.close()
-    document.addEventListener("turbo:before-cache", this._beforeCache)
     document.removeEventListener("click", this.handleOutsideClick)
   }
 

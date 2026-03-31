@@ -17,10 +17,12 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = ">= 3.4.0"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/hotwirebits/hotwirebits"
-  spec.metadata["changelog_uri"] = "https://github.com/hotwirebits/hotwirebits/blob/main/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/DonsWayo/hotwirebits"
+  spec.metadata["changelog_uri"] = "https://github.com/DonsWayo/hotwirebits/blob/main/CHANGELOG.md"
+  spec.metadata["bug_tracker_uri"] = "https://github.com/DonsWayo/hotwirebits/issues"
+  spec.metadata["documentation_uri"] = "https://hotwirebits.dev"
 
-  spec.files = Dir["lib/**/*", "app/**/*", "LICENSE", "README.md"]
+  spec.files = Dir["lib/**/*", "app/**/*", "config/**/*", "LICENSE", "README.md", "CHANGELOG.md"]
   spec.require_paths = ["lib"]
 
   spec.add_dependency "rails", ">= 7.0"

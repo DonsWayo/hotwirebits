@@ -2,7 +2,7 @@
 
 **The most comprehensive free UI component library for Ruby on Rails.**
 
-[![CI](https://github.com/hotwirebits/hotwirebits/actions/workflows/ci.yml/badge.svg)](https://github.com/hotwirebits/hotwirebits/actions)
+[![CI](https://github.com/DonsWayo/hotwirebits/actions/workflows/ci.yml/badge.svg)](https://github.com/DonsWayo/hotwirebits/actions)
 [![Gem Version](https://badge.fury.io/rb/hotwirebits.svg)](https://rubygems.org/gems/hotwirebits)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -10,7 +10,7 @@
 
 ## What is HotwireBits?
 
-HotwireBits is a **free, open-source** UI component library for Ruby on Rails with **240+ components** and **40+ Stimulus controllers**. Each component ships in two formats:
+HotwireBits is a **free, open-source** UI component library for Ruby on Rails with **240+ components** and **99 Stimulus controllers**. Each component ships in two formats:
 
 - **ERB partials** — Copy-paste friendly, no magic
 - **ViewComponent classes** — Ruby-first, testable, composable
@@ -111,7 +111,7 @@ HotwireBits uses CSS custom properties (shadcn-style) for theming:
 
 ## Stimulus Controllers
 
-40 Stimulus controllers for interactive components:
+99 Stimulus controllers for interactive components:
 
 ```
 hw-accordion  hw-alert      hw-banner     hw-burger

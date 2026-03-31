@@ -6,21 +6,20 @@ export default class extends Controller {
 
   connect() {
     this.handleKeydown = this.handleKeydown.bind(this)
+    this.beforeCache = this.resetForCache.bind(this)
     this.element.addEventListener("keydown", this.handleKeydown)
     document.addEventListener("turbo:before-cache", this.beforeCache)
   }
 
   disconnect() {
+    this.element.removeEventListener("keydown", this.handleKeydown)
+    document.removeEventListener("turbo:before-cache", this.beforeCache)
+  }
 
   // Turbo: reset state before page cache
   resetForCache() {
     this.openValue = false
     if (this.hasPanelTarget && this.panelTarget.open) this.panelTarget.close()
-  }
-
-  beforeCache = this.resetForCache.bind(this)
-    this.element.removeEventListener("keydown", this.handleKeydown)
-    document.removeEventListener("turbo:before-cache", this.beforeCache)
   }
 
   open() {
