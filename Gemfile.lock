@@ -4,7 +4,7 @@ PATH
     hotwirebits (0.1.0)
       rails (>= 7.0)
       stimulus-rails (>= 1.0)
-      tailwindcss-rails (>= 3.0)
+      tailwindcss-rails (~> 3.0)
       turbo-rails (>= 1.0)
       view_component (>= 3.0)
 
