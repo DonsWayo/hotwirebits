@@ -5,21 +5,24 @@ All notable changes to HotwireBits will be documented in this file.
 ## [Unreleased]
 
 ### Added
-- JavaScript test suite: 156 Vitest tests covering 15 Stimulus controllers with jsdom
+- JavaScript test suite: 254 Vitest tests covering all 99 Stimulus controllers (15 original + 98 new)
+- Full controller coverage: 34 stub controllers + 65 non-stub controllers all tested
 - Generator tests: 11 Minitest tests for install and component generators
 - CONTRIBUTING.md guide for new contributors
 - CI job for JavaScript tests (`npm test`)
 
 ### Fixed
-- QR code component: removed unused `cell_size` variable and dead `container_classes` method
-- Install generator: `File.exist?` now correctly uses `destination_root` instead of `Dir.pwd`
-- Component generator template: inherits from `HotwireBits::Base` with proper module wrapper
-- 14 Stimulus controller bugs (event listener cleanup, target guards, Turbo cache handling)
-- 30+ component rendering fixes across ViewComponents and ERB partials
+- CalendarComponentTest: fixed date-dependent test using proper month/year params
+- bin/setup: fixed path resolution bug
+- bin/hotwirebits: fixed RailsBits→HotwireBits naming, updated component list to 241
+- Gemfile: removed 4 duplicate runtime dependencies
+- gemspec: constrained tailwindcss-rails to ~> 3.0
 
 ### Changed
 - All 33 ERB partials rewritten for consistency with ViewComponent counterparts
 - StandardRB lint: 0 violations across entire codebase
+- Removed dead `:spec` Rake task and empty `spec/` directory
+- Removed audit_button.json from git tracking
 
 ## [0.1.0] - 2026-03-23
 
