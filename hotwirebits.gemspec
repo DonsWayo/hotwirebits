@@ -20,15 +20,14 @@ Gem::Specification.new do |spec|
   spec.metadata["source_code_uri"] = "https://github.com/DonsWayo/hotwirebits"
   spec.metadata["changelog_uri"] = "https://github.com/DonsWayo/hotwirebits/blob/main/CHANGELOG.md"
   spec.metadata["bug_tracker_uri"] = "https://github.com/DonsWayo/hotwirebits/issues"
-  spec.metadata["documentation_uri"] = "https://hotwirebits.dev"
 
   spec.files = Dir["lib/**/*", "app/**/*", "config/**/*", "LICENSE", "README.md", "CHANGELOG.md"]
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "rails", ">= 7.0"
-  spec.add_dependency "stimulus-rails", ">= 1.0"
-  spec.add_dependency "turbo-rails", ">= 1.0"
-  spec.add_dependency "view_component", ">= 3.0"
+  spec.add_dependency "rails", ">= 7.0", "< 9.0"
+  spec.add_dependency "stimulus-rails", "~> 1.0"
+  spec.add_dependency "turbo-rails", "~> 1.0"
+  spec.add_dependency "view_component", "~> 3.0"
   spec.add_dependency "tailwindcss-rails", "~> 3.0"
 
   spec.metadata["rubygems_mfa_required"] = "true"
