@@ -15,6 +15,8 @@ All notable changes to HotwireBits will be documented in this file.
 - CalendarComponentTest: fixed date-dependent test using proper month/year params
 - bin/setup: fixed path resolution bug
 - bin/hotwirebits: fixed RailsBits→HotwireBits naming, updated component list to 241
+- bin/hotwirebits: fixed gem_path resolving one directory too high, which made init and add find no components from a checkout; add now creates its target directories so it works without a prior init
+- README: corrected test suite counts (659 + 11 Minitest, 254 Vitest), replaced unverifiable per-category component lists with the actual totals (241 components, 99 controllers), replaced the unpublished `hotwirebits_cli` gem install with the checkout-based CLI flow, completed the Stimulus controller list to all 99 registered identifiers
 - Gemfile: removed 4 duplicate runtime dependencies
 - gemspec: constrained tailwindcss-rails to ~> 3.0
 
@@ -23,6 +25,7 @@ All notable changes to HotwireBits will be documented in this file.
 - StandardRB lint: 0 violations across entire codebase
 - Removed dead `:spec` Rake task and empty `spec/` directory
 - Removed audit_button.json from git tracking
+- gemspec: ship `bin/hotwirebits` as an executable so the CLI documented in the 0.1.0 changelog is distributed with the next release
 
 ## [0.1.0] - 2026-03-23
 
