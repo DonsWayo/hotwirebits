@@ -140,6 +140,8 @@ module HotwireBits
       src_erb = "#{gem_path}/app/components/hotwirebits/#{name}_component.html.erb"
 
       if File.exist?(src_rb)
+        # Allow `add` without a prior `init`.
+        FileUtils.mkdir_p("app/components/hotwirebits")
         FileUtils.cp(src_rb, "app/components/hotwirebits/#{name}_component.rb")
         FileUtils.cp(src_erb, "app/components/hotwirebits/#{name}_component.html.erb") if File.exist?(src_erb)
         puts "  Added: #{name}"
@@ -149,7 +151,9 @@ module HotwireBits
     end
 
     def gem_path
-      @gem_path ||= File.expand_path("../..", __dir__)
+      # bin/ sits directly under the gem root, both in a checkout and in an
+      # installed gem.
+      @gem_path ||= File.expand_path("..", __dir__)
     end
 
     def help

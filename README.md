@@ -34,40 +34,24 @@ rails generate hotwirebits:install
 
 ### Copy-Paste (shadcn-style)
 
+The repository ships a CLI for copying components into an existing Rails project:
+
 ```bash
-gem install hotwirebits_cli
-hotwirebits init
-hotwirebits add button card alert
+git clone https://github.com/DonsWayo/hotwirebits
+cd hotwirebits
+bin/hotwirebits init
+bin/hotwirebits add button card alert
 ```
+
+`init` creates the component directories and copies the theme stylesheet. `add` copies the ViewComponent class and its template for each named component. Run `bin/hotwirebits help` for the full command list.
+
+The published `hotwirebits` gem (0.1.0) does not include the CLI yet; use it from a checkout until the next release.
 
 ## Components
 
-### Primitives (20)
-Button, Badge, Chip, Tag, Avatar, Status, Indicator, Label, Separator, Skeleton, Spinner, Typography, Kbd, Icon, CloseButton, Toggle, ThemeIcon, Progress, ProgressRing
+241 components across nine categories — Primitives, Form Controls, Data Display, Navigation, Overlays, Feedback, Layout, Advanced, and Marketing Blocks. Every component ships as an ERB partial in `app/views/hotwirebits/` and a ViewComponent class in `app/components/hotwirebits/`.
 
-### Form Controls (22)
-Input, Password, Number, Search, Phone, Textarea, JsonInput, Checkbox, Radio, Switch, Toggle, Select, NativeSelect, Combobox, MultiSelect, Slider, Rating, DatePicker, InputOTP, InputTags, FileInput, ColorPicker
-
-### Data Display (20)
-Card, Table, DataTable, Stats, Stat, Timeline, TreeView, List, Image, CodeBlock, NumberFormatter, Diff, Highlight, Mark, Accordion, Collapsible, Spoiler, MeterGroup, ColorSwatch, FormGroup
-
-### Navigation (15)
-Navbar, Sidebar, Breadcrumb, Pagination, Tabs, Menu, Dropdown, NavigationMenu, Menubar, DockMenu, Steps, NavLink, Footer, Burger, SpeedDial
-
-### Overlays (10)
-Dialog, AlertDialog, Sheet, Drawer, Popover, Tooltip, HoverCard, Toast, Notification, LoadingOverlay
-
-### Feedback (10)
-Alert, EmptyState, Banner, SkeletonCard, Feedback, Swap, Countdown, AnimatedNumber, StatusDot, ThemeController
-
-### Layout (20)
-Container, Grid, Flex, Stack, Group, AspectRatio, ScrollArea, Resizable, Box, Center, SimpleGrid, Space, Divider, Join, Mask, BentoGrid, DeviceMockup, AppShell, Splitter, Fluid
-
-### Advanced (10)
-Carousel, Calendar, Chart, ChatBubble, Testimonial, KanbanBoard, Search, Clipboard, QRCode, Marquee
-
-### Marketing Blocks (10)
-Hero, FeatureSection, CTASection, PricingSection, FAQSection, TestimonialsSection, LogoCloud, AuthBlock, ErrorPage, CookieConsent
+Run `bin/hotwirebits list` for the full list.
 
 ## Usage
 
@@ -112,19 +96,34 @@ HotwireBits uses CSS custom properties (shadcn-style) for theming:
 
 ## Stimulus Controllers
 
-99 Stimulus controllers for interactive components:
+99 Stimulus controllers for interactive components, registered with the `hw-` prefix:
 
 ```
-hw-accordion  hw-alert      hw-banner     hw-burger
-hw-calendar   hw-carousel   hw-clipboard  hw-collapsible
-hw-combobox   hw-cookie     hw-countdown  hw-datepicker
-hw-dialog     hw-drawer     hw-dropdown   hw-feedback
-hw-highlight  hw-kanban     hw-marquee    hw-menubar
-hw-multiselect hw-otp       hw-password   hw-popover
-hw-rating     hw-resizable  hw-search     hw-sheet
-hw-sidebar    hw-speed-dial hw-spoiler    hw-steps
-hw-swap       hw-switch     hw-tabs       hw-tags
-hw-theme      hw-toast      hw-toggle     hw-tree
+accordion          activity-feed      ai-chat            alert
+angle-slider       animated-number    autocomplete       badge
+banner             burger             calendar           carousel
+clipboard          code-highlight     collapsible        color-input
+color-picker       combobox           command-bar        compare
+confirm-dialog     confirm-popup      context-menu       cookie-consent
+cookie-settings    countdown          data-view          date-range
+datepicker         dialog             drag-drop          drawer
+dropdown           feedback           file-browser       highlight
+hover-3d           hover-card         hover-gallery      image
+image-compare      image-zoom         inline-edit        inplace
+input-number       json-input         kanban             knob
+lightbox           like               listbox            marquee
+menubar            month-picker       month-picker-input multiselect
+nav-menu           newsletter         notification       otp
+paginator          panel              password           password-strength
+password-toggle    popover            portal             quickview
+range-slider       rating             resizable          rich-text-editor
+search             sheet              sidebar            signature
+speed-dial         splitter           spoiler            stepper-form
+steps              swap               switch             tabs
+tag-input          tags               text-rotate        theme
+theme-selector     time-picker        toast              toggle
+toggle-button      toggle-group       tooltip            tree
+two-factor         validator          voice-recorder
 ```
 
 ## License
@@ -135,8 +134,8 @@ MIT License — free for personal and commercial use.
 
 | Suite | Tests | Tool |
 |-------|-------|------|
-| Components & Helpers | 670 tests, 1477 assertions | Minitest |
-| Stimulus Controllers | 156 tests | Vitest + jsdom |
+| Components & Helpers | 659 tests, 1433 assertions | Minitest |
+| Stimulus Controllers | 254 tests | Vitest + jsdom |
 | Generators | 11 tests | Minitest |
 
 ```bash

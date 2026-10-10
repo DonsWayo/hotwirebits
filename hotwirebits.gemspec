@@ -21,8 +21,9 @@ Gem::Specification.new do |spec|
   spec.metadata["changelog_uri"] = "https://github.com/DonsWayo/hotwirebits/blob/main/CHANGELOG.md"
   spec.metadata["bug_tracker_uri"] = "https://github.com/DonsWayo/hotwirebits/issues"
 
-  spec.files = Dir["lib/**/*", "app/**/*", "config/**/*", "LICENSE", "README.md", "CHANGELOG.md"]
+  spec.files = Dir["lib/**/*", "app/**/*", "config/**/*", "bin/hotwirebits", "LICENSE", "README.md", "CHANGELOG.md"]
   spec.require_paths = ["lib"]
+  spec.executables = ["hotwirebits"]
 
   spec.add_dependency "rails", ">= 7.0", "< 9.0"
   spec.add_dependency "stimulus-rails", "~> 1.0"
